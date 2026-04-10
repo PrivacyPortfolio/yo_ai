@@ -1,0 +1,26 @@
+{
+  "$id": "https://yo-ai.ai/schemas/transaction-complete.verify.output.schema.json",
+  "title": "Transaction-Complete.Verify.Output",
+  "description": "Profile-aware output for the Transaction-Complete.Verify capability.",
+  "type": "object",
+  "properties": {
+    "result": {
+      "type": "object",
+      "description": "Primary capability output fields.",
+      "properties": {
+        "status": { "type": "string" }
+      },
+      "required": ["status"]
+    },
+    "profile": {
+      "$ref": "https://yo-ai.ai/schemas/profile.schema.json"
+    },
+    "profilePatch": {
+      "$ref": "https://yo-ai.ai/schemas/profile.patch.schema.json"
+    },
+    "governanceLabels": {
+      "$ref": "https://yo-ai.ai/schemas/governanceLabels.schema.json"
+    }
+  },
+  "required": ["result"]
+}

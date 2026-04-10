@@ -1,0 +1,32 @@
+{
+  "$id": "https://yo-ai.ai/schemas/stakeholder.notify.output.schema.json",
+  "title": "Stakeholder.Notify.Output",
+  "description": "Profile-aware output for the Stakeholder.Notify capability.",
+  "type": "object",
+  "properties": {
+    "result": {
+      "type": "object",
+      "properties": {
+        "notification_id": {
+          "type": "string",
+          "description": "Unique identifier for the notification event."
+        },
+        "status": {
+          "type": "string",
+          "description": "Status of the notification process."
+        }
+      },
+      "required": ["notification_id", "status"]
+    },
+    "profile": {
+      "$ref": "https://yo-ai.ai/schemas/profile.schema.json"
+    },
+    "profilePatch": {
+      "$ref": "https://yo-ai.ai/schemas/profile.patch.schema.json"
+    },
+    "governanceLabels": {
+      "$ref": "https://yo-ai.ai/schemas/governanceLabels.schema.json"
+    }
+  },
+  "required": ["result"]
+}

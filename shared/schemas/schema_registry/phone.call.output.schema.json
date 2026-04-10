@@ -1,0 +1,35 @@
+{
+  "$id": "https://yo-ai.ai/schemas/data-steward/phone.call.output.schema.json",
+  "title": "Phone.Call.Output",
+  "description": "Profile-aware output representing the status and transcript of an outbound phone call.",
+  "type": "object",
+  "properties": {
+    "result": {
+      "type": "object",
+      "description": "Primary capability output fields.",
+      "properties": {
+        "callId": { "type": "string" },
+        "status": {
+          "type": "string",
+          "enum": ["initiated", "connected", "completed", "failed"]
+        },
+        "transcript": { "type": "string" },
+        "metadata": {
+          "type": "object",
+          "additionalProperties": true
+        }
+      },
+      "required": ["callId", "status"]
+    },
+    "profile": {
+      "$ref": "https://yo-ai.ai/schemas/profile.schema.json"
+    },
+    "profilePatch": {
+      "$ref": "https://yo-ai.ai/schemas/profile.patch.schema.json"
+    },
+    "governanceLabels": {
+      "$ref": "https://yo-ai.ai/schemas/governanceLabels.schema.json"
+    }
+  },
+  "required": ["result"]
+}

@@ -1,0 +1,26 @@
+{
+  "$id": "https://yo-ai.ai/schemas/purchase-history.generate.output.schema.json",
+  "title": "Purchase-History.Generate.Output",
+  "description": "Profile-aware output for the Purchase-History.Generate capability.",
+  "type": "object",
+  "properties": {
+    "result": {
+      "type": "object",
+      "description": "Primary capability output fields.",
+      "properties": {
+        "historyEntryId": { "type": "string" },
+        "status": { "type": "string" }
+      }
+    },
+    "profile": {
+      "$ref": "https://yo-ai.ai/schemas/profile.schema.json"
+    },
+    "profilePatch": {
+      "$ref": "https://yo-ai.ai/schemas/profile.patch.schema.json"
+    },
+    "governanceLabels": {
+      "$ref": "https://yo-ai.ai/schemas/governanceLabels.schema.json"
+    }
+  },
+  "required": ["result"]
+}

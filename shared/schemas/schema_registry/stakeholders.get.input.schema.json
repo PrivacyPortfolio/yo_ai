@@ -1,0 +1,25 @@
+{
+  "$id": "https://yo-ai.ai/schemas/stakeholders.get.input.schema.json",
+  "title": "Stakeholders.Get.Input",
+  "description": "Profile-aware input for the Stakeholders.Get capability.",
+  "type": "object",
+  "properties": {
+    "profile": {
+      "$ref": "https://yo-ai.ai/schemas/profile.schema.json"
+    },
+    "profilePatch": {
+      "$ref": "https://yo-ai.ai/schemas/profile.patch.schema.json"
+    },
+    "payload": {
+      "type": "object",
+      "properties": {
+        "org_ref": {
+          "type": "string",
+          "description": "Reference to the organization."
+        }
+      },
+      "required": ["org_ref"]
+    }
+  },
+  "required": ["payload"]
+}

@@ -1,0 +1,27 @@
+{
+  "$id": "https://yo-ai.ai/schemas/return-or-refund.initiate.output.schema.json",
+  "title": "Return-Or-Refund.Initiate.Output",
+  "description": "Profile-aware output for the Return-Or-Refund.Initiate capability.",
+  "type": "object",
+  "properties": {
+    "result": {
+      "type": "object",
+      "description": "Primary capability output fields.",
+      "properties": {
+        "refundId": { "type": "string" },
+        "status": { "type": "string" }
+      },
+      "required": ["status"]
+    },
+    "profile": {
+      "$ref": "https://yo-ai.ai/schemas/profile.schema.json"
+    },
+    "profilePatch": {
+      "$ref": "https://yo-ai.ai/schemas/profile.patch.schema.json"
+    },
+    "governanceLabels": {
+      "$ref": "https://yo-ai.ai/schemas/governanceLabels.schema.json"
+    }
+  },
+  "required": ["result"]
+}

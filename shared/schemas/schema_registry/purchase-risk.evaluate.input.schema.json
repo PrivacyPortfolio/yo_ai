@@ -1,0 +1,27 @@
+{
+  "$id": "https://yo-ai.ai/schemas/purchase-risk.evaluate.input.schema.json",
+  "title": "Purchase-Risk.Evaluate.Input",
+  "description": "Profile-aware input for the Purchase-Risk.Evaluate capability.",
+  "type": "object",
+  "properties": {
+    "profile": {
+      "$ref": "https://yo-ai.ai/schemas/profile.schema.json",
+      "description": "Optional reference to the subject/org profile to load."
+    },
+    "profilePatch": {
+      "$ref": "https://yo-ai.ai/schemas/profile.patch.schema.json",
+      "description": "Optional modifications to apply to the loaded profile."
+    },
+    "payload": {
+      "type": "object",
+      "description": "Capability-specific input fields for Purchase-Risk.Evaluate.",
+      "properties": {
+        "amount": { "type": "number" },
+        "currency": { "type": "string" },
+        "vendorId": { "type": "string" },
+        "context": { "type": "object" }
+      }
+    }
+  },
+  "required": ["payload"]
+}

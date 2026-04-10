@@ -1,0 +1,27 @@
+{
+  "$id": "https://yo-ai.ai/schemas/data-steward/phone.answer.input.schema.json",
+  "title": "Phone.Answer.Input",
+  "description": "Profile-aware input for handling inbound phone calls and verifying caller identity.",
+  "type": "object",
+  "properties": {
+    "profile": {
+      "$ref": "https://yo-ai.ai/schemas/profile.schema.json",
+      "description": "Optional reference to the subject/org profile to load."
+    },
+    "profilePatch": {
+      "$ref": "https://yo-ai.ai/schemas/profile.patch.schema.json",
+      "description": "Optional modifications to apply to the loaded profile."
+    },
+    "payload": {
+      "type": "object",
+      "description": "Capability-specific input fields for Phone.Answer.",
+      "properties": {
+        "from": { "type": "string" },
+        "callerIdVerified": { "type": "boolean" },
+        "initialUtterance": { "type": "string" }
+      },
+      "required": ["from"]
+    }
+  },
+  "required": ["payload"]
+}

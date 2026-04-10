@@ -1,0 +1,46 @@
+{
+  "$id": "https://yo-ai.ai/schemas/trust.assign.input.schema.json",
+  "title": "Trust.Assign.Input",
+  "description": "Profile-aware input for the Trust.Assign capability.",
+  "type": "object",
+  "properties": {
+    "profile": {
+      "$ref": "https://yo-ai.ai/schemas/profile.schema.json",
+      "description": "Optional reference to the org, agent, or system profile to load."
+    },
+    "profilePatch": {
+      "$ref": "https://yo-ai.ai/schemas/profile.patch.schema.json",
+      "description": "Optional modifications to apply to the loaded profile."
+    },
+    "payload": {
+      "type": "object",
+      "description": "Capability-specific input fields for Trust.Assign.",
+      "properties": {
+        "agent_ref": {
+          "type": "string",
+          "description": "Reference to the agent being evaluated for trust assignment."
+        },
+        "evidence": {
+          "type": "array",
+          "description": "List of evidence items used to compute trust.",
+          "items": {
+            "type": "object",
+            "properties": {
+              "type": { "type": "string" },
+              "value": {},
+              "source": { "type": "string" },
+              "timestamp": { "type": "string", "format": "date-time" }
+            }
+          }
+        },
+        "context": {
+          "type": "object",
+          "description": "Optional contextual information (e.g., authentication event, risk signals).",
+          "additionalProperties": true
+        }
+      },
+      "required": ["agent_ref"]
+    }
+  },
+  "required": ["payload"]
+}

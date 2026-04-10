@@ -1,0 +1,33 @@
+{
+  "$id": "https://yo-ai.ai/schemas/subscriber.authenticate.input.schema.json",
+  "title": "Subscriber.Authenticate.Input",
+  "description": "Profile-aware input for the Subscriber.Authenticate capability.",
+  "type": "object",
+  "properties": {
+    "profile": {
+      "$ref": "https://yo-ai.ai/schemas/profile.schema.json",
+      "description": "Optional reference to the subject/org profile to load."
+    },
+    "profilePatch": {
+      "$ref": "https://yo-ai.ai/schemas/profile.patch.schema.json",
+      "description": "Optional modifications to apply to the loaded profile."
+    },
+    "payload": {
+      "type": "object",
+      "description": "Capability-specific input fields for Subscriber.Authenticate.",
+      "properties": {
+        "registration_identifier_ref": {
+          "type": "string",
+          "description": "Opaque reference to the subscriber registration record."
+        },
+        "log_refs": {
+          "type": "array",
+          "description": "Log references relevant to the subscriber authentication decision.",
+          "items": { "type": "string" }
+        }
+      },
+      "required": ["registration_identifier_ref", "log_refs"]
+    }
+  },
+  "required": ["payload"]
+}

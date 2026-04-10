@@ -1,0 +1,38 @@
+{
+  "$id": "https://yo-ai.ai/schemas/subscriber.authenticate.output.schema.json",
+  "title": "Subscriber.Authenticate.Output",
+  "description": "Profile-aware output for the Subscriber.Authenticate capability.",
+  "type": "object",
+  "properties": {
+    "result": {
+      "type": "object",
+      "description": "Primary capability output fields.",
+      "properties": {
+        "registration_identifier_ref": {
+          "type": "string",
+          "description": "Echo of the subscriber registration reference for traceability."
+        },
+        "finding": {
+          "type": "string",
+          "description": "Outcome of the subscriber authentication process (e.g., 'authenticated', 'denied', 'escalated')."
+        },
+        "log_refs": {
+          "type": "array",
+          "description": "Logs used or generated during subscriber authentication.",
+          "items": { "type": "string" }
+        }
+      },
+      "required": ["registration_identifier_ref", "finding", "log_refs"]
+    },
+    "profile": {
+      "$ref": "https://yo-ai.ai/schemas/profile.schema.json"
+    },
+    "profilePatch": {
+      "$ref": "https://yo-ai.ai/schemas/profile.patch.schema.json"
+    },
+    "governanceLabels": {
+      "$ref": "https://yo-ai.ai/schemas/governanceLabels.schema.json"
+    }
+  },
+  "required": ["result"]
+}

@@ -1,0 +1,41 @@
+{
+  "$id": "https://yo-ai.ai/schemas/reward.redeem.input.schema.json",
+  "title": "Reward.Redeem.Input",
+  "description": "Profile-aware input for the Reward.Redeem capability.",
+  "type": "object",
+  "properties": {
+    "profile": {
+      "$ref": "https://yo-ai.ai/schemas/profile.schema.json",
+      "description": "Optional reference to the subject profile to load."
+    },
+    "profilePatch": {
+      "$ref": "https://yo-ai.ai/schemas/profile.patch.schema.json",
+      "description": "Optional modifications to apply to the loaded profile."
+    },
+    "payload": {
+      "type": "object",
+      "description": "Capability-specific input fields for Reward.Redeem.",
+      "properties": {
+        "program": {
+          "type": "string",
+          "description": "Loyalty program to redeem from."
+        },
+        "reward_id": {
+          "type": "string",
+          "description": "Identifier for the reward being redeemed."
+        },
+        "loyalty_id": {
+          "type": "string",
+          "description": "User loyalty identifier."
+        },
+        "context": {
+          "type": "object",
+          "description": "Additional contextual data.",
+          "additionalProperties": true
+        }
+      },
+      "required": ["program", "reward_id", "loyalty_id"]
+    }
+  },
+  "required": ["payload"]
+}

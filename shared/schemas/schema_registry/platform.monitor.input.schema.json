@@ -1,0 +1,37 @@
+{
+  "$id": "https://yo-ai.ai/schemas/platform.monitor.input.schema.json",
+  "title": "Platform.Monitor.Input",
+  "description": "Profile-aware input for the Platform.Monitor capability.",
+  "type": "object",
+  "properties": {
+    "profile": {
+      "$ref": "https://yo-ai.ai/schemas/profile.schema.json",
+      "description": "Optional reference to the org or system profile to load."
+    },
+    "profilePatch": {
+      "$ref": "https://yo-ai.ai/schemas/profile.patch.schema.json",
+      "description": "Optional modifications to apply to the loaded profile."
+    },
+    "payload": {
+      "type": "object",
+      "description": "Capability-specific input fields for Platform.Monitor.",
+      "properties": {
+        "log_ref": {
+          "type": "string",
+          "description": "Reference to the log record associated with the monitored event."
+        },
+        "operation": {
+          "type": "string",
+          "description": "Operation or action being monitored."
+        },
+        "payload": {
+          "type": "object",
+          "description": "Operation-specific data relevant to monitoring.",
+          "additionalProperties": true
+        }
+      },
+      "required": ["log_ref", "operation"]
+    }
+  },
+  "required": ["payload"]
+}

@@ -1,0 +1,50 @@
+{
+  "$id": "https://yo-ai.ai/schemas/technical-impact.infer.output.schema.json",
+  "title": "Technical-Impact.Infer.Output",
+  "description": "Profile-aware output for the Technical-Impact.Infer capability.",
+  "type": "object",
+  "properties": {
+    "result": {
+      "type": "object",
+      "description": "Primary capability output fields.",
+      "properties": {
+        "technical_impact": {
+          "type": "object",
+          "description": "Inferred technical impact for the provided assets.",
+          "properties": {
+            "risk_level": {
+              "type": "string",
+              "description": "Overall technical risk level inferred from the assets."
+            },
+            "dependencies": {
+              "type": "array",
+              "description": "List of technical dependencies identified during inference.",
+              "items": {
+                "type": "string"
+              }
+            },
+            "compliance_notes": {
+              "type": "string",
+              "description": "Optional notes regarding compliance considerations or constraints."
+            }
+          },
+          "required": ["risk_level", "dependencies"]
+        }
+      },
+      "required": ["technical_impact"]
+    },
+    "profile": {
+      "$ref": "https://yo-ai.ai/schemas/profile.schema.json",
+      "description": "Optional updated profile after applying profilePatch."
+    },
+    "profilePatch": {
+      "$ref": "https://yo-ai.ai/schemas/profile.patch.schema.json",
+      "description": "Optional patch representing modifications applied during execution."
+    },
+    "governanceLabels": {
+      "$ref": "https://yo-ai.ai/schemas/governanceLabels.schema.json",
+      "description": "Optional governance labels for downstream classification."
+    }
+  },
+  "required": ["result"]
+}

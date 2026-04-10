@@ -1,0 +1,40 @@
+{
+  "$id": "https://yo-ai.ai/schemas/third-party-assets.discover.output.schema.json",
+  "title": "Third-Party-Assets.Discover.Output",
+  "description": "Profile-aware output for the Third-Party-Assets.Discover capability.",
+  "type": "object",
+  "properties": {
+    "result": {
+      "type": "object",
+      "description": "Primary capability output fields.",
+      "properties": {
+        "third_party_assets": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "asset_name": { "type": "string" },
+              "vendor": { "type": "string" },
+              "category": { "type": "string" },
+              "version": { "type": "string" },
+              "metadata": {
+                "type": "object",
+                "description": "Arbitrary metadata returned by the discovery process."
+              }
+            }
+          }
+        }
+      }
+    },
+    "profile": {
+      "$ref": "https://yo-ai.ai/schemas/profile.schema.json"
+    },
+    "profilePatch": {
+      "$ref": "https://yo-ai.ai/schemas/profile.patch.schema.json"
+    },
+    "governanceLabels": {
+      "$ref": "https://yo-ai.ai/schemas/governanceLabels.schema.json"
+    }
+  },
+  "required": ["result"]
+}

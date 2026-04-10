@@ -1,0 +1,46 @@
+{
+  "$id": "https://yo-ai.ai/schemas/rewards.discover.output.schema.json",
+  "title": "Rewards.Discover.Output",
+  "description": "Profile-aware output for the Rewards.Discover capability.",
+  "type": "object",
+  "properties": {
+    "result": {
+      "type": "object",
+      "description": "Primary capability output fields.",
+      "properties": {
+        "opportunities": {
+          "type": "array",
+          "description": "List of reward opportunities discovered.",
+          "items": {
+            "type": "object",
+            "properties": {
+              "program": { "type": "string" },
+              "reward_type": { "type": "string" },
+              "estimated_value": { "type": "number" },
+              "eligibility_requirements": {
+                "type": "array",
+                "items": { "type": "string" }
+              }
+            }
+          }
+        },
+        "recommended_actions": {
+          "type": "array",
+          "description": "Actions the user can take to earn rewards.",
+          "items": { "type": "string" }
+        }
+      },
+      "required": ["opportunities"]
+    },
+    "profile": {
+      "$ref": "https://yo-ai.ai/schemas/profile.schema.json"
+    },
+    "profilePatch": {
+      "$ref": "https://yo-ai.ai/schemas/profile.patch.schema.json"
+    },
+    "governanceLabels": {
+      "$ref": "https://yo-ai.ai/schemas/governanceLabels.schema.json"
+    }
+  },
+  "required": ["result"]
+}

@@ -1,0 +1,39 @@
+{
+  "$id": "https://yo-ai.ai/schemas/related-ip.discover.output.schema.json",
+  "title": "Related-IP.Discover.Output",
+  "description": "Profile-aware output for the Related-IP.Discover capability.",
+  "type": "object",
+  "properties": {
+    "result": {
+      "type": "object",
+      "description": "Primary capability output fields.",
+      "properties": {
+        "related_ip": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "asset_name": { "type": "string" },
+              "org_ref": { "type": "string" },
+              "related": {
+                "type": "array",
+                "items": { "type": "string" }
+              }
+            }
+          }
+        }
+      },
+      "required": ["related_ip"]
+    },
+    "profile": {
+      "$ref": "https://yo-ai.ai/schemas/profile.schema.json"
+    },
+    "profilePatch": {
+      "$ref": "https://yo-ai.ai/schemas/profile.patch.schema.json"
+    },
+    "governanceLabels": {
+      "$ref": "https://yo-ai.ai/schemas/governanceLabels.schema.json"
+    }
+  },
+  "required": ["result"]
+}

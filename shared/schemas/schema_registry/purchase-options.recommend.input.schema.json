@@ -1,0 +1,38 @@
+{
+  "$id": "https://yo-ai.ai/schemas/purchase-options.recommend.input.schema.json",
+  "title": "Purchase-Options.Recommend.Input",
+  "description": "Profile-aware input for the Purchase-Options.Recommend capability.",
+  "type": "object",
+  "properties": {
+    "profile": {
+      "$ref": "https://yo-ai.ai/schemas/profile.schema.json",
+      "description": "Optional reference to the subject/org profile to load."
+    },
+    "profilePatch": {
+      "$ref": "https://yo-ai.ai/schemas/profile.patch.schema.json",
+      "description": "Optional modifications to apply to the loaded profile."
+    },
+    "payload": {
+      "type": "object",
+      "description": "Capability-specific input fields for Purchase-Options.Recommend.",
+      "properties": {
+        "intent": { "type": "string" },
+        "preferences": {
+          "type": "object",
+          "properties": {
+            "priceRange": { "type": "string" },
+            "categories": {
+              "type": "array",
+              "items": { "type": "string" }
+            },
+            "brands": {
+              "type": "array",
+              "items": { "type": "string" }
+            }
+          }
+        }
+      }
+    }
+  },
+  "required": ["payload"]
+}

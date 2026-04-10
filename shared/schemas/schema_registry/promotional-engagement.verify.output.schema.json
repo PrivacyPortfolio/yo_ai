@@ -1,0 +1,55 @@
+{
+  "$id": "https://yo-ai.ai/schemas/promotional-engagement.verify.output.schema.json",
+  "title": "Promotional-Engagement.Verify.Output",
+  "description": "Profile-aware output for the Promotional-Engagement.Verify capability.",
+  "type": "object",
+  "properties": {
+    "result": {
+      "type": "object",
+      "description": "Primary capability output fields.",
+      "properties": {
+        "verified": {
+          "type": "boolean",
+          "description": "Whether the subject satisfied all required promotional engagement actions."
+        },
+        "missing_requirements": {
+          "type": "array",
+          "description": "List of required actions that were not satisfied.",
+          "items": { "type": "string" }
+        },
+        "evidence": {
+          "type": "array",
+          "description": "Evidence supporting verification results.",
+          "items": {
+            "type": "object",
+            "properties": {
+              "action": { "type": "string" },
+              "timestamp": { "type": "string", "format": "date-time" },
+              "platform": { "type": "string" },
+              "proof_hash": { "type": "string" },
+              "metadata": {
+                "type": "object",
+                "additionalProperties": true
+              }
+            }
+          }
+        },
+        "evidence_bundle_ref": {
+          "type": "string",
+          "description": "Optional reference to an Evidence.Collect bundle for downstream agents."
+        }
+      },
+      "required": ["verified", "evidence"]
+    },
+    "profile": {
+      "$ref": "https://yo-ai.ai/schemas/profile.schema.json"
+    },
+    "profilePatch": {
+      "$ref": "https://yo-ai.ai/schemas/profile.patch.schema.json"
+    },
+    "governanceLabels": {
+      "$ref": "https://yo-ai.ai/schemas/governanceLabels.schema.json"
+    }
+  },
+  "required": ["result"]
+}

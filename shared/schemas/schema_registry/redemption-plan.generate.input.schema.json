@@ -1,0 +1,47 @@
+{
+  "$id": "https://yo-ai.ai/schemas/redemption-plan.generate.input.schema.json",
+  "title": "Redemption-Plan.Generate.Input",
+  "description": "Profile-aware input for the Redemption-Plan.Generate capability.",
+  "type": "object",
+  "properties": {
+    "profile": {
+      "$ref": "https://yo-ai.ai/schemas/profile.schema.json",
+      "description": "Optional reference to the subject profile to load."
+    },
+    "profilePatch": {
+      "$ref": "https://yo-ai.ai/schemas/profile.patch.schema.json",
+      "description": "Optional modifications to apply to the loaded profile."
+    },
+    "payload": {
+      "type": "object",
+      "description": "Capability-specific input fields for Redemption-Plan.Generate.",
+      "properties": {
+        "goals": {
+          "type": "array",
+          "description": "User-defined reward goals (e.g., cashback, travel, merchandise).",
+          "items": { "type": "string" }
+        },
+        "purchase_history": {
+          "type": "array",
+          "description": "Recent purchases used to optimize the plan.",
+          "items": {
+            "type": "object",
+            "additionalProperties": true
+          }
+        },
+        "loyalty_ids": {
+          "type": "array",
+          "description": "User loyalty program identifiers.",
+          "items": { "type": "string" }
+        },
+        "preferences": {
+          "type": "object",
+          "description": "User preferences (e.g., preferred merchants, categories, reward types).",
+          "additionalProperties": true
+        }
+      },
+      "required": ["goals"]
+    }
+  },
+  "required": ["payload"]
+}

@@ -1,0 +1,43 @@
+{
+  "$id": "https://yo-ai.ai/schemas/promo-eligibility.verify.input.schema.json",
+  "title": "Promo-Eligibility.Verify.Input",
+  "description": "Profile-aware input for the Promo-Eligibility.Verify capability.",
+  "type": "object",
+  "properties": {
+    "profile": {
+      "$ref": "https://yo-ai.ai/schemas/profile.schema.json",
+      "description": "Optional reference to the subject profile to load."
+    },
+    "profilePatch": {
+      "$ref": "https://yo-ai.ai/schemas/profile.patch.schema.json",
+      "description": "Optional modifications to apply to the loaded profile."
+    },
+    "payload": {
+      "type": "object",
+      "description": "Capability-specific input fields for Promo-Eligibility.Verify.",
+      "properties": {
+        "promotion_id": {
+          "type": "string",
+          "description": "Identifier for the promotion being verified."
+        },
+        "social_handles": {
+          "type": "array",
+          "description": "User social media handles to check.",
+          "items": { "type": "string" }
+        },
+        "required_actions": {
+          "type": "array",
+          "description": "Actions required for eligibility (e.g., follow, hashtag, share).",
+          "items": { "type": "string" }
+        },
+        "context": {
+          "type": "object",
+          "description": "Additional contextual data.",
+          "additionalProperties": true
+        }
+      },
+      "required": ["promotion_id", "required_actions"]
+    }
+  },
+  "required": ["payload"]
+}

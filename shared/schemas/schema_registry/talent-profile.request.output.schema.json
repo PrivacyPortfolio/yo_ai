@@ -1,0 +1,39 @@
+{
+  "$id": "https://yo-ai.ai/schemas/talent-profile.request.output.schema.json",
+  "title": "Talent-Profile.Request.Output",
+  "description": "Profile-aware output for the Talent-Profile.Request capability.",
+  "type": "object",
+  "properties": {
+    "result": {
+      "type": "object",
+      "description": "Primary capability output fields.",
+      "properties": {
+        "profile": {
+          "type": "object",
+          "description": "Minimized professional profile returned by Data-Steward.",
+          "additionalProperties": true
+        },
+        "profile_version": {
+          "type": "string",
+          "description": "Version of the profile returned."
+        },
+        "missing_fields": {
+          "type": "array",
+          "description": "Fields that could not be provided.",
+          "items": { "type": "string" }
+        }
+      },
+      "required": ["profile"]
+    },
+    "profile": {
+      "$ref": "https://yo-ai.ai/schemas/profile.schema.json"
+    },
+    "profilePatch": {
+      "$ref": "https://yo-ai.ai/schemas/profile.patch.schema.json"
+    },
+    "governanceLabels": {
+      "$ref": "https://yo-ai.ai/schemas/governanceLabels.schema.json"
+    }
+  },
+  "required": ["result"]
+}

@@ -1,0 +1,43 @@
+{
+  "$id": "https://yo-ai.ai/schemas/request-response.correlate.input.schema.json",
+  "title": "Request-Response.Correlate.Input",
+  "description": "Profile-aware input for the Request-Response.Correlate capability.",
+  "type": "object",
+  "properties": {
+    "profile": {
+      "$ref": "https://yo-ai.ai/schemas/profile.schema.json",
+      "description": "Optional reference to the subject or agent profile to load."
+    },
+    "profilePatch": {
+      "$ref": "https://yo-ai.ai/schemas/profile.patch.schema.json",
+      "description": "Optional modifications to apply to the loaded profile."
+    },
+    "payload": {
+      "type": "object",
+      "description": "Capability-specific input fields for Request-Response.Correlate.",
+      "properties": {
+        "requestId": {
+          "type": "string",
+          "description": "Identifier of the request to correlate."
+        },
+        "responseId": {
+          "type": "string",
+          "description": "Identifier of the response to correlate."
+        },
+        "topic": {
+          "type": "string",
+          "description": "Topic or channel where the request/response occurred."
+        },
+        "direction": {
+          "type": "string",
+          "enum": ["requestToResponse", "responseToRequest"],
+          "description": "Correlation direction."
+        }
+      },
+      "required": ["direction"],
+      "additionalProperties": false
+    }
+  },
+  "required": ["payload"],
+  "additionalProperties": false
+}

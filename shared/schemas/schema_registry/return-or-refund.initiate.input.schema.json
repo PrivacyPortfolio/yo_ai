@@ -1,0 +1,26 @@
+{
+  "$id": "https://yo-ai.ai/schemas/return-or-refund.initiate.input.schema.json",
+  "title": "Return-Or-Refund.Initiate.Input",
+  "description": "Profile-aware input for the Return-Or-Refund.Initiate capability.",
+  "type": "object",
+  "properties": {
+    "profile": {
+      "$ref": "https://yo-ai.ai/schemas/profile.schema.json",
+      "description": "Optional reference to the subject/org profile to load."
+    },
+    "profilePatch": {
+      "$ref": "https://yo-ai.ai/schemas/profile.patch.schema.json",
+      "description": "Optional modifications to apply to the loaded profile."
+    },
+    "payload": {
+      "type": "object",
+      "description": "Capability-specific input fields for Return-Or-Refund.Initiate.",
+      "properties": {
+        "orderId": { "type": "string" },
+        "reason": { "type": "string" }
+      },
+      "required": ["orderId", "reason"]
+    }
+  },
+  "required": ["payload"]
+}

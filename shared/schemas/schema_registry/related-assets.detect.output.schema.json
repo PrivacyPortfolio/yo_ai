@@ -1,0 +1,49 @@
+{
+  "$id": "https://yo-ai.ai/schemas/related-assets.detect.output.schema.json",
+  "title": "Related-Assets.Detect.Output",
+  "description": "Profile-aware output for the Related-Assets.Detect capability.",
+  "type": "object",
+  "properties": {
+    "result": {
+      "type": "object",
+      "description": "Primary capability output fields.",
+      "properties": {
+        "related_assets": {
+          "type": "array",
+          "description": "Detected related assets for each input asset.",
+          "items": {
+            "type": "object",
+            "properties": {
+              "asset_name": {
+                "type": "string",
+                "description": "The asset for which related assets were detected."
+              },
+              "related": {
+                "type": "array",
+                "description": "List of asset names related to the given asset.",
+                "items": {
+                  "type": "string"
+                }
+              }
+            },
+            "required": ["asset_name", "related"]
+          }
+        }
+      },
+      "required": ["related_assets"]
+    },
+    "profile": {
+      "$ref": "https://yo-ai.ai/schemas/profile.schema.json",
+      "description": "Optional updated profile after applying profilePatch."
+    },
+    "profilePatch": {
+      "$ref": "https://yo-ai.ai/schemas/profile.patch.schema.json",
+      "description": "Optional patch representing modifications applied during execution."
+    },
+    "governanceLabels": {
+      "$ref": "https://yo-ai.ai/schemas/governanceLabels.schema.json",
+      "description": "Optional governance labels for downstream classification."
+    }
+  },
+  "required": ["result"]
+}

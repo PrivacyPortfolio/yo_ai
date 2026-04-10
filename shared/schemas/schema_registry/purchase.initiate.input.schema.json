@@ -1,0 +1,28 @@
+{
+  "$id": "https://yo-ai.ai/schemas/purchase.initiate.input.schema.json",
+  "title": "Purchase.Initiate.Input",
+  "description": "Profile-aware input for the Purchase.Initiate capability.",
+  "type": "object",
+  "properties": {
+    "profile": {
+      "$ref": "https://yo-ai.ai/schemas/profile.schema.json",
+      "description": "Optional reference to the subject/org profile to load."
+    },
+    "profilePatch": {
+      "$ref": "https://yo-ai.ai/schemas/profile.patch.schema.json",
+      "description": "Optional modifications to apply to the loaded profile."
+    },
+    "payload": {
+      "type": "object",
+      "description": "Capability-specific input fields for Purchase.Initiate.",
+      "properties": {
+        "purchase": { "type": "object" },
+        "callbacks": { "type": "object" },
+        "risk": { "type": "object" },
+        "piAccessToken": { "type": "string" }
+      },
+      "required": ["purchase"]
+    }
+  },
+  "required": ["payload"]
+}

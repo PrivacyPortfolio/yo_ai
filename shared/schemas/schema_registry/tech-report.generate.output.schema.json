@@ -1,0 +1,32 @@
+{
+  "$id": "https://yo-ai.ai/schemas/tech-report.generate.output.schema.json",
+  "title": "Tech-Report.Generate.Output",
+  "description": "Profile-aware output for the Tech-Report.Generate capability.",
+  "type": "object",
+  "properties": {
+    "result": {
+      "type": "object",
+      "description": "Primary capability output fields.",
+      "properties": {
+        "report_url": {
+          "type": "string",
+          "description": "URL where the generated technical report can be retrieved."
+        }
+      },
+      "required": ["report_url"]
+    },
+    "profile": {
+      "$ref": "https://yo-ai.ai/schemas/profile.schema.json",
+      "description": "Optional updated profile after applying profilePatch."
+    },
+    "profilePatch": {
+      "$ref": "https://yo-ai.ai/schemas/profile.patch.schema.json",
+      "description": "Optional patch representing modifications applied during execution."
+    },
+    "governanceLabels": {
+      "$ref": "https://yo-ai.ai/schemas/governanceLabels.schema.json",
+      "description": "Optional governance labels for downstream classification."
+    }
+  },
+  "required": ["result"]
+}

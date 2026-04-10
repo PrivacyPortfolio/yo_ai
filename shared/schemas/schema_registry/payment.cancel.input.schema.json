@@ -1,0 +1,55 @@
+{
+  "$id": "https://yo-ai.ai/schemas/payment.cancel.input.schema.json",
+  "title": "Payment.Cancel.Input",
+  "description": "Profile-aware input for the Payment.Cancel capability.",
+  "type": "object",
+  "properties": {
+    "profile": {
+      "$ref": "https://yo-ai.ai/schemas/profile.schema.json",
+      "description": "Optional reference to the subject/org profile to load."
+    },
+    "profilePatch": {
+      "$ref": "https://yo-ai.ai/schemas/profile.patch.schema.json",
+      "description": "Optional modifications to apply to the loaded profile."
+    },
+    "payload": {
+      "type": "object",
+      "description": "Capability-specific input fields for Payment.Cancel.",
+      "properties": {
+        "transactionId": {
+          "type": "string",
+          "description": "The AP2 or provider transaction identifier to cancel."
+        },
+        "provider": {
+          "type": "string",
+          "description": "Optional payment provider (AP2, Stripe, PayPal, etc.)."
+        },
+        "reason": {
+          "type": "string",
+          "description": "Human-readable reason for cancellation."
+        },
+        "requestedBy": {
+          "type": "string",
+          "description": "Actor requesting cancellation (user, agent, automated rule)."
+        },
+        "evidence": {
+          "type": "array",
+          "description": "Optional evidence supporting cancellation.",
+          "items": {
+            "type": "object",
+            "properties": {
+              "type": { "type": "string" },
+              "value": { "type": "string" }
+            }
+          }
+        },
+        "metadata": {
+          "type": "object",
+          "description": "Arbitrary metadata for routing, correlation, or provider-specific fields."
+        }
+      },
+      "required": ["transactionId", "reason", "requestedBy"]
+    }
+  },
+  "required": ["payload"]
+}

@@ -1,0 +1,35 @@
+{
+  "$id": "https://yo-ai.ai/schemas/data-steward/phone.answer.output.schema.json",
+  "title": "Phone.Answer.Output",
+  "description": "Profile-aware output describing the interpreted purpose, risk level, and recommended actions for an inbound call.",
+  "type": "object",
+  "properties": {
+    "result": {
+      "type": "object",
+      "description": "Primary capability output fields.",
+      "properties": {
+        "callId": { "type": "string" },
+        "purpose": { "type": "string" },
+        "riskLevel": {
+          "type": "string",
+          "enum": ["low", "medium", "high"]
+        },
+        "actions": {
+          "type": "array",
+          "items": { "type": "string" }
+        }
+      },
+      "required": ["callId", "purpose"]
+    },
+    "profile": {
+      "$ref": "https://yo-ai.ai/schemas/profile.schema.json"
+    },
+    "profilePatch": {
+      "$ref": "https://yo-ai.ai/schemas/profile.patch.schema.json"
+    },
+    "governanceLabels": {
+      "$ref": "https://yo-ai.ai/schemas/governanceLabels.schema.json"
+    }
+  },
+  "required": ["result"]
+}

@@ -1,0 +1,65 @@
+{
+  "$id": "https://yo-ai.ai/schemas/reidentification-attack.simulate.input.schema.json",
+  "title": "Reidentification-Attack.Simulate.Input",
+  "description": "Profile-aware input for the Reidentification-Attack.Simulate capability.",
+  "type": "object",
+  "properties": {
+    "profile": {
+      "$ref": "https://yo-ai.ai/schemas/profile.schema.json",
+      "description": "Optional reference to the subject/org profile to load."
+    },
+    "profilePatch": {
+      "$ref": "https://yo-ai.ai/schemas/profile.patch.schema.json",
+      "description": "Optional modifications to apply to the loaded profile."
+    },
+    "payload": {
+      "type": "object",
+      "description": "Capability-specific input fields for simulating re-identification attacks.",
+      "properties": {
+        "dataset": {
+          "type": "array",
+          "description": "Primary dataset being evaluated for re-identification vulnerability.",
+          "items": { "type": "object", "additionalProperties": true }
+        },
+        "auxiliary_sources": {
+          "type": "array",
+          "description": "External datasets an attacker might use for linkage or inference.",
+          "items": {
+            "type": "object",
+            "required": ["name"],
+            "properties": {
+              "name": { "type": "string" },
+              "schema": {
+                "type": "array",
+                "description": "Fields available in the auxiliary dataset.",
+                "items": { "type": "string" }
+              },
+              "sample_records": {
+                "type": "array",
+                "description": "Optional sample records for structural comparison.",
+                "items": { "type": "object", "additionalProperties": true }
+              }
+            }
+          }
+        },
+        "attacker_model": {
+          "type": "string",
+          "description": "Assumed attacker capability level.",
+          "enum": ["naive", "intermediate", "sophisticated"]
+        },
+        "quasi_identifiers": {
+          "type": "array",
+          "description": "Attributes that may be linkable across datasets.",
+          "items": { "type": "string" }
+        },
+        "context": {
+          "type": "object",
+          "description": "Optional context from the requesting agent.",
+          "additionalProperties": true
+        }
+      },
+      "required": ["dataset", "auxiliary_sources", "attacker_model"]
+    }
+  },
+  "required": ["payload"]
+}

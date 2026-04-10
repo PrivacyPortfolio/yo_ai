@@ -1,0 +1,41 @@
+{
+  "$id": "https://yo-ai.ai/schemas/workflow.build.input.schema.json",
+  "title": "Workflow.Build.Input",
+  "description": "Profile-aware input for the Workflow.Build capability.",
+  "type": "object",
+  "properties": {
+    "profile": {
+      "$ref": "https://yo-ai.ai/schemas/profile.schema.json",
+      "description": "Optional reference to the org or system profile to load."
+    },
+    "profilePatch": {
+      "$ref": "https://yo-ai.ai/schemas/profile.patch.schema.json",
+      "description": "Optional modifications to apply to the loaded profile."
+    },
+    "payload": {
+      "type": "object",
+      "description": "Capability-specific input fields for Workflow.Build.",
+      "properties": {
+        "request_ref": {
+          "type": "string",
+          "description": "Opaque reference to the workflow build request."
+        },
+        "registration_identifier_ref": {
+          "type": "string",
+          "description": "Reference to the agent or subscriber initiating the workflow build."
+        },
+        "nodes": {
+          "type": "array",
+          "description": "List of workflow nodes or stages to be included in the build.",
+          "items": { "type": "string" }
+        }
+      },
+      "required": [
+        "request_ref",
+        "registration_identifier_ref",
+        "nodes"
+      ]
+    }
+  },
+  "required": ["payload"]
+}

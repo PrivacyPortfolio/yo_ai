@@ -1,0 +1,51 @@
+{
+  "$id": "https://yo-ai.ai/schemas/redemption-plan.generate.output.schema.json",
+  "title": "Redemption-Plan.Generate.Output",
+  "description": "Profile-aware output for the Redemption-Plan.Generate capability.",
+  "type": "object",
+  "properties": {
+    "result": {
+      "type": "object",
+      "description": "Primary capability output fields.",
+      "properties": {
+        "plan_id": {
+          "type": "string",
+          "description": "Unique identifier for the generated plan."
+        },
+        "recommended_programs": {
+          "type": "array",
+          "description": "Ranked list of loyalty programs aligned with user goals.",
+          "items": {
+            "type": "object",
+            "properties": {
+              "program": { "type": "string" },
+              "estimated_value": { "type": "number" },
+              "confidence": { "type": "number" }
+            }
+          }
+        },
+        "earning_strategy": {
+          "type": "array",
+          "description": "Recommended actions to maximize reward earning.",
+          "items": { "type": "string" }
+        },
+        "redemption_strategy": {
+          "type": "array",
+          "description": "Recommended actions to redeem rewards efficiently.",
+          "items": { "type": "string" }
+        }
+      },
+      "required": ["plan_id", "recommended_programs"]
+    },
+    "profile": {
+      "$ref": "https://yo-ai.ai/schemas/profile.schema.json"
+    },
+    "profilePatch": {
+      "$ref": "https://yo-ai.ai/schemas/profile.patch.schema.json"
+    },
+    "governanceLabels": {
+      "$ref": "https://yo-ai.ai/schemas/governanceLabels.schema.json"
+    }
+  },
+  "required": ["result"]
+}

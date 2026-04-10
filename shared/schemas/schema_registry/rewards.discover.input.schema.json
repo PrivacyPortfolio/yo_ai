@@ -1,0 +1,46 @@
+{
+  "$id": "https://yo-ai.ai/schemas/rewards.discover.input.schema.json",
+  "title": "Rewards.Discover.Input",
+  "description": "Profile-aware input for the Rewards.Discover capability.",
+  "type": "object",
+  "properties": {
+    "profile": {
+      "$ref": "https://yo-ai.ai/schemas/profile.schema.json",
+      "description": "Optional reference to the subject profile to load."
+    },
+    "profilePatch": {
+      "$ref": "https://yo-ai.ai/schemas/profile.patch.schema.json",
+      "description": "Optional modifications to apply to the loaded profile."
+    },
+    "payload": {
+      "type": "object",
+      "description": "Capability-specific input fields for Rewards.Discover.",
+      "properties": {
+        "purchase_history": {
+          "type": "array",
+          "description": "Recent purchases used to identify reward opportunities.",
+          "items": {
+            "type": "object",
+            "additionalProperties": true
+          }
+        },
+        "loyalty_ids": {
+          "type": "array",
+          "description": "Optional list of loyalty program identifiers.",
+          "items": { "type": "string" }
+        },
+        "merchant_preferences": {
+          "type": "array",
+          "description": "Preferred merchants or categories.",
+          "items": { "type": "string" }
+        },
+        "context": {
+          "type": "object",
+          "description": "Optional context from the requesting agent.",
+          "additionalProperties": true
+        }
+      }
+    }
+  },
+  "required": ["payload"]
+}

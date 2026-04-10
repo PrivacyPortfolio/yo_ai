@@ -1,0 +1,26 @@
+{
+  "$id": "https://yo-ai.ai/schemas/purchase-issues.resolve.input.schema.json",
+  "title": "Purchase-Issues.Resolve.Input",
+  "description": "Profile-aware input for the Purchase-Issues.Resolve capability.",
+  "type": "object",
+  "properties": {
+    "profile": {
+      "$ref": "https://yo-ai.ai/schemas/profile.schema.json",
+      "description": "Optional reference to the subject/org profile to load."
+    },
+    "profilePatch": {
+      "$ref": "https://yo-ai.ai/schemas/profile.patch.schema.json",
+      "description": "Optional modifications to apply to the loaded profile."
+    },
+    "payload": {
+      "type": "object",
+      "description": "Capability-specific input fields for Purchase-Issues.Resolve.",
+      "properties": {
+        "orderId": { "type": "string" },
+        "issueType": { "type": "string" },
+        "details": { "type": "string" }
+      }
+    }
+  },
+  "required": ["payload"]
+}

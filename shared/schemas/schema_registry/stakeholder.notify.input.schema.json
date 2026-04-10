@@ -1,0 +1,33 @@
+{
+  "$id": "https://yo-ai.ai/schemas/stakeholder.notify.input.schema.json",
+  "title": "Stakeholder.Notify.Input",
+  "description": "Profile-aware input for the Stakeholder.Notify capability.",
+  "type": "object",
+  "properties": {
+    "profile": {
+      "$ref": "https://yo-ai.ai/schemas/profile.schema.json"
+    },
+    "profilePatch": {
+      "$ref": "https://yo-ai.ai/schemas/profile.patch.schema.json"
+    },
+    "payload": {
+      "type": "object",
+      "properties": {
+        "stakeholder": {
+          "type": "string",
+          "description": "Identifier of the stakeholder."
+        },
+        "complaint_id": {
+          "type": "string",
+          "description": "Associated complaint ID."
+        },
+        "message": {
+          "type": "string",
+          "description": "Notification message."
+        }
+      },
+      "required": ["stakeholder", "complaint_id"]
+    }
+  },
+  "required": ["payload"]
+}

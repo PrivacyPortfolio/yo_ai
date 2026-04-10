@@ -1,0 +1,47 @@
+{
+  "$id": "https://yo-ai.ai/schemas/safe-release.recommend.output.schema.json",
+  "title": "Safe-Release.Recommend.Output",
+  "description": "Profile-aware output for the Safe-Release.Recommend capability.",
+  "type": "object",
+  "properties": {
+    "result": {
+      "type": "object",
+      "description": "Primary capability output fields.",
+      "properties": {
+        "release_decision": {
+          "type": "string",
+          "description": "Determination of whether the dataset is safe to release.",
+          "enum": ["approved", "approved_with_mitigations", "not_approved"]
+        },
+        "required_mitigations": {
+          "type": "array",
+          "description": "Mitigations required before release (e.g., generalization, suppression, aggregation).",
+          "items": { "type": "string" }
+        },
+        "residual_risk": {
+          "type": "string",
+          "description": "Residual re-identification risk after recommended mitigations.",
+          "enum": ["low", "medium", "high"]
+        },
+        "compliance_rationale": {
+          "type": "object",
+          "description": "Explanation of how the decision aligns with regulatory frameworks.",
+          "additionalProperties": true
+        }
+      },
+      "required": ["release_decision"]
+    },
+    "profile": {
+      "$ref": "https://yo-ai.ai/schemas/common/profile.schema.json",
+      "description": "Optional updated profile after applying profilePatch."
+    },
+    "warnings": {
+      "type": "array",
+      "description": "Optional warnings or governance notes.",
+      "items": {
+        "$ref": "https://yo-ai.ai/schemas/common/warning.schema.json"
+      }
+    }
+  },
+  "required": ["result"]
+}

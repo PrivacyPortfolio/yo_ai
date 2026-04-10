@@ -1,0 +1,50 @@
+{
+  "$id": "https://yo-ai.ai/schemas/usage-instances.search.output.schema.json",
+  "title": "Usage-Instances.Search.Output",
+  "description": "Profile-aware output for the Usage-Instances.Search capability.",
+  "type": "object",
+  "properties": {
+    "result": {
+      "type": "object",
+      "description": "Primary capability output fields.",
+      "properties": {
+        "usage_instances": {
+          "type": "array",
+          "description": "Detected usage instances for each asset.",
+          "items": {
+            "type": "object",
+            "properties": {
+              "asset_name": {
+                "type": "string",
+                "description": "The asset for which usage was detected."
+              },
+              "location": {
+                "type": "string",
+                "description": "Location or system where the asset was observed in use."
+              },
+              "evidence": {
+                "type": "string",
+                "description": "Reference to evidence supporting the detected usage instance."
+              }
+            },
+            "required": ["asset_name", "location", "evidence"]
+          }
+        }
+      },
+      "required": ["usage_instances"]
+    },
+    "profile": {
+      "$ref": "https://yo-ai.ai/schemas/profile.schema.json",
+      "description": "Optional updated profile after applying profilePatch."
+    },
+    "profilePatch": {
+      "$ref": "https://yo-ai.ai/schemas/profile.patch.schema.json",
+      "description": "Optional patch representing modifications applied during execution."
+    },
+    "governanceLabels": {
+      "$ref": "https://yo-ai.ai/schemas/governanceLabels.schema.json",
+      "description": "Optional governance labels for downstream classification."
+    }
+  },
+  "required": ["result"]
+}

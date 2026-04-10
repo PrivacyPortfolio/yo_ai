@@ -1,0 +1,48 @@
+{
+  "$id": "https://yo-ai.ai/schemas/safe-release.recommend.input.schema.json",
+  "title": "Safe-Release.Recommend.Input",
+  "description": "Profile-aware input for the Safe-Release.Recommend capability.",
+  "type": "object",
+  "properties": {
+    "profile": {
+      "$ref": "https://yo-ai.ai/schemas/profile.schema.json",
+      "description": "Optional reference to the subject/org profile to load."
+    },
+    "profilePatch": {
+      "$ref": "https://yo-ai.ai/schemas/profile.patch.schema.json",
+      "description": "Optional modifications to apply to the loaded profile."
+    },
+    "payload": {
+      "type": "object",
+      "description": "Capability-specific input fields for safe release recommendation.",
+      "properties": {
+        "dataset": {
+          "type": "array",
+          "description": "Tabular dataset represented as an array of objects.",
+          "items": { "type": "object", "additionalProperties": true }
+        },
+        "intended_purpose": {
+          "type": "string",
+          "description": "Purpose for which the dataset is intended to be released (e.g., analytics, research, vendor processing)."
+        },
+        "regulatory_frameworks": {
+          "type": "array",
+          "description": "Applicable regulatory or policy frameworks (e.g., CPRA, HIPAA, NIST, A2A).",
+          "items": { "type": "string" }
+        },
+        "risk_tolerance": {
+          "type": "string",
+          "description": "Risk tolerance level for the release.",
+          "enum": ["low", "medium", "high"]
+        },
+        "context": {
+          "type": "object",
+          "description": "Optional context from the requesting agent.",
+          "additionalProperties": true
+        }
+      },
+      "required": ["dataset", "intended_purpose"]
+    }
+  },
+  "required": ["payload"]
+}

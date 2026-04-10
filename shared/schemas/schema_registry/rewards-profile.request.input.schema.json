@@ -1,0 +1,34 @@
+{
+  "$id": "https://yo-ai.ai/schemas/rewards-profile.request.input.schema.json",
+  "title": "Rewards-Profile.Request.Input",
+  "description": "Profile-aware input for the Rewards-Profile.Request capability.",
+  "type": "object",
+  "properties": {
+    "profile": {
+      "$ref": "https://yo-ai.ai/schemas/profile.schema.json",
+      "description": "Optional reference to the subject profile to load."
+    },
+    "profilePatch": {
+      "$ref": "https://yo-ai.ai/schemas/profile.patch.schema.json",
+      "description": "Optional modifications to apply to the loaded profile."
+    },
+    "payload": {
+      "type": "object",
+      "description": "Capability-specific input fields for Rewards-Profile.Request.",
+      "properties": {
+        "requested_fields": {
+          "type": "array",
+          "description": "Fields needed for reward evaluation.",
+          "items": { "type": "string" }
+        },
+        "context": {
+          "type": "object",
+          "description": "Optional context from the requesting agent.",
+          "additionalProperties": true
+        }
+      },
+      "required": ["requested_fields"]
+    }
+  },
+  "required": ["payload"]
+}

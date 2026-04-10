@@ -1,0 +1,54 @@
+{
+  "$id": "https://yo-ai.ai/schemas/reidentification-attack.simulate.output.schema.json",
+  "title": "Reidentification-Attack.Simulate.Output",
+  "description": "Profile-aware output for the Reidentification-Attack.Simulate capability.",
+  "type": "object",
+  "properties": {
+    "result": {
+      "type": "object",
+      "description": "Primary capability output fields.",
+      "properties": {
+        "attack_success_probability": {
+          "type": "number",
+          "description": "Estimated probability that an attacker could re-identify at least one individual (0–1 scale)."
+        },
+        "vulnerable_records": {
+          "type": "array",
+          "description": "Records with elevated re-identification risk.",
+          "items": {
+            "type": "object",
+            "properties": {
+              "record_id": { "type": "string" },
+              "match_probability": { "type": "number" },
+              "linkage_vector": {
+                "type": "array",
+                "items": { "type": "string" }
+              }
+            }
+          }
+        },
+        "attack_vectors": {
+          "type": "array",
+          "description": "Identified re-identification strategies that were effective.",
+          "items": { "type": "string" }
+        },
+        "recommended_mitigations": {
+          "type": "array",
+          "description": "Suggested actions to reduce re-identification vulnerability.",
+          "items": { "type": "string" }
+        }
+      },
+      "required": ["attack_success_probability"]
+    },
+    "profile": {
+      "$ref": "https://yo-ai.ai/schemas/profile.schema.json"
+    },
+    "profilePatch": {
+      "$ref": "https://yo-ai.ai/schemas/profile.patch.schema.json"
+    },
+    "governanceLabels": {
+      "$ref": "https://yo-ai.ai/schemas/governanceLabels.schema.json"
+    }
+  },
+  "required": ["result"]
+}

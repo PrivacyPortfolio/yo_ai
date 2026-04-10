@@ -1,0 +1,37 @@
+{
+  "$id": "https://yo-ai.ai/schemas/visitor.identify.input.schema.json",
+  "title": "Visitor.Identify.Input",
+  "description": "Profile-aware input for the Visitor.Identify capability.",
+  "type": "object",
+  "properties": {
+    "profile": {
+      "$ref": "https://yo-ai.ai/schemas/profile.schema.json",
+      "description": "Optional reference to the subject/org profile to load."
+    },
+    "profilePatch": {
+      "$ref": "https://yo-ai.ai/schemas/profile.patch.schema.json",
+      "description": "Optional modifications to apply to the loaded profile."
+    },
+    "payload": {
+      "type": "object",
+      "description": "Capability-specific input fields for Visitor.Identify.",
+      "properties": {
+        "identifier": {
+          "type": "string",
+          "description": "Opaque identifier for the visitor being evaluated."
+        },
+        "identifier_ref": {
+          "type": "string",
+          "description": "Reference to an existing visitor record or external identity."
+        },
+        "log_refs": {
+          "type": "array",
+          "description": "Log references relevant to the visitor identification decision.",
+          "items": { "type": "string" }
+        }
+      },
+      "required": ["identifier", "identifier_ref", "log_refs"]
+    }
+  },
+  "required": ["payload"]
+}

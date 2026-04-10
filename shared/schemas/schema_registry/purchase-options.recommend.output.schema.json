@@ -1,0 +1,36 @@
+{
+  "$id": "https://yo-ai.ai/schemas/purchase-options.recommend.output.schema.json",
+  "title": "Purchase-Options.Recommend.Output",
+  "description": "Profile-aware output for the Purchase-Options.Recommend capability.",
+  "type": "object",
+  "properties": {
+    "result": {
+      "type": "object",
+      "description": "Primary capability output fields.",
+      "properties": {
+        "recommendations": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "itemId": { "type": "string" },
+              "name": { "type": "string" },
+              "price": { "type": "number" },
+              "currency": { "type": "string" }
+            }
+          }
+        }
+      }
+    },
+    "profile": {
+      "$ref": "https://yo-ai.ai/schemas/profile.schema.json"
+    },
+    "profilePatch": {
+      "$ref": "https://yo-ai.ai/schemas/profile.patch.schema.json"
+    },
+    "governanceLabels": {
+      "$ref": "https://yo-ai.ai/schemas/governanceLabels.schema.json"
+    }
+  },
+  "required": ["result"]
+}

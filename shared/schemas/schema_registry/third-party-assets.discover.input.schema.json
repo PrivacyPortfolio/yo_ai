@@ -1,0 +1,28 @@
+{
+  "$id": "https://yo-ai.ai/schemas/third-party-assets.discover.input.schema.json",
+  "title": "Third-Party-Assets.Discover.Input",
+  "description": "Profile-aware input for the Third-Party-Assets.Discover capability.",
+  "type": "object",
+  "properties": {
+    "profile": {
+      "$ref": "https://yo-ai.ai/schemas/profile.schema.json",
+      "description": "Optional reference to the org or system profile to load."
+    },
+    "profilePatch": {
+      "$ref": "https://yo-ai.ai/schemas/profile.patch.schema.json",
+      "description": "Optional modifications to apply to the loaded profile."
+    },
+    "payload": {
+      "type": "object",
+      "description": "Capability-specific input fields for Third-Party-Assets.Discover.",
+      "properties": {
+        "org_ref": {
+          "type": "string",
+          "description": "Reference identifier for the organization whose assets should be discovered."
+        }
+      },
+      "required": ["org_ref"]
+    }
+  },
+  "required": ["payload"]
+}

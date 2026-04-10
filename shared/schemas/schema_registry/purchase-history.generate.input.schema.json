@@ -1,0 +1,30 @@
+{
+  "$id": "https://yo-ai.ai/schemas/purchase-history.generate.input.schema.json",
+  "title": "Purchase-History.Generate.Input",
+  "description": "Profile-aware input schema for recording a purchase-history entry.",
+  "type": "object",
+  "properties": {
+    "profile": {
+      "$ref": "https://yo-ai.ai/schemas/profile.schema.json",
+      "description": "Optional reference to the subject or organization profile."
+    },
+    "profilePatch": {
+      "$ref": "https://yo-ai.ai/schemas/profile.patch.schema.json",
+      "description": "Optional modifications to apply to the loaded profile."
+    },
+    "payload": {
+      "type": "object",
+      "description": "Capability-specific input fields for Purchase-History.Generate.",
+      "properties": {
+        "transactionId": { "type": "string" },
+        "amount": { "type": "number" },
+        "currency": { "type": "string" },
+        "timestamp": { "type": "string" }
+      },
+      "required": ["transactionId", "amount", "currency", "timestamp"],
+      "additionalProperties": false
+    }
+  },
+  "required": ["payload"],
+  "additionalProperties": false
+}

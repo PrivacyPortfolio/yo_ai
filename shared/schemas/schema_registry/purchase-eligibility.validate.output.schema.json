@@ -1,0 +1,29 @@
+{
+  "$id": "https://yo-ai.ai/schemas/purchase-eligibility.validate.output.schema.json",
+  "title": "Purchase-Eligibility.Validate.Output",
+  "description": "Profile-aware output for the Purchase-Eligibility.Validate capability.",
+  "type": "object",
+  "properties": {
+    "result": {
+      "type": "object",
+      "description": "Primary capability output fields.",
+      "properties": {
+        "eligible": { "type": "boolean" },
+        "reasons": {
+          "type": "array",
+          "items": { "type": "string" }
+        }
+      }
+    },
+    "profile": {
+      "$ref": "https://yo-ai.ai/schemas/profile.schema.json"
+    },
+    "profilePatch": {
+      "$ref": "https://yo-ai.ai/schemas/profile.patch.schema.json"
+    },
+    "governanceLabels": {
+      "$ref": "https://yo-ai.ai/schemas/governanceLabels.schema.json"
+    }
+  },
+  "required": ["result"]
+}

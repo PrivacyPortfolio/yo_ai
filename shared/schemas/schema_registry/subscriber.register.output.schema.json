@@ -1,0 +1,33 @@
+{
+  "$id": "https://yo-ai.ai/schemas/subscriber.register.output.schema.json",
+  "title": "Subscriber.Register.Output",
+  "description": "Profile-aware output for the Subscriber.Register capability.",
+  "type": "object",
+  "properties": {
+    "result": {
+      "type": "object",
+      "description": "Primary capability output fields.",
+      "properties": {
+        "registration_identifier_ref": {
+          "type": "string",
+          "description": "Opaque reference to the newly created subscriber registration record."
+        },
+        "finding": {
+          "type": "string",
+          "description": "Outcome of the subscriber registration process (e.g., 'approved', 'denied', 'pending')."
+        }
+      },
+      "required": ["registration_identifier_ref", "finding"]
+    },
+    "profile": {
+      "$ref": "https://yo-ai.ai/schemas/profile.schema.json"
+    },
+    "profilePatch": {
+      "$ref": "https://yo-ai.ai/schemas/profile.patch.schema.json"
+    },
+    "governanceLabels": {
+      "$ref": "https://yo-ai.ai/schemas/governanceLabels.schema.json"
+    }
+  },
+  "required": ["result"]
+}

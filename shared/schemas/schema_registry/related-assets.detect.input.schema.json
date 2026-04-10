@@ -1,0 +1,35 @@
+{
+  "$id": "https://yo-ai.ai/schemas/related-assets.detect.input.schema.json",
+  "title": "Related-Assets.Detect.Input",
+  "description": "Profile-aware input for the Related-Assets.Detect capability.",
+  "type": "object",
+  "properties": {
+    "profile": {
+      "$ref": "https://yo-ai.ai/schemas/profile.schema.json",
+      "description": "Optional reference to the org or system profile to load."
+    },
+    "profilePatch": {
+      "$ref": "https://yo-ai.ai/schemas/profile.patch.schema.json",
+      "description": "Optional modifications to apply to the loaded profile."
+    },
+    "payload": {
+      "type": "object",
+      "description": "Capability-specific input fields for Related-Assets.Detect.",
+      "properties": {
+        "org_ref": {
+          "type": "string",
+          "description": "Non-PII reference to the organization whose assets should be analyzed."
+        },
+        "asset_names": {
+          "type": "array",
+          "description": "List of asset names for which related assets should be detected.",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "required": ["org_ref", "asset_names"]
+    }
+  },
+  "required": ["payload"]
+}

@@ -1,0 +1,37 @@
+{
+  "$id": "https://yo-ai.ai/schemas/platform.monitor.output.schema.json",
+  "title": "Platform.Monitor.Output",
+  "description": "Profile-aware output for the Platform.Monitor capability.",
+  "type": "object",
+  "properties": {
+    "result": {
+      "type": "object",
+      "description": "Primary capability output fields.",
+      "properties": {
+        "log_ref": {
+          "type": "string",
+          "description": "Echo of the log reference for traceability."
+        },
+        "finding": {
+          "type": "string",
+          "description": "Outcome of the monitoring evaluation (e.g., 'adverseEventDetected', 'noIssue', 'escalated')."
+        },
+        "payload": {
+          "type": "object",
+          "description": "Additional data produced or extracted during monitoring.",
+          "additionalProperties": true
+        }
+      }
+    },
+    "profile": {
+      "$ref": "https://yo-ai.ai/schemas/profile.schema.json"
+    },
+    "profilePatch": {
+      "$ref": "https://yo-ai.ai/schemas/profile.patch.schema.json"
+    },
+    "governanceLabels": {
+      "$ref": "https://yo-ai.ai/schemas/governanceLabels.schema.json"
+    }
+  },
+  "required": ["result"]
+}

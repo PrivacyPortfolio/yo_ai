@@ -1,0 +1,41 @@
+{
+  "$id": "https://yo-ai.ai/schemas/workflow.build.output.schema.json",
+  "title": "Workflow.Build.Output",
+  "description": "Profile-aware output for the Workflow.Build capability.",
+  "type": "object",
+  "properties": {
+    "result": {
+      "type": "object",
+      "description": "Primary capability output fields.",
+      "properties": {
+        "registration_identifier_ref": {
+          "type": "string",
+          "description": "Echo of the registration reference for traceability."
+        },
+        "workflow_status": {
+          "type": "string",
+          "description": "Status of the workflow build process (e.g., 'created', 'failed', 'in-progress')."
+        },
+        "nodes": {
+          "type": "array",
+          "description": "List of workflow nodes included in the final workflow.",
+          "items": { "type": "string" }
+        }
+      },
+      "required": [
+        "registration_identifier_ref",
+        "workflow_status"
+      ]
+    },
+    "profile": {
+      "$ref": "#/components/schemas/Profile"
+    },
+    "profilePatch": {
+      "$ref": "#/components/schemas/ProfilePatch"
+    },
+    "governanceLabels": {
+      "$ref": "#/components/schemas/governanceLabels"
+    }
+  },
+  "required": ["result"]
+}

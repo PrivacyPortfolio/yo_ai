@@ -1,0 +1,35 @@
+{
+  "$id": "https://yo-ai.ai/schemas/usage-instances.search.input.schema.json",
+  "title": "Usage-Instances.Search.Input",
+  "description": "Profile-aware input for the Usage-Instances.Search capability.",
+  "type": "object",
+  "properties": {
+    "profile": {
+      "$ref": "https://yo-ai.ai/schemas/profile.schema.json",
+      "description": "Optional reference to the org or system profile to load."
+    },
+    "profilePatch": {
+      "$ref": "https://yo-ai.ai/schemas/profile.patch.schema.json",
+      "description": "Optional modifications to apply to the loaded profile."
+    },
+    "payload": {
+      "type": "object",
+      "description": "Capability-specific input fields for Usage-Instances.Search.",
+      "properties": {
+        "org_ref": {
+          "type": "string",
+          "description": "Non-PII reference to the organization whose asset usage should be inspected."
+        },
+        "asset_names": {
+          "type": "array",
+          "description": "List of asset names for which usage instances should be searched.",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "required": ["org_ref", "asset_names"]
+    }
+  },
+  "required": ["payload"]
+}

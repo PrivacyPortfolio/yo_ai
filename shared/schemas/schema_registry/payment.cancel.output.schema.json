@@ -1,0 +1,62 @@
+{
+  "$id": "https://yo-ai.ai/schemas/payment.cancel.output.schema.json",
+  "title": "Payment.Cancel.Output",
+  "description": "Profile-aware output for the Payment.Cancel capability.",
+  "type": "object",
+  "properties": {
+    "result": {
+      "type": "object",
+      "description": "Primary capability output fields.",
+      "properties": {
+        "transactionId": {
+          "type": "string",
+          "description": "The transaction that was targeted for cancellation."
+        },
+        "status": {
+          "type": "string",
+          "enum": ["cancelled", "rejected", "pending", "notFound"],
+          "description": "Final or intermediate cancellation state."
+        },
+        "provider": {
+          "type": "string",
+          "description": "Payment provider that processed the cancellation."
+        },
+        "providerResponse": {
+          "type": "object",
+          "description": "Raw or normalized provider response for auditability."
+        },
+        "timestamp": {
+          "type": "string",
+          "format": "date-time",
+          "description": "When the cancellation was processed."
+        },
+        "evidence": {
+          "type": "array",
+          "description": "Evidence generated during cancellation.",
+          "items": {
+            "type": "object",
+            "properties": {
+              "type": { "type": "string" },
+              "value": { "type": "string" }
+            }
+          }
+        },
+        "metadata": {
+          "type": "object",
+          "description": "Additional metadata for reconciliation or downstream workflows."
+        }
+      },
+      "required": ["transactionId", "status"]
+    },
+    "profile": {
+      "$ref": "https://yo-ai.ai/schemas/profile.schema.json"
+    },
+    "profilePatch": {
+      "$ref": "https://yo-ai.ai/schemas/profile.patch.schema.json"
+    },
+    "governanceLabels": {
+      "$ref": "https://yo-ai.ai/schemas/governanceLabels.schema.json"
+    }
+  },
+  "required": ["result"]
+}

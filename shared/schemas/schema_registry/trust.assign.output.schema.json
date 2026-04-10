@@ -1,0 +1,55 @@
+{
+  "$id": "https://yo-ai.ai/schemas/trust.assign.output.schema.json",
+  "title": "Trust.Assign.Output",
+  "description": "Profile-aware output for the Trust.Assign capability.",
+  "type": "object",
+  "properties": {
+    "result": {
+      "type": "object",
+      "description": "Primary capability output fields.",
+      "properties": {
+        "agent_ref": {
+          "type": "string",
+          "description": "Reference to the evaluated agent."
+        },
+        "trustTier": {
+          "type": "string",
+          "description": "Assigned trust tier (e.g., 'high', 'medium', 'low', 'denied')."
+        },
+        "confidence": {
+          "type": "number",
+          "description": "Confidence score (0–1) in the trust assignment.",
+          "minimum": 0,
+          "maximum": 1
+        },
+        "evidenceUsed": {
+          "type": "array",
+          "description": "Evidence items that contributed to the trust decision.",
+          "items": {
+            "type": "object",
+            "properties": {
+              "type": { "type": "string" },
+              "value": {},
+              "source": { "type": "string" },
+              "timestamp": { "type": "string", "format": "date-time" }
+            }
+          }
+        },
+        "explanation": {
+          "type": "string",
+          "description": "Human-readable explanation of the trust assignment."
+        }
+      }
+    },
+    "profile": {
+      "$ref": "https://yo-ai.ai/schemas/profile.schema.json"
+    },
+    "profilePatch": {
+      "$ref": "https://yo-ai.ai/schemas/profile.patch.schema.json"
+    },
+    "governanceLabels": {
+      "$ref": "https://yo-ai.ai/schemas/governanceLabels.schema.json"
+    }
+  },
+  "required": ["result"]
+}

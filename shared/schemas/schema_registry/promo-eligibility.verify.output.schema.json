@@ -1,0 +1,39 @@
+{
+  "$id": "https://yo-ai.ai/schemas/promo-eligibility.verify.output.schema.json",
+  "title": "Promo-Eligibility.Verify.Output",
+  "description": "Profile-aware output for the Promo-Eligibility.Verify capability.",
+  "type": "object",
+  "properties": {
+    "result": {
+      "type": "object",
+      "description": "Primary capability output fields.",
+      "properties": {
+        "eligible": {
+          "type": "boolean",
+          "description": "Whether the user meets the promotional requirements."
+        },
+        "missing_requirements": {
+          "type": "array",
+          "description": "Requirements not yet satisfied.",
+          "items": { "type": "string" }
+        },
+        "evidence": {
+          "type": "object",
+          "description": "Evidence from SocialMedia-Checker.",
+          "additionalProperties": true
+        }
+      },
+      "required": ["eligible"]
+    },
+    "profile": {
+      "$ref": "https://yo-ai.ai/schemas/profile.schema.json"
+    },
+    "profilePatch": {
+      "$ref": "https://yo-ai.ai/schemas/profile.patch.schema.json"
+    },
+    "governanceLabels": {
+      "$ref": "https://yo-ai.ai/schemas/governanceLabels.schema.json"
+    }
+  },
+  "required": ["result"]
+}

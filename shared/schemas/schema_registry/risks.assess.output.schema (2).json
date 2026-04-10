@@ -1,0 +1,81 @@
+{
+  "$id": "https://yo-ai.ai/schemas/risks.assess.output.schema.json",
+  "title": "Risks.Assess.Output",
+  "description": "Profile-aware output for the Risks.Assess capability.",
+  "type": "object",
+  "properties": {
+    "result": {
+      "type": "object",
+      "description": "Primary capability output fields.",
+      "properties": {
+        "assessment_id": {
+          "type": "string",
+          "description": "Unique identifier for this risk assessment."
+        },
+        "org_ref": {
+          "type": "string",
+          "description": "Organization reference used in the assessment."
+        },
+        "applied_standards": {
+          "type": "array",
+          "description": "Echoes the standard_refs used in the assessment for auditability.",
+          "items": {
+            "type": "object",
+            "additionalProperties": true
+          }
+        },
+        "risk_score": {
+          "type": "number",
+          "description": "Normalized risk score between 0 and 1."
+        },
+        "risk_level": {
+          "type": "string",
+          "enum": ["low", "medium", "high", "critical"]
+        },
+        "compliance_weighting": {
+          "type": "object",
+          "description": "How compliance findings influenced the risk score.",
+          "additionalProperties": true
+        },
+        "fraud_indicator": {
+          "type": "boolean",
+          "description": "Whether fraud signals were detected."
+        },
+        "fraud_evidence_refs": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "standard_results": {
+          "type": "array",
+          "description": "Per-standard evaluation results.",
+          "items": {
+            "type": "object",
+            "properties": {
+              "standard_uid": { "type": "string" },
+              "score": { "type": "number" },
+              "findings": { "type": "array", "items": { "type": "string" } },
+              "violations": { "type": "array", "items": { "type": "string" } },
+              "rationale": { "type": "string" }
+            }
+          }
+        },
+        "recommendations": {
+          "type": "array",
+          "description": "Actionable recommendations for the caller.",
+          "items": { "type": "string" }
+        }
+      },
+      "required": ["assessment_id", "org_ref", "risk_score", "risk_level"]
+    },
+    "profile": {
+      "$ref": "https://yo-ai.ai/schemas/profile.schema.json"
+    },
+    "profilePatch": {
+      "$ref": "https://yo-ai.ai/schemas/profile.patch.schema.json"
+    },
+    "governanceLabels": {
+      "$ref": "https://yo-ai.ai/schemas/governanceLabels.schema.json"
+    }
+  },
+  "required": ["result"]
+}

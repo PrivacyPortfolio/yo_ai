@@ -1,0 +1,110 @@
+{
+  "$id": "https://yo-ai.ai/schemas/risks.assess.input.schema.json",
+  "title": "Risks.Assess.Input",
+  "description": "Profile-aware input for the Risks.Assess capability.",
+  "type": "object",
+  "properties": {
+    "profile": {
+      "$ref": "https://yo-ai.ai/schemas/profile.schema.json",
+      "description": "Optional reference to the org or subject profile to load."
+    },
+    "profilePatch": {
+      "$ref": "https://yo-ai.ai/schemas/profile.patch.schema.json",
+      "description": "Optional modifications to apply to the loaded profile."
+    },
+    "payload": {
+      "type": "object",
+      "description": "Capability-specific input fields for Risks.Assess.",
+      "properties": {
+        "org_ref": {
+          "type": "string",
+          "description": "Opaque identifier for the organization being assessed."
+        },
+        "standard_refs": {
+          "type": "array",
+          "description": "Rich references to the exact standards, profiles, or contextualized variants used for this assessment.",
+          "items": {
+            "type": "object",
+            "properties": {
+              "uid": {
+                "type": "string",
+                "description": "Unique identifier for this specific standard instance."
+              },
+              "name": {
+                "type": "string",
+                "description": "Human-readable name of the standard."
+              },
+              "version": {
+                "type": "string",
+                "description": "Version or revision of the standard."
+              },
+              "profile": {
+                "type": "string",
+                "description": "Optional profile, flavor, or implementation variant."
+              },
+              "source": {
+                "type": "string",
+                "description": "Where the standard came from."
+              },
+              "contextual_conditions": {
+                "type": "object",
+                "description": "Optional contextual conditions or scoping rules.",
+                "additionalProperties": true
+              },
+              "payload": {
+                "description": "Unstructured representation of the standard.",
+                "type": ["string", "object", "array"],
+                "contentEncoding": "base64",
+                "contentMediaType": "application/octet-stream"
+              },
+              "applied_at": {
+                "type": "string",
+                "format": "date-time",
+                "description": "Timestamp when this standard was applied."
+              },
+              "original_publication_date": {
+                "type": "string",
+                "format": "date",
+                "description": "Original publication date, if known."
+              }
+            },
+            "required": ["uid", "name"]
+          }
+        },
+        "evidence": {
+          "type": "object",
+          "description": "Optional evidence bundles from other agents.",
+          "properties": {
+            "org_profile": { "type": "object" },
+            "ip_assets": { "type": "object" },
+            "tech_stack": { "type": "object" },
+            "complaints": { "type": "object" },
+            "external_signals": { "type": "object" }
+          },
+          "additionalProperties": true
+        },
+        "assessment_mode": {
+          "type": "string",
+          "enum": ["full", "incremental", "fraud_only", "tech_only"],
+          "description": "Controls the depth and scope of the assessment."
+        },
+        "bulk_scope": {
+          "type": "array",
+          "description": "Optional list of org_refs for bulk assessments.",
+          "items": { "type": "string" }
+        },
+        "caller_context": {
+          "type": "object",
+          "description": "Information about the invoking agent for policy enforcement.",
+          "properties": {
+            "agent_id": { "type": "string" },
+            "roles": { "type": "array", "items": { "type": "string" } },
+            "allowed_org_refs": { "type": "array", "items": { "type": "string" } }
+          }
+        }
+      },
+      "required": ["org_ref", "standard_refs"]
+    }
+  },
+  "required": ["payload"]
+}
