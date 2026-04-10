@@ -32,111 +32,139 @@ As an evidence-based learning system for autonomous decision-making, Yo-ai provi
 
 # **How This Repository Is Structured**
 Yo‑ai is a multi-agent, federated platform of A2A agents that can be cloned and run within any environment. 
-A Makefile documents which modules are importable as Python packages.
-Every top‑level directory contains a README.md.
+This codebase implements a federated, manifest driven agent ecosystem designed for clarity, modularity, and lightweight deployment. The structure is intentionally opinionated to make it easy for developers to clone, understand, extend, and deploy individual components without carrying unnecessary baggage.
+This document explains the purpose of each top level subsystem, how they fit together, and how to navigate the platform as a contributor.
+________________________________________
+The platform is organized around four core principles:
+1.	Developer friendly — easy to clone, run, and reason about
+2.	Modular — agents, tools, and platform runtime evolve independently
+3.	Lightweight deployables — only the code that must run in Lambda is bundled
+4.	Explainable — design intent, training materials, and reasoning traces
 
-### **`/core`**
- Summary: 
- Foundational agent classes and shared abstractions.
- 
- Usage:
- Importable Python packages for agent class definitions.
- All platform agents inherit from these classes.
-
- Contains: 
- - BaseAgent — base class for all agents
- - PlatformAgent — privileged platform‑side agent
- - YoAiAgent — consumer/organization‑side agent
-
-### **`/a2a`**
- Summary:
- Shared A2A runtime and the glue layer between the A2A Protocol and the Solicitor‑General.
-
- Usage:
- This is the semantic edge of the Yo-ai Platform.
- The Solicitor-General owns unified_capability_router.py, a platform-wide semantic router.
-
-
- Contains:
- - a2a_transport.py — A2A JSON-RPC handler that bridges the http /a2a endpoint and Solicitor‑General.
-
-
-### **`/http`**
- Summary:
- HTTP‑facing routes, API-Direct routes, OpenAPI specification.
-
- Usage:
- Exposes public HTTP routes for agents and A2A operations.
- 
- Contains:
- - /yo_ai_handler.py — HTTP A2A JSON‑RPC endpoint that receives JSON‑RPC requests and forwards them to the Solicitor‑General
- - /openapi/api_handler.py — DIRECT A2A JSON‑RPC endpoint that receives JSON‑RPC requests and forwards them to the Solicitor‑General
- - /openapi/openapi.yaml — Yo‑API capability definitions
-
-### **`/agents`**
- Summary:
- Standalone agent bundles for consumer‑side and organization‑side teams.
-
- Usage:
- Each folder represents a complete agent package, including identity, capabilities, training materials, and artifacts.
-
- Contains:
- - agent.json — identity + capabilities
- - Agent card documentation
- - Training manuals
- - Artifacts (schemas, agreements, policies, knowledge)
- - Chat transcripts used to develop each agent
-
-### **`/shared`**
- Summary:
- Shared resources used across all Yo‑ai agents.
-
- Usage:
- Imported by agents and platform components to ensure consistent schemas, policies, and tools.
-
- Contains:
- /artifacts
-  - Subscriber and Agent Registration cards
-  - Workflow DAGs
-  - Event schemas
-  - Kafka topic schemas
-  - Negotiation messages
-  - Report and evidence manifests
- /policies
-  - Authorization policies
-  - IAM models
-  - Trust‑zone rules
- /tools
-  - Detectors
-  - Loaders
-  - Ingestion systems
-  - Publishing tools
-
-### **`/tests`**
- Summary:
- Executable tests for platform functionality, workflows, and campaigns.
-
- Usage:
- Run via pytest or the Makefile to validate platform behavior.
-
- Contains:
- - Agent registry tests
- - Log‑shipping tests
- - Negotiation flow tests
- - Platform startup/shutdown tests
-
-### **`/campaigns`**
- Summary:
- Human‑facing and agent‑facing communication flows for goal‑oriented campaigns.
-
- Usage:
- Used by agents and platform components to run structured trust‑building or diagnostic campaigns.
-
- Contains:
- - Red/Yellow/Green trust‑zone landing pages
- - “Am I a Threat?”
- - “Logs Don’t Lie”
- - Registered Agent onboarding
+The repository is structured into clear subsystems:
+project_repo/
+│
+├── agents/           # Agent implementations (runtime + capabilities)
+├── api/              # Public API contracts (OpenAPI)
+├── campaigns/        # Executable onboarding + scenario examples
+├── core/             # Platform runtime (routing, tasks, observability, messages)
+├── explainability/   # Training manuals, reasoning traces, design intent
+├── scripts/          # Build, deploy, validate
+├── shared/           # Governance artifacts (non-deployable)
+├── tests/            # Independently deployable tool bundles
+└── tools/            # Unit + integration tests
+Each subsystem is described below.
+________________________________________
+🤖 Agents (agents/)
+Agents are the core actors of the Yo ai ecosystem.
+Each agent is self contained and includes:
+•	agent_card/ — declarative manifests (basic, extended, authenticated)
+•	capabilities/ — Python implementations of capability handlers
+•	runtime/ — the agent’s main execution logic
+•	knowledge/ — articles, expertise, prompts
+•	policies/ — authorization and behavioral constraints
+•	agreements/ — DPAs, SLAs, or contractual metadata
+•	artifacts/ — agent owned templates or resources
+Agents do not contain platform level routing, tasks, or observability logic.
+________________________________________
+🧩 Core Platform Runtime (core/)
+This subsystem contains the platform’s shared execution engine.
+It is not deployable and is shared across all agents and tools.
+core/handlers/ — Protocol Entrypoints
+Lambda handlers for HTTP, A2A, RPC, WebSocket, and other protocol surfaces.
+They normalize incoming requests into platform envelopes.
+core/routing/ — Semantic Routing Layer
+The decision making engine that determines:
+•	which agent to invoke
+•	which capability to execute
+•	which tool to call
+•	which rules or overrides apply
+Includes resolvers, routing rules, and the unified capability map.
+core/tasks/ — Task + Workflow Engine
+Implements:
+•	task state machines
+•	workflow orchestration
+•	recovery + rehydration
+•	long running process management
+core/observability/ — Traces, Logs, Kafka Schemas
+Contains:
+•	Kafka topic schemas
+•	OpenTelemetry configs
+•	dashboards
+•	structured logging formatters
+•	event definitions
+core/messages/ — Message Templates + Builders
+Defines:
+•	platform notifications
+•	alerts
+•	error envelopes
+•	event log entries
+•	tool request/response messages
+Includes template files and Python builders.
+core/runtime/ — Envelope + Validation
+Implements:
+•	envelope schema
+•	message types
+•	validation logic
+•	correlation/task ID handling
+________________________________________
+🛠 Tools (tools/)
+Tools are independently deployable runtime units.
+Each tool has:
+•	tool.json — manifest describing entrypoint, version, capabilities
+•	config/ — runtime configuration
+•	templates/ — tool specific templates
+•	docs/ — developer documentation
+Tools are referenced through the tool registry, not by file paths.
+________________________________________
+📚 Shared Governance Artifacts (shared/)
+This folder contains non deployable platform governance materials:
+•	schemas
+•	policies
+•	registries
+•	agreements
+•	templates
+________________________________________
+🌐 API Contracts (api/)
+Contains the platform’s public OpenAPI specification and any future API contracts (AsyncAPI, GraphQL, router maps).
+This folder defines the external surface of the platform.
+________________________________________
+🚀 Campaigns (campaigns/)
+Executable examples that help developers:
+•	onboard quickly
+•	run real scenarios
+•	test workflows end to end
+•	explore agent interactions
+Campaigns are intentionally deployable but not part of the platform runtime.
+________________________________________
+🧠 Explainability (explainability/)
+A subsystem containing:
+•	training manuals
+•	reasoning traces
+•	design intent
+•	drift detection baselines
+•	scenario walkthroughs
+•	development history
+This is the platform’s knowledge spine.
+________________________________________
+🔧 Scripts (scripts/)
+Contains deterministic, Windows safe build and deployment scripts:
+•	Lambda layer builders
+•	schema validators
+•	bundle generators
+•	CI/CD helpers
+Scripts are not part of the runtime.
+________________________________________
+🧪 Tests (tests/)
+Unit and integration tests for agents, tools, and platform subsystems.
+________________________________________
+📦 Deployment Philosophy
+The platform is designed for lightweight, modular deployment:
+•	Agents deploy only their runtime and capabilities folders
+•	Tools are independently deployed 
+•	core/, shared/, api/, campaigns/, and explainability/ are never deployed
+•	Build scripts enforce strict boundaries
+This keeps bundles small, predictable, and cost efficient.
 
 ### **`tree-files.txt`**
  Represents resources that often exist locally but should not be committed to public repositories.
