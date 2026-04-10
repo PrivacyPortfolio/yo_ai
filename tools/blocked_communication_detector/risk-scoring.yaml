@@ -1,0 +1,72 @@
+# 3. Risk scoring function based on your behavioral model
+# Your model is behavioral and preference aware. Here’s a direct implementation.
+from typing import Literal, Tuple, Optional
+
+RiskBand = Literal["highest", "quantifiable", "lowest"]
+RepIdentity = Literal["named", "anonymous", "bot", "unknown"]
+
+
+def compute_behavioral_risk(
+    org: str,
+    representative_identity: RepIdentity,
+    responded: bool,
+    response_time_hours: Optional[float],
+    quantifiable_risk_usd: Optional[float] = None,
+) -> Tuple[float, RiskBand]:
+    """
+    Behavioral model:
+
+    - Highest risk: anonymous + non-responsive.
+    - Lowest risk: identifiable reps who respond in reasonable time (positive or negative).
+    - Quantifiable risk (preferred): where loss/opportunity in USD can be estimated.
+
+    All scoring is from the subject's perspective.
+    """
+
+    # Default base score
+    score = 0.5
+
+    # 1. Identity of representative
+    if representative_identity == "anonymous":
+        score -= 0.3
+    elif representative_identity == "named":
+        score += 0.2
+    elif representative_identity == "bot":
+        # Neutral to slightly negative unless backed by named humans elsewhere
+        score -= 0.05
+
+    # 2. Responsiveness
+    if not responded:
+        score -= 0.3
+    elif response_time_hours is not None:
+        if response_time_hours <= 72:
+            score += 0.2
+        elif response_time_hours <= 720:  # 30 days
+            score += 0.0
+        else:
+            score -= 0.1
+
+    # Clamp
+    score = max(0.0, min(1.0, score))
+
+    # 3. Quantifiable risk preference
+    if quantifiable_risk_usd is not None:
+        # Presence of a quantifiable frame nudges into preferred band [0.3, 0.7]
+        if score < 0.3:
+            score = 0.35
+        elif score > 0.7:
+            score = 0.65
+
+    # 4. Band assignment
+    if score <= 0.3:
+        band: RiskBand = "highest"
+    elif 0.3 < score < 0.7:
+        band = "quantifiable"
+    else:
+        band = "lowest"
+
+    return score, band
+# This gives you:
+# •	A single callable for all agents (Data Steward, Vendor Manager, Complaint Manager, etc.)
+# •	Behavior anchored bands that reflect your narrative
+# •	A clear way to “prefer” quantifiable risk via the USD parameter

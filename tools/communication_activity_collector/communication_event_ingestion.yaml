@@ -1,0 +1,86 @@
+# 5. DAG compiler representation for the ingestion pipeline
+# A DAG view your compiler can digest (YAML-ish):
+
+dag_id: communication_event_ingestion
+description: "Normalize multi-channel communications into CommunicationEvent and publish ActivityLog snapshots."
+nodes:
+  - id: capture_email
+    type: source
+    outputs: [raw_email]
+
+  - id: capture_webform
+    type: source
+    outputs: [raw_webform]
+
+  - id: capture_portal
+    type: source
+    outputs: [raw_portal]
+
+  - id: capture_phone
+    type: source
+    outputs: [raw_call]
+
+  - id: capture_social
+    type: source
+    outputs: [raw_social]
+
+  - id: normalize_email
+    type: transform
+    inputs: [raw_email]
+    outputs: [communication_event]
+    function: normalize_email
+
+  - id: normalize_webform
+    type: transform
+    inputs: [raw_webform]
+    outputs: [communication_event]
+    function: normalize_webform
+
+  - id: normalize_portal
+    type: transform
+    inputs: [raw_portal]
+    outputs: [communication_event]
+    function: normalize_portal
+
+  - id: normalize_phone
+    type: transform
+    inputs: [raw_call]
+    outputs: [communication_event]
+    function: normalize_phone
+
+  - id: normalize_social
+    type: transform
+    inputs: [raw_social]
+    outputs: [communication_event]
+    function: normalize_social
+
+  - id: compute_risk
+    type: transform
+    inputs: [communication_event]
+    outputs: [communication_event_enriched]
+    function: compute_behavioral_risk
+
+  - id: persist_event
+    type: sink
+    inputs: [communication_event_enriched]
+    function: append_to_audit_log
+
+  - id: publish_activitylog
+    type: periodic
+    schedule: "0 * * * *"   # hourly
+    function: sync_activitylog_to_dataworld
+    inputs: []
+    outputs: []
+edges:
+  - [capture_email, normalize_email]
+  - [capture_webform, normalize_webform]
+  - [capture_portal, normalize_portal]
+  - [capture_phone, normalize_phone]
+  - [capture_social, normalize_social]
+  - [normalize_email, compute_risk]
+  - [normalize_webform, compute_risk]
+  - [normalize_portal, compute_risk]
+  - [normalize_phone, compute_risk]
+  - [normalize_social, compute_risk]
+  - [compute_risk, persist_event]
+# This can be compiled into your event-sourced engine, with each function backed by code like the snippets above.

@@ -1,0 +1,49 @@
+# ✔ 4. Risk Scoring Extension for Block Events
+# Extend your behavioral model with block specific logic:
+
+def compute_behavioral_risk_for_block(
+    block_type,                 # email | phone | network
+    block_mechanism,            # spam_filter | fraud_detection | bot_detection | unknown
+    representative_identity,    # named | anonymous | bot | unknown
+    prior_responsiveness,       # hours or None
+    retaliation_indicator,       # True/False
+    quantifiable_risk_usd=None
+):
+    score = 0.5
+
+    # Automated security block
+    if block_mechanism in ["spam_filter", "fraud_detection", "bot_detection"]:
+        score -= 0.1
+
+    # Silent drops = highest risk
+    if block_type == "email" and block_mechanism == "silent_drop":
+        score -= 0.3
+
+    # Anonymous responders
+    if representative_identity == "anonymous":
+        score -= 0.2
+
+    # Retaliation
+    if retaliation_indicator:
+        score -= 0.4
+
+    # No responsiveness
+    if prior_responsiveness is None:
+        score -= 0.2
+
+    # Quantifiable risk preference
+    if quantifiable_risk_usd is not None:
+        score = min(max(score, 0.35), 0.65)
+
+    # Clamp
+    score = max(0.0, min(1.0, score))
+
+    # Band
+    if score <= 0.3:
+        band = "highest"
+    elif score < 0.7:
+        band = "quantifiable"
+    else:
+        band = "lowest"
+
+    return score, band
