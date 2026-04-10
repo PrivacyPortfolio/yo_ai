@@ -1,0 +1,370 @@
+/**
+ * The-Advisor ExtendedCard conveys:
+ * - tasks, messages, tools, handlers, and artifacts for Registered Agents
+ */
+
+/**
+* The-Advisor Extended Agent Card¶
+*/
+{
+    "name": "The-Advisor",
+    "description": "Provides advice on any issue to Yo-ai Registered Agents.",
+    "id": "com.privacyportfolio.the-advisor",
+    "provider": {
+        "organization": "PrivacyPortfolio",
+        "url": "https://www.PrivacyPortfolio.com"
+        },
+    "iconUrl": "https://privacyportfolio.com/agent-directory/the-advisor/the-advisor-agent-icon.png",
+    "protocolVersion": "1.0.0",
+    "documentationUrl": "https://privacyportfolio.com/agent-directory/the-advisor/auth/The-Advisor-ExtendedAgentCard.md",
+    "supportedInterfaces": [
+      {      "url": "https://privacyportfolio.com/agents/the_advisor/a2a",
+        "protocolBinding": "JSONRPC_HTTP",      "protocolVersion": "1.0"    },
+      {      "url": "https://privacyportfolio.com/agents/the_advisor/mesh",
+        "protocolBinding": "RPC",      "protocolVersion": "1.0"    },
+      {      "url": "https://privacyportfolio.com/agents/the_advisor/api",
+        "protocolBinding": "MCP",      "protocolVersion": "1.0"    }
+    ], 
+    "capabilities": {
+        "streaming": true,
+        "pushNotifications": true,
+        "exposesTasks": true,
+        "exposesMessages": true,
+        "exposesArtifacts": true,
+        "exposesTools": true
+    },
+    "securitySchemes": {
+        "yo-ai": {
+            "type": "apiKey",
+            "name": "yo-api",
+            "in": "header"
+        }
+    },
+    "security": [{ "yo-ai": [] }],
+    "defaultInputModes": ["application/json", "text/plain"],
+    "defaultOutputModes": ["application/json", "text/plain"],
+    "skills": [
+        {"name": "Cognitive.Reason"},
+        {"name": "Knowledge.Resolve"},
+        {"name": "Friend.Call"},
+        {"name": "Outcome.LearnFrom"}
+    ],
+    "x-ai": {
+      "providers": [
+        {
+          "provider": "google-gemini",
+          "model": "gemini-2.0-pro"
+        },
+        {
+          "provider": "anthropic",
+          "model": "claude-3-sonnet-20240229"
+        },
+        {
+          "provider": "openai",
+          "model": "gpt-4-turbo"
+        },
+        {
+          "provider": "azure-openai",
+          "deployment": "gpt-4o"
+        }
+      ],
+      "strategy": "failover",
+      "health_ttl_seconds": 300
+    },  
+    "x-capabilities": [
+    {
+      "Cognitive.Reason": {
+          "artifacts": [
+              {"artifact": {"type": "skill", "name": "Cognitive.Reason"}},
+              {"artifact": {"type": "task", "name": "Cognitive.Reason"}},
+              {"artifact": {"type": "tool", "name": "Cognitive.Reason"}},
+              {"artifact": {"type": "handler", "name": "Cognitive.Reason"}},
+              {"artifact": {"type": "messageType", "name": "Cognitive.Reason.Input"}},
+              {"artifact": {"type": "messageType", "name": "Cognitive.Reason.Output"}}
+          ]
+      }
+    },
+    {
+      "Knowledge.Resolve": {
+          "artifacts": [
+              {"artifact": {"type": "skill", "name": "Knowledge.Resolve"}},
+              {"artifact": {"type": "task", "name": "Knowledge.Resolve"}},
+              {"artifact": {"type": "tool", "name": "Knowledge.Resolve"}},
+              {"artifact": {"type": "handler", "name": "Knowledge.Resolve"}},
+              {"artifact": {"type": "messageType", "name": "Knowledge.Resolve.Input"}},
+              {"artifact": {"type": "messageType", "name": "Knowledge.Resolve.Output"}}
+          ]
+      }
+    },
+    {
+      "Friend.Call": {
+          "artifacts": [
+              {"artifact": {"type": "skill", "name": "Friend.Call"}},
+              {"artifact": {"type": "task", "name": "Friend.Call"}},
+              {"artifact": {"type": "tool", "name": "Friend.Call"}},
+              {"artifact": {"type": "handler", "name": "Friend.Call"}},
+              {"artifact": {"type": "messageType", "name": "Friend.Call.Input"}},
+              {"artifact": {"type": "messageType", "name": "Friend.Call.Output"}}
+          ]
+      }
+    },
+    {
+      "Outcome.LearnFrom": {
+          "artifacts": [
+              {"artifact": {"type": "skill", "name": "Outcome.LearnFrom"}},
+              {"artifact": {"type": "task", "name": "Outcome.LearnFrom"}},
+              {"artifact": {"type": "tool", "name": "Outcome.LearnFrom"}},
+              {"artifact": {"type": "handler", "name": "Outcome.LearnFrom"}},
+              {"artifact": {"type": "messageType", "name": "Outcome.LearnFrom.Input"}},
+              {"artifact": {"type": "messageType", "name": "Outcome.LearnFrom.Output"}}
+          ]
+      }
+    }
+  ],
+  "x-artifacts": [
+    {
+      "name": "Cognitive.Reason",
+      "version": "1.0.0",
+      "artifactType": "skill",
+      "description": "",
+      "tags": [""]
+    },
+    {
+      "name": "Cognitive.Reason",
+      "version": "1.0.0",
+      "artifactType": "task",
+      "description": "",
+      "tags": [""]
+    },
+    {
+      "name": "Cognitive.Reason",
+      "version": "1.0.0",
+      "artifactType": "tool",
+      "description": "",
+      "capabilities": [""],
+      "path": "/",
+      "provider": {
+        "name": "PrivacyPortfolio",
+        "brand": "Yo-ai",
+        "product": "",
+        "version": "1.0.0",
+        "license": "Yo-ai Internal",
+        "url": "https://yo-ai.ai/docs/Cognitive.Reason.html",
+        "config": {
+          "backend": ""
+        }
+      },
+      "inputSchema": { "$ref": "https://yo-ai.ai/schemas/cognitive.reason.input.schema.json" },
+      "outputSchema": { "$ref": "https://yo-ai.ai/schemas/cognitive.reason.output.schema.json" },
+      "auth": "apiKey"
+    },
+    {
+      "name": "Cognitive.Reason",
+      "version": "1.0.0",
+      "artifactType": "handler",
+      "description": "Interface for integrating with tool executable.",
+      "path": "/"
+    },
+    {
+      "name": "Cognitive.Reason.Input",
+      "version": "1.0.0",
+      "artifactType": "messageType",
+      "schema": {
+        "$ref": "https://yo-ai.ai/schemas/cognitive.reason.input.schema.json"
+      },
+      "description": "Input schema for the Cognitive.Reason capability."
+    },
+    {
+      "name": "Cognitive.Reason.Output",
+      "version": "1.0.0",
+      "artifactType": "messageType",
+      "schema": {
+        "$ref": "https://yo-ai.ai/schemas/cognitive.reason.output.schema.json"
+      },
+      "description": "Output schema for the Cognitive.Reason capability."
+    },
+    {
+      "name": "Knowledge.Resolve",
+      "version": "1.0.0",
+      "artifactType": "skill",
+      "description": "",
+      "tags": [""]
+    },
+    {
+      "name": "Knowledge.Resolve",
+      "version": "1.0.0",
+      "artifactType": "task",
+      "description": "",
+      "tags": [""]
+    },
+    {
+      "name": "Knowledge.Resolve",
+      "version": "1.0.0",
+      "artifactType": "tool",
+      "description": "",
+      "capabilities": [""],
+      "path": "/",
+      "provider": {
+        "name": "PrivacyPortfolio",
+        "brand": "Yo-ai",
+        "product": "",
+        "version": "1.0.0",
+        "license": "Yo-ai Internal",
+        "url": "https://yo-ai.ai/docs/Knowledge.Resolve.html",
+        "config": {
+          "backend": ""
+        }
+      },
+      "inputSchema": { "$ref": "https://yo-ai.ai/schemas/knowledge.resolve.input.schema.json" },
+      "outputSchema": { "$ref": "https://yo-ai.ai/schemas/knowledge.resolve.output.schema.json" },
+      "auth": "apiKey"
+    },
+    {
+      "name": "Knowledge.Resolve",
+      "version": "1.0.0",
+      "artifactType": "handler",
+      "description": "Interface for integrating with tool executable.",
+      "path": "/"
+    },
+    {
+      "name": "Knowledge.Resolve.Input",
+      "version": "1.0.0",
+      "artifactType": "messageType",
+      "schema": {
+        "$ref": "https://yo-ai.ai/schemas/knowledge.resolve.input.schema.json"
+      },
+      "description": "Input schema for the Knowledge.Resolve capability."
+    },
+    {
+      "name": "Knowledge.Resolve.Output",
+      "version": "1.0.0",
+      "artifactType": "messageType",
+      "schema": {
+        "$ref": "https://yo-ai.ai/schemas/knowledge.resolve.output.schema.json"
+      },
+      "description": "Output schema for the Knowledge.Resolve capability."
+    },
+    {
+      "name": "Friend.Call",
+      "version": "1.0.0",
+      "artifactType": "skill",
+      "description": "",
+      "tags": [""]
+    },
+    {
+      "name": "Friend.Call",
+      "version": "1.0.0",
+      "artifactType": "task",
+      "description": "",
+      "tags": [""]
+    },
+    {
+      "name": "Friend.Call",
+      "version": "1.0.0",
+      "artifactType": "tool",
+      "description": "",
+      "capabilities": [""],
+      "path": "/",
+      "provider": {
+        "name": "PrivacyPortfolio",
+        "brand": "Yo-ai",
+        "product": "",
+        "version": "1.0.0",
+        "license": "Yo-ai Internal",
+        "url": "https://yo-ai.ai/docs/Friend.Call.html",
+        "config": {
+          "backend": ""
+        }
+      },
+      "inputSchema": { "$ref": "https://yo-ai.ai/schemas/friend.call.input.schema.json" },
+      "outputSchema": { "$ref": "https://yo-ai.ai/schemas/friend.call.output.schema.json" },
+      "auth": "apiKey"
+    },
+    {
+      "name": "Friend.Call",
+      "version": "1.0.0",
+      "artifactType": "handler",
+      "description": "Interface for integrating with tool executable.",
+      "path": "/"
+    },
+    {
+      "name": "Friend.Call.Input",
+      "version": "1.0.0",
+      "artifactType": "messageType",
+      "schema": {
+        "$ref": "https://yo-ai.ai/schemas/friend.call.input.schema.json"
+      },
+      "description": "Input schema for the Friend.Call capability."
+    },
+    {
+      "name": "Friend.Call.Output",
+      "version": "1.0.0",
+      "artifactType": "messageType",
+      "schema": {
+        "$ref": "https://yo-ai.ai/schemas/friend.call.output.schema.json"
+      },
+      "description": "Output schema for the Friend.Call capability."
+    },
+    {
+      "name": "Outcome.LearnFrom",
+      "version": "1.0.0",
+      "artifactType": "skill",
+      "description": "",
+      "tags": [""]
+    },
+    {
+      "name": "Outcome.LearnFrom",
+      "version": "1.0.0",
+      "artifactType": "task",
+      "description": "",
+      "tags": [""]
+    },
+    {
+      "name": "Outcome.LearnFrom",
+      "version": "1.0.0",
+      "artifactType": "tool",
+      "description": "",
+      "capabilities": [""],
+      "path": "/",
+      "provider": {
+        "name": "PrivacyPortfolio",
+        "brand": "Yo-ai",
+        "product": "",
+        "version": "1.0.0",
+        "license": "Yo-ai Internal",
+        "url": "https://yo-ai.ai/docs/Outcome.LearnFrom.html",
+        "config": {
+          "backend": ""
+        }
+      },
+      "inputSchema": { "$ref": "https://yo-ai.ai/schemas/outcome.learnfrom.input.schema.json" },
+      "outputSchema": { "$ref": "https://yo-ai.ai/schemas/outcome.learnfrom.output.schema.json" },
+      "auth": "apiKey"
+    },
+    {
+      "name": "Outcome.LearnFrom",
+      "version": "1.0.0",
+      "artifactType": "handler",
+      "description": "Interface for integrating with tool executable.",
+      "path": "/"
+    },
+    {
+      "name": "Outcome.LearnFrom.Input",
+      "version": "1.0.0",
+      "artifactType": "messageType",
+      "schema": {
+        "$ref": "https://yo-ai.ai/schemas/outcome.learnfrom.input.schema.json"
+      },
+      "description": "Input schema for the Outcome.LearnFrom capability."
+    },
+    {
+      "name": "Outcome.LearnFrom.Output",
+      "version": "1.0.0",
+      "artifactType": "messageType",
+      "schema": {
+        "$ref": "https://yo-ai.ai/schemas/outcome.learnfrom.output.schema.json"
+      },
+      "description": "Output schema for the Outcome.LearnFrom capability."
+    }
+  ]
+}

@@ -1,0 +1,77 @@
+/**
+ * The-Oracle AgentCard conveys:
+ * - Overall details (version, name, description, uses)
+ * - Skills: A set of capabilities the agent can perform
+ * - Default modalities/content types supported by the agent.
+ * - Authentication requirements (internal ONLY)
+ */
+
+/**
+* The-Oracle AgentCard¶
+*/
+{
+    "name": "The-Oracle",
+    "description": "Performs forecasting, consequence modeling, and machine-learning",
+    "id": "com.privacyportfolio.the-oracle",
+    "provider": {
+        "organization": "PrivacyPortfolio",
+        "url": "https://privacyportfolio.com"
+    },
+    "iconUrl": "https://privacyportfolio.com/agent-directory/the-oracle/the-oracle-agent-icon.png",
+    "protocolVersion": "1.0.0",
+    "documentationUrl": "https://privacyportfolio.com/agent-directory/the-oracle/The-Oracle-AgentCard.md",
+    "supportedInterfaces": [
+      {
+        "url": "https://privacyportfolio.com/agents/the_oracle/a2a",
+        "protocolBinding": "JSONRPC-HTTP",
+        "protocolVersion": "1.0"
+      }
+    ],
+    "capabilities": {
+      "streaming": true,
+      "pushNotifications": true,
+      "extendedAgentCard": false
+    },
+    "securitySchemes": {
+      "yo-ai": {
+        "type": "apiKey",
+        "name": "yo-api",
+        "in": "header"
+      }
+    },
+    "security": [
+      { "yo-ai": [] }
+    ],
+    "defaultInputModes": ["application/json", "text/plain"],
+    "defaultOutputModes": ["application/json", "text/plain"],
+    "skills": [
+        {
+            "name": "_call_llm_forecasting",
+            "description": "Core forecasting logic.",
+            "version": "1.0.0", 
+            "tags": [""],
+            "examples": ["Tell me when I'll run out of LLM credits."],
+            "inputModes": ["application/json", "text/plain"],
+            "outputModes": ["application/json", "text/plain"],
+            "inputSchema": "llm_prompt",
+            "outputSchema": "llm_response"
+        },
+        {
+            "name": "learn_from_outcome",
+            "description": "Store the delta between forecast and outcome.",
+            "version": "1.0.0", 
+            "tags": [""],
+            "examples": [""],
+            "inputModes": ["application/json", "text/plain"],
+            "outputModes": ["application/json", "text/plain"],
+            "inputSchema": "llm_prompt",
+            "outputSchema": { 
+              "record": {
+                "forecastId": "forecast_id",
+                "actualOutcome": "actual_outcome",
+                "metadata": "metadata"
+              }
+            }
+        }
+    ]
+}

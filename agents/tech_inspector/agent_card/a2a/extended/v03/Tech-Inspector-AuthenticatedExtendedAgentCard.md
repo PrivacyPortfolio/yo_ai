@@ -1,0 +1,809 @@
+/**
+ * This Tech-Inspector AuthenticatedExtendedCard conveys:
+ * - AuthenticatedExtendedCard contains tasks, messages, tools, and artifacts for Registered Agents
+ * - Tasks: A task encapsulates the entire interaction related to a specific goal or request.
+ * - Messages: Messages are used for instructions, prompts, replies, and status updates.
+ * - Artifacts: Collection of artifacts created by the agent.
+ */
+
+/**
+* Tech-Inspector Authenticated Extended Agent Card¶
+*/
+{
+    "name": "Tech-Inspector",
+    "description": "Discovers technology vendors of a specific organization.",
+    "url": "https://privacyportfolio.com/agent-registry/tech-inspector/auth/agent.json",
+    "provider": {
+        "organization": "PrivacyPortfolio",
+        "url": "https://www.PrivacyPortfolio.com"
+        },
+    "iconUrl": "https://privacyportfolio.com/agent-registry/tech-inspector/tech-inspector-agent-icon.png",
+    "version": "1.0.0",
+    "documentationUrl": "https://privacyportfolio.com/agent-registry/tech-inspector/auth/Tech-Inspector-AuthenticatedExtendedAgentCard.md",
+    "capabilities": {
+        "streaming": true,
+        "pushNotifications": true,
+        "stateTransitionHistory": true,
+        "exposesTasks": true,
+        "exposesMessages": true,
+        "exposesArtifacts": true,
+        "exposesTools": true
+    },
+    "securitySchemes": {
+        "yo-ai": {
+        "type": "apiKey",
+        "name": "yo-api",
+        "in": "header"
+        }
+    },
+    "security": [{ "yo-ai": ["apiKey", "yo-api", "header"] }],
+    "defaultInputModes": ["application/json", "text/plain"],
+    "defaultOutputModes": ["application/json", "text/plain"],
+    "skills": [
+        {"name": "Third-Party-Assets.Discover"},
+        {"name": "Asset-Integrations.Map"},
+        {"name": "Implementation-Details.Analyze"},
+        {"name": "Usage-Instances.Search"},
+        {"name": "Technical-Impact.Infer"},
+        {"name": "Asset-Portfolio.Cluster"},
+        {"name": "Integration-Risk.Evaluate"},
+        {"name": "Integration-Provenance.Trace"},
+        {"name": "Related-Assets.Detect"},
+        {"name": "Tech-Report.Generate"}
+    ],
+    "x-capabilities": [
+        {
+            "Third-Party-Assets.Discover": {
+                "artifacts": [
+                    {"artifact": {"type": "skill", "name": "Third-Party-Assets.Discover"}},
+                    {"artifact": {"type": "task", "name": "Third-Party-Assets.Discover"}},
+                    {"artifact": {"type": "tool", "name": "Third-Party-Assets.Discover"}},
+                    {"artifact": {"type": "handler", "name": "Third-Party-Assets.Discover"}},
+                    {"artifact": {"type": "messageType", "name": "Third-Party-Assets.Discover.Input"}},
+                    {"artifact": {"type": "messageType", "name": "Third-Party-Assets.Discover.Output"}}
+                ]
+            }
+        },
+        {
+            "Asset-Integrations.Map": {
+                "artifacts": [
+                    {"artifact": {"type": "skill", "name": "Asset-Integrations.Map"}},
+                    {"artifact": {"type": "task", "name": "Asset-Integrations.Map"}},
+                    {"artifact": {"type": "tool", "name": "Asset-Integrations.Map"}},
+                    {"artifact": {"type": "handler", "name": "Asset-Integrations.Map"}},
+                    {"artifact": {"type": "messageType", "name": "Asset-Integrations.Map.Input"}},
+                    {"artifact": {"type": "messageType", "name": "Asset-Integrations.Map.Output"}}
+                ]
+            }
+        },
+        {
+            "Implementation-Details.Analyze": {
+                "artifacts": [
+                    {"artifact": {"type": "skill", "name": "Implementation-Details.Analyze"}},
+                    {"artifact": {"type": "task", "name": "Implementation-Details.Analyze"}},
+                    {"artifact": {"type": "tool", "name": "Implementation-Details.Analyze"}},
+                    {"artifact": {"type": "handler", "name": "Implementation-Details.Analyze"}},
+                    {"artifact": {"type": "messageType", "name": "Implementation-Details.Analyze.Input"}},
+                    {"artifact": {"type": "messageType", "name": "Implementation-Details.Analyze.Output"}}
+                ]
+            }
+        },
+        {
+            "Usage-Instances.Search": {
+                "artifacts": [
+                    {"artifact": {"type": "skill", "name": "Usage-Instances.Search"}},
+                    {"artifact": {"type": "task", "name": "Usage-Instances.Search"}},
+                    {"artifact": {"type": "tool", "name": "Usage-Instances.Search"}},
+                    {"artifact": {"type": "handler", "name": "Usage-Instances.Search"}},
+                    {"artifact": {"type": "messageType", "name": "Usage-Instances.Search.Input"}},
+                    {"artifact": {"type": "messageType", "name": "Usage-Instances.Search.Output"}}
+                ]
+            }
+        },
+        {
+            "Technical-Impact.Infer": {
+                "artifacts": [
+                    {"artifact": {"type": "skill", "name": "Technical-Impact.Infer"}},
+                    {"artifact": {"type": "task", "name": "Technical-Impact.Infer"}},
+                    {"artifact": {"type": "tool", "name": "Technical-Impact.Infer"}},
+                    {"artifact": {"type": "handler", "name": "Technical-Impact.Infer"}},
+                    {"artifact": {"type": "messageType", "name": "Technical-Impact.Infer.Input"}},
+                    {"artifact": {"type": "messageType", "name": "Technical-Impact.Infer.Output"}}
+                ]
+            }
+        },
+        {
+            "Asset-Portfolio.Cluster": {
+                "artifacts": [
+                    {"artifact": {"type": "skill", "name": "Asset-Portfolio.Cluster"}},
+                    {"artifact": {"type": "task", "name": "Asset-Portfolio.Cluster"}},
+                    {"artifact": {"type": "tool", "name": "Asset-Portfolio.Cluster"}},
+                    {"artifact": {"type": "handler", "name": "Asset-Portfolio.Cluster"}},
+                    {"artifact": {"type": "messageType", "name": "Asset-Portfolio.Cluster.Input"}},
+                    {"artifact": {"type": "messageType", "name": "Asset-Portfolio.Cluster.Output"}}
+                ]
+            }
+        },
+        {
+            "Integration-Risk.Evaluate": {
+                "artifacts": [
+                    {"artifact": {"type": "skill", "name": "Integration-Risk.Evaluate"}},
+                    {"artifact": {"type": "task", "name": "Integration-Risk.Evaluate"}},
+                    {"artifact": {"type": "tool", "name": "Integration-Risk.Evaluate"}},
+                    {"artifact": {"type": "handler", "name": "Integration-Risk.Evaluate"}},
+                    {"artifact": {"type": "messageType", "name": "Integration-Risk.Evaluate.Input"}},
+                    {"artifact": {"type": "messageType", "name": "Integration-Risk.Evaluate.Output"}}
+                ]
+            }
+        },
+        {
+            "Integration-Provenance.Trace": {
+                "artifacts": [
+                    {"artifact": {"type": "skill", "name": "Integration-Provenance.Trace"}},
+                    {"artifact": {"type": "task", "name": "Integration-Provenance.Trace"}},
+                    {"artifact": {"type": "tool", "name": "Integration-Provenance.Trace"}},
+                    {"artifact": {"type": "handler", "name": "Integration-Provenance.Trace"}},
+                    {"artifact": {"type": "messageType", "name": "Integration-Provenance.Trace.Input"}},
+                    {"artifact": {"type": "messageType", "name": "Integration-Provenance.Trace.Output"}}
+                ]
+            }
+        },
+        {
+            "Related-Assets.Detect": {
+                "artifacts": [
+                    {"artifact": {"type": "skill", "name": "Related-Assets.Detect"}},
+                    {"artifact": {"type": "task", "name": "Related-Assets.Detect"}},
+                    {"artifact": {"type": "tool", "name": "Related-Assets.Detect"}},
+                    {"artifact": {"type": "handler", "name": "Related-Assets.Detect"}},
+                    {"artifact": {"type": "messageType", "name": "Related-Assets.Detect.Input"}},
+                    {"artifact": {"type": "messageType", "name": "Related-Assets.Detect.Output"}}
+                ]
+            }
+        },
+        {
+            "Tech-Report.Generate": {
+                "artifacts": [
+                    {"artifact": {"type": "skill", "name": "Tech-Report.Generate"}},
+                    {"artifact": {"type": "task", "name": "Tech-Report.Generate"}},
+                    {"artifact": {"type": "tool", "name": "Tech-Report.Generate"}},
+                    {"artifact": {"type": "handler", "name": "Tech-Report.Generate"}},
+                    {"artifact": {"type": "messageType", "name": "Tech-Report.Generate.Input"}},
+                    {"artifact": {"type": "messageType", "name": "Tech-Report.Generate.Output"}}
+                ]
+            }
+        }
+    ],
+    "x-artifacts": [
+        {
+            "name": "Third-Party-Assets.Discover",
+            "version": "1.0.0",
+            "artifactType": "skill",
+            "description": "Identifies third-party technologies, services, SDKs, APIs, data feeds, modules, and vendor-provided assets used by an organization.",
+            "tags": ["thirdParty", "assetDiscovery", "vendorTech", "integrationInventory"],
+            "examples": [
+                "List all third-party technologies used by Vendor X",
+                "Discover external services integrated into this product"
+            ]
+        },
+        {
+            "name": "Third-Party-Assets.Discover",
+            "version": "1.0.0",
+            "artifactType": "task",
+            "description": "Identifies third-party technologies, services, SDKs, APIs, data feeds, modules, and vendor-provided assets used by an organization.",
+            "tags": ["thirdParty", "assetDiscovery", "vendorTech", "integrationInventory"],
+            "examples": [
+                "List all third-party technologies used by Vendor X",
+                "Discover external services integrated into this product"
+            ]
+        },
+        {
+            "name": "Third-Party-Assets.Discover",
+            "version": "1.0.0",
+            "artifactType": "tool",
+            "description": "Identifies third-party technologies, services, SDKs, APIs, data feeds, modules, and vendor-provided assets used by an organization.",
+            "capabilities": ["discover"],
+            "path": "/",
+            "provider": {
+                "name": "PrivacyPortfolio",
+                "brand": "Yo-ai",
+                "product": "",
+                "version": "1.0.0",
+                "license": "Yo-ai Internal",
+                "url": "https://yo-ai.ai/docs/Third-Party-Assets.Discover.html",
+                "config": {"backend": ""}
+            },
+            "inputSchema": { "$ref": "https://yo-ai.ai/schemas/third-party-assets.discover.input.schema.json" },
+            "outputSchema": { "$ref": "https://yo-ai.ai/schemas/third-party-assets.discover.output.schema.json" },
+            "auth": "apiKey"
+        },
+        {
+            "name": "Third-Party-Assets.Discover",
+            "version": "1.0.0",
+            "artifactType": "handler",
+            "description": "Interface for integrating with tool executable.",
+            "path": "/"
+        },
+        {
+            "name": "Third-Party-Assets.Discover.Input",
+            "version": "1.0.0",
+            "artifactType": "messageType",
+            "schema": { "$ref": "https://yo-ai.ai/schemas/third-party-assets.discover.input.schema.json" },
+            "description": "Input schema for Third-Party-Assets.Discover."
+        },
+        {
+            "name": "Third-Party-Assets.Discover.Output",
+            "version": "1.0.0",
+            "artifactType": "messageType",
+            "schema": { "$ref": "https://yo-ai.ai/schemas/third-party-assets.discover.output.schema.json" },
+            "description": "Output schema for Third-Party-Assets.Discover."
+        },
+        {
+            "name": "Asset-Integrations.Map",
+            "version": "1.0.0",
+            "artifactType": "skill",
+            "description": "Determines how third-party assets are integrated into organizational systems, workflows, data flows, and technical domains.",
+            "tags": ["integrationMapping", "systemArchitecture", "dependencyAnalysis"],
+            "examples": [
+                "How is this third-party service integrated into our workflow",
+                "Map integrations for this vendor-provided SDK"
+            ]
+        },
+        {
+            "name": "Asset-Integrations.Map",
+            "version": "1.0.0",
+            "artifactType": "task",
+            "description": "Determines how third-party assets are integrated into organizational systems, workflows, data flows, and technical domains.",
+            "tags": ["integrationMapping", "systemArchitecture", "dependencyAnalysis"],
+            "examples": [
+                "How is this third-party service integrated into our workflow",
+                "Map integrations for this vendor-provided SDK"
+            ]
+        },
+        {
+            "name": "Asset-Integrations.Map",
+            "version": "1.0.0",
+            "artifactType": "tool",
+            "description": "Determines how third-party assets are integrated into organizational systems, workflows, data flows, and technical domains.",
+            "capabilities": ["map"],
+            "path": "/",
+            "provider": {
+                "name": "PrivacyPortfolio",
+                "brand": "Yo-ai",
+                "product": "",
+                "version": "1.0.0",
+                "license": "Yo-ai Internal",
+                "url": "https://yo-ai.ai/docs/Asset-Integrations.Map.html",
+                "config": {"backend": ""}
+            },
+            "inputSchema": { "$ref": "https://yo-ai.ai/schemas/asset-integrations.map.input.schema.json" },
+            "outputSchema": { "$ref": "https://yo-ai.ai/schemas/asset-integrations.map.output.schema.json" },
+            "auth": "apiKey"
+        },
+        {
+            "name": "Asset-Integrations.Map",
+            "version": "1.0.0",
+            "artifactType": "handler",
+            "description": "Interface for integrating with tool executable.",
+            "path": "/"
+        },
+        {
+            "name": "Asset-Integrations.Map.Input",
+            "version": "1.0.0",
+            "artifactType": "messageType",
+            "schema": { "$ref": "https://yo-ai.ai/schemas/asset-integrations.map.input.schema.json" },
+            "description": "Input schema for Asset-Integrations.Map."
+        },
+        {
+            "name": "Asset-Integrations.Map.Output",
+            "version": "1.0.0",
+            "artifactType": "messageType",
+            "schema": { "$ref": "https://yo-ai.ai/schemas/asset-integrations.map.output.schema.json" },
+            "description": "Output schema for Asset-Integrations.Map."
+        },
+        {
+            "name": "Implementation-Details.Analyze",
+            "version": "1.0.0",
+            "artifactType": "skill",
+            "description": "Examines implementation patterns, configuration, data flows, and operational dependencies of third-party assets.",
+            "tags": ["implementationAnalysis", "configuration", "dataFlow", "technicalAssessment"],
+            "examples": [
+                "Analyze how this API is implemented",
+                "Review configuration and data flow for this integration"
+            ]
+        },
+        {
+            "name": "Implementation-Details.Analyze",
+            "version": "1.0.0",
+            "artifactType": "task",
+            "description": "Examines implementation patterns, configuration, data flows, and operational dependencies of third-party assets.",
+            "tags": ["implementationAnalysis", "configuration", "dataFlow", "technicalAssessment"],
+            "examples": [
+                "Analyze how this API is implemented",
+                "Review configuration and data flow for this integration"
+            ]
+        },
+        {
+            "name": "Implementation-Details.Analyze",
+            "version": "1.0.0",
+            "artifactType": "tool",
+            "description": "Examines implementation patterns, configuration, data flows, and operational dependencies of third-party assets.",
+            "capabilities": ["analyze"],
+            "path": "/",
+            "provider": {
+                "name": "PrivacyPortfolio",
+                "brand": "Yo-ai",
+                "product": "",
+                "version": "1.0.0",
+                "license": "Yo-ai Internal",
+                "url": "https://yo-ai.ai/docs/Implementation-Details.Analyze.html",
+                "config": {"backend": ""}
+            },
+            "inputSchema": { "$ref": "https://yo-ai.ai/schemas/implementation-details.analyze.input.schema.json" },
+            "outputSchema": { "$ref": "https://yo-ai.ai/schemas/implementation-details.analyze.output.schema.json" },
+            "auth": "apiKey"
+        },
+        {
+            "name": "Implementation-Details.Analyze",
+            "version": "1.0.0",
+            "artifactType": "handler",
+            "description": "Interface for integrating with tool executable.",
+            "path": "/"
+        },
+        {
+            "name": "Implementation-Details.Analyze.Input",
+            "version": "1.0.0",
+            "artifactType": "messageType",
+            "schema": { "$ref": "https://yo-ai.ai/schemas/implementation-details.analyze.input.schema.json" },
+            "description": "Input schema for Implementation-Details.Analyze."
+        },
+        {
+            "name": "Implementation-Details.Analyze.Output",
+            "version": "1.0.0",
+            "artifactType": "messageType",
+            "schema": { "$ref": "https://yo-ai.ai/schemas/implementation-details.analyze.output.schema.json" },
+            "description": "Output schema for Implementation-Details.Analyze."
+        },
+        {
+            "name": "Usage-Instances.Search",
+            "version": "1.0.0",
+            "artifactType": "skill",
+            "description": "Searches for real-world usage instances of third-party assets across systems, documentation, codebases, and operational artifacts.",
+            "tags": ["usageDiscovery", "techDiscovery", "integrationSearch"],
+            "examples": [
+                "Where is this SDK used in our environment",
+                "Find all systems that rely on this vendor service"
+            ]
+        },
+        {
+            "name": "Usage-Instances.Search",
+            "version": "1.0.0",
+            "artifactType": "task",
+            "description": "Searches for real-world usage instances of third-party assets across systems, documentation, codebases, and operational artifacts.",
+            "tags": ["usageDiscovery", "techDiscovery", "integrationSearch"],
+            "examples": [
+                "Where is this SDK used in our environment",
+                "Find all systems that rely on this vendor service"
+            ]
+        },
+        {
+            "name": "Usage-Instances.Search",
+            "version": "1.0.0",
+            "artifactType": "tool",
+            "description": "Searches for real-world usage instances of third-party assets across systems, documentation, codebases, and operational artifacts.",
+            "capabilities": ["search"],
+            "path": "/",
+            "provider": {
+                "name": "PrivacyPortfolio",
+                "brand": "Yo-ai",
+                "product": "",
+                "version": "1.0.0",
+                "license": "Yo-ai Internal",
+                "url": "https://yo-ai.ai/docs/Usage-Instances.Search.html",
+                "config": {"backend": ""}
+            },
+            "inputSchema": { "$ref": "https://yo-ai.ai/schemas/usage-instances.search.input.schema.json" },
+            "outputSchema": { "$ref": "https://yo-ai.ai/schemas/usage-instances.search.output.schema.json" },
+            "auth": "apiKey"
+        },
+        {
+            "name": "Usage-Instances.Search",
+            "version": "1.0.0",
+            "artifactType": "handler",
+            "description": "Interface for integrating with tool executable.",
+            "path": "/"
+        },
+        {
+            "name": "Usage-Instances.Search.Input",
+            "version": "1.0.0",
+            "artifactType": "messageType",
+            "schema": { "$ref": "https://yo-ai.ai/schemas/usage-instances.search.input.schema.json" },
+            "description": "Input schema for Usage-Instances.Search."
+        },
+        {
+            "name": "Usage-Instances.Search.Output",
+            "version": "1.0.0",
+            "artifactType": "messageType",
+            "schema": { "$ref": "https://yo-ai.ai/schemas/usage-instances.search.output.schema.json" },
+            "description": "Output schema for Usage-Instances.Search."
+        },
+        {
+            "name": "Technical-Impact.Infer",
+            "version": "1.0.0",
+            "artifactType": "skill",
+            "description": "Infers the operational, architectural, and compliance impact of integrating a third-party asset.",
+            "tags": ["impactAnalysis", "architecture", "riskAssessment", "technicalDependencies"],
+            "examples": [
+                "What is the technical impact of using this vendor service",
+                "Infer risks and dependencies for this integration"
+            ]
+        },
+        {
+            "name": "Technical-Impact.Infer",
+            "version": "1.0.0",
+            "artifactType": "task",
+            "description": "Infers the operational, architectural, and compliance impact of integrating a third-party asset.",
+            "tags": ["impactAnalysis", "architecture", "riskAssessment", "technicalDependencies"],
+            "examples": [
+                "What is the technical impact of using this vendor service",
+                "Infer risks and dependencies for this integration"
+            ]
+        },
+        {
+            "name": "Technical-Impact.Infer",
+            "version": "1.0.0",
+            "artifactType": "tool",
+            "description": "Infers the operational, architectural, and compliance impact of integrating a third-party asset.",
+            "capabilities": ["infer"],
+            "path": "/",
+            "provider": {
+                "name": "PrivacyPortfolio",
+                "brand": "Yo-ai",
+                "product": "",
+                "version": "1.0.0",
+                "license": "Yo-ai Internal",
+                "url": "https://yo-ai.ai/docs/Technical-Impact.Infer.html",
+                "config": {"backend": ""}
+            },
+            "inputSchema": { "$ref": "https://yo-ai.ai/schemas/technical-impact.infer.input.schema.json" },
+            "outputSchema": { "$ref": "https://yo-ai.ai/schemas/technical-impact.infer.output.schema.json" },
+            "auth": "apiKey"
+        },
+        {
+            "name": "Technical-Impact.Infer",
+            "version": "1.0.0",
+            "artifactType": "handler",
+            "description": "Interface for integrating with tool executable.",
+            "path": "/"
+        },
+        {
+            "name": "Technical-Impact.Infer.Input",
+            "version": "1.0.0",
+            "artifactType": "messageType",
+            "schema": { "$ref": "https://yo-ai.ai/schemas/technical-impact.infer.input.schema.json" },
+            "description": "Input schema for Technical-Impact.Infer."
+        },
+        {
+            "name": "Technical-Impact.Infer.Output",
+            "version": "1.0.0",
+            "artifactType": "messageType",
+            "schema": { "$ref": "https://yo-ai.ai/schemas/technical-impact.infer.output.schema.json" },
+            "description": "Output schema for Technical-Impact.Infer."
+        },
+        {
+            "name": "Asset-Portfolio.Cluster",
+            "version": "1.0.0",
+            "artifactType": "skill",
+            "description": "Groups third-party assets into categories such as infrastructure, analytics, identity, data processing, or operational tooling.",
+            "tags": ["portfolioClustering", "taxonomy", "classification", "techDomains"],
+            "examples": [
+                "Cluster all third-party assets used by this vendor",
+                "Group integrations by technical domain"
+            ]
+        },
+        {
+            "name": "Asset-Portfolio.Cluster",
+            "version": "1.0.0",
+            "artifactType": "task",
+            "description": "Groups third-party assets into categories such as infrastructure, analytics, identity, data processing, or operational tooling.",
+            "tags": ["portfolioClustering", "taxonomy", "classification", "techDomains"],
+            "examples": [
+                "Cluster all third-party assets used by this vendor",
+                "Group integrations by technical domain"
+            ]
+        },
+        {
+            "name": "Asset-Portfolio.Cluster",
+            "version": "1.0.0",
+            "artifactType": "tool",
+            "description": "Groups third-party assets into categories such as infrastructure, analytics, identity, data processing, or operational tooling.",
+            "capabilities": ["cluster"],
+            "path": "/",
+            "provider": {
+                "name": "PrivacyPortfolio",
+                "brand": "Yo-ai",
+                "product": "",
+                "version": "1.0.0",
+                "license": "Yo-ai Internal",
+                "url": "https://yo-ai.ai/docs/Asset-Portfolio.Cluster.html",
+                "config": {"backend": ""}
+            },
+            "inputSchema": { "$ref": "https://yo-ai.ai/schemas/asset-portfolio.cluster.input.schema.json" },
+            "outputSchema": { "$ref": "https://yo-ai.ai/schemas/asset-portfolio.cluster.output.schema.json" },
+            "auth": "apiKey"
+        },
+        {
+            "name": "Asset-Portfolio.Cluster",
+            "version": "1.0.0",
+            "artifactType": "handler",
+            "description": "Interface for integrating with tool executable.",
+            "path": "/"
+        },
+        {
+            "name": "Asset-Portfolio.Cluster.Input",
+            "version": "1.0.0",
+            "artifactType": "messageType",
+            "schema": { "$ref": "https://yo-ai.ai/schemas/asset-portfolio.cluster.input.schema.json" },
+            "description": "Input schema for Asset-Portfolio.Cluster."
+        },
+        {
+            "name": "Asset-Portfolio.Cluster.Output",
+            "version": "1.0.0",
+            "artifactType": "messageType",
+            "schema": { "$ref": "https://yo-ai.ai/schemas/asset-portfolio.cluster.output.schema.json" },
+            "description": "Output schema for Asset-Portfolio.Cluster."
+        },
+        {
+            "name": "Integration-Risk.Evaluate",
+            "version": "1.0.0",
+            "artifactType": "skill",
+            "description": "Assesses security, privacy, operational, and compliance risks associated with third-party integrations.",
+            "tags": ["riskAssessment", "security", "privacy", "operationalRisk"],
+            "examples": [
+                "Evaluate risk for integrating this external service",
+                "Assess compliance impact of this third-party SDK"
+            ]
+        },
+        {
+            "name": "Integration-Risk.Evaluate",
+            "version": "1.0.0",
+            "artifactType": "task",
+            "description": "Assesses security, privacy, operational, and compliance risks associated with third-party integrations.",
+            "tags": ["riskAssessment", "security", "privacy", "operationalRisk"],
+            "examples": [
+                "Evaluate risk for integrating this external service",
+                "Assess compliance impact of this third-party SDK"
+            ]
+        },
+        {
+            "name": "Integration-Risk.Evaluate",
+            "version": "1.0.0",
+            "artifactType": "tool",
+            "description": "Assesses security, privacy, operational, and compliance risks associated with third-party integrations.",
+            "capabilities": ["evaluate"],
+            "path": "/",
+            "provider": {
+                "name": "PrivacyPortfolio",
+                "brand": "Yo-ai",
+                "product": "",
+                "version": "1.0.0",
+                "license": "Yo-ai Internal",
+                "url": "https://yo-ai.ai/docs/Integration-Risk.Evaluate.html",
+                "config": {"backend": ""}
+            },
+            "inputSchema": { "$ref": "https://yo-ai.ai/schemas/integration-risk.evaluate.input.schema.json" },
+            "outputSchema": { "$ref": "https://yo-ai.ai/schemas/integration-risk.evaluate.output.schema.json" },
+            "auth": "apiKey"
+        },
+        {
+            "name": "Integration-Risk.Evaluate",
+            "version": "1.0.0",
+            "artifactType": "handler",
+            "description": "Interface for integrating with tool executable.",
+            "path": "/"
+        },
+        {
+            "name": "Integration-Risk.Evaluate.Input",
+            "version": "1.0.0",
+            "artifactType": "messageType",
+            "schema": { "$ref": "https://yo-ai.ai/schemas/integration-risk.evaluate.input.schema.json" },
+            "description": "Input schema for Integration-Risk.Evaluate."
+        },
+        {
+            "name": "Integration-Risk.Evaluate.Output",
+            "version": "1.0.0",
+            "artifactType": "messageType",
+            "schema": { "$ref": "https://yo-ai.ai/schemas/integration-risk.evaluate.output.schema.json" },
+            "description": "Output schema for Integration-Risk.Evaluate."
+        },
+        {
+            "name": "Integration-Provenance.Trace",
+            "version": "1.0.0",
+            "artifactType": "skill",
+            "description": "Tracks the origin, version history, update lineage, and vendor changes for third-party assets.",
+            "tags": ["provenance", "versioning", "vendorLineage"],
+            "examples": [
+                "Trace provenance for this SDK",
+                "Show version history and vendor changes"
+            ]
+        },
+        {
+            "name": "Integration-Provenance.Trace",
+            "version": "1.0.0",
+            "artifactType": "task",
+            "description": "Tracks the origin, version history, update lineage, and vendor changes for third-party assets.",
+            "tags": ["provenance", "versioning", "vendorLineage"],
+            "examples": [
+                "Trace provenance for this SDK",
+                "Show version history and vendor changes"
+            ]
+        },
+        {
+            "name": "Integration-Provenance.Trace",
+            "version": "1.0.0",
+            "artifactType": "tool",
+            "description": "Tracks the origin, version history, update lineage, and vendor changes for third-party assets.",
+            "capabilities": ["trace"],
+            "path": "/",
+            "provider": {
+                "name": "PrivacyPortfolio",
+                "brand": "Yo-ai",
+                "product": "",
+                "version": "1.0.0",
+                "license": "Yo-ai Internal",
+                "url": "https://yo-ai.ai/docs/Integration-Provenance.Trace.html",
+                "config": {"backend": ""}
+            },
+            "inputSchema": { "$ref": "https://yo-ai.ai/schemas/integration-provenance.trace.input.schema.json" },
+            "outputSchema": { "$ref": "https://yo-ai.ai/schemas/integration-provenance.trace.output.schema.json" },
+            "auth": "apiKey"
+        },
+        {
+            "name": "Integration-Provenance.Trace",
+            "version": "1.0.0",
+            "artifactType": "handler",
+            "description": "Interface for integrating with tool executable.",
+            "path": "/"
+        },
+        {
+            "name": "Integration-Provenance.Trace.Input",
+            "version": "1.0.0",
+            "artifactType": "messageType",
+            "schema": { "$ref": "https://yo-ai.ai/schemas/integration-provenance.trace.input.schema.json" },
+            "description": "Input schema for Integration-Provenance.Trace."
+        },
+        {
+            "name": "Integration-Provenance.Trace.Output",
+            "version": "1.0.0",
+            "artifactType": "messageType",
+            "schema": { "$ref": "https://yo-ai.ai/schemas/integration-provenance.trace.output.schema.json" },
+            "description": "Output schema for Integration-Provenance.Trace."
+        },
+        {
+            "name": "Related-Assets.Detect",
+            "version": "1.0.0",
+            "artifactType": "skill",
+            "description": "Identifies similar or alternative third-party assets across the market, including competing or complementary technologies.",
+            "tags": ["competitiveLandscape", "similaritySearch", "alternatives"],
+            "examples": [
+                "Find alternatives to this vendor service",
+                "Identify similar SDKs in this domain"
+            ]
+        },
+        {
+            "name": "Related-Assets.Detect",
+            "version": "1.0.0",
+            "artifactType": "task",
+            "description": "Identifies similar or alternative third-party assets across the market, including competing or complementary technologies.",
+            "tags": ["competitiveLandscape", "similaritySearch", "alternatives"],
+            "examples": [
+                "Find alternatives to this vendor service",
+                "Identify similar SDKs in this domain"
+            ]
+        },
+        {
+            "name": "Related-Assets.Detect",
+            "version": "1.0.0",
+            "artifactType": "tool",
+            "description": "Identifies similar or alternative third-party assets across the market, including competing or complementary technologies.",
+            "capabilities": ["detect"],
+            "path": "/",
+            "provider": {
+                "name": "PrivacyPortfolio",
+                "brand": "Yo-ai",
+                "product": "",
+                "version": "1.0.0",
+                "license": "Yo-ai Internal",
+                "url": "https://yo-ai.ai/docs/Related-Assets.Detect.html",
+                "config": {"backend": ""}
+            },
+            "inputSchema": { "$ref": "https://yo-ai.ai/schemas/related-assets.detect.input.schema.json" },
+            "outputSchema": { "$ref": "https://yo-ai.ai/schemas/related-assets.detect.output.schema.json" },
+            "auth": "apiKey"
+        },
+        {
+            "name": "Related-Assets.Detect",
+            "version": "1.0.0",
+            "artifactType": "handler",
+            "description": "Interface for integrating with tool executable.",
+            "path": "/"
+        },
+        {
+            "name": "Related-Assets.Detect.Input",
+            "version": "1.0.0",
+            "artifactType": "messageType",
+            "schema": { "$ref": "https://yo-ai.ai/schemas/related-assets.detect.input.schema.json" },
+            "description": "Input schema for Related-Assets.Detect."
+        },
+        {
+            "name": "Related-Assets.Detect.Output",
+            "version": "1.0.0",
+            "artifactType": "messageType",
+            "schema": { "$ref": "https://yo-ai.ai/schemas/related-assets.detect.output.schema.json" },
+            "description": "Output schema for Related-Assets.Detect."
+        },
+        {
+            "name": "Tech-Report.Generate",
+            "version": "1.0.0",
+            "artifactType": "skill",
+            "description": "Produces a structured, regulator-friendly report summarizing discovered assets, integrations, risks, and technical impact.",
+            "tags": ["reporting", "audit", "documentation", "evidence"],
+            "examples": [
+                "Generate a tech integration report for Vendor X",
+                "Create a summary of all third-party assets used in this system"
+            ]
+        },
+        {
+            "name": "Tech-Report.Generate",
+            "version": "1.0.0",
+            "artifactType": "task",
+            "description": "Produces a structured, regulator-friendly report summarizing discovered assets, integrations, risks, and technical impact.",
+            "tags": ["reporting", "audit", "documentation", "evidence"],
+            "examples": [
+                "Generate a tech integration report for Vendor X",
+                "Create a summary of all third-party assets used in this system"
+            ]
+        },
+        {
+            "name": "Tech-Report.Generate",
+            "version": "1.0.0",
+            "artifactType": "tool",
+            "description": "Produces a structured, regulator-friendly report summarizing discovered assets, integrations, risks, and technical impact.",
+            "capabilities": ["generate"],
+            "path": "/",
+            "provider": {
+                "name": "PrivacyPortfolio",
+                "brand": "Yo-ai",
+                "product": "",
+                "version": "1.0.0",
+                "license": "Yo-ai Internal",
+                "url": "https://yo-ai.ai/docs/Tech-Report.Generate.html",
+                "config": {"backend": ""}
+            },
+            "inputSchema": { "$ref": "https://yo-ai.ai/schemas/tech-report.generate.input.schema.json" },
+            "outputSchema": { "$ref": "https://yo-ai.ai/schemas/tech-report.generate.output.schema.json" },
+            "auth": "apiKey"
+        },
+        {
+            "name": "Tech-Report.Generate",
+            "version": "1.0.0",
+            "artifactType": "handler",
+            "description": "Interface for integrating with tool executable.",
+            "path": "/"
+        },
+        {
+            "name": "Tech-Report.Generate.Input",
+            "version": "1.0.0",
+            "artifactType": "messageType",
+            "schema": { "$ref": "https://yo-ai.ai/schemas/tech-report.generate.input.schema.json" },
+            "description": "Input schema for Tech-Report.Generate."
+        },
+        {
+            "name": "Tech-Report.Generate.Output",
+            "version": "1.0.0",
+            "artifactType": "messageType",
+            "schema": { "$ref": "https://yo-ai.ai/schemas/tech-report.generate.output.schema.json" },
+            "description": "Output schema for Tech-Report.Generate."
+        }
+    ],
+    "supportsAuthenticatedExtendedCard": true
+}

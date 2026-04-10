@@ -1,0 +1,11 @@
+{
+  "type": "object",
+  "title": "Platform.ConfigurationChanged",
+  "properties": {
+    "type": { "type": "string" },
+    "details": { "type": "object" },
+    "source": { "type": "string" },
+    "timestamp": { "type": "string", "format": "date-time" }
+  },
+  "required": ["type", "source", "timestamp"]
+}
