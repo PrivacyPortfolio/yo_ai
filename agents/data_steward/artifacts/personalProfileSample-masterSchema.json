@@ -1,0 +1,162 @@
+{
+  "userId": "craig-erickson@privacyportfolio.com",
+  "anonymousId": "not-craig-erickson@privacyportfolio.com",
+  "traits": {
+    "Accounts": {
+        "source": {
+            "org_ref": "Organization_Identifier",
+            "org_date": "2020-01-15"
+        },
+        "source": {
+            "org_ref": "Organization_Identifier",
+            "org_date": "2020-01-15"
+        }
+    },
+    "Analytics": {
+        "source": {
+            "org_ref": "Organization_Identifier",
+            "org_date": "2020-01-15"
+        },
+        "source": {
+            "org_ref": "Organization_Identifier",
+            "org_date": "2020-01-15"
+        }
+    },
+    "BackgroundChecks": {
+        "source": {
+            "org_ref": "Organization_Identifier",
+            "org_date": "2020-01-15"
+        },
+        "source": {
+            "org_ref": "Organization_Identifier",
+            "org_date": "2020-01-15"
+        }
+    },
+    "Billing": {
+        "source": {
+            "org_ref": "Organization_Identifier",
+            "org_date": "2020-01-15"
+        },
+        "source": {
+            "org_ref": "Organization_Identifier",
+            "org_date": "2020-01-15"
+        }
+    },
+    "Connections": {
+        "source": {
+            "org_ref": "Organization_Identifier",
+            "org_date": "2020-01-15"
+        },
+        "source": {
+            "org_ref": "Organization_Identifier",
+            "org_date": "2020-01-15"
+        }
+    },
+    "Demographics": {
+        "source": {
+            "org_ref": "Organization_Identifier",
+            "org_date": "2020-01-15"
+        },
+        "source": {
+            "org_ref": "Organization_Identifier",
+            "org_date": "2020-01-15"
+        }
+    },
+    "Devices": {
+        "source": {
+            "org_ref": "Organization_Identifier",
+            "org_date": "2020-01-15"
+        },
+        "source": {
+            "org_ref": "Organization_Identifier",
+            "org_date": "2020-01-15"
+        }
+    },
+    "Education": {
+        "source": {
+            "org_ref": "Organization_Identifier",
+            "org_date": "2020-01-15"
+        },
+        "source": {
+            "org_ref": "Organization_Identifier",
+            "org_date": "2020-01-15"
+        }
+    },
+    "Employment": {
+        "source": {
+            "org_ref": "Organization_Identifier",
+            "org_date": "2020-01-15"
+        },
+        "source": {
+            "org_ref": "Organization_Identifier",
+            "org_date": "2020-01-15"
+        }
+    },
+    "Financial": {
+        "source": {
+            "org_ref": "Organization_Identifier",
+            "org_date": "2020-01-15"
+        },
+        "source": {
+            "org_ref": "Organization_Identifier",
+            "org_date": "2020-01-15"
+        }
+    },
+    "Health": {
+        "source": {
+            "org_ref": "Organization_Identifier",
+            "org_date": "2020-01-15"
+        },
+        "source": {
+            "org_ref": "Organization_Identifier",
+            "org_date": "2020-01-15"
+        }
+    },
+    "Identity": {
+        "source": {
+            "org_ref": "Organization_Identifier",
+            "org_date": "2020-01-15"
+        },
+        "source": {
+            "org_ref": "Organization_Identifier",
+            "org_date": "2020-01-15"
+        }
+    },
+    "Interactions": {
+        "source": {
+            "org_ref": "Organization_Identifier",
+            "org_date": "2020-01-15"
+        },
+        "source": {
+            "org_ref": "Organization_Identifier",
+            "org_date": "2020-01-15"
+        }
+    },
+    "SocialMedia": {
+        "source": {
+            "org_ref": "Organization_Identifier",
+            "org_date": "2020-01-15"
+        },
+        "source": {
+            "org_ref": "Organization_Identifier",
+            "org_date": "2020-01-15"
+        }
+    },
+    "Subscriptions": {
+        "source": {
+            "org_ref": "Organization_Identifier",
+            "org_date": "2020-01-15"
+        },
+        "source": {
+            "org_ref": "Organization_Identifier",
+            "org_date": "2020-01-15"
+        }
+    }
+  }
+  "context": {
+    "ip": "192.168.1.1",
+    "userAgent": "Mozilla/5.0",
+    "locale": "en-US",
+    "timezone": "America/Los_Angeles"
+  }
+}

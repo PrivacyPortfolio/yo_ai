@@ -1,0 +1,462 @@
+/**
+ * This Data-Steward AuthenticatedExtendedCard conveys:
+ * - AuthenticatedExtendedCard contains tasks, messages, artifacts, and tools for Registered Agents.
+ * - Tasks: A task encapsulates the entire interaction related to a specific goal or request.
+ * - Messages: Messages are used for instructions, prompts, replies, and status updates.
+ * - Artifacts: Collection of artifacts created by the agent.
+ */
+
+/**
+* Data-Steward Authenticated Extended Agent Card¶
+*/
+
+{
+  "name": "Data-Steward",
+  "description": "Governs access to the personal data vault, evaluates intended use of personal data, and makes decisions and takes action on behalf of an individual person.",
+  "url": "https://privacyportfolio.com/agent-registry/data-steward/auth/agent.json",
+  "provider": {
+    "organization": "PrivacyPortfolio",
+    "url": "https://www.PrivacyPortfolio.com"
+  },
+  "iconUrl": "https://privacyportfolio.com/agent-registry/data-steward/data-steward-agent-icon.png",
+  "version": "1.0.0",
+  "documentationUrl": "https://privacyportfolio.com/agent-registry/data-steward/auth/Data-Steward-AuthenticatedExtendedAgentCard.md",
+  "capabilities": {
+    "streaming": true,
+    "pushNotifications": true,
+    "stateTransitionHistory": true,
+    "exposesTasks": true,
+    "exposesMessages": true,
+    "exposesArtifacts": true,
+    "exposesTools": true
+  },
+  "securitySchemes": {
+    "yo-ai": {
+      "type": "apiKey",
+      "name": "yo-api",
+      "in": "header"
+    }
+  },
+  "security": [{ "yo-ai": ["apiKey", "yo-api", "header"] }],
+  "defaultInputModes": ["application/json", "text/plain"],
+  "defaultOutputModes": ["application/json", "text/plain"],
+    "skills": [
+        {"name": "Phone.Call"},
+        {"name": "Phone.Answer"},
+        {"name": "Data-Request.Govern"},
+        {"name": "Email.Read"},
+        {"name": "Email.Send"}
+    ],
+    "x-capabilities": [
+        {
+          "Phone.Call": {
+              "artifacts": [
+                  {"artifact": {"type": "skill", "name": "Phone.Call"}},
+                  {"artifact": {"type": "task", "name": "Phone.Call"}},
+                  {"artifact": {"type": "tool", "name": "Phone.Call"}},
+                  {"artifact": {"type": "handler", "name": "Phone.Call"}},
+                  {"artifact": {"type": "messageType", "name": "Phone.Call.Input"}},
+                  {"artifact": {"type": "messageType", "name": "Phone.Call.Output"}}
+              ]
+          }
+        },
+        {
+          "Phone.Answer": {
+              "artifacts": [
+                  {"artifact": {"type": "skill", "name": "Phone.Answer"}},
+                  {"artifact": {"type": "task", "name": "Phone.Answer"}},
+                  {"artifact": {"type": "tool", "name": "Phone.Answer"}},
+                  {"artifact": {"type": "handler", "name": "Phone.Answer"}},
+                  {"artifact": {"type": "messageType", "name": "Phone.Answer.Input"}},
+                  {"artifact": {"type": "messageType", "name": "Phone.Answer.Output"}}
+              ]
+          }
+        },
+        {
+          "Data-Request.Govern": {
+              "artifacts": [
+                  {"artifact": {"type": "skill", "name": "Data-Request.Govern"}},
+                  {"artifact": {"type": "task", "name": "Data-Request.Govern"}},
+                  {"artifact": {"type": "tool", "name": "Data-Request.Govern"}},
+                  {"artifact": {"type": "handler", "name": "Data-Request.Govern"}},
+                  {"artifact": {"type": "messageType", "name": "Data-Request.Govern.Input"}},
+                  {"artifact": {"type": "messageType", "name": "Data-Request.Govern.Output"}}
+              ]
+          }
+        },
+        {
+          "Email.Read": {
+              "artifacts": [
+                  {"artifact": {"type": "skill", "name": "Email.Read"}},
+                  {"artifact": {"type": "task", "name": "Email.Read"}},
+                  {"artifact": {"type": "tool", "name": "Email.Read"}},
+                  {"artifact": {"type": "handler", "name": "Email.Read"}},
+                  {"artifact": {"type": "messageType", "name": "Email.Read.Input"}},
+                  {"artifact": {"type": "messageType", "name": "Email.Read.Output"}}
+              ]
+          }
+        },
+        {
+          "Email.Send": {
+              "artifacts": [
+                  {"artifact": {"type": "skill", "name": "Email.Send"}},
+                  {"artifact": {"type": "task", "name": "Email.Send"}},
+                  {"artifact": {"type": "tool", "name": "Email.Send"}},
+                  {"artifact": {"type": "handler", "name": "Email.Send"}},
+                  {"artifact": {"type": "messageType", "name": "Email.Send.Input"}},
+                  {"artifact": {"type": "messageType", "name": "Email.Send.Output"}}
+              ]
+          }
+        }
+    ],
+    "x-artifacts": [
+      {
+        "name": "Phone.Call",
+        "version": "1.0.0",
+        "artifactType": "skill",
+        "description": "Make outbound phone calls for verification, negotiation, or rights requests.",
+        "tags": ["pushNotification", "request", "verify", "question", "survey", "logEvent"],
+        "examples": [
+            "YourRequestStatus",
+            "Please do this",
+            "Buy this",
+            "Do you have?",
+            "Answer these questions"
+        ]
+      },
+      {
+        "name": "Phone.Call",
+        "version": "1.0.0",
+        "artifactType": "task",
+        "description": "Make outbound phone calls for verification, negotiation, or rights requests.",
+        "tags": ["pushNotification", "request", "verify", "question", "survey", "logEvent"],
+        "examples": [
+            "YourRequestStatus",
+            "Please do this",
+            "Buy this",
+            "Do you have?",
+            "Answer these questions"
+        ]
+      },
+      {
+        "name": "Phone.Call",
+        "version": "1.0.0",
+        "artifactType": "tool",
+        "description": "Make outbound phone calls for verification, negotiation, or rights requests.",
+        "capabilities": ["call"],
+        "path": "/",
+        "provider": {
+          "name": "Twilio",
+          "brand": "Twilio",
+          "product": "Voice",
+          "version": "1.0.0",
+          "license": "Yo-ai Internal",
+          "url": "https://yo-ai.ai/docs/Phone.Call.html",
+          "config": {
+            "backend": ""
+          }
+        },
+        "inputSchema": { "$ref": "#/schemas/Phone.Call.Input" },
+        "outputSchema": { "$ref": "#/schemas/Phone.Call.Output" },
+        "auth": "apiKey"
+      },
+      {
+        "name": "Phone.Call",
+        "version": "1.0.0",
+        "artifactType": "handler",
+        "description": "Interface for integrating with tool executable.",
+        "path": "/"
+      },
+      {
+        "name": "Phone.Call.Input",
+        "version": "1.0.0",
+        "artifactType": "messageType",
+        "schema": { "$ref": "#/schemas/Phone.Call#/definitions/Input" },
+        "description": "Input schema for ."
+      },
+      {
+        "name": "Phone.Call.Output",
+        "version": "1.0.0",
+        "artifactType": "messageType",
+        "schema": { "$ref": "#/schemas/Phone.Call#/definitions/Output" },
+        "description": "Output schema for ."
+      },
+      {
+        "name": "Phone.Answer",
+        "version": "1.0.0",
+        "artifactType": "skill",
+        "description": "Handle inbound phone calls, verify caller identity, and determine purpose of call.",
+        "tags": ["verifyCaller", "shareData", "createTask", "buildWorkflow", "logEvent"],
+        "examples": [
+            "Identify the caller",
+            "Introduce yourself",
+            "Determine purpose of call"
+        ]
+      },
+      {
+        "name": "Phone.Answer",
+        "version": "1.0.0",
+        "artifactType": "task",
+        "description": "Handle inbound phone calls, verify caller identity, and determine purpose of call.",
+        "tags": ["verifyCaller", "shareData", "createTask", "buildWorkflow", "logEvent"],
+        "examples": [
+            "Identify the caller",
+            "Introduce yourself",
+            "Determine purpose of call"
+        ]
+      },
+      {
+        "name": "Phone.Answer",
+        "version": "1.0.0",
+        "artifactType": "tool",
+        "description": "Handle inbound phone calls, verify caller identity, and determine purpose of call.",
+        "capabilities": ["answer"],
+        "path": "/",
+        "provider": {
+          "name": "Twilio",
+          "brand": "Twilio",
+          "product": "Voice",
+          "version": "1.0.0",
+          "license": "Yo-ai Internal",
+          "url": "https://yo-ai.ai/docs/Phone.Answer.html",
+          "config": {
+            "backend": ""
+          }
+        },
+        "inputSchema": { "$ref": "#/schemas/Phone.Answer.Input" },
+        "outputSchema": { "$ref": "#/schemas/Phone.Answer.Output" },
+        "auth": "apiKey"
+      },
+      {
+        "name": "Phone.Answer",
+        "version": "1.0.0",
+        "artifactType": "handler",
+        "description": "Interface for integrating with tool executable.",
+        "path": "/"
+      },
+      {
+        "name": "Phone.Answer.Input",
+        "version": "1.0.0",
+        "artifactType": "messageType",
+        "schema": { "$ref": "#/schemas/Phone.Answer#/definitions/Input" },
+        "description": "Input schema for ."
+      },
+      {
+        "name": "Phone.Answer.Output",
+        "version": "1.0.0",
+        "artifactType": "messageType",
+        "schema": { "$ref": "#/schemas/Phone.Answer#/definitions/Output" },
+        "description": "Output schema for ."
+      },
+      {
+        "name": "Data-Request.Govern",
+        "version": "1.0.0",
+        "artifactType": "skill",
+        "description": "Evaluate intended use of personal data before granting access to the personal data vault.",
+        "tags": ["verify", "authorize", "policyCheck", "riskAssessment", "logEvent"],
+        "examples": [
+            "Request to fill out a signup form",
+            "Request to provide shipping address",
+            "Request to verify identity"
+        ]
+      },
+      {
+        "name": "Data-Request.Govern",
+        "version": "1.0.0",
+        "artifactType": "task",
+        "description": "Evaluate intended use of personal data before granting access to the personal data vault.",
+        "tags": ["verify", "authorize", "policyCheck", "riskAssessment", "logEvent"],
+        "examples": [
+            "Request to fill out a signup form",
+            "Request to provide shipping address",
+            "Request to verify identity"
+        ]
+      },
+      {
+        "name": "Data-Request.Govern",
+        "version": "1.0.0",
+        "artifactType": "tool",
+        "description": "Evaluate intended use of personal data before granting access to the personal data vault.",
+        "capabilities": ["govern"],
+        "path": "/",
+        "provider": {
+          "name": "PrivacyPortfolio",
+          "brand": "Yo-ai",
+          "product": "",
+          "version": "1.0.0",
+          "license": "Yo-ai Internal",
+          "url": "https://yo-ai.ai/docs/Data-Request.Govern.html",
+          "config": {
+            "backend": ""
+          }
+        },
+        "inputSchema": { "$ref": "#/schemas/Data-Request.Govern.Input" },
+        "outputSchema": { "$ref": "#/schemas/Data-Request.Govern.Output" },
+        "auth": "apiKey"
+      },
+      {
+        "name": "Data-Request.Govern",
+        "version": "1.0.0",
+        "artifactType": "handler",
+        "description": "Interface for integrating with tool executable.",
+        "path": "/"
+      },
+      {
+        "name": "Data-Request.Govern.Input",
+        "version": "1.0.0",
+        "artifactType": "messageType",
+        "schema": { "$ref": "#/schemas/Data-Request.Govern#/definitions/Input" },
+        "description": "Input schema for ."
+      },
+      {
+        "name": "Data-Request.Govern.Output",
+        "version": "1.0.0",
+        "artifactType": "messageType",
+        "schema": { "$ref": "#/schemas/Data-Request.Govern#/definitions/Output" },
+        "description": "Output schema for ."
+      },
+      {
+        "name": "Email.Read",
+        "version": "1.0.0",
+        "artifactType": "skill",
+        "description": "Read inbound email, detect spam/phishing, and extract workflow triggers.",
+        "tags": ["spam", "phishing", "solicitation", "verify", "survey", "logEvent"],
+        "examples": [
+            "Your Request Status",
+            "Please do this",
+            "Buy this",
+            "Do you have?",
+            "I am..."
+        ]
+      },
+      {
+        "name": "Email.Read",
+        "version": "1.0.0",
+        "artifactType": "task",
+        "description": "Read inbound email, detect spam/phishing, and extract workflow triggers.",
+        "tags": ["spam", "phishing", "solicitation", "verify", "survey", "logEvent"],
+        "examples": [
+            "Your Request Status",
+            "Please do this",
+            "Buy this",
+            "Do you have?",
+            "I am..."
+        ]
+      },
+      {
+        "name": "Email.Read",
+        "version": "1.0.0",
+        "artifactType": "tool",
+        "description": "Read inbound email, detect spam/phishing, and extract workflow triggers.",
+        "capabilities": ["read"],
+        "path": "/",
+        "provider": {
+          "name": "PrivacyPortfolio",
+          "brand": "Yo-ai",
+          "product": "",
+          "version": "1.0.0",
+          "license": "Yo-ai Internal",
+          "url": "https://yo-ai.ai/docs/Email.Read.html",
+          "config": {
+            "backend": ""
+          }
+        },
+        "inputSchema": { "$ref": "#/schemas/Email.Read.Input" },
+        "outputSchema": { "$ref": "#/schemas/Email.Read.Output" },
+        "auth": "apiKey"
+      },
+      {
+        "name": "Email.Read",
+        "version": "1.0.0",
+        "artifactType": "handler",
+        "description": "Interface for integrating with tool executable.",
+        "path": "/"
+      },
+      {
+        "name": "Email.Read.Input",
+        "version": "1.0.0",
+        "artifactType": "messageType",
+        "schema": { "$ref": "#/schemas/Email.Read#/definitions/Input" },
+        "description": "Input schema for ."
+      },
+      {
+        "name": "Email.Read.Output",
+        "version": "1.0.0",
+        "artifactType": "messageType",
+        "schema": { "$ref": "#/schemas/Email.Read#/definitions/Output" },
+        "description": "Output schema for ."
+      },
+      {
+        "name": "Email.Send",
+        "version": "1.0.0",
+        "artifactType": "skill",
+        "description": "Send outbound email as the authorized agent of the data subject.",
+        "tags": ["pushNotification", "request", "verify", "solicitation", "logEvent"],
+        "examples": [
+            "YourRequestStatus",
+            "Please do this",
+            "Buy this",
+            "Do you have?",
+            "Answer these questions"
+        ]
+      },
+      {
+        "name": "Email.Send",
+        "version": "1.0.0",
+        "artifactType": "task",
+        "description": "Send outbound email as the authorized agent of the data subject.",
+        "tags": ["pushNotification", "request", "verify", "solicitation", "logEvent"],
+        "examples": [
+            "YourRequestStatus",
+            "Please do this",
+            "Buy this",
+            "Do you have?",
+            "Answer these questions"
+        ]
+      },
+      {
+        "name": "Email.Send",
+        "version": "1.0.0",
+        "artifactType": "tool",
+        "description": "Send outbound email as the authorized agent of the data subject.",
+        "capabilities": ["send"],
+        "path": "/",
+        "provider": {
+          "name": "PrivacyPortfolio",
+          "brand": "Yo-ai",
+          "product": "",
+          "version": "1.0.0",
+          "license": "Yo-ai Internal",
+          "url": "https://yo-ai.ai/docs/Email.Send.html",
+          "config": {
+            "backend": ""
+          }
+        },
+        "inputSchema": { "$ref": "#/schemas/Email.Send.Input" },
+        "outputSchema": { "$ref": "#/schemas/Email.Send.Output" },
+        "auth": "apiKey"
+      },
+      {
+        "name": "Email.Send",
+        "version": "1.0.0",
+        "artifactType": "handler",
+        "description": "Interface for integrating with tool executable.",
+        "path": "/"
+      },
+      {
+        "name": "Email.Send.Input",
+        "version": "1.0.0",
+        "artifactType": "messageType",
+        "schema": { "$ref": "#/schemas/Email.Send#/definitions/Input" },
+        "description": "Input schema for ."
+      },
+      {
+        "name": "Email.Send.Output",
+        "version": "1.0.0",
+        "artifactType": "messageType",
+        "schema": { "$ref": "#/schemas/Email.Send#/definitions/Output" },
+        "description": "Output schema for ."
+      }
+  ],
+  "supportsAuthenticatedExtendedCard": true
+}

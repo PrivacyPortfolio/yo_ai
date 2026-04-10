@@ -1,0 +1,84 @@
+/**
+ * This DataBroker-Monitor AgentCard conveys:
+ * - Overall details (version, name, description, uses)
+ * - Skills: A set of capabilities the agent can perform
+ * - Default modalities/content types supported by the agent.
+ */
+
+/**
+* DataBroker-Monitor AgentCard¶
+*/
+{
+    "name": "DataBroker-Monitor",
+    "description": "Monitors registered data brokers to detect possession, sale, or distribution of personal information and identify downstream purchasers.",
+    "url": "https://privacyportfolio.com/agent-registry/databroker-monitor/agent.json",
+    "provider": {
+        "organization": "PrivacyPortfolio",
+        "url": "https://www.PrivacyPortfolio.com"
+    },
+    "iconUrl": "https://privacyportfolio.com/agent-registry/databroker-monitor/databroker-monitor-agent-icon.png",
+    "version": "1.0.0",
+    "documentationUrl": "https://privacyportfolio.com/agent-registry/databroker-monitor/DataBroker-Monitor-AgentCard.md",
+    "capabilities": {
+        "streaming": true,
+        "pushNotifications": true,
+        "stateTransitionHistory": true
+    },
+    "securitySchemes": {
+        "yo-ai": {
+        "type": "apiKey",
+        "name": "yo-api",
+        "in": "header"
+        }
+    },
+    "security": [
+        { "yo-ai": ["apiKey", "yo-api", "header"] }
+    ],
+    "defaultInputModes": ["application/json", "text/plain"],
+    "defaultOutputModes": ["application/json", "text/plain"],
+    "skills": [
+        {
+            "name": "Broker-Inventory.Scan",
+            "description": "Searches registered data broker datasets for matches to minimized PI bundles provided by the Data-Steward.",
+            "tags": ["broker", "scan", "inventory", "logEvent"],
+            "examples": [
+                "Search for email in broker dataset",
+                "Check if phone number appears in broker feed",
+                "Scan for profile matches"
+            ],
+            "inputModes": ["application/json"],
+            "outputModes": ["application/json"],
+            "inputSchema": { "$ref": "https://yo-ai.ai/schemas/broker-inventory.scan.input.schema.json" },
+            "outputSchema": { "$ref": "https://yo-ai.ai/schemas/broker-inventory.scan.output.schema.json" }
+        },
+        {
+            "name": "Downstream-Vendors.Identify",
+            "description": "Determines which vendors are purchasing data from brokers and using it to make automated decisions.",
+            "tags": ["vendors", "broker", "downstream", "logEvent"],
+            "examples": [
+                "Identify vendor purchasing my data",
+                "Check if broker sold data to advertiser",
+                "Map broker → vendor relationships"
+            ],
+            "inputModes": ["application/json"],
+            "outputModes": ["application/json"],
+            "inputSchema": { "$ref": "https://yo-ai.ai/schemas/downstream-vendors.identify.input.schema.json" },
+            "outputSchema": { "$ref": "https://yo-ai.ai/schemas/downstream-vendors.identify.output.schema.json" }
+        },
+        {
+            "name": "Broker-Evidence.Collect",
+            "description": "Captures structured evidence of broker possession or sale of personal information for use in complaints or deletion requests.",
+            "tags": ["evidence", "broker", "compliance", "logEvent"],
+            "examples": [
+                "Record broker match",
+                "Store dataset reference",
+                "Capture sale metadata"
+            ],
+            "inputModes": ["application/json"],
+            "outputModes": ["application/json"],
+        "inputSchema": { "$ref": "https://yo-ai.ai/schemas/broker-evidence.collect.input.schema.json" },
+        "outputSchema": { "$ref": "https://yo-ai.ai/schemas/broker-evidence.collect.output.schema.json" }
+        }
+    ],
+    "supportsAuthenticatedExtendedCard": true
+}

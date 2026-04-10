@@ -1,0 +1,101 @@
+{
+  "org_ref": "Organization_Identifier",
+  "userId": "craig-erickson@privacyportfolio.com",
+  "anonymousId": "not-craig-erickson@privacyportfolio.com",
+  "traits": {
+    "Accounts": {
+      "account_ids": ["acct_001", "acct_002"],
+      "account_types": ["customer", "consumer"]
+    },
+    "Analytics": {
+      "tracking_ids": ["ga:UA-123456", "mixpanel:98765"],
+      "engagement_score": 72,
+      "last_activity": "2025-12-15T10:30:00Z"
+    },
+    "BackgroundChecks": {
+      "provider": "Checkr",
+      "status": "clear",
+      "date": "2024-11-01"
+    },
+    "Billing": {
+      "billing_ids": ["bill_001"],
+      "payment_methods": ["credit_card", "paypal"],
+      "currency": "USD",
+      "last_invoice_date": "2025-12-01"
+    },
+    "Connections": {
+      "contacts": [
+        { "name": "Alice", "relation": "colleague", "email": "alice@example.com" }
+      ],
+      "linked_accounts": ["LinkedIn", "GitHub"]
+    },
+    "Demographics": {
+      "age": 42,
+      "gender": "male",
+      "marital_status": "single",
+      "location": "Alameda, CA, USA"
+    },
+    "Devices": {
+      "device_ids": ["device_001", "device_002"],
+      "os": ["iOS", "Windows"],
+      "last_seen": "2025-12-20T08:00:00Z"
+    },
+    "Education": {
+      "degrees": ["B.Sc. Computer Science"],
+      "institutions": ["UC Berkeley"],
+      "graduation_year": 2008
+    },
+    "Employment": {
+      "employer": "PrivacyPortfolio Consulting",
+      "role": "Workflow Architect",
+      "start_date": "2020-01-01",
+      "status": "active"
+    },
+    "Financial": {
+      "bank_accounts": ["bank_001"],
+      "credit_score": 720,
+      "income_range": "100k-150k"
+    },
+    "Health": {
+      "insurance_provider": "Blue Shield",
+      "policy_number": "HS123456",
+      "wellness_programs": ["gym_membership"]
+    },
+    "Identity": {
+      "full_name": "Craig Example",
+      "dob": "1983-05-12",
+      "national_id": "SSN-XXX-XX-1234",
+      "passport_number": "P1234567"
+    },
+    "Interactions": {
+      "channels": ["email", "phone", "webform"],
+      "last_contact_date": "2025-12-22T14:00:00Z",
+      "interaction_count": 45
+    },
+    "SocialMedia": {
+      "profiles": {
+        "twitter": "@craigexample",
+        "linkedin": "linkedin.com/in/craigexample"
+      },
+      "followers_count": 1200
+    },
+    "Subscriptions": {
+      "services": ["Netflix", "AWS", "Twilio"],
+      "status": {
+        "Netflix": "active",
+        "AWS": "active",
+        "Twilio": "trial"
+      },
+      "renewal_dates": {
+        "Netflix": "2026-01-01",
+        "AWS": "2026-02-15"
+      }
+    }
+  },
+  "context": {
+    "ip": "192.168.1.1",
+    "userAgent": "Mozilla/5.0",
+    "locale": "en-US",
+    "timezone": "America/Los_Angeles"
+  }
+}
