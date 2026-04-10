@@ -1,0 +1,394 @@
+# /shared/artifacts/capability_map.yaml
+#
+# Platform Capability Map — Single Source of Truth
+#
+# This file is the authoritative routing table for the Yo-ai Platform.
+# It is read/write accessible to all agents at shared/artifacts/.
+# Both yo_ai_handler.py and api_handler.py load from this file.
+#
+# Adding a new capability here makes it available to all handlers
+# with no code changes required.
+#
+# Sections:
+#   capabilities  — maps A2A capability names to agents and handlers
+#   constructors  — maps agent names to constructor callables
+#   routes        — maps API Gateway path segments to capability names
+#                   (consumed by api_handler.py to build CAPABILITY_PATH_MAP)
+#
+# Handler naming convention:
+#   Handler names match the Python method name on the agent class exactly.
+#   e.g. capability "Budget.Check" → handler "budget_check" on PurchasingAgent
+#
+# Constructor convention:
+#   Constructor values are the callable name resolvable at platform startup.
+#   PlatformAgents (SolicitorGeneral) return self — no new instance created.
+#   YoAiAgents are hydrated on demand and released after each response.
+#
+# Status: First wave — SG, DS, PA, VM onboarded.
+#         Remaining 16 agents pending onboarding.
+# ─────────────────────────────────────────────────────────────────────────────
+
+
+# =============================================================================
+# CAPABILITIES
+# Maps A2A capability name → agent, handler, input schema, description
+# =============================================================================
+
+capabilities:
+
+  # ---------------------------------------------------------------------------
+  # Solicitor-General (PlatformAgent — self-routes)
+  # ---------------------------------------------------------------------------
+
+  Just-Ask:
+    agent: Solicitor-General
+    handler: just_ask
+    input_schema: just-ask.input.schema.json
+    output_schema: just-ask.output.schema.json
+    description: >
+      Semantic entry point for any caller. Interprets intent, introduces the
+      platform, and routes the caller to the most appropriate agent or capability.
+      Handles greetings, discovery requests, and unstructured queries.
+
+  Event.Log:
+    agent: Solicitor-General
+    handler: event_log
+    input_schema: event.log.input.schema.json
+    output_schema: event.log.output.schema.json
+    description: >
+      Inserts a structured record into the platform EventLog.
+      Used by agents and registered callers for audit and activity logging.
+
+  Request-Response.Correlate:
+    agent: Solicitor-General
+    handler: request_response_correlate
+    input_schema: request-response.correlate.input.schema.json
+    output_schema: request-response.correlate.output.schema.json
+    description: >
+      Correlates inbound requests with outbound responses for routing,
+      audit, and task lifecycle management.
+
+  # ---------------------------------------------------------------------------
+  # Data-Steward (YoAiAgent — profile-aware, named instances)
+  # ---------------------------------------------------------------------------
+
+  Phone.Call:
+    agent: Data-Steward
+    handler: phone_call
+    input_schema: phone.call.input.schema.json
+    output_schema: phone.call.output.schema.json
+    description: >
+      Initiates an outbound phone call on behalf of the represented subject.
+
+  Phone.Answer:
+    agent: Data-Steward
+    handler: phone_answer
+    input_schema: phone.answer.input.schema.json
+    output_schema: phone.answer.output.schema.json
+    description: >
+      Handles an inbound contact or greeting on behalf of the represented subject.
+      Primary entry point for external agents initiating contact with a person.
+
+  Data-Request.Govern:
+    agent: Data-Steward
+    handler: data_request_govern
+    input_schema: data-request.govern.input.schema.json
+    output_schema: data-request.govern.output.schema.json
+    description: >
+      Evaluates intended use of personal data before granting access to the
+      personal data vault. The governance gate for all data access requests.
+
+  Email.Read:
+    agent: Data-Steward
+    handler: email_read
+    input_schema: email.read.input.schema.json
+    output_schema: email.read.output.schema.json
+    description: >
+      Reads email on behalf of the represented subject.
+
+  Email.Send:
+    agent: Data-Steward
+    handler: email_send
+    input_schema: email.send.input.schema.json
+    output_schema: email.send.output.schema.json
+    description: >
+      Sends email on behalf of the represented subject.
+
+  # ---------------------------------------------------------------------------
+  # Purchasing-Agent (YoAiAgent — profile-aware, named instances)
+  # ---------------------------------------------------------------------------
+
+  Purchase-Options.Recommend:
+    agent: Purchasing-Agent
+    handler: purchase_options_recommend
+    input_schema: purchase-options.recommend.input.schema.json
+    output_schema: purchase-options.recommend.output.schema.json
+    description: >
+      Recommends purchase options based on subject profile, budget, and
+      vendor offerings.
+
+  Purchase-Risk.Evaluate:
+    agent: Purchasing-Agent
+    handler: purchase_risk_evaluate
+    input_schema: purchase-risk.evaluate.input.schema.json
+    output_schema: purchase-risk.evaluate.output.schema.json
+    description: >
+      Evaluates the risk of a proposed purchase against subject profile
+      and spending history.
+
+  Purchase-History.Generate:
+    agent: Purchasing-Agent
+    handler: purchase_history_generate
+    input_schema: purchase-history.generate.input.schema.json
+    output_schema: purchase-history.generate.output.schema.json
+    description: >
+      Generates a purchase history report for the represented subject.
+
+  Purchase-Receipt.Generate:
+    agent: Purchasing-Agent
+    handler: purchase_receipt_generate
+    input_schema: purchase-receipt.generate.input.schema.json
+    output_schema: purchase-receipt.generate.output.schema.json
+    description: >
+      Generates a receipt for a completed purchase transaction.
+
+  Purchase-Issues.Resolve:
+    agent: Purchasing-Agent
+    handler: purchase_issues_resolve
+    input_schema: purchase-issues.resolve.input.schema.json
+    output_schema: purchase-issues.resolve.output.schema.json
+    description: >
+      Initiates resolution of a purchase dispute or issue.
+
+  Return-Or-Refund.Initiate:
+    agent: Purchasing-Agent
+    handler: return_or_refund_initiate
+    input_schema: return-or-refund.initiate.input.schema.json
+    output_schema: return-or-refund.initiate.output.schema.json
+    description: >
+      Initiates a return or refund process for a prior purchase.
+
+  Order-Status.Track:
+    agent: Purchasing-Agent
+    handler: order_status_track
+    input_schema: order-status.track.input.schema.json
+    output_schema: order-status.track.output.schema.json
+    description: >
+      Tracks the current status of an order.
+
+  Budget-After-Purchase.Update:
+    agent: Purchasing-Agent
+    handler: budget_after_purchase_update
+    input_schema: budget-after-purchase.update.input.schema.json
+    output_schema: budget-after-purchase.update.output.schema.json
+    description: >
+      Updates the subject's budget records after a completed purchase.
+
+  Transaction-Complete.Verify:
+    agent: Purchasing-Agent
+    handler: transaction_complete_verify
+    input_schema: transaction-complete.verify.input.schema.json
+    output_schema: transaction-complete.verify.output.schema.json
+    description: >
+      Verifies that a transaction has completed successfully end-to-end.
+
+  Purchase.Initiate:
+    agent: Purchasing-Agent
+    handler: purchase_initiate
+    input_schema: purchase.initiate.input.schema.json
+    output_schema: purchase.initiate.output.schema.json
+    description: >
+      Creates and submits a purchase intent and executes the purchase via
+      Stripe, PayPal, or vendor checkout flows.
+
+  Purchase-Eligibility.Validate:
+    agent: Purchasing-Agent
+    handler: purchase_eligibility_validate
+    input_schema: purchase-eligibility.validate.input.schema.json
+    output_schema: purchase-eligibility.validate.output.schema.json
+    description: >
+      Validates that the subject is eligible to make a proposed purchase.
+
+  Budget.Check:
+    agent: Purchasing-Agent
+    handler: budget_check
+    input_schema: budget-check.input.schema.json
+    output_schema: budget-check.output.schema.json
+    description: >
+      Checks budget availability for a proposed purchase amount and currency.
+      Returns eligibility status and available balance for the represented subject.
+      Returns indeterminate status if no subject profile is provided.
+
+  Payment.Cancel:
+    agent: Purchasing-Agent
+    handler: payment_cancel
+    input_schema: payment.cancel.input.schema.json
+    output_schema: payment.cancel.output.schema.json
+    description: >
+      Cancels a pending or in-progress payment.
+
+  Mandate.Manage:
+    agent: Purchasing-Agent
+    handler: mandate_manage
+    input_schema: mandate.manage.input.schema.json
+    output_schema: mandate.manage.output.schema.json
+    description: >
+      Manages standing payment mandates (e.g. direct debits, recurring payments)
+      for the represented subject.
+
+  # ---------------------------------------------------------------------------
+  # Vendor-Manager (YoAiAgent — org-profile-aware, named instances)
+  # ---------------------------------------------------------------------------
+
+  Org-Profile.Manage:
+    agent: Vendor-Manager
+    handler: org_profile_manage
+    input_schema: org-profile.manage.input.schema.json
+    output_schema: org-profile.manage.output.schema.json
+    description: >
+      Governs and maintains Org-Profiles for Responsible AI certification.
+      Manages organizational profile data on behalf of the represented organization.
+
+
+# =============================================================================
+# CONSTRUCTORS
+# Maps agent name → constructor callable name
+#
+# PlatformAgents: constructor returns the existing singleton (self).
+# YoAiAgents: constructor hydrates a new instance on demand.
+# All constructors accept profile= as an optional keyword argument.
+# =============================================================================
+
+constructors:
+  Solicitor-General:  solicitor_general_constructor   # returns self — PlatformAgent singleton
+  Data-Steward:       data_steward_constructor
+  Purchasing-Agent:   purchasing_agent_constructor
+  Vendor-Manager:     vendor_manager_constructor
+
+  # Pending onboarding — constructors registered for future use:
+  # Decision-Master:    decision_master_constructor
+  # Door-Keeper:        door_keeper_constructor
+  # Incident-Responder: incident_responder_constructor
+  # The-Sentinel:       the_sentinel_constructor
+  # Workflow-Builder:   workflow_builder_constructor
+  # Complaint-Manager:  complaint_manager_constructor
+  # Compliance-Validator: compliance_validator_constructor
+  # DarkWeb-Checker:    darkweb_checker_constructor
+  # Data-Anonymizer:    data_anonymizer_constructor
+  # IP-Inspector:       ip_inspector_constructor
+  # Profile-Builder:    profile_builder_constructor
+  # Rewards-Seeker:     rewards_seeker_constructor
+  # Risk-Assessor:      risk_assessor_constructor
+  # SocialMedia-Checker: socialmedia_checker_constructor
+  # Tech-Inspector:     tech_inspector_constructor
+  # Talent-Agent:       talent_agent_constructor
+
+
+# =============================================================================
+# ROUTES
+# Maps API Gateway path segments → canonical A2A capability names
+#
+# Consumed by api_handler.py to build its path lookup table.
+# The path segment is the last component of the route path declared
+# in each agent's registered card (routes[].path).
+#
+# Convention: camelCase path segment → A2A capability name (dotted)
+# =============================================================================
+
+routes:
+
+  solicitor-general:
+    - path: /agents/solicitorGeneral/justAsk
+      method: POST
+      capability: Just-Ask
+
+    - path: /agents/solicitorGeneral/eventLog
+      method: POST
+      capability: Event.Log
+
+    - path: /agents/solicitorGeneral/requestResponseCorrelate
+      method: POST
+      capability: Request-Response.Correlate
+
+  data-steward:
+    - path: /agents/dataSteward/phoneCall
+      method: POST
+      capability: Phone.Call
+
+    - path: /agents/dataSteward/phoneAnswer
+      method: POST
+      capability: Phone.Answer
+
+    - path: /agents/dataSteward/dataRequestGovern
+      method: POST
+      capability: Data-Request.Govern
+
+    - path: /agents/dataSteward/emailRead
+      method: POST
+      capability: Email.Read
+
+    - path: /agents/dataSteward/emailSend
+      method: POST
+      capability: Email.Send
+
+  purchasing-agent:
+    - path: /agents/purchasingAgent/purchaseOptionsRecommend
+      method: POST
+      capability: Purchase-Options.Recommend
+
+    - path: /agents/purchasingAgent/purchaseRiskEvaluate
+      method: POST
+      capability: Purchase-Risk.Evaluate
+
+    - path: /agents/purchasingAgent/purchaseHistoryGenerate
+      method: POST
+      capability: Purchase-History.Generate
+
+    - path: /agents/purchasingAgent/purchaseReceiptGenerate
+      method: POST
+      capability: Purchase-Receipt.Generate
+
+    - path: /agents/purchasingAgent/purchaseIssuesResolve
+      method: POST
+      capability: Purchase-Issues.Resolve
+
+    - path: /agents/purchasingAgent/returnOrRefundInitiate
+      method: POST
+      capability: Return-Or-Refund.Initiate
+
+    - path: /agents/purchasingAgent/orderStatusTrack
+      method: POST
+      capability: Order-Status.Track
+
+    - path: /agents/purchasingAgent/budgetAfterPurchaseUpdate
+      method: POST
+      capability: Budget-After-Purchase.Update
+
+    - path: /agents/purchasingAgent/transactionCompleteVerify
+      method: POST
+      capability: Transaction-Complete.Verify
+
+    - path: /agents/purchasingAgent/purchaseInitiate
+      method: POST
+      capability: Purchase.Initiate
+
+    - path: /agents/purchasingAgent/purchaseEligibilityValidate
+      method: POST
+      capability: Purchase-Eligibility.Validate
+
+    - path: /agents/purchasingAgent/budgetCheck
+      method: POST
+      capability: Budget.Check
+
+    - path: /agents/purchasingAgent/paymentCancel
+      method: POST
+      capability: Payment.Cancel
+
+    - path: /agents/purchasingAgent/mandateManage
+      method: POST
+      capability: Mandate.Manage
+
+  vendor-manager:
+    - path: /agents/vendorManager/orgProfileManage
+      method: POST
+      capability: Org-Profile.Manage

@@ -1,0 +1,4500 @@
+Folder PATH listing for volume Windows
+Volume serial number is F8BC-5924
+C:.
+|   1.6 million hit in massive insurance data breach — full names, addresses, SSNs and more exposed.html
+|   3M Company hit with stunning multimillion-dollar fine for endangering consumers_ 'Did nothing to protect'.html
+|   A laid-off Accenture manager has been job hunting for 21 months. Recruiters keep telling him he's too expensive..html
+|   A one-click button to protect your privacy is finally real - The Washington Post.htm
+|   Agents Companion _ Kaggle.htm
+|   Almost a million patients hit by Frederick Health data breach.html
+|   American Customers Are Madder Than Ever.html
+|   Anthropic called to testify in House on china-backed cyberattack – The Mercury News.htm
+|   bae10158-rp-state-ai-2024.pdf
+|   Capita fined after millions of people’s personal data stolen in cyber attack.html
+|   CFPB halts all work after director replaced with Trump administration official.html
+|   Chegg pays $7.5 million to settle FTC claims its services were hard to cancel.html
+|   Comparing Definitions of Personal Information .csv
+|   Conduent Says Hackers Exfiltrated ‘Limited’ Client Files.html
+|   CVS’s Omnicare Files Bankruptcy After $949 Million Judgment.html
+|   Dangerous npm packages are targeting developer credentials on Windows, Linux and Mac - here's what we know.html
+|   Data firm is building 'detailed portraits of Americans' on Trump's order_ report.html
+|   Fake job seekers are flooding U.S. companies that are hiring for remote positions, tech CEOs say.html
+|   France’s antitrust watchdog fines Apple for problems with App Tracking Transparency _ The Seattle Times.html
+|   Google drops Microsoft antitrust complaint in EU after new investigation.html
+|   Hackers steal 1.6 million patient records in major healthcare breach.html
+|   Hertz says hackers stole customer credit card and driver’s license data.html
+|   How to use ChatGPT to shop and find the best deals - The Washington Post.html
+|   Huge data breach exposes over 600,000 records, including background checks, vehicle, and property records.html
+|   ICE signs hundreds of agreements with law enforcement agencies to detain immigrants.html
+|   ISPs more likely to throttle netizens who connect through carrier-grade NAT_ Cloudflare.html
+|   L&E Analysis_ Reddit Sues Anthropic _ voyAIge strategy.htm
+|   Look out ChatGPT – the creator of Proton Mail has just launched a new AI chatbot that’s super-secure and private.html
+|   Mass Layoffs to Hit Two States in March.html
+|   Massive HIPAA Breach Exposes Over 500,000 Patients – Comstar Held Accountable.html
+|   Microsoft seizes 340 websites linked to growing phishing subscription service.html
+|   Millions of Résumés Never Make It Past the Bots. One Man Is Trying to Find Out Why..html
+|   Millions of Steam Accounts Reportedly Impacted by Data Breach.html
+|   Old Fortinet flaws under attack with new method its patch didn't prevent.html
+|   Opinion_ The price of privacy_ How your personal data could dictate what you pay.html
+|   Oracle Cloud says it's not true someone broke into its login servers and stole data.html
+|   Oracle rushes out another emergency E-Business Suite patch as Clop fallout widens.html
+|   Over 18 million US crypto user records surface on dark web in major data breach.html
+|   Over 600,000 Records, Including Background Checks, Vehicle, and Property Records Exposed Online by an Information Service Provider.html
+|   Police ignore standards after AI facial recognition matches - Washington Post.html
+|   Privacy apathy is real – and you probably have it.html
+|   README.md
+|   Red Hat fesses up to GitLab breach after attackers brag of data theft.html
+|   Rewards Management Platform _ Reward Incentive Programs _ Brandmovers.html
+|   Sam Altman said AI agents are acting like junior employees — and he's betting that your AI colleague could soon 'discover new knowledge'.html
+|   SeattleTimes-YourBossIsSpyingOnYou.docx
+|   SF Chronicle.htm
+|   SonicWall breach exposes all cloud backup users.html
+|   The one Windows feature everyone should turn off immediately for privacy.html
+|   This AI skeptic got feedback from the industry — and now he’s even more pessimistic.html
+|   Thoughts on countering AI-powered cyber threats.htm
+|   Thousands of civil servant passwords leaked online as experts warn of ‘serious risk’.html
+|   Top employee monitoring app leaks 21 million screenshots on thousands of users.html
+|   Top gig platform service may have leaked over 14 million user files.html
+|   Top US lab testing firm hit with major data leak, exposes health info on 1.6 million users.html
+|   tree-files.txt
+|   Trustpilot shares hit by ‘mafia-style extortion’ claims.html
+|   U.S. Senators Slam Treasury Secretary After $1M Trump Donation, _Who Does This Help__.html
+|   University of Pennsylvania confirms recent cyberattack led to major data theft.html
+|   Users Flood X With Names of DOGE Employees After Elon Musk Attempts to Suppress Them.html
+|   Why No One Can Get Hired Anymore _ Inside America’s Job Market Collapse _ Watch.html
+|   Your employer might be spying on you. Here’s how workers can check. _ The Seattle Times.htm
+|   Your team member is dominating AI project priorities. How can you ensure fair collaboration and success_.htm
+|   [2505.01524] The DCR Delusion_ Measuring the Privacy Risk of Synthetic Data.htm
+|   
++---1.6 million hit in massive insurance data breach — full names, addresses, SSNs and more exposed_files
+|       1ce44135-2432-47dd-b487-331b1abc8894.jpg
+|       8.26.0.js.download
+|       ast.js.download
+|       async_usersync
+|       async_usersync(1)
+|       async_usersync(2).html
+|       async_usersync(3).html
+|       async_usersync(4).html
+|       async_usersync.html
+|       common.be01588a175e1cceda3d.js.download
+|       comscore.7.7.0.211006.min.js.download
+|       config(1).js.download
+|       config.js.download
+|       experience.c3df3c185f2a4a41f1e8.js.download
+|       favicon.ico
+|       in-stream-video-sdk.2.2.6.js.download
+|       microsoft.d8f6d252e5cc78f0f2dc.js.download
+|       omid-verification-client-v1.js.download
+|       px(1).gif
+|       px.gif
+|       rd_log
+|       saved_resource.html
+|       tag
+|       textExpand_filled.svg
+|       trk(1).js.download
+|       trk(2).js.download
+|       trk(3).js.download
+|       trk.js.download
+|       vendors.f918be55a51aec5cb0e8.js.download
+|       
++---3M Company hit with stunning multimillion-dollar fine for endangering consumers_ 'Did nothing to protect'_files
+|       1.css
+|       165544.js.download
+|       341ec041-3ced-4857-9a9e-ab6750cab4ad.html
+|       62bHydCX.html
+|       analytics.js.download
+|       ast.js.download
+|       async_usersync
+|       async_usersync(1)
+|       async_usersync(2).html
+|       async_usersync(3).html
+|       async_usersync(4).html
+|       async_usersync.html
+|       B32808799.426203475
+|       B32971584.426190446
+|       ba.js.download
+|       banner.js.download
+|       box_19_top-right.png
+|       capital_one_logofilepath.png
+|       ci
+|       ci(1)
+|       ci(2)
+|       ci.png
+|       common.65047e6a13c671ac3a93.js.download
+|       common.7f9680a6abecb218a0a3.js.download
+|       COMMON.css
+|       config(1).js.download
+|       config.js.download
+|       datadog-logs-v4.js.download
+|       durly.js.download
+|       Enabler_01_250.js.download
+|       experience.6343c8a9919b12c5278e.js.download
+|       experience.6e87efdf3d8cbb13791a.js.download
+|       f(1).txt
+|       f(2).txt
+|       f(3).txt
+|       f(4).txt
+|       f.txt
+|       f82ac430-b566-498c-b340-620569548135
+|       gen_204
+|       gsap_3.11.5_min.js.download
+|       gtm.js.download
+|       html_inpage_rendering_lib_200_281.js.download
+|       htw-pixel.gif
+|       index.html
+|       js
+|       main(1).js.download
+|       main.19.8.619.js.download
+|       main.css
+|       main.js.download
+|       microsoft.006444c76d15e570ec2e.js.download
+|       microsoft.bfd53ffa4a1ec2609ee8.js.download
+|       pixel
+|       pixel.gif
+|       pixel.html
+|       Q12zgMmT.js.download
+|       rate311876_logofilepath.png
+|       rd_log
+|       rd_log(1)
+|       runtime~main.js.download
+|       saved_resource(1).html
+|       saved_resource(2).html
+|       saved_resource.html
+|       sca.17.6.4.js.download
+|       sdk.js.download
+|       skeleton(1).js.download
+|       skeleton.js.download
+|       style.css
+|       syncd
+|       tag
+|       TDIdynamic.js.download
+|       templates-61.css
+|       templates-61.js.download
+|       textExpand_filled.svg
+|       trk.js.download
+|       usermatch.html
+|       vendors.476c8f46cfb5f23dde6e.js.download
+|       vendors.a560e5b2d5d400152b79.js.download
+|       vendors~main.js.download
+|       
++---A laid-off Accenture manager has been job hunting for 21 months. Recruiters keep telling him he's too expensive._files
+|       4.js.download
+|       5ed6b07a-38e5-47e0-a32d-94cd35196242
+|       62bHydCX.html
+|       ae6481fc-b233-4636-9740-6177518a6102.jpg
+|       ast.js.download
+|       async_usersync
+|       async_usersync(1)
+|       async_usersync(2).html
+|       async_usersync(3).html
+|       async_usersync(4).html
+|       async_usersync.html
+|       banner.js.download
+|       ci
+|       common.7096d7ff0078b83700dc.js.download
+|       config(1).js.download
+|       config.js.download
+|       createjs.min.js.download
+|       experience.5c58f3742d7ce19eb1c6.js.download
+|       express_html_inpage_rendering_lib_200_281.js.download
+|       f(1).txt
+|       f(2).txt
+|       f(3).txt
+|       f(4).txt
+|       f.txt
+|       favicon.ico
+|       GambitGold_Q324_300x250.html
+|       GambitGold_Q324_300x250.js.download
+|       gen_204
+|       gsap_3.2.4_min.js.download
+|       htw-pixel.gif
+|       ifs.js.download
+|       microsoft.becf2e29a32c3be13406.js.download
+|       msn-sync.es5.js.download
+|       pixel.html
+|       px(1).gif
+|       px.gif
+|       Q12zgMmT.js.download
+|       rd_log
+|       rd_log(1)
+|       saved_resource(1).html
+|       saved_resource(2).html
+|       saved_resource.html
+|       sca.17.6.4.js.download
+|       sdk.js.download
+|       skeleton.js.download
+|       tag
+|       textExpand_filled.svg
+|       trk(1).js.download
+|       trk(2).js.download
+|       trk.js.download
+|       trustedIframe(1).html
+|       trustedIframe.html
+|       usermatch.html
+|       vendors.40d4b82d45f331803c8d.js.download
+|       
++---A one-click button to protect your privacy is finally real - The Washington Post_files
+|   |   1062-2fe35ccded02df91.js
+|   |   13def958
+|   |   16-4f4b67af687a6469.js
+|   |   160.145e59b64ef88927.js
+|   |   180-9a4cf9989753828b.js
+|   |   1930.a45ea721231d5696.js
+|   |   2058.96e0e0a02ce2ba0f.js
+|   |   2159-83069c8d2b8678b2.js
+|   |   2396.4e95ed21cb7151ec.js
+|   |   24232fce-c6eb1fee2bbf6bfa.js
+|   |   2512.8d087a5fd5e502b2.js
+|   |   2865.dac38842c7ee0ecf.js
+|   |   2L2Z6-GDWNL-RH2G3-MVS3W-7M6WF
+|   |   3041
+|   |   3161.a7136969257c6c63.js
+|   |   334-000f45a64f792eba.js
+|   |   377-d8e6bd0f1e95cfdb.js
+|   |   3787.45e7cf57f3f7598e.js
+|   |   3862.2374a08db5e04d74.js
+|   |   3905-2228a54a9fda76d4.js
+|   |   4030-7b126132e06826cf.js
+|   |   4238-d14b526b428c4a1d.js
+|   |   425.54bab46a2ebd5b6e.js
+|   |   4409-073466dc0a822b42.js
+|   |   4739-8227444f9c4eca6c.js
+|   |   4907-8238325b20d89709.js
+|   |   5007-58d410a0e2c56f8d.js
+|   |   5023.59739d296c8b38b2.js
+|   |   5036-0f093cac8aae1ae5.js
+|   |   5094-b9d5e07fe03dc08d.js
+|   |   512x288_Tech_tstmp_1623882240.jpg
+|   |   5206.40eab07b406101df.js
+|   |   5412-8da977b6915a4c14.js
+|   |   5938-1eb5bba700ebca4e.js
+|   |   6402.2a7523ae35270056.js
+|   |   6521-a2638e0bda11c792.js
+|   |   6787-3630ce1f7dbb1461.js
+|   |   690.143730065e35cce9.js
+|   |   699.f8ffcb8647f5c09b.js
+|   |   7146.f82217b70f03f297.js
+|   |   7321.7000480b93f17c3a.js
+|   |   7754-3b6871b7e198b68d.js
+|   |   8269.2ea179b4e578a1e9.js
+|   |   8662-9474d00198f1cb1b.js
+|   |   8903.775cabc8bccc2e3a.js
+|   |   9235-5e81c16fa586cccf.js
+|   |   9283.7ebf05de52af7e0d.js
+|   |   932.e451226da6e6d36b.js
+|   |   9775.f9691c458e623bfb.js
+|   |   9914-4476a740a73c3572.js
+|   |   9ce8dca37ce26c0b.css
+|   |   a.htm
+|   |   anchor.htm
+|   |   api.js
+|   |   apstag.js
+|   |   a_002.htm
+|   |   a_003.htm
+|   |   beacon.js
+|   |   chartbeat.js
+|   |   embed.js
+|   |   eyJpdSI6IjMwNzEwOGI1MzVmOGRkMzZmM2QzZTViZmExOGJmOGMwZjhiYjc.webp
+|   |   eyJpdSI6IjQ0N2QzNDAwZTgyMzE4MzM3MmIzNjMzNGM5YTc2ZTkwZWVlNjQ.webp
+|   |   eyJpdSI6IjQyNGNhZjk4NzA5ODdhZTZjYzU3YmFlMDhiNzI0YTZjYzZmNTI.webp
+|   |   eyJpdSI6IjRhOGM1OTRkZDhiOTlmYTBlNGM3YzMxNWMxYzFlZGU1NDlmOGU.webp
+|   |   eyJpdSI6ImFkMDhlNDFlMjgxMjE3ZDAwZDQ0ZWE4YTBiMDlkYjRkN2VjM2I.webp
+|   |   eyJpdSI6ImZhODc2Njc1N2I2ZmIyZWM2YmI1YWVlNzdiYWJmMjZlOTIwYTI.webp
+|   |   f.txt
+|   |   framework-f8946d4faf8ecd45.js
+|   |   f_002.txt
+|   |   get
+|   |   gtm.js
+|   |   imrs.avif
+|   |   imrs_002.avif
+|   |   imrs_003.avif
+|   |   imrs_004.avif
+|   |   imrs_005.avif
+|   |   imrs_006.avif
+|   |   imrs_007.avif
+|   |   imrs_008.avif
+|   |   InitialLoadScript.js
+|   |   js
+|   |   lrnojf.js
+|   |   main-f5ec0edbe7f04022.js
+|   |   main.js
+|   |   onelink-smart-script-latest.min.js
+|   |   outbrain.js
+|   |   PGUBVUJQIRFYLF6QQYYJ6OXJAA.png
+|   |   polyfills-78c92fac7aa8fdd8.js
+|   |   privacy-fe-api.min.js
+|   |   privacyoptions.svg
+|   |   recaptcha__en.js
+|   |   serviceiframe.htm
+|   |   subscriptions.js
+|   |   swg-button.css
+|   |   swg.js
+|   |   tc-string-parse.min.js
+|   |   tetro.min.js
+|   |   washingtonpost.js
+|   |   web-vitals.attribution.iife.js
+|   |   webpack-2de8391ec2f12add.js
+|   |   [...all]-24ee514dd3bb7d7c.js
+|   |   _app-2406241145356033.js
+|   |   _buildManifest.js
+|   |   _ssgManifest.js
+|   |   
+|   +---anchor_data
+|   |       a.htm
+|   |       styles__ltr.css
+|   |       
+|   +---a_data_003
+|   |       LastMileScript.js
+|   |       
+|   \---serviceiframe_data
+|           m=serviceiframeview,_b,_tp.css
+|           m=_b,_tp
+|           
++---Agents Companion _ Kaggle_files
+|   |   api.js
+|   |   app.css
+|   |   app.js
+|   |   cb=gapi.loaded_0
+|   |   client
+|   |   css.css
+|   |   css2.css
+|   |   js
+|   |   preview.htm
+|   |   runtime.js
+|   |   site-logo.svg
+|   |   vendor.js
+|   |   
+|   \---preview_data
+|           a.htm
+|           cb=gapi.loaded_0
+|           cb=gapi.loaded_1
+|           css.css
+|           css2.css
+|           identifier.htm
+|           lazy.min.js
+|           m=v,wb
+|           rs=AA2YrTtDNoAUN7FhinOqBuC9Lefc1WZnAQ.css
+|           rs=AA2YrTvRbRtHDArzB3468AVDc4vas6qBEw
+|           rs=AO0039tFFMxcZjGTB4Q7PP8wnyhnMa19gA.css
+|           
++---Almost a million patients hit by Frederick Health data breach_files
+|       62bHydCX(1).html
+|       62bHydCX.html
+|       9412.js.download
+|       aframe.html
+|       AI_Assistant.png
+|       ast.js.download
+|       async_usersync
+|       async_usersync(1)
+|       async_usersync(2).html
+|       async_usersync(3).html
+|       async_usersync(4).html
+|       async_usersync.html
+|       attribution_src_register
+|       ba.js.download
+|       box_19_top-right.png
+|       bundle.js.download
+|       ci.png
+|       common.0175b03f500a1acf23f3.js.download
+|       common.7b49dee57541cf30a63b.js.download
+|       COMMON.css
+|       Compensation_new.png
+|       config(1).js.download
+|       config(2).js.download
+|       config.js.download
+|       container.html
+|       css2
+|       cta.png
+|       d9core
+|       dcmads.js.download
+|       drkitchens.png
+|       durly.js.download
+|       dvbm.js.download
+|       Enabler_01_253.js.download
+|       experience.57c923f96de6384eb2fa.js.download
+|       experience.bd8130608ce215908c26.js.download
+|       f(1).txt
+|       f(2).txt
+|       f(3).txt
+|       f(4).txt
+|       f(5).txt
+|       f(6).txt
+|       f(7).txt
+|       f(8).txt
+|       f(9).txt
+|       f.txt
+|       favicon.ico
+|       ftUtils.js.download
+|       gen_204
+|       html_inpage_rendering_lib_200_281.js.download
+|       impl_v105.js.download
+|       in-stream-video-sdk.2.2.6.js.download
+|       index(1).html
+|       index.html
+|       izervay-logo.svg
+|       Limitation_new.png
+|       list_key_items.png
+|       logo.png
+|       main(1).css
+|       main.19.8.585.js.download
+|       main.css
+|       main.js.download
+|       microsoft.b87fb2cb8d039c78ab80.js.download
+|       microsoft.f27d3b49b41c8172204f.js.download
+|       omid-verification-client-v1.js.download
+|       page_1.png
+|       page_2.png
+|       page_3.png
+|       page_4.png
+|       pixel.gif
+|       pixel.html
+|       px(1).gif
+|       px.gif
+|       Q12zgMmT.js.download
+|       rd_log
+|       rd_log(1)
+|       saved_resource
+|       saved_resource(1).html
+|       saved_resource(2).html
+|       saved_resource(3).html
+|       saved_resource(4).html
+|       saved_resource(5).html
+|       saved_resource.html
+|       sca.17.6.4.js.download
+|       score.min.js.download
+|       skeleton(1).js.download
+|       skeleton.js.download
+|       sodar
+|       tag
+|       textExpand_filled.svg
+|       topics_frame.html
+|       trk(1).js.download
+|       trk(2).js.download
+|       trk.js.download
+|       TweenMax.min.js.download
+|       txt_1a.png
+|       txt_1b.png
+|       txt_2a.png
+|       txt_2b.png
+|       vendors.7b583b500968cb2bbd34.js.download
+|       vendors.f918be55a51aec5cb0e8.js.download
+|       verify.js.download
+|       visit.js.download
+|       wrap.js.download
+|       
++---American Customers Are Madder Than Ever_files
+|       app.js.download
+|       ast.js.download
+|       async_usersync
+|       async_usersync(1)
+|       async_usersync(2).html
+|       async_usersync(3).html
+|       async_usersync(4).html
+|       async_usersync.html
+|       banner.js.download
+|       common.ef111f3f5e44378d9e33.js.download
+|       en-us_script.js.download
+|       experience.22d5e629563c601829e4.js.download
+|       microsoft.b73c16e0ec41b55b3d24.js.download
+|       rd_log
+|       rd_log(1)
+|       saved_resource.html
+|       sdk(1).js.download
+|       sdk(2).js.download
+|       sdk.js.download
+|       tag
+|       textExpand_filled.svg
+|       th
+|       th(1)
+|       trk(1).js.download
+|       trk.js.download
+|       vendors.45d2e6f77b2f2d018a7e.js.download
+|       
++---Anthropic called to testify in House on china-backed cyberattack – The Mercury News_files
+|   |   138871148
+|   |   1x1-pixel.png
+|   |   3391
+|   |   899335980.js
+|   |   a.htm
+|   |   ACS.webp
+|   |   ads.min.js
+|   |   ad_300_250.jpg
+|   |   AGSKWxXsCs_7-BLRCD_BHleBH2dB8vPu2Mr80bs1i_-4NKi-Ltp67BEDo_0P05MT
+|   |   ai.0.js
+|   |   apstag.js
+|   |   auth0-session-storage.min.js
+|   |   auth0-spa-js.production.js
+|   |   a_002.htm
+|   |   a_003.htm
+|   |   a_004.htm
+|   |   a_005.htm
+|   |   a_006.htm
+|   |   a_007.htm
+|   |   a_008.htm
+|   |   a_009.htm
+|   |   a_010.htm
+|   |   b-4834aab-a7db2658.js
+|   |   BANG.webp
+|   |   bl-0f1294b-a4c39c96.js
+|   |   boldcoastal.css
+|   |   bootstrap-icons.min.css
+|   |   cf0094195071b2a67ee18e7276ab17cad5b0c56d5c224b638fc198adf9d3.jpg
+|   |   cf0094195071b2a67ee18e7276ab17cad5b0c56d5c224b638fc198ad_002.jpg
+|   |   client
+|   |   compass-multimedia-sdk.es5.js
+|   |   compass-multimedia-sdk.js
+|   |   cr.png
+|   |   css.css
+|   |   e-202548.js
+|   |   embedcode.js
+|   |   f.txt
+|   |   fp.min.js
+|   |   f_002.txt
+|   |   g.gif
+|   |   g2i.min.js
+|   |   gtm.js
+|   |   gtm_002.js
+|   |   htlbid.css
+|   |   htlbid.js
+|   |   i18n.min.js
+|   |   id5-api.js
+|   |   index.js
+|   |   ixmatch.htm
+|   |   jquery.min.js
+|   |   js
+|   |   js_002
+|   |   js_003
+|   |   latest_cls.js
+|   |   library.js
+|   |   loader.js
+|   |   loader.min.js
+|   |   marfeel-sdk.es5.js
+|   |   marfeel-sdk.js
+|   |   mn-logo.svg
+|   |   mng-cache-control-adminbar.js
+|   |   mng-digisubs.styles.css
+|   |   MNG.webp
+|   |   op.js
+|   |   osano.js
+|   |   p.js
+|   |   pushly-sdk.min.js
+|   |   raven.js
+|   |   script.js
+|   |   sharing.min.js
+|   |   sso-tools.min.js
+|   |   style.css
+|   |   style.min.css
+|   |   styleOsanoCustom.min.css
+|   |   style_002.css
+|   |   t8y9347t.min.css
+|   |   t8y9347t.min.js
+|   |   trinity-injector-script.js
+|   |   trinity-player.htm
+|   |   trinitymin.js
+|   |   Trust-Logo-Horizontal.svg
+|   |   Untitled
+|   |   Untitled.css
+|   |   Untitled_002
+|   |   Untitled_002.css
+|   |   Untitled_003
+|   |   Untitled_004
+|   |   Untitled_005
+|   |   Untitled_006
+|   |   Untitled_007
+|   |   user_sync.htm
+|   |   usync.htm
+|   |   web-vitals.attribution.iife.js
+|   |   widget.js
+|   |   wp-emoji-release.min.js
+|   |   
+|   +---a_data
+|   |       connatix.player.js
+|   |       connatix.player_002.js
+|   |       elLoader.js
+|   |       
+|   +---a_data_005
+|   |       sw_iframe.htm
+|   |       
+|   +---ixmatch_data
+|   |       usermatch.htm
+|   |       
+|   +---trinity-player_data
+|   |       trinity-bc7b889274bb4e05e2dfbd158e8daf8300bc9d47c5abeaad0b5a6.js
+|   |       trinity-player.js
+|   |       
+|   \---usync_data
+|           usync.js
+|           
++---Capita fined after millions of people’s personal data stolen in cyber attack_files
+|       0
+|       1.html
+|       2e2cd80ed2c36fa49cf9580703081ade.gif
+|       654c49f7831806ffa65d974c08027cb8__scv1__622x368.webp
+|       6f0476ca45e1d6b67e3ee8d57532a022.gif
+|       9.43.0.js.download
+|       906651574619330035
+|       adchoices_blue_wb.png
+|       adview
+|       aframe.html
+|       amp-ad-exit-0.1.js.download
+|       amp-analytics-0.1.js.download
+|       amp-fit-text-0.1.js.download
+|       amp-form-0.1.js.download
+|       amp4ads-v0.js.download
+|       ast.js.download
+|       async_usersync
+|       async_usersync(1)
+|       async_usersync(2).html
+|       async_usersync(3).html
+|       async_usersync(4).html
+|       async_usersync(5).html
+|       async_usersync(6).html
+|       async_usersync.html
+|       banner.js.download
+|       bsync.html
+|       cchain.html
+|       cframe.js.download
+|       checksync(1).html
+|       checksync.html
+|       cm(1).html
+|       cm-notify
+|       cm.html
+|       common.6595a538c501120ef093.js.download
+|       common.685b90ae9befd2d30cf1.js.download
+|       comscore.7.7.0.211006.min.js.download
+|       config(1).js.download
+|       config(2).js.download
+|       config.js.download
+|       connectmyusers.html
+|       cookie
+|       cookie.html
+|       cookieSync.html
+|       cookie_sync.html
+|       crossfire.js.download
+|       crum
+|       csync
+|       current
+|       en.png
+|       equativ
+|       eqx
+|       experience.0cb57dea6e1d1ba5d4de.js.download
+|       experience.2382925a15de695f6e4f.js.download
+|       f(1).txt
+|       f(2).txt
+|       f.txt
+|       generic
+|       getuid
+|       getuid(1)
+|       getuid(10).html
+|       getuid(11).html
+|       getuid(2)
+|       getuid(4)
+|       getuid(5)
+|       getuid(6)
+|       getuid(7)
+|       getuid(8)
+|       getuid(9).html
+|       getuid.html
+|       https___sync.cootlogix.com_api_cookie_partnerId=grid&userId=${BSW_UUID}&gdpr=&gdpr_consent=&us_privacy=
+|       ic
+|       ic(1)
+|       iframe(1).html
+|       iframe.html
+|       ImgSync
+|       ImgSync(1)
+|       load-cookie(1).html
+|       load-cookie.html
+|       match
+|       microsoft.006444c76d15e570ec2e.js.download
+|       microsoft.bfd53ffa4a1ec2609ee8.js.download
+|       min.html
+|       missena.html
+|       multi-sync(1).html
+|       multi-sync(2).html
+|       multi-sync(3).html
+|       multi-sync(4).html
+|       multi-sync(5).html
+|       multi-sync.html
+|       pbserverIframe.html
+|       pbs_sync.html
+|       pixel
+|       pixel(1)
+|       pixel(2)
+|       pixel.html
+|       rd_log
+|       rd_log(1)
+|       redirect
+|       redirect.html
+|       rmphb
+|       rmpssp
+|       rmpssp(1)
+|       s2s_sync.html
+|       saved_resource
+|       saved_resource(1)
+|       saved_resource(10)
+|       saved_resource(11)
+|       saved_resource(12)
+|       saved_resource(13)
+|       saved_resource(14)
+|       saved_resource(15).html
+|       saved_resource(16).html
+|       saved_resource(17).html
+|       saved_resource(18).html
+|       saved_resource(19).html
+|       saved_resource(2)
+|       saved_resource(20).html
+|       saved_resource(21).html
+|       saved_resource(22).html
+|       saved_resource(23).html
+|       saved_resource(24).html
+|       saved_resource(3)
+|       saved_resource(4)
+|       saved_resource(5)
+|       saved_resource(6)
+|       saved_resource(7)
+|       saved_resource(8)
+|       saved_resource(9)
+|       saved_resource.html
+|       sdk.js.download
+|       server_match
+|       server_match.html
+|       setuid
+|       setuid(1)
+|       setuid(2)
+|       setuid(3)
+|       setuid(4)
+|       setuid(5)
+|       setuid(6)
+|       setuid(7)
+|       setuid(8).html
+|       setuid(9).html
+|       setuid.html
+|       sodar
+|       style_banner_704028.css
+|       sync
+|       sync(1)
+|       sync(10).html
+|       sync(2)
+|       sync(3).html
+|       sync(4).html
+|       sync(5).html
+|       sync(6).html
+|       sync(7).html
+|       sync(8).html
+|       sync(9).html
+|       sync.html
+|       tag
+|       textExpand_filled.svg
+|       topics_frame.html
+|       tppx17540760315320.gif
+|       track
+|       trk.js.download
+|       uid
+|       um.html
+|       umcheck
+|       user-matching
+|       user-matching(1)
+|       user-matching.html
+|       user-sync
+|       user-sync.html
+|       usersync(1).html
+|       usersync(2).html
+|       usersync.aspx
+|       usersync.html
+|       userSync.js.download
+|       user_sync(1).html
+|       user_sync(2).html
+|       user_sync(3).html
+|       user_sync(4).html
+|       user_sync.html
+|       usync
+|       usync(1).html
+|       usync(2).html
+|       usync(3).html
+|       usync.html
+|       usync.js.download
+|       v1
+|       v1(1)
+|       vendors.c0e688f5972d53d3f7c6.js.download
+|       vendors.f355e8d6d6d04d57b854.js.download
+|       win
+|       wpjslib-sync(1).js.download
+|       wpjslib-sync.js.download
+|       wrap.js.download
+|       
++---CFPB halts all work after director replaced with Trump administration official_files
+|       adview
+|       aframe.html
+|       amp-ad-exit-0.1.js.download
+|       amp-analytics-0.1.js.download
+|       amp-fit-text-0.1.js.download
+|       amp-form-0.1.js.download
+|       amp4ads-v0.js.download
+|       ast.js.download
+|       async_usersync
+|       async_usersync(1)
+|       async_usersync(2).html
+|       async_usersync(3).html
+|       async_usersync.html
+|       bt-rlink-storage-DJolxq7O.html
+|       civicscience-widget.js.download
+|       common.568fee10a3baaee8ec4b.js.download
+|       config(1).js.download
+|       config(2).js.download
+|       config.js.download
+|       css
+|       csw-frame.5.4.28.js.download
+|       csw-widget.5.4.28.js.download
+|       en.png
+|       experience.94dde6d80782f1a7a972.js.download
+|       f(1).txt
+|       f.txt
+|       favicon.ico
+|       icon.png
+|       microsoft.b6e9673d3721e21dc39b.js.download
+|       omid-verification-client-v1.js.download
+|       px(1).gif
+|       px.gif
+|       rd_log
+|       rlink.js.download
+|       saved_resource(1).html
+|       saved_resource(2).html
+|       saved_resource(3).html
+|       saved_resource.html
+|       sodar
+|       tag
+|       textExpand_filled.svg
+|       topics_frame.html
+|       trk.js.download
+|       vendors.cb88f70081b3fe70b6d1.js.download
+|       wrap.js.download
+|       
++---Chegg pays $7.5 million to settle FTC claims its services were hard to cancel_files
+|       1.css
+|       165544.js.download
+|       62bHydCX.html
+|       8cdeac77-34f7-4ea8-9165-16376940d0e8
+|       adc.png
+|       adchoices.css
+|       ast.js.download
+|       async_usersync
+|       async_usersync(1)
+|       async_usersync(2).html
+|       async_usersync(3).html
+|       async_usersync(4).html
+|       async_usersync.html
+|       ba.js.download
+|       banner.js.download
+|       box_19_top-right.png
+|       c9b0bdea-6ce7-4c9e-8ec0-942fd71e0ee7
+|       ci
+|       ci.png
+|       common.7b9ef17989442c09bb6d.js.download
+|       COMMON.css
+|       common.e2003840b26796bf4d80.js.download
+|       config(1).js.download
+|       config.js.download
+|       consumer-privacy-logo.png
+|       d9core
+|       durly.js.download
+|       Enabler_01_250.js.download
+|       experience.31332add2c0ea512febb.js.download
+|       experience.486933c6a2c05d47b24d.js.download
+|       f(1).txt
+|       f(2).txt
+|       f(3).txt
+|       f(4).txt
+|       f.txt
+|       ftUtils.js.download
+|       gen_204
+|       gsap_3.11.5_min.js.download
+|       html_inpage_rendering_lib_200_281.js.download
+|       htw-pixel.gif
+|       index(1).html
+|       index.html
+|       lottie.min.js.download
+|       main.19.8.613.js.download
+|       main.js.download
+|       microsoft.0626641f942ce75b1afa.js.download
+|       microsoft.cd13e829932b367f8bd4.js.download
+|       p-9fYuixa7g_Hm2.gif
+|       pixel.gif
+|       pixel.html
+|       Q12zgMmT.js.download
+|       rd_log
+|       rd_log(1)
+|       rubicon_notify_openrtb
+|       saved_resource
+|       saved_resource(1).html
+|       saved_resource(2).html
+|       saved_resource(3).html
+|       saved_resource(4).html
+|       saved_resource(5).html
+|       saved_resource.html
+|       sca.17.6.4.js.download
+|       score.min.js.download
+|       sdk.js.download
+|       skeleton(1).js.download
+|       skeleton(2).js.download
+|       skeleton(3).js.download
+|       skeleton.js.download
+|       style.css
+|       tag
+|       TDIdynamic.js.download
+|       textExpand_filled.svg
+|       trk.js.download
+|       trustedIframe(1).html
+|       trustedIframe.html
+|       usermatch.html
+|       usync.html
+|       usync.js.download
+|       vendors.40d4b82d45f331803c8d.js.download
+|       vendors.656f876470635ed880a4.js.download
+|       
++---Conduent Says Hackers Exfiltrated ‘Limited’ Client Files_files
+|       1ce44135-2432-47dd-b487-331b1abc8894.jpg
+|       62bHydCX.html
+|       88692b5b-dedc-4a8b-a69b-8e19f02f6cef
+|       ast.js.download
+|       async_usersync
+|       async_usersync(1)
+|       async_usersync(10).html
+|       async_usersync(11).html
+|       async_usersync(12).html
+|       async_usersync(13).html
+|       async_usersync(2).html
+|       async_usersync(3).html
+|       async_usersync(4).html
+|       async_usersync(5).html
+|       async_usersync(6).html
+|       async_usersync(7).html
+|       async_usersync(8).html
+|       async_usersync(9).html
+|       async_usersync.html
+|       attribution_src_register
+|       common.ca33149422fef7e035db.js.download
+|       config(1).js.download
+|       config.js.download
+|       consumer-privacy-logo.png
+|       d9core
+|       experience.fe3d0eb222093833def2.js.download
+|       f(1).txt
+|       f(2).txt
+|       f(3).txt
+|       f.txt
+|       favicon.ico
+|       ftUtils.js.download
+|       FY25Q1_CC_Individual_CCIAllApps_US_EN_AC-Lim-DisplayGIF-PushBoundaries-CreatorSpaceDawg_AN_300x250_NA_NA.gif
+|       gen_204
+|       htw-pixel.gif
+|       iconc.png
+|       microsoft.d8f6d252e5cc78f0f2dc.js.download
+|       omid-verification-client-v1.js.download
+|       pixel.html
+|       px(1).gif
+|       px.gif
+|       Q12zgMmT.js.download
+|       rd_log
+|       rd_log(1)
+|       saved_resource
+|       saved_resource(1).html
+|       saved_resource(2).html
+|       saved_resource.html
+|       score.min.js.download
+|       tag
+|       textExpand_filled.svg
+|       trk(1).js.download
+|       trk(2).js.download
+|       trk(3).js.download
+|       trk(4).js.download
+|       trk.js.download
+|       usermatch.html
+|       vendors.f918be55a51aec5cb0e8.js.download
+|       
++---CVS’s Omnicare Files Bankruptcy After $949 Million Judgment_files
+|       142
+|       adchoices_blue_wb.png
+|       adview
+|       aframe.html
+|       amp-ad-exit-0.1.js.download
+|       amp-analytics-0.1.js.download
+|       amp-fit-text-0.1.js.download
+|       amp-form-0.1.js.download
+|       amp4ads-v0.js.download
+|       ast.js.download
+|       async_usersync
+|       async_usersync(1)
+|       async_usersync(2).html
+|       async_usersync(3).html
+|       async_usersync(4).html
+|       async_usersync.html
+|       banner.js.download
+|       c317e8dca32dacd3ba439eb0e2aa7f22__scv1__622x368.webp
+|       cm
+|       cm-notify
+|       cm-notify.html
+|       common.5ddf06fdc71548dc019e.js.download
+|       cookieSync.html
+|       crum
+|       css
+|       en-us_script.js.download
+|       en.png
+|       experience.afe0934505eda14688de.js.download
+|       f(1).txt
+|       f.txt
+|       generic
+|       generic(1)
+|       generic.html
+|       getuid
+|       gumgum
+|       ic
+|       ic(1)
+|       idsync.html
+|       ifs.js.download
+|       load-cookie.html
+|       match
+|       match.html
+|       microsoft.ee5d39ba869bd71f45e3.js.download
+|       msn-sync.es5.js.download
+|       multi-sync.html
+|       pixel
+|       pixel(1)
+|       pixel.html
+|       prbds2s.html
+|       rd_log
+|       rd_log(1)
+|       rtset
+|       saved_resource
+|       saved_resource(1).html
+|       saved_resource(2).html
+|       saved_resource.html
+|       setuid
+|       setuid(1)
+|       setuid(2)
+|       setuid(3)
+|       setuid(4).html
+|       setuid.html
+|       sodar
+|       style_banner_704028.css
+|       sync
+|       sync(1)
+|       sync(2)
+|       sync.html
+|       tag
+|       textExpand_filled.svg
+|       topics_frame.html
+|       track
+|       trk(1).js.download
+|       trk(2).js.download
+|       trk(3).js.download
+|       trk.js.download
+|       usersync
+|       user_sync.html
+|       usync(1).html
+|       usync.html
+|       usync.js.download
+|       vendors.d6433f4727541e43f18b.js.download
+|       win
+|       
++---Dangerous npm packages are targeting developer credentials on Windows, Linux and Mac - here's what we know_files
+|       115BTkNA0nL.js.download
+|       24fe385e-b733-457f-8d3c-94142f38fac5
+|       27638b9f-c6d5-4e4e-a322-8a03f2d58f52.jpg
+|       71DFSiS1gBL.js.download
+|       adforensics_csmcollection.js.download
+|       adforensics_rtbv1.js.download
+|       app.js.download
+|       ara.js.download
+|       ast.js.download
+|       async_usersync
+|       async_usersync(1)
+|       async_usersync(2).html
+|       async_usersync(3).html
+|       async_usersync(4).html
+|       async_usersync.html
+|       banner.js.download
+|       common.3103db868174cf463ca7.js.download
+|       common.a7183d32b08b0392e008.js.download
+|       creative.html
+|       crem.js.download
+|       csmtpmv1.js.download
+|       en-us_script.js.download
+|       experience.799d2e129e2de6256a49.js.download
+|       experience.e3555ff8594f6b62d689.js.download
+|       impb
+|       microsoft.7389c3026d471832f27c.js.download
+|       microsoft.8deb01a0da9370245904.js.download
+|       rd_log
+|       rd_log(1)
+|       saved_resource
+|       sdk(1).js.download
+|       sdk.js.download
+|       tag
+|       textExpand_filled.svg
+|       th
+|       trk.js.download
+|       usync.html
+|       usync.js.download
+|       vendors.12c1f6e5ff43f6e8efda.js.download
+|       vendors.45d2e6f77b2f2d018a7e.js.download
+|       
++---Data firm is building 'detailed portraits of Americans' on Trump's order_ report_files
+|       360947.gif
+|       4.js.download
+|       90096
+|       90206
+|       adr.html
+|       ast.js.download
+|       async_usersync
+|       async_usersync(1)
+|       async_usersync(2).html
+|       async_usersync(3).html
+|       async_usersync(4).html
+|       async_usersync.html
+|       banner.js.download
+|       bcS.js.download
+|       bcST.js.download
+|       beacon.js.download
+|       blank.png
+|       ca
+|       cds-pips.js.download
+|       cksync.php
+|       cm
+|       common.46e22ebc0f7747152bfe.js.download
+|       common.cec05f2f462c318826fb.js.download
+|       config(1).js.download
+|       config.js.download
+|       css
+|       dcmads.js.download
+|       dt_with_modernizr_min.js.download
+|       eid.es5.js.download
+|       experience.0a6cd406dd4c09e534b1.js.download
+|       experience.1d7c8ed2590622923a93.js.download
+|       f(1).txt
+|       f(2).txt
+|       f.txt
+|       favicon.ico
+|       fraud-detect.js.download
+|       g.pixel
+|       html5API.js.download
+|       ibs_dpid=1121&dpuuid=1448174229208202774&redir=
+|       impl_v106.js.download
+|       loader.js.download
+|       m
+|       MGM_cosmo_f2_room_terrace_hero_728x90.jpg
+|       MGM_cosmo_f3_totally_consumed_hero_728x90.jpg
+|       MGM_cosmo_stacked_logo.svg
+|       microsoft.ab10190cf4986cb72f14.js.download
+|       microsoft.cddf4d278b3e225a5809.js.download
+|       MRI159510558-728x90.jpg
+|       ot
+|       pixel
+|       pixel(1)
+|       pixel(2)
+|       Pug
+|       px(1).gif
+|       px.gif
+|       rd_log
+|       rd_log(1)
+|       rum
+|       saved_resource
+|       saved_resource(1)
+|       saved_resource(2).html
+|       saved_resource(3).html
+|       saved_resource.html
+|       sca.17.6.4.js.download
+|       script.js.download
+|       sd
+|       setuid
+|       skeleton.js.download
+|       style.css
+|       sync
+|       sync(1)
+|       sync(2)
+|       syncframe.html
+|       tag
+|       TCO159308217-728x90.jpg
+|       textExpand_filled.svg
+|       trk.js.download
+|       trustedIframe.html
+|       TweenMax.min.js.download
+|       vcd15cbe7772f49c399c6a5babf22c1241717689176015
+|       vendors.8d5ee32c24edfc151355.js.download
+|       vendors.931464ce8d9fdf8c7b2c.js.download
+|       
++---Fake job seekers are flooding U.S. companies that are hiring for remote positions, tech CEOs say_files
+|       7e1859db-d8c1-11ed-8078-0a919b37cd73.html
+|       analytics.js.download
+|       ast.js.download
+|       async_usersync
+|       async_usersync(1)
+|       async_usersync(2).html
+|       async_usersync(3).html
+|       async_usersync(4).html
+|       async_usersync.html
+|       B32971584.415780927
+|       common.6e5c84298188d84c7661.js.download
+|       config(1).js.download
+|       config.js.download
+|       css
+|       datadog-logs-v4.js.download
+|       experience.7e33f3fc9645da4832b2.js.download
+|       f.txt
+|       favicon.ico
+|       gtm.js.download
+|       in-stream-video-sdk.2.2.6.js.download
+|       inside.js.download
+|       js
+|       main.19.8.580.js.download
+|       main.css
+|       main.js.download
+|       microsoft.c2593402f5370c36ce9d.js.download
+|       omid-verification-client-v1.js.download
+|       px(1).gif
+|       px.gif
+|       rate311876_logofilepath.png
+|       rd_log
+|       rd_log(1)
+|       runtime~main.js.download
+|       saved_resource(1).html
+|       saved_resource.html
+|       sca.17.6.4.js.download
+|       sdk.js.download
+|       skeleton(1).js.download
+|       skeleton.js.download
+|       tag
+|       templates-0.css
+|       templates-0.js.download
+|       textExpand_filled.svg
+|       th
+|       trk(1).js.download
+|       trk(2).js.download
+|       trk(3).js.download
+|       trk.js.download
+|       vendors.c4a819c848752d810f54.js.download
+|       vendors~main.js.download
+|       
++---France’s antitrust watchdog fines Apple for problems with App Tracking Transparency _ The Seattle Times_files
+|       1350598668201637276
+|       1x1-pixel.png
+|       25075460524.js.download
+|       3303
+|       605d2c78582df01d0ec93855950a4cfbd5a14db83d0f7eab211fd4894ae78c3c
+|       646b373c4d658623
+|       7429270685607420611
+|       7a8ab1ab1e014ce7
+|       81279359
+|       a24397840812.html
+|       aframe.html
+|       AGSKWxUSL450SyaCdlqOu9jZnnPXvxzmKK03N5WRjzuUR707JWVBFKwEZ8anOzFLbNfE0IlAfObgL2liWD5TbbUSS01XrpVHQ5BGMLY
+|       AGSKWxUTzh04uFt_fDs89i9BpC-zhfBjcn6SnuT5vWunZumb5PbPcZs4jc8kAZLclbvwWkQnfSaZYZ2OPTbdjocsHvLb282I7xndw0r
+|       AGSKWxV3DByHFQviy579GjbCANX_Phuf3PJ7yBEiXo5GqCSff3NrCsRCoHOiwoo4frw5hFOV77W-aOzqATqdj3T9b7ryuEaQ2s712i8
+|       apstag.js.download
+|       article-main.js.download
+|       async_usersync
+|       async_usersync.html
+|       beacon.html
+|       bundle.min.js.download
+|       chartbeat.js.download
+|       chartbeat_mab.js.download
+|       check.html
+|       checksync.html
+|       client
+|       compass-multimedia-sdk.es5.js.download
+|       compass-multimedia-sdk.js.download
+|       cs.js.download
+|       css
+|       dnsfeed
+|       ebx.js.download
+|       f(1).txt
+|       f(2).txt
+|       f(3).txt
+|       f.txt
+|       gtm.js.download
+|       htlbid(1).js.download
+|       htlbid.css
+|       htlbid.js.download
+|       iu3.html
+|       ixmatch.html
+|       js
+|       library.js.download
+|       lty1dar.css
+|       main.css
+|       marfeel-sdk.es5.js.download
+|       marfeel-sdk.js.download
+|       ml.js.download
+|       otBannerSdk.js.download
+|       otCCPAiab.js.download
+|       otSDKStub.js.download
+|       pbs-iframe.html
+|       pd.html
+|       publishertag.prebid.144.js.download
+|       pushly-sdk.min.js.download
+|       raven.js.download
+|       rul.html
+|       saved_resource(1).html
+|       saved_resource(2).html
+|       saved_resource(3).html
+|       saved_resource(4).html
+|       saved_resource(5).html
+|       saved_resource(6).html
+|       saved_resource(7).html
+|       saved_resource.html
+|       shortcodes-public.css
+|       sodar
+|       st-advertising-bundle.js.download
+|       st-analytics-article-bundle.js.download
+|       st-blocking-bundle.js.download
+|       st-paywall-app.js.download
+|       st-sitewide-bundle.js.download
+|       st-spruce-app.js.download
+|       st-spruce-bundle.js.download
+|       st-user-messaging-main-bundle.js.download
+|       STImageGallery.css
+|       style.css
+|       styles.min.css
+|       subscriptions.js.download
+|       topics_frame.html
+|       um.html
+|       umcheck
+|       urnpublicidap.org8f1c2f1fda1d3ffeed50322df8093817Europe-Digital_Regulation_39843.jpg
+|       user_sync.html
+|       usync.html
+|       usync.js.download
+|       view
+|       wp-emoji-release.min.js.download
+|       
++---Google drops Microsoft antitrust complaint in EU after new investigation_files
+|       app.js.download
+|       ast.js.download
+|       async_usersync
+|       async_usersync(1)
+|       async_usersync(2).html
+|       async_usersync(3).html
+|       async_usersync(4).html
+|       async_usersync.html
+|       banner.js.download
+|       common.153e2cfc628a8c1ff9b6.js.download
+|       common.ef111f3f5e44378d9e33.js.download
+|       comscore.7.7.0.211006.min.js.download
+|       en-us_script.js.download
+|       experience.22d5e629563c601829e4.js.download
+|       experience.8a5eb113dd27f6cf9333.js.download
+|       microsoft.7389c3026d471832f27c.js.download
+|       microsoft.b73c16e0ec41b55b3d24.js.download
+|       rd_log
+|       rd_log(1)
+|       saved_resource.html
+|       sdk(1).js.download
+|       sdk(2).js.download
+|       sdk.js.download
+|       tag
+|       textExpand_filled.svg
+|       th
+|       th(1)
+|       trk(1).js.download
+|       trk(2).js.download
+|       trk.js.download
+|       vendors.12c1f6e5ff43f6e8efda.js.download
+|       vendors.45d2e6f77b2f2d018a7e.js.download
+|       
++---Hackers steal 1.6 million patient records in major healthcare breach_files
+|       8.26.0.js.download
+|       ast.js.download
+|       async_usersync
+|       async_usersync(1).html
+|       async_usersync.html
+|       common.be01588a175e1cceda3d.js.download
+|       comscore.7.7.0.211006.min.js.download
+|       config.js.download
+|       experience.c3df3c185f2a4a41f1e8.js.download
+|       favicon.ico
+|       ifs.js.download
+|       in-stream-video-sdk.2.2.6.js.download
+|       microsoft.d8f6d252e5cc78f0f2dc.js.download
+|       msn-sync.es5.js.download
+|       omid-verification-client-v1.js.download
+|       px(1).gif
+|       px.gif
+|       saved_resource.html
+|       tag
+|       textExpand_filled.svg
+|       trk(1).js.download
+|       trk(2).js.download
+|       trk(3).js.download
+|       trk.js.download
+|       vendors.f918be55a51aec5cb0e8.js.download
+|       
++---Hertz says hackers stole customer credit card and driver’s license data_files
+|       8b24a691-9c16-4e41-8f76-24b5208419f0
+|       adc.png
+|       adchoices.css
+|       Adobe_ACQAiEdit_728x90.html
+|       agent_photo
+|       appnexus-html5-lib-host.min.js.download
+|       appnexus-html5-lib.min.js.download
+|       ast.js.download
+|       async_usersync
+|       async_usersync(1)
+|       async_usersync(2).html
+|       async_usersync(3).html
+|       async_usersync(4).html
+|       async_usersync.html
+|       ci
+|       common.ca33149422fef7e035db.js.download
+|       config(1).js.download
+|       config.js.download
+|       consumer-privacy-logo.png
+|       createjs.min.js.download
+|       d9core
+|       experience.fe3d0eb222093833def2.js.download
+|       favicon.ico
+|       ftUtils.js.download
+|       gsap.min(1).js.download
+|       gsap.min.js.download
+|       htw-pixel.gif
+|       index.html
+|       listing_photo
+|       logo
+|       main.19.8.583.js.download
+|       microsoft.d8f6d252e5cc78f0f2dc.js.download
+|       omid-verification-client-v1.js.download
+|       p-9fYuixa7g_Hm2.gif
+|       px(1).gif
+|       px.gif
+|       rd_log
+|       rd_log(1)
+|       saved_resource
+|       saved_resource(1).html
+|       saved_resource(2).html
+|       saved_resource(3).html
+|       saved_resource.html
+|       sca.17.6.4.js.download
+|       score.min.js.download
+|       skeleton(1).js.download
+|       skeleton.js.download
+|       style.css
+|       tag
+|       textExpand_filled.svg
+|       trk(1).js.download
+|       trk(2).js.download
+|       trk.js.download
+|       usermatch.html
+|       vendors.f918be55a51aec5cb0e8.js.download
+|       
++---How to use ChatGPT to shop and find the best deals - The Washington Post_files
+|       1008-0fcc7121bb2f2cbf.js.download
+|       1062-fbc1158c14cecad8.js.download
+|       16-4f4b67af687a6469.js.download
+|       160.145e59b64ef88927.js.download
+|       180-d2b07cd6e06f8d85.js.download
+|       1930.83b852cbbcb9b26b.js.download
+|       2058.96e0e0a02ce2ba0f.js.download
+|       2396.b9ff7fed4bccf899.js.download
+|       24232fce-c6eb1fee2bbf6bfa.js.download
+|       2512.0f435fb912b940cf.js.download
+|       2L2Z6-GDWNL-RH2G3-MVS3W-7M6WF
+|       3041
+|       3161.a7136969257c6c63.js.download
+|       334-a79c7698114dc309.js.download
+|       377-d8e6bd0f1e95cfdb.js.download
+|       3787.8ab43b83eca667f6.js.download
+|       3862.2374a08db5e04d74.js.download
+|       3905-2228a54a9fda76d4.js.download
+|       4030-5e0fa83f35e39149.js.download
+|       4238-ced8d04c12ac571d.js.download
+|       425.54bab46a2ebd5b6e.js.download
+|       4409-073466dc0a822b42.js.download
+|       4739-8227444f9c4eca6c.js.download
+|       4907-8238325b20d89709.js.download
+|       5007-58d410a0e2c56f8d.js.download
+|       5023.26a79948f48e74fa.js.download
+|       5036-0f093cac8aae1ae5.js.download
+|       5070-2a13ace609aeb1aa.js.download
+|       5206.40eab07b406101df.js.download
+|       5412-8da977b6915a4c14.js.download
+|       5938-cfa52057e2caf7b0.js.download
+|       5f1f2661-22d4-401c-9c10-4d7647fb6edc-web.js.download
+|       62bHydCX.html
+|       6402.2a7523ae35270056.js.download
+|       6521-7668db43b0d2a7a6.js.download
+|       65568.js.download
+|       6787-3630ce1f7dbb1461.js.download
+|       6876-b81637127bbdd3be.js.download
+|       690.143730065e35cce9.js.download
+|       699.0a2f611effe8d8dd.js.download
+|       7146.f82217b70f03f297.js.download
+|       7754-24787a0d875097c1.js.download
+|       8111-06fd5d5089d0b105.js.download
+|       8221
+|       8269.2ea179b4e578a1e9.js.download
+|       8903.775cabc8bccc2e3a.js.download
+|       9156.6ae23f715ea7e00a.js.download
+|       9235-5e81c16fa586cccf.js.download
+|       9283.7ebf05de52af7e0d.js.download
+|       932.e451226da6e6d36b.js.download
+|       9775.f9691c458e623bfb.js.download
+|       9ce8dca37ce26c0b.css
+|       aframe.html
+|       anchor.html
+|       api.js.download
+|       apstag.js.download
+|       beacon.js.download
+|       c.js.download
+|       chartbeat.js.download
+|       cm.html
+|       css2
+|       dv-measurements8708.js.download
+|       dvtp_src.js.download
+|       embed.js.download
+|       f(1).txt
+|       f(2).txt
+|       f(3).txt
+|       f.txt
+|       framework-f8946d4faf8ecd45.js.download
+|       gam_display.js.download
+|       gtm.js.download
+|       htw-pixel.gif
+|       imrs(1).php
+|       imrs(2).php
+|       imrs.php
+|       index.css
+|       index.js.download
+|       InitialLoadScript.js.download
+|       ixmatch.html
+|       jload
+|       js
+|       load-cookie.html
+|       lrnojf.js.download
+|       m=serviceiframeview,_b,_tp
+|       m=_b,_tp
+|       main-f5ec0edbe7f04022.js.download
+|       main.js.download
+|       nl-management-2_tstmp_1704813440.jpg
+|       onelink-smart-script-latest.min.js.download
+|       otBannerSdk.js.download
+|       otGPP.js.download
+|       otSDKStub.js.download
+|       ot_company_logo.png
+|       pixel(1).gif
+|       pixel.gif
+|       polyfills-78c92fac7aa8fdd8.js.download
+|       powered_by_logo.svg
+|       privacy-fe-api.min.js.download
+|       privacyoptions.svg
+|       Q12zgMmT.js.download
+|       recaptcha__en.js.download
+|       saved_resource(1).html
+|       saved_resource(10).html
+|       saved_resource(11).html
+|       saved_resource(2).html
+|       saved_resource(3).html
+|       saved_resource(4).html
+|       saved_resource(5).html
+|       saved_resource(6).html
+|       saved_resource(7).html
+|       saved_resource(8).html
+|       saved_resource(9).html
+|       saved_resource.html
+|       sca.17.6.4.js.download
+|       serviceiframe.html
+|       sodar
+|       styles__ltr.css
+|       subscriptions.js.download
+|       swg-button.css
+|       swg.js.download
+|       sync.html
+|       syncframe.html
+|       tc-string-parse.min.js.download
+|       tetro.min.js.download
+|       topics_frame.html
+|       usermatch.html
+|       user_sync.html
+|       usync.html
+|       usync.js.download
+|       vcd15cbe7772f49c399c6a5babf22c1241717689176015
+|       visit.js.download
+|       washingtonpost.js.download
+|       web-vitals.attribution.iife.js.download
+|       webpack-e541f7b492a97d7e.js.download
+|       [...all]-e0088372901a746d.js.download
+|       _app-2406241145356033.js.download
+|       _buildManifest.js.download
+|       _ssgManifest.js.download
+|       
++---Huge data breach exposes over 600,000 records, including background checks, vehicle, and property records_files
+|       262cd8078911136b5c3f5e423ec94647__scv1__622x368.png
+|       341ec041-3ced-4857-9a9e-ab6750cab4ad.html
+|       analytics.js.download
+|       ast.js.download
+|       async_usersync
+|       async_usersync(1)
+|       async_usersync(2).html
+|       async_usersync(3).html
+|       async_usersync(4).html
+|       async_usersync.html
+|       B29760667.405907278
+|       common.72e604248f067c881f15.js.download
+|       config(1).js.download
+|       config.js.download
+|       cookieSync.html
+|       crum
+|       css
+|       datadog-logs-v4.js.download
+|       experience.566a91b12c137284144f.js.download
+|       favicon.ico
+|       gtm.js.download
+|       ic
+|       ic(1)
+|       ifs.js.download
+|       in-stream-video-sdk.1.0.5.HF.js.download
+|       js
+|       main.css
+|       main.js.download
+|       microsoft.b9feaf46797aefc0578a.js.download
+|       msn-sync.es5.js.download
+|       pixel
+|       px(1).gif
+|       px.gif
+|       rate311876_logofilepath.png
+|       rd_log
+|       rd_log(1)
+|       runtime~main.js.download
+|       saved_resource.html
+|       script.js.download
+|       setuid
+|       style_banner_ecaa02.css
+|       tag
+|       templates-28.css
+|       templates-28.js.download
+|       textExpand_filled.svg
+|       trk.js.download
+|       vendors.11aea9cb21b790599d46.js.download
+|       vendors~main.js.download
+|       
++---ICE signs hundreds of agreements with law enforcement agencies to detain immigrants_files
+|       6001658920614492593
+|       adchoices_blue_wb.png
+|       adview
+|       aframe.html
+|       amp-ad-exit-0.1.js.download
+|       amp-analytics-0.1.js.download
+|       amp-fit-text-0.1.js.download
+|       amp-form-0.1.js.download
+|       amp4ads-v0.js.download
+|       ast.js.download
+|       async_usersync
+|       async_usersync(1)
+|       async_usersync(2).html
+|       async_usersync(3).html
+|       async_usersync(4).html
+|       async_usersync.html
+|       b68e3f810a6faac802d35b5b4ccb475c__scv1__622x368.webp
+|       banner.js.download
+|       common.ae71701c65a21eef3714.js.download
+|       common.d82dbf3435e6efc69f10.js.download
+|       config(1).js.download
+|       config(2).js.download
+|       config.js.download
+|       cookieSync.html
+|       crum
+|       en.png
+|       experience.2e8e9a61f1d7dedcb974.js.download
+|       experience.6b0abad5594e0ef63e48.js.download
+|       f(1).txt
+|       f.txt
+|       ic
+|       ic(1)
+|       microsoft.bfd53ffa4a1ec2609ee8.js.download
+|       microsoft.ee5d39ba869bd71f45e3.js.download
+|       pixel
+|       rd_log
+|       rd_log(1)
+|       saved_resource(1).html
+|       saved_resource(2).html
+|       saved_resource.html
+|       sdk.js.download
+|       setuid
+|       sodar
+|       style_banner_704028.css
+|       tag
+|       textExpand_filled.svg
+|       topics_frame.html
+|       tr
+|       trk(1).js.download
+|       trk.js.download
+|       trustedIframe(1).html
+|       trustedIframe.html
+|       vendors.476c8f46cfb5f23dde6e.js.download
+|       vendors.d6433f4727541e43f18b.js.download
+|       wrap.js.download
+|       
++---ISPs more likely to throttle netizens who connect through carrier-grade NAT_ Cloudflare_files
+|       0
+|       115BTkNA0nL.js.download
+|       1f3c8.svg
+|       27a1.svg
+|       2f40832c-eca2-474b-bdbf-bb77b8f3a471.jpg
+|       5065a7f9-d833-42d8-93e4-37949414aa9e
+|       71DFSiS1gBL.js.download
+|       adforensics_csmcollection.js.download
+|       adforensics_rtbv1.js.download
+|       ara.js.download
+|       ast.js.download
+|       async_usersync
+|       async_usersync(1)
+|       async_usersync(2).html
+|       async_usersync(3).html
+|       async_usersync(4).html
+|       async_usersync(5).html
+|       async_usersync.html
+|       banner.js.download
+|       bundle.js.download
+|       common.3103db868174cf463ca7.js.download
+|       common.5dcf38ced86f63cdb056.js.download
+|       cookieSync.html
+|       creative.html
+|       crem.js.download
+|       crum
+|       csmtpmv1.js.download
+|       D9Kf2xKAIYi0WaxJ.jpg
+|       e4ac3ae716bf2cd1a84a0ac335084b80__scv1__622x368.webp
+|       embed.9449.78398904051446294e3d.js.download
+|       embed.runtime.01bcb76409c00f15f058.js.download
+|       embed.Tweet.23aa1579fc7458d3ccd1.js.download
+|       en-us_script.js.download
+|       experience.3c76352c4e1511c892e1.js.download
+|       experience.91b399a6610657804523.js.download
+|       fw.js.download
+|       fxfZaCTQ_x96.jpg
+|       G4wTqCYWkAAc9Cp
+|       highlight
+|       ic
+|       ic(1)
+|       impb
+|       microsoft.7389c3026d471832f27c.js.download
+|       microsoft.8deb01a0da9370245904.js.download
+|       PHKS_mjX_bigger.jpg
+|       pixel
+|       rd_log
+|       rd_log(1)
+|       saved_resource
+|       saved_resource(1).html
+|       saved_resource.html
+|       sca.js.download
+|       sdk.js.download
+|       setuid
+|       style_banner_704028.css
+|       tag
+|       textExpand_filled.svg
+|       track
+|       trk.js.download
+|       Tweet(1).html
+|       tweet.d7aeb21a88e025d2ea5f5431a103f586.js.download
+|       Tweet.html
+|       U2nkUbzU_x96.jpg
+|       usync.html
+|       usync.js.download
+|       vendors.12c1f6e5ff43f6e8efda.js.download
+|       vendors.45d2e6f77b2f2d018a7e.js.download
+|       widgets.js.download
+|       widget_iframe.2f70fb173b9000da126c79afe2098f02.html
+|       win
+|       
++---L&E Analysis_ Reddit Sues Anthropic _ voyAIge strategy_files
+|   |   a.htm
+|   |   app.bundle.min.js
+|   |   browser-deprecation.bundle.es5.js
+|   |   cd0510_a1fad0ccf50543aaa568ccc76df167cc~mv2.avif
+|   |   f.txt
+|   |   focus-within-polyfill.js
+|   |   f_002.txt
+|   |   js
+|   |   js_002
+|   |   lodash.min.js
+|   |   main.920a27f2.bundle.min.js
+|   |   main.renderer.f600e767.bundle.min.js
+|   |   minified.js
+|   |   modulemetadata.es5.min.js
+|   |   rb_wixui.thunderbolt[ClassicSection].d444d835.bundle.min.js
+|   |   rb_wixui.thunderbolt[Column_DesignedColumn].3312fb28.bundle.m.js
+|   |   rb_wixui.thunderbolt[FooterContainer_DefaultWithFillLayers].6.js
+|   |   rb_wixui.thunderbolt[HeaderContainer_DefaultWithFillLayers].a.js
+|   |   rb_wixui.thunderbolt[MeshGroup].f88c99ed.bundle.min.js
+|   |   rb_wixui.thunderbolt[SkipToContentButton].69abe737.bundle.min.js
+|   |   rb_wixui.thunderbolt[StripColumnsContainer_Default].77c39bf3..js
+|   |   rb_wixui.thunderbolt_bootstrap-classic.ee97aa67.bundle.min.js
+|   |   rb_wixui.thunderbolt_bootstrap-responsive.2d7b5f74.bundle.min.js
+|   |   rb_wixui.thunderbolt_bootstrap.3fbbd89c.bundle.min.js
+|   |   react-dom.production.min.js
+|   |   react.production.min.js
+|   |   requirejs.min.js
+|   |   ricosviewerViewerWidget.bundle.min.js
+|   |   siteTags.bundle.min.js
+|   |   thunderbolt-commons.ac9ce359.bundle.min.js
+|   |   
+|   \---a_data
+|           sw_iframe.htm
+|           
++---Look out ChatGPT – the creator of Proton Mail has just launched a new AI chatbot that’s super-secure and private_files
+|       1158c20a7d699d080ff2bfeb39307832__scv1__622x368.webp
+|       8b244712-d94e-11ed-8078-0a919b37cd73.html
+|       analytics.js.download
+|       ast.js.download
+|       async_usersync
+|       async_usersync(1)
+|       async_usersync(10).html
+|       async_usersync(11).html
+|       async_usersync(12).html
+|       async_usersync(13).html
+|       async_usersync(14).html
+|       async_usersync(15).html
+|       async_usersync(16).html
+|       async_usersync(17).html
+|       async_usersync(18).html
+|       async_usersync(19).html
+|       async_usersync(2).html
+|       async_usersync(20).html
+|       async_usersync(21).html
+|       async_usersync(22).html
+|       async_usersync(23).html
+|       async_usersync(24).html
+|       async_usersync(3).html
+|       async_usersync(4).html
+|       async_usersync(5).html
+|       async_usersync(6).html
+|       async_usersync(7).html
+|       async_usersync(8).html
+|       async_usersync(9).html
+|       async_usersync.html
+|       B32971584.416294244
+|       common.889d11f5b3cac4133679.js.download
+|       common.d073d7071017c778754f.js.download
+|       config(1).js.download
+|       config.js.download
+|       datadog-logs-v4.js.download
+|       experience.1d61aec6aac56f39bec1.js.download
+|       experience.b07b37d8a59c07618436.js.download
+|       f.txt
+|       favicon.ico
+|       gtm.js.download
+|       ic
+|       ifs.js.download
+|       inside-20.js.download
+|       js
+|       main.css
+|       main.js.download
+|       microsoft.b232ee4b99c3601fd99c.js.download
+|       microsoft.becf2e29a32c3be13406.js.download
+|       msn-sync.es5.js.download
+|       px(1).gif
+|       px.gif
+|       rate311876_logofilepath.png
+|       rd_log
+|       rd_log(1)
+|       runtime~main.js.download
+|       saved_resource(1).html
+|       saved_resource.html
+|       sdk.js.download
+|       style_banner_cb8d6e.css
+|       tag
+|       templates-0.css
+|       templates-0.js.download
+|       textExpand_filled.svg
+|       track
+|       trk.js.download
+|       trustedIframe(1).html
+|       trustedIframe.html
+|       vendors.2a6b4668cb5c8c2dfa6a.js.download
+|       vendors.931464ce8d9fdf8c7b2c.js.download
+|       vendors~main.js.download
+|       win
+|       
++---Mass Layoffs to Hit Two States in March_files
+|       15190725037912056400
+|       62bHydCX(1).html
+|       62bHydCX.html
+|       8.26.0.js.download
+|       aframe(1).html
+|       aframe.html
+|       ast.js.download
+|       async_usersync
+|       async_usersync(1)
+|       async_usersync(2).html
+|       async_usersync(3).html
+|       async_usersync(4).html
+|       async_usersync.html
+|       attribution_src_register
+|       civicscience-widget.js.download
+|       common.1349917cb4a0bb72cc62.js.download
+|       comscore.7.7.0.211006.min.js.download
+|       config(1).js.download
+|       config(2).js.download
+|       config.js.download
+|       consumer-privacy-logo.png
+|       container(1).html
+|       container.html
+|       csw-frame.5.4.28.js.download
+|       csw-widget.5.4.28.js.download
+|       d9core
+|       dvbm.js.download
+|       experience.875558704771fbe41dc1.js.download
+|       f(1).txt
+|       f(10).txt
+|       f(2).txt
+|       f(3).txt
+|       f(4).txt
+|       f(5).txt
+|       f(6).txt
+|       f(7).txt
+|       f(8).txt
+|       f(9).txt
+|       f.txt
+|       favicon.ico
+|       ftUtils.js.download
+|       FY24Q3_CC_Individual_Illustrator_US_EN_AIJuly2024Release-GenShapeFill_ST_970x250_NA_NA.jpg
+|       gen_204
+|       gen_204(1)
+|       iconc.png
+|       ifs.js.download
+|       in-stream-video-sdk.1.0.5.HF.js.download
+|       microsoft.e7f1679699bd4d67ba69.js.download
+|       msn-sync.es5.js.download
+|       nlp-bp.min.js.download
+|       omid-verification-client-v1.js.download
+|       pixel(1).html
+|       pixel.html
+|       px(1).gif
+|       px.gif
+|       Q12zgMmT.js.download
+|       rd_log
+|       rd_log(1)
+|       saved_resource
+|       saved_resource(1).html
+|       saved_resource(2).html
+|       saved_resource(3).html
+|       saved_resource(4).html
+|       saved_resource(5).html
+|       saved_resource.html
+|       score.min.js.download
+|       sodar
+|       sodar(1)
+|       tag
+|       topics_frame(1).html
+|       topics_frame.html
+|       trk.js.download
+|       vendors.c4a819c848752d810f54.js.download
+|       vendors~csw-vendor-dompurify.5.4.28.js.download
+|       verify.js.download
+|       visit.js.download
+|       wrap.js.download
+|       
++---Massive HIPAA Breach Exposes Over 500,000 Patients – Comstar Held Accountable_files
+|       18414004011374565375
+|       adchoices_blue_wb.png
+|       adview
+|       aframe.html
+|       amp-ad-exit-0.1.js.download
+|       amp-analytics-0.1.js.download
+|       amp-fit-text-0.1.js.download
+|       amp-form-0.1.js.download
+|       amp4ads-v0.js.download
+|       app.js.download
+|       ast.js.download
+|       async_usersync
+|       async_usersync(1)
+|       async_usersync(2).html
+|       async_usersync(3).html
+|       async_usersync(4).html
+|       async_usersync.html
+|       banner.js.download
+|       bg.jpg
+|       btn-close.png
+|       btn-legal.png
+|       campaign
+|       common.46e22ebc0f7747152bfe.js.download
+|       common.cec05f2f462c318826fb.js.download
+|       config(1).js.download
+|       config(2).js.download
+|       config.js.download
+|       creative.html
+|       CSSPlugin.min.js.download
+|       en.png
+|       events1.js.download
+|       experience.0a6cd406dd4c09e534b1.js.download
+|       experience.1d7c8ed2590622923a93.js.download
+|       f(1).txt
+|       f.txt
+|       favicon.ico
+|       in-stream-video-sdk.2.2.6.js.download
+|       init-59791c4ut28zlchfdpab.js.download
+|       jload
+|       l
+|       legal.jpg
+|       logo.png
+|       main.19.8.590.js.download
+|       microsoft.ab10190cf4986cb72f14.js.download
+|       microsoft.cddf4d278b3e225a5809.js.download
+|       perfect-scrollbar.min.css
+|       perfect-scrollbar.min.js.download
+|       pixel
+|       px(1).gif
+|       px.gif
+|       rd_log
+|       rd_log(1)
+|       saved_resource(1).html
+|       saved_resource(2).html
+|       saved_resource(3).html
+|       saved_resource(4).html
+|       saved_resource.html
+|       sca.17.6.4.js.download
+|       sodar
+|       style.css
+|       tag
+|       textExpand_filled.svg
+|       topics_frame.html
+|       trk.js.download
+|       trustedIframe.html
+|       TweenMax.min.js.download
+|       vcd15cbe7772f49c399c6a5babf22c1241717689176015
+|       vendors.8d5ee32c24edfc151355.js.download
+|       vendors.931464ce8d9fdf8c7b2c.js.download
+|       viewability2.js.download
+|       wrap.js.download
+|       zepto.min.js.download
+|       zxy3cpo.css
+|       
++---Microsoft seizes 340 websites linked to growing phishing subscription service_files
+|       9f418a16-1222-435e-af6c-1a5ab639104d
+|       adc.png
+|       adchoices.css
+|       ast.js.download
+|       async_usersync
+|       async_usersync(1)
+|       async_usersync(2).html
+|       async_usersync(3).html
+|       async_usersync(4).html
+|       async_usersync.html
+|       banner.js.download
+|       common.26dab7144d6e6d015bba.js.download
+|       common.3e865183698e3e6d6091.js.download
+|       config(1).js.download
+|       config.js.download
+|       consumer-privacy-logo.png
+|       cookieSync.html
+|       crum
+|       d9core
+|       experience.8aa53e4b40cad92628f7.js.download
+|       experience.f6d6801cacc873f8562a.js.download
+|       fdfd6ecd11197d2464029ea240cb51cd__scv1__622x368.webp
+|       ftUtils.js.download
+|       ic
+|       ic(1)
+|       index.html
+|       lottie.min.js.download
+|       main.19.8.613.js.download
+|       microsoft.0626641f942ce75b1afa.js.download
+|       microsoft.cd13e829932b367f8bd4.js.download
+|       p-9fYuixa7g_Hm2.gif
+|       pixel
+|       rd_log
+|       rd_log(1)
+|       rubicon_notify_openrtb
+|       saved_resource
+|       saved_resource(1).html
+|       saved_resource(2).html
+|       saved_resource(3).html
+|       saved_resource.html
+|       sca.17.6.4.js.download
+|       score.min.js.download
+|       sdk.js.download
+|       setuid
+|       skeleton(1).js.download
+|       skeleton.js.download
+|       style_banner_704028.css
+|       tag
+|       textExpand_filled.svg
+|       track
+|       trk(1).js.download
+|       trk(2).js.download
+|       trk(3).js.download
+|       trk.js.download
+|       trustedIframe(1).html
+|       trustedIframe.html
+|       usync.html
+|       usync.js.download
+|       vendors.656f876470635ed880a4.js.download
+|       vendors.e2e25c77171cf6c23f26.js.download
+|       win
+|       
++---Millions of Résumés Never Make It Past the Bots. One Man Is Trying to Find Out Why._files
+|       15.css
+|       300x170.jpg
+|       425276.gif
+|       84e069f4de.png
+|       ae6481fc-b233-4636-9740-6177518a6102.jpg
+|       ast.js.download
+|       async_usersync
+|       async_usersync(1)
+|       async_usersync(2).html
+|       async_usersync(3).html
+|       async_usersync(4).html
+|       async_usersync.html
+|       B33304199.418431161
+|       bidcore.html
+|       bundle.js.download
+|       common.52b661351eb47eb00daa.js.download
+|       config(1).js.download
+|       config.js.download
+|       dv-measurements8114.js.download
+|       dvbs_src.js.download
+|       dvbs_src_internal138.js.download
+|       dvtp_src.js.download
+|       experience.3c2d4cd6a46137c80861.js.download
+|       favicon.ico
+|       highlight
+|       microsoft.77678861cadd6513f13b.js.download
+|       OBA_TRANS.png
+|       OBA_UK.png
+|       pixel.gif
+|       pixeljs
+|       px(1).gif
+|       px.gif
+|       rd_log
+|       rd_log(1)
+|       saved_resource
+|       saved_resource(1).html
+|       saved_resource(2).html
+|       saved_resource(3).html
+|       saved_resource(4).html
+|       saved_resource.html
+|       sdk.js.download
+|       sync
+|       tag
+|       trk(1).js.download
+|       trk(2).js.download
+|       trk(3).js.download
+|       trk(4).js.download
+|       trk(5).js.download
+|       trk.js.download
+|       trustedIframe(1).html
+|       trustedIframe.html
+|       ttj
+|       vcd15cbe7772f49c399c6a5babf22c1241717689176015
+|       vendors.2a6b4668cb5c8c2dfa6a.js.download
+|       verify.js.download
+|       viewabilityCV.js.download
+|       vm.js.download
+|       ZcYub6hQa_p7fsg1asLHmgAAABM.png
+|       
++---Millions of Steam Accounts Reportedly Impacted by Data Breach_files
+|       1ce44135-2432-47dd-b487-331b1abc8894.jpg
+|       9906984908103953526
+|       adview
+|       aframe.html
+|       amp-ad-exit-0.1.js.download
+|       amp-analytics-0.1.js.download
+|       amp-fit-text-0.1.js.download
+|       amp-form-0.1.js.download
+|       amp4ads-v0.js.download
+|       ast.js.download
+|       async_usersync
+|       async_usersync(1)
+|       async_usersync(2).html
+|       async_usersync(3).html
+|       async_usersync(4).html
+|       async_usersync.html
+|       common.46e22ebc0f7747152bfe.js.download
+|       common.bf27289494e714a2e0d8.js.download
+|       config(1).js.download
+|       config(2).js.download
+|       config.js.download
+|       en.png
+|       experience.0a6cd406dd4c09e534b1.js.download
+|       experience.77223ce36189e9f4c655.js.download
+|       f(1).txt
+|       f.txt
+|       favicon.ico
+|       icon.png
+|       microsoft.ab10190cf4986cb72f14.js.download
+|       microsoft.cddf4d278b3e225a5809.js.download
+|       px(1).gif
+|       px.gif
+|       rd_log
+|       rd_log(1)
+|       saved_resource(1).html
+|       saved_resource(2).html
+|       saved_resource.html
+|       sodar
+|       tag
+|       topics_frame.html
+|       trk(1).js.download
+|       trk(2).js.download
+|       trk(3).js.download
+|       trk(4).js.download
+|       trk.js.download
+|       vendors.8d5ee32c24edfc151355.js.download
+|       vendors.931464ce8d9fdf8c7b2c.js.download
+|       wrap.js.download
+|       
++---Old Fortinet flaws under attack with new method its patch didn't prevent_files
+|       11794759999760342026
+|       8b244712-d94e-11ed-8078-0a919b37cd73.html
+|       aframe.html
+|       analytics.js.download
+|       ast.js.download
+|       async_usersync
+|       async_usersync(1)
+|       async_usersync(2).html
+|       async_usersync(3).html
+|       async_usersync(4).html
+|       async_usersync.html
+|       B32240175.397832906
+|       B32971584.416294244
+|       common.89aabebf4d25c54a5829.js.download
+|       config(1).js.download
+|       config(2).js.download
+|       config.js.download
+|       css
+|       datadog-logs-v4.js.download
+|       experience.136d46ab95663657bc3d.js.download
+|       f(1).txt
+|       f(2).txt
+|       f(3).txt
+|       f(4).txt
+|       f.txt
+|       favicon.ico
+|       gtm.js.download
+|       in-stream-video-sdk.2.2.6.js.download
+|       inside-20.js.download
+|       js
+|       main.css
+|       main.js.download
+|       microsoft.6b984e9747816e2fa20f.js.download
+|       omid-verification-client-v1.js.download
+|       px(1).gif
+|       px.gif
+|       rate311876_logofilepath.png
+|       rate313922_logofilepath.jpg
+|       rd_log
+|       rd_log(1)
+|       runtime~main.js.download
+|       saved_resource(1).html
+|       saved_resource(2).html
+|       saved_resource(3).html
+|       saved_resource.html
+|       sodar
+|       tag
+|       templates-12.css
+|       templates-12.js.download
+|       templates-13.js.download
+|       templates-15.js.download
+|       textExpand_filled.svg
+|       topics_frame.html
+|       trk(1).js.download
+|       trk(2).js.download
+|       trk.js.download
+|       vendors.c4a819c848752d810f54.js.download
+|       vendors~main.js.download
+|       wrap.js.download
+|       
++---Opinion_ The price of privacy_ How your personal data could dictate what you pay_files
+|       11794759999760342026
+|       4cfaa670a07d555b56c135a0e1c7aa13__scv1__622x368.png
+|       aframe.html
+|       ast.js.download
+|       async_usersync
+|       async_usersync(1)
+|       async_usersync(2).html
+|       async_usersync(3).html
+|       async_usersync(4).html
+|       async_usersync.html
+|       common.043f010afc49748ae627.js.download
+|       config(1).js.download
+|       config(2).js.download
+|       config.js.download
+|       cookieSync.html
+|       crum
+|       experience.00ef816fac4008b82940.js.download
+|       f(1).txt
+|       f(2).txt
+|       f(3).txt
+|       f.txt
+|       favicon.ico
+|       ic
+|       ic(1)
+|       ifs.js.download
+|       in-stream-video-sdk.2.2.6.js.download
+|       microsoft.c2593402f5370c36ce9d.js.download
+|       msn-sync.es5.js.download
+|       omid-verification-client-v1.js.download
+|       pixel
+|       px(1).gif
+|       px.gif
+|       rd_log
+|       rd_log(1)
+|       saved_resource(1).html
+|       saved_resource(2).html
+|       saved_resource(3).html
+|       saved_resource.html
+|       setuid
+|       sodar
+|       style_banner_d854f3.css
+|       tag
+|       textExpand_filled.svg
+|       topics_frame.html
+|       trk(1).js.download
+|       trk(2).js.download
+|       trk(3).js.download
+|       trk.js.download
+|       vendors.c4a819c848752d810f54.js.download
+|       wrap.js.download
+|       
++---Oracle Cloud says it's not true someone broke into its login servers and stole data_files
+|       62bHydCX.html
+|       9874396490032911403
+|       adview
+|       aframe(1).html
+|       aframe.html
+|       amp-ad-exit-0.1.js.download
+|       amp-analytics-0.1.js.download
+|       amp-fit-text-0.1.js.download
+|       amp-form-0.1.js.download
+|       amp4ads-v0.js.download
+|       ast.js.download
+|       async_usersync
+|       async_usersync(1)
+|       async_usersync(2).html
+|       async_usersync(3).html
+|       async_usersync(4).html
+|       async_usersync.html
+|       common.1af066ccea1b6d40940d.js.download
+|       common.3f76ff92729162238cf6.js.download
+|       config(1).js.download
+|       config(2).js.download
+|       config.js.download
+|       container.html
+|       css
+|       en.png
+|       experience.a65085df5708da230aa0.js.download
+|       experience.d5ee0d9cdfd00a7125b1.js.download
+|       f(1).txt
+|       f(2).txt
+|       f(3).txt
+|       f(4).txt
+|       f(5).txt
+|       f(6).txt
+|       f(7).txt
+|       f.txt
+|       favicon.ico
+|       gen_204
+|       icon.png
+|       ifs.js.download
+|       in-stream-video-sdk.2.2.6.js.download
+|       microsoft.05ba994960777c7ee3c0.js.download
+|       microsoft.c2593402f5370c36ce9d.js.download
+|       msn-sync.es5.js.download
+|       omid-verification-client-v1.js.download
+|       pixel.html
+|       px(1).gif
+|       px.gif
+|       Q12zgMmT.js.download
+|       rd_log
+|       rd_log(1)
+|       saved_resource(1).html
+|       saved_resource(2).html
+|       saved_resource(3).html
+|       saved_resource.html
+|       sodar
+|       sodar(1)
+|       tag
+|       textExpand_filled.svg
+|       topics_frame(1).html
+|       topics_frame.html
+|       trk(1).js.download
+|       trk(2).js.download
+|       trk(3).js.download
+|       trk.js.download
+|       vendors.c2fea3ac72f4c3ab3a39.js.download
+|       vendors.c4a819c848752d810f54.js.download
+|       wrap.js.download
+|       
++---Oracle rushes out another emergency E-Business Suite patch as Clop fallout widens_files
+|       15a27522752ded1086dd4c669ef77dab__scv1__622x368.webp
+|       32dd3beffee4f7d5baa6d20c4b4e4ac3__scv1__622x368.webp
+|       ast.js.download
+|       async_usersync
+|       async_usersync(1)
+|       async_usersync(2).html
+|       async_usersync(3).html
+|       async_usersync(4).html
+|       async_usersync.html
+|       banner.js.download
+|       common.6595a538c501120ef093.js.download
+|       common.685b90ae9befd2d30cf1.js.download
+|       config(1).js.download
+|       config.js.download
+|       cookieSync(1).html
+|       cookieSync.html
+|       crum
+|       crum(1)
+|       experience.0cb57dea6e1d1ba5d4de.js.download
+|       experience.2382925a15de695f6e4f.js.download
+|       ic
+|       ic(1)
+|       ic(2)
+|       microsoft.006444c76d15e570ec2e.js.download
+|       microsoft.bfd53ffa4a1ec2609ee8.js.download
+|       pixel
+|       pixel(1)
+|       rd_log
+|       rd_log(1)
+|       saved_resource.html
+|       setuid
+|       setuid(1)
+|       style_banner_704028.css
+|       style_banner_a02e55.css
+|       tag
+|       textExpand_filled.svg
+|       tr
+|       track
+|       vendors.c0e688f5972d53d3f7c6.js.download
+|       vendors.f355e8d6d6d04d57b854.js.download
+|       win
+|       
++---Over 18 million US crypto user records surface on dark web in major data breach_files
+|       1ba52dee-871d-4ce7-a142-385838117f19
+|       62bHydCX.html
+|       ast.js.download
+|       async_usersync
+|       async_usersync(1)
+|       async_usersync(2).html
+|       async_usersync(3).html
+|       async_usersync.html
+|       common.be01588a175e1cceda3d.js.download
+|       config(1).js.download
+|       config.js.download
+|       DcmEnabler_01_253.js.download
+|       experience.c3df3c185f2a4a41f1e8.js.download
+|       express_html_inpage_rendering_lib_200_281.js.download
+|       f(1).txt
+|       f(2).txt
+|       f(3).txt
+|       f(4).txt
+|       f.txt
+|       favicon.ico
+|       gen_204
+|       htw-pixel.gif
+|       index.html
+|       microsoft.d8f6d252e5cc78f0f2dc.js.download
+|       min(1).html
+|       min.html
+|       omid-verification-client-v1.js.download
+|       pixel.html
+|       px(1).gif
+|       px.gif
+|       Q12zgMmT.js.download
+|       rd_log
+|       saved_resource.html
+|       tag
+|       textExpand_filled.svg
+|       trk(1).js.download
+|       trk.js.download
+|       usermatch.html
+|       vendors.f918be55a51aec5cb0e8.js.download
+|       
++---Over 600,000 Records, Including Background Checks, Vehicle, and Property Records Exposed Online by an Information Service Provider_files
+|       classic-themes.min.css
+|       datadog-logs-us.js.download
+|       footer-645211-2dbacfcf4359195c167212b88c814908.min.js.download
+|       header-6452-52795e586f0f4718ebc46baeb1bf9de4.min.css
+|       header-6452-a36b794346e2e518e8cb725f672e51b1.min.js.download
+|       js
+|       jssdk-alooma.min.js.download
+|       popup-final.png
+|       prebid-ads.js.download
+|       Propertyrec-data-breach-report-850x446.webp
+|       propertyrec-databreach-1.png
+|       propertyrec-databreach-keyelements.png
+|       rul.html
+|       tr-icon.php
+|       writer.webp
+|       
++---Police ignore standards after AI facial recognition matches - Washington Post_files
+|   |   136.f3f819df9b4d4617.js
+|   |   21500f3f-716013a720077e89.js
+|   |   2L2Z6-GDWNL-RH2G3-MVS3W-7M6WF
+|   |   3041
+|   |   339.baa697fd1754d67f.js
+|   |   340-3e12a3fdb00b0502.js
+|   |   548.48292f0d1be9c317.js
+|   |   552ca303-85cc1793c4306367.js
+|   |   555.8cb326af48ba9fc2.js
+|   |   5f1f2661-22d4-401c-9c10-4d7647fb6edc-web.js
+|   |   65568.js
+|   |   775.056061305498db3d.js
+|   |   94786cb9-8d8d96bc470e54c2.js
+|   |   951.3ada10a0bfa74849.js
+|   |   99.e8c23d09897d0e91.js
+|   |   9d57e7ee386d4862ec551bf24731dadcab8a37c6f6580c8428470f6489c29264
+|   |   a.html
+|   |   a167c0a7a698ac5b.css
+|   |   anchor.html
+|   |   api.js
+|   |   apstag.js
+|   |   a_002.html
+|   |   a_003.html
+|   |   b85465e7-7385af3d40e41046.js
+|   |   beacon.js
+|   |   chartbeat.js
+|   |   embed.js
+|   |   embed.min.js
+|   |   f.txt
+|   |   fec483df-d5d9f07bfc2f49f0.js
+|   |   file_1280x720-2000-v3_1.mp4
+|   |   framework-63d16ff2f5e08230.js
+|   |   f_002.txt
+|   |   f_003.txt
+|   |   gtm.js
+|   |   imrs.avif
+|   |   imrs.jpg
+|   |   imrs.webp
+|   |   imrs_002.avif
+|   |   imrs_002.webp
+|   |   imrs_003.avif
+|   |   imrs_004.avif
+|   |   imrs_005.avif
+|   |   imrs_006.avif
+|   |   imrs_007.avif
+|   |   imrs_008.avif
+|   |   imrs_009.avif
+|   |   imrs_010.avif
+|   |   imrs_011.avif
+|   |   imrs_012.avif
+|   |   imrs_013.avif
+|   |   imrs_014.avif
+|   |   imrs_015.avif
+|   |   imrs_016.avif
+|   |   imrs_017.avif
+|   |   imrs_018.avif
+|   |   imrs_019.avif
+|   |   imrs_020.avif
+|   |   imrs_021.avif
+|   |   imrs_022.avif
+|   |   imrs_023.avif
+|   |   imrs_024.avif
+|   |   imrs_025.avif
+|   |   imrs_026.avif
+|   |   imrs_027.avif
+|   |   iris-main.js
+|   |   js
+|   |   lrnojf.js
+|   |   main-3366bb893ca1cb95.js
+|   |   main.js
+|   |   main_002.js
+|   |   onelink-smart-script-latest.min.js
+|   |   polyfills-42372ed130431b0a.js
+|   |   privacy-api-stub.min.js
+|   |   privacy-fe-api.min.js
+|   |   privacyoptions.svg
+|   |   publishertag.js
+|   |   recaptcha__en.js
+|   |   serviceiframe.html
+|   |   subscriptions.js
+|   |   swg-button.css
+|   |   swg.js
+|   |   syncframe.html
+|   |   tetro.min.js
+|   |   twp-internal.js
+|   |   washingtonpost.js
+|   |   web-vitals.attribution.iife.js
+|   |   web-vitals.iife.js
+|   |   webpack-d4f5c322eec62dcc.js
+|   |   [[...page]]-2217220abca247c1.js
+|   |   _app-2c89837e3f7417c7.js
+|   |   _buildManifest.js
+|   |   _ssgManifest.js
+|   |   
+|   +---anchor_data
+|   |       a.html
+|   |       styles__ltr.css
+|   |       SySo5bZIBP9PFYo_0nkBIvGcqooM-L3BPkgXf1Mu4n4.js
+|   |       
+|   +---a_data
+|   |       M
+|   |       
+|   \---serviceiframe_data
+|           m=serviceiframeview,_b,_tp.css
+|           m=_b,_tp
+|           
++---Privacy apathy is real – and you probably have it_files
+|       10062832519820782279
+|       62bHydCX.html
+|       aframe.html
+|       analytics.js.download
+|       ast.js.download
+|       async_usersync
+|       async_usersync(1)
+|       async_usersync(2).html
+|       async_usersync(3).html
+|       async_usersync(4).html
+|       async_usersync.html
+|       common.c630826787e057afd806.js.download
+|       common.ca33149422fef7e035db.js.download
+|       config(1).js.download
+|       config(2).js.download
+|       config.js.download
+|       container.html
+|       dvbm.js.download
+|       experience.7ca447136bed1aabfd62.js.download
+|       experience.fe3d0eb222093833def2.js.download
+|       f(1).txt
+|       f(2).txt
+|       f(3).txt
+|       f(4).txt
+|       f(5).txt
+|       f(6).txt
+|       f.txt
+|       favicon.ico
+|       gen_204
+|       in-stream-video-sdk.2.2.6.js.download
+|       main.js.download
+|       microsoft.b87fb2cb8d039c78ab80.js.download
+|       microsoft.d8f6d252e5cc78f0f2dc.js.download
+|       omid-verification-client-v1.js.download
+|       pixel.html
+|       px(1).gif
+|       px.gif
+|       Q12zgMmT.js.download
+|       rd_log
+|       rd_log(1)
+|       saved_resource(1).html
+|       saved_resource(2).html
+|       saved_resource(3).html
+|       saved_resource(4).html
+|       saved_resource.html
+|       sdk.js.download
+|       sodar
+|       tag
+|       textExpand_filled.svg
+|       th
+|       topics_frame.html
+|       trk(1).js.download
+|       trk(2).js.download
+|       trk(3).js.download
+|       trk.js.download
+|       vendors.7b583b500968cb2bbd34.js.download
+|       vendors.f918be55a51aec5cb0e8.js.download
+|       verify.js.download
+|       visit.js.download
+|       wrap.js.download
+|       
++---Red Hat fesses up to GitLab breach after attackers brag of data theft_files
+|       10202284238906507113
+|       1544798941dcd9e56f5ec9086cea9f35__scv1__622x368.webp
+|       62bHydCX.html
+|       6e33a78c-4a7a-4977-a42f-109cd08ac147
+|       ast.js.download
+|       async_usersync
+|       async_usersync(1)
+|       async_usersync(2).html
+|       async_usersync(3).html
+|       async_usersync(4).html
+|       async_usersync(5).html
+|       async_usersync(6).html
+|       async_usersync.html
+|       banner.js.download
+|       ci
+|       ci(1)
+|       common.050aa9cb246af9c2e836.js.download
+|       common.6b07e8dd0cb02a84ffd9.js.download
+|       config(1).js.download
+|       config.js.download
+|       cookieSync.html
+|       crum
+|       experience.810da10071e186f9aadb.js.download
+|       experience.cb06fb89b9801caae2a5.js.download
+|       f(1).txt
+|       f(2).txt
+|       f(3).txt
+|       f(4).txt
+|       f.txt
+|       gen_204
+|       htw-pixel.gif
+|       ic
+|       ic(1)
+|       microsoft.006444c76d15e570ec2e.js.download
+|       microsoft.bfd53ffa4a1ec2609ee8.js.download
+|       min.html
+|       pixel
+|       pixel(1)
+|       pixel(2)
+|       pixel.html
+|       Q12zgMmT.js.download
+|       rd_log
+|       rd_log(1)
+|       saved_resource.html
+|       setuid
+|       style_banner_704028.css
+|       tag
+|       textExpand_filled.svg
+|       token
+|       track
+|       usermatch.html
+|       vendors.476c8f46cfb5f23dde6e.js.download
+|       vendors.a560e5b2d5d400152b79.js.download
+|       win
+|       
++---Rewards Management Platform _ Reward Incentive Programs _ Brandmovers_files
+|       1d5462c0df3b480cb893d3134adfcbc5.html
+|       2145032548950447
+|       2636848(1).js.download
+|       2636848(2).js.download
+|       2636848.js.download
+|       abinbev-logo-card.png
+|       background-box-green-2.png
+|       blue-image-box-min.png
+|       BM-Logo-hori.svg
+|       BM-logo-white-1.svg
+|       bundle.production(1).js.download
+|       bundle.production(2).js.download
+|       bundle.production.js.download
+|       clarity.js.download
+|       collectedforms.js.download
+|       conversations-embed.js.download
+|       customer-service.png
+|       debate-header-img.png
+|       digiorno-logo-card.png
+|       diverse-rewards-wide.png
+|       embed.js.download
+|       f(1).txt
+|       f.txt
+|       fb.js.download
+|       fbevents.js.download
+|       fulfillment-img.png
+|       gtm.js.download
+|       gts-logo-box.png
+|       hubspot-theme.stable.css
+|       hubspot-theme.stable.js.download
+|       index.js.download
+|       insight.min.js.download
+|       johnsonville-box.png
+|       js
+|       js(2)
+|       js(4)
+|       lc2.js.download
+|       lean-cuisine-logo-card.png
+|       marketing-echo-chamber-nav.png
+|       mastercard-logo-card.png
+|       nbcuniversal logo card.png
+|       oceania-logo-box.png
+|       pepsico logo card.png
+|       playbytherules - content thumbnails.svg
+|       project.js.download
+|       purina-logo-box-2.png
+|       r0xj8fftbx
+|       reb2b.js.gz
+|       reward-image-light.png
+|       rewards-header-large.png
+|       rewards-rules.png
+|       saved_resource(1).html
+|       saved_resource.html
+|       template_advanced-content.min.css
+|       template_advanced-mm.min.js.download
+|       template_child.min.css
+|       template_child.min.js.download
+|       template_custom-styles.min.css
+|       template_pwr-accordion.min.css
+|       template_pwr-accordion.min.js.download
+|       template_pwr-boxed.min.css
+|       template_pwr-burger.min.css
+|       template_pwr-burger.min.js.download
+|       template_pwr-defer.min.css
+|       template_pwr-footer.min.css
+|       template_pwr-grid.min.js.download
+|       template_pwr-sec-accordion.min.css
+|       template_pwr-sec-clients.min.css
+|       template_pwr-sec-cta.min.css
+|       template_pwr-sec-mockup.min.css
+|       template_pwr-sec-steps.min.css
+|       template_pwr-sec-txt.min.css
+|       template_pwr-shape.min.css
+|       template_pwr-slider.min.css
+|       template_pwr-social.min.css
+|       template_pwr-step.min.css
+|       template_pwr-swiper.min.js.download
+|       template_pwr-transitions.min.css
+|       template_pwr.min.css
+|       template_pwr.min.js.download
+|       template_scroll-shadow.min.css
+|       template_scroll-shadow.min.js.download
+|       template__swiper-bundle.min.css
+|       template__swiper-bundle.min.js.download
+|       truist-logo-box.png
+|       ups-logo-card.png
+|       visitor.css
+|       visitor.js.download
+|       web-interactives-embed.js.download
+|       whisper-core.js.download
+|       
++---Sam Altman said AI agents are acting like junior employees — and he's betting that your AI colleague could soon 'discover new knowledge'_files
+|       360947.gif
+|       4.js.download
+|       90096
+|       90206
+|       adr.html
+|       app.js.download
+|       ast.js.download
+|       async_usersync
+|       async_usersync(1)
+|       async_usersync(10).html
+|       async_usersync(2).html
+|       async_usersync(3).html
+|       async_usersync(4).html
+|       async_usersync(5).html
+|       async_usersync(6).html
+|       async_usersync(7).html
+|       async_usersync(8).html
+|       async_usersync(9).html
+|       async_usersync.html
+|       banner.js.download
+|       bcS.js.download
+|       bcST.js.download
+|       beacon.js.download
+|       ca
+|       cksync.php
+|       cm
+|       common.9cb8e0bf534734901dd6.js.download
+|       config(1).js.download
+|       config.js.download
+|       css
+|       dcmads.js.download
+|       dt_with_modernizr_min.js.download
+|       experience.aff45811dbb342cadc3c.js.download
+|       f(1).txt
+|       f(2).txt
+|       f.txt
+|       favicon.ico
+|       g.pixel
+|       html5API.js.download
+|       ibs_dpid=1121&dpuuid=1448174229208202774&redir=
+|       impl_v106.js.download
+|       in-stream-video-sdk.2.2.6.js.download
+|       m
+|       microsoft.ab10190cf4986cb72f14.js.download
+|       pixel
+|       pixel(1)
+|       pixel(2)
+|       Pug
+|       px(1).gif
+|       px.gif
+|       rd_log
+|       rd_log(1)
+|       reset.css
+|       rum
+|       saved_resource
+|       saved_resource(1)
+|       saved_resource(2).html
+|       saved_resource(3).html
+|       saved_resource.html
+|       sca.17.6.4.js.download
+|       script.js.download
+|       sd
+|       sdk.js.download
+|       setuid
+|       skeleton.js.download
+|       style.css
+|       sync
+|       sync(1)
+|       tag
+|       textExpand_filled.svg
+|       th
+|       trustedIframe.html
+|       vcd15cbe7772f49c399c6a5babf22c1241717689176015
+|       vendors.8d5ee32c24edfc151355.js.download
+|       webfontloader.js.download
+|       
++---SF Chronicle_files
+|   |   169188807166631.js
+|   |   3057-gdpr-min.js
+|   |   822415974517712.js
+|   |   a.htm
+|   |   activityi.htm
+|   |   activityi_002.htm
+|   |   activityi_003.htm
+|   |   activityi_004.htm
+|   |   activityi_005.htm
+|   |   activityi_006.htm
+|   |   adsct.gif
+|   |   adsct_002.gif
+|   |   adsct_003.gif
+|   |   adsct_004.gif
+|   |   adsct_005.gif
+|   |   adsct_006.gif
+|   |   anchor.htm
+|   |   api.js
+|   |   apple-pay-sdk.js
+|   |   a_002.htm
+|   |   a_003.htm
+|   |   a_004.htm
+|   |   boot.js
+|   |   Bootstrap.js
+|   |   casper-bundle.htm
+|   |   casper.e859e671a955086ed05f4590c07901db.1.js
+|   |   casper.e859e671a955086ed05f4590c07901db.2.js
+|   |   casper.e859e671a955086ed05f4590c07901db.ajax-aggregate.js
+|   |   casper.e859e671a955086ed05f4590c07901db.checkout-checkout-jsx.js
+|   |   casper.e859e671a955086ed05f4590c07901db.checkout-checkout_002.js
+|   |   casper.e859e671a955086ed05f4590c07901db.footer-footer-jsx.js
+|   |   casper.e859e671a955086ed05f4590c07901db.logging-aggregate.js
+|   |   casper.e859e671a955086ed05f4590c07901db.manageSubscription-ma.js
+|   |   casper.e859e671a955086ed05f4590c07901db.metrics-aggregate.js
+|   |   casper.e859e671a955086ed05f4590c07901db.page_view_event-aggre.js
+|   |   casper.e859e671a955086ed05f4590c07901db.seo-seoTags-jsx.js
+|   |   casper.e859e671a955086ed05f4590c07901db.vendors~ajax-aggregat.js
+|   |   casper.e859e671a955086ed05f4590c07901db.vendors~checkout-chec.js
+|   |   casper.e859e671a955086ed05f4590c07901db.vendors~compressor.js
+|   |   casper.e859e671a955086ed05f4590c07901db.vendors~generic_event.js
+|   |   casper.e859e671a955086ed05f4590c07901db.vendors~jserrors-aggr.js
+|   |   casper.e859e671a955086ed05f4590c07901db.vendors~page_view_eve.js
+|   |   casper.e859e671a955086ed05f4590c07901db.vendors~page_view_tim.js
+|   |   casper.e859e671a955086ed05f4590c07901db.vendors~recorder.js
+|   |   casper.e859e671a955086ed05f4590c07901db.vendors~seo-seoTags-j.js
+|   |   casper.e859e671a955086ed05f4590c07901db.vendors~session-manag.js
+|   |   casper.e859e671a955086ed05f4590c07901db.vendors~session_repla.js
+|   |   casper.e859e671a955086ed05f4590c07901db.vendors~session_trace.js
+|   |   casper.e859e671a955086ed05f4590c07901db.vendors~spa-aggregate.js
+|   |   cei.htm
+|   |   chartbeat.js
+|   |   common.js
+|   |   controls.js
+|   |   css.css
+|   |   css_002.css
+|   |   css_003.css
+|   |   destination
+|   |   events.js
+|   |   f.txt
+|   |   facebook_icon.svg
+|   |   fbevents.js
+|   |   f_002.txt
+|   |   f_003.txt
+|   |   geocoder.js
+|   |   GetJS
+|   |   gtm.js
+|   |   gtm_002.js
+|   |   gtm_003.js
+|   |   hnpprivacy-min.js
+|   |   hotjar-2453625.js
+|   |   iframeResizer.contentWindow.min.js
+|   |   instagram_icon.svg
+|   |   jquery.fancybox.css
+|   |   js
+|   |   js_002
+|   |   js_003
+|   |   js_004
+|   |   ketch.js
+|   |   lanyard.js
+|   |   lightbox.css
+|   |   linkedin_icon.svg
+|   |   marfeel-sdk.es5.js
+|   |   marfeel-sdk.js
+|   |   ml.br.js
+|   |   modules.f7b829d5d96e959c0829.js
+|   |   nlpCategoryMap.js
+|   |   override-treg.htm
+|   |   p.js
+|   |   pay.js
+|   |   payframe.htm
+|   |   pixel.js
+|   |   places_impl.js
+|   |   plugins.js
+|   |   recaptcha__en.js
+|   |   sa.css
+|   |   script.js
+|   |   SFC-logo-header.png
+|   |   SFC-styles.css
+|   |   SFC.png
+|   |   spm.v1.min.js
+|   |   subscriptions.js
+|   |   ta.c34341.js
+|   |   ta.js
+|   |   treg.js
+|   |   tv2track.js
+|   |   twitter_icon.svg
+|   |   Untitled_003.gif
+|   |   Untitled_004.gif
+|   |   Untitled_005.gif
+|   |   Untitled_006.gif
+|   |   up_loader.1.1.0.js
+|   |   util.js
+|   |   uwt.js
+|   |   
+|   +---activityi_data
+|   |       src=15089575%3btype=initi0%3bcat=sfchr0%3bord=1589150270926%.gif
+|   |       
+|   +---activityi_data_002
+|   |       src=15089575%3btype=pagev0%3bcat=sfchr0%3bord=5213208483947%.gif
+|   |       
+|   +---activityi_data_003
+|   |       src=15089575%3btype=unive0%3bcat=sfchr0%3bord=4990393733422%.gif
+|   |       
+|   +---activityi_data_004
+|   |       src=15089575%3btype=addto0%3bcat=sfchr0%3bord=7294155654059%.gif
+|   |       
+|   +---activityi_data_005
+|   |       src=15089575%3btype=addpa0%3bcat=sfchr0%3bord=8535045792575%.gif
+|   |       
+|   +---activityi_data_006
+|   |       src=15089575%3btype=saleg0%3bcat=sfchr0%3bqty=1%3bcost=0.99%.gif
+|   |       
+|   +---anchor_data
+|   |       a.htm
+|   |       styles__ltr.css
+|   |       
+|   +---a_data_004
+|   |       sw_iframe.htm
+|   |       
+|   +---cei_data
+|   |   |   a.htm
+|   |   |   generic_002.gif
+|   |   |   m_002.gif
+|   |   |   universal_pixel.js
+|   |   |   
+|   |   \---a_data
+|   \---payframe_data
+|           m=_b,_tp
+|           
++---SonicWall breach exposes all cloud backup users_files
+|       5521214244443523226
+|       55cbb9a1afe972832da5edfbb8cfe37e__scv1__622x368.webp
+|       adchoices_blue_wb.png
+|       adview
+|       aframe.html
+|       amp-ad-exit-0.1.js.download
+|       amp-analytics-0.1.js.download
+|       amp-fit-text-0.1.js.download
+|       amp-form-0.1.js.download
+|       amp4ads-v0.js.download
+|       ast.js.download
+|       async_usersync
+|       async_usersync(1)
+|       async_usersync(2).html
+|       async_usersync(3).html
+|       async_usersync(4).html
+|       async_usersync.html
+|       banner.js.download
+|       common.6595a538c501120ef093.js.download
+|       common.685b90ae9befd2d30cf1.js.download
+|       config(1).js.download
+|       config(2).js.download
+|       config.js.download
+|       cookieSync.html
+|       crum
+|       en.png
+|       experience.0cb57dea6e1d1ba5d4de.js.download
+|       experience.2382925a15de695f6e4f.js.download
+|       f(1).txt
+|       f.txt
+|       ic
+|       ic(1)
+|       microsoft.006444c76d15e570ec2e.js.download
+|       microsoft.bfd53ffa4a1ec2609ee8.js.download
+|       pixel
+|       rd_log
+|       rd_log(1)
+|       saved_resource(1).html
+|       saved_resource(2).html
+|       saved_resource.html
+|       sdk.js.download
+|       setuid
+|       sodar
+|       style_banner_704028.css
+|       tag
+|       topics_frame.html
+|       tr
+|       vendors.c0e688f5972d53d3f7c6.js.download
+|       vendors.f355e8d6d6d04d57b854.js.download
+|       wrap.js.download
+|       
++---The one Windows feature everyone should turn off immediately for privacy_files
+|       0ba65d6f-9d49-44a2-a8e0-151e8c75f468
+|       4.js.download
+|       62bHydCX.html
+|       654c49f7831806ffa65d974c08027cb8__scv1__622x368.webp
+|       ast.js.download
+|       async_usersync
+|       async_usersync(1)
+|       async_usersync(2).html
+|       async_usersync(3).html
+|       async_usersync(4).html
+|       async_usersync.html
+|       banner.js.download
+|       ca
+|       common.3a5a413366c1f2733c0c.js.download
+|       common.473ac0ec135ccfe995b2.js.download
+|       config(1).js.download
+|       config.js.download
+|       cookieSync.html
+|       crum
+|       experience.86dd4e90a55de82607ca.js.download
+|       experience.efcc81d15bd7ad57649c.js.download
+|       express_html_inpage_rendering_lib_200_281.js.download
+|       f(1).txt
+|       f(2).txt
+|       f(3).txt
+|       f(4).txt
+|       f.txt
+|       gen_204
+|       gsap.min.js.download
+|       htw-pixel.gif
+|       ic
+|       ic(1)
+|       index.html
+|       main.js.download
+|       microsoft.bfd53ffa4a1ec2609ee8.js.download
+|       microsoft.cad4d5367a7f3168f113.js.download
+|       pixel
+|       pixel.html
+|       Q12zgMmT.js.download
+|       rd_log
+|       rd_log(1)
+|       saved_resource(1).html
+|       saved_resource.html
+|       sca.17.6.4.js.download
+|       sdk.js.download
+|       setuid
+|       skeleton.js.download
+|       style_banner_704028.css
+|       tag
+|       textExpand_filled.svg
+|       track
+|       trk.js.download
+|       usermatch.html
+|       vendors.476c8f46cfb5f23dde6e.js.download
+|       vendors.c0e688f5972d53d3f7c6.js.download
+|       webfont.js.download
+|       win
+|       
++---This AI skeptic got feedback from the industry — and now he’s even more pessimistic_files
+|       390856d9d6f0d2e0b64a61230cf0e3fe__scv1__622x368.webp
+|       4.js.download
+|       466606.gif
+|       62bHydCX.html
+|       ast.js.download
+|       async_usersync
+|       async_usersync(1)
+|       async_usersync(2).html
+|       async_usersync(3).html
+|       async_usersync(4).html
+|       async_usersync.html
+|       banner.js.download
+|       ca
+|       ci
+|       ci(1)
+|       ci(2)
+|       common.d8d5679a5808009261be.js.download
+|       config(1).js.download
+|       config.js.download
+|       cookieSync.html
+|       crum
+|       ead7e1b1-cacf-4bb7-a212-af4eed8543b3
+|       experience.1561906c80646ce41e32.js.download
+|       express_html_inpage_rendering_lib_200_281.js.download
+|       f(1).txt
+|       f(2).txt
+|       f(3).txt
+|       f(4).txt
+|       f.txt
+|       gen_204
+|       gsap.min.js.download
+|       htw-pixel.gif
+|       ic
+|       ic(1)
+|       index.html
+|       main.js.download
+|       microsoft.006444c76d15e570ec2e.js.download
+|       pixel
+|       pixel(1)
+|       pixel.html
+|       Q12zgMmT.js.download
+|       rd_log
+|       rd_log(1)
+|       saved_resource(1).html
+|       saved_resource.html
+|       sca.17.6.4.js.download
+|       sdk.js.download
+|       setuid
+|       skeleton.js.download
+|       style_banner_704028.css
+|       tag
+|       textExpand_filled.svg
+|       tr
+|       trk.js.download
+|       usermatch.html
+|       vendors.a560e5b2d5d400152b79.js.download
+|       webfont.js.download
+|       
++---Thoughts on countering AI-powered cyber threats_files
+|   |   1683785286786.png
+|   |   1686577848477.jpg
+|   |   1687854739734.png
+|   |   1698329240005.jpg
+|   |   1700074101969.jpg
+|   |   1701893722463.jpg
+|   |   1702994721112.jpg
+|   |   1704455360163.png
+|   |   1705961323272.jpg
+|   |   1708445932472.jpg
+|   |   1716322191935.png
+|   |   1718297758514.png
+|   |   1721144453445.png
+|   |   1722256102502.jpg
+|   |   1723652079364.jpg
+|   |   19m2m2iij3pcbxe4bkogyzklj
+|   |   1ohmqtckz77b85qy295egqjsv
+|   |   37hg81qnm85dsy5mbqfifg9qs.svg
+|   |   4v7dh2d6cuqm24mzps1pqzeqt.svg
+|   |   5k9cgtx8rhoyqkcxfoncu1svl.svg
+|   |   6tr51x53o95z9huild3ifno8y
+|   |   8m736dfzskmdn6bwwqz67iiki
+|   |   9c8pery4andzj6ohjkjp54ma2.svg
+|   |   9sun4diznbhgyelaeryxy75ur.svg
+|   |   async_usersync.htm
+|   |   bfsm3kdvmsptioc3fvrdwezza.css
+|   |   brzv9dcoc2lmql4trc66n5tog
+|   |   button.htm
+|   |   button_002.htm
+|   |   button_003.htm
+|   |   cib97epu77mrzque5gqlzjgaw.svg
+|   |   cjrxeu0ese8oxe32kiom8kzoh.svg
+|   |   safeframe-v2.htm
+|   |   
+|   +---async_usersync_data
+|   \---safeframe-v2_data
+|       |   f.txt
+|       |   render_post_ads_v1.htm
+|       |   script.js
+|       |   sf-ext.js
+|       |   trk.js
+|       |   
+|       \---render_post_ads_v1_data
+|           |   0d1139c2ce4e8347e19f371556571a72.js
+|           |   46126549446d212f9cdb205b4c638a2e.js
+|           |   77942854ac2dbc216d8234e015bae9c2.js
+|           |   css.css
+|           |   f.txt
+|           |   f_002.txt
+|           |   f_003.txt
+|           |   f_004.txt
+|           |   f_005.txt
+|           |   render_post_ads_v1.htm
+|           |   si.htm
+|           |   
+|           \---render_post_ads_v1_data
+|                   Lv-qmh86L8EC6aHrxuPWG-6twsdwjX9zRg9Lmxa6UTQ.js
+|                   
++---Thousands of civil servant passwords leaked online as experts warn of ‘serious risk’_files
+|       15a27522752ded1086dd4c669ef77dab__scv1__622x368.webp
+|       341ec041-3ced-4857-9a9e-ab6750cab4ad.html
+|       analytics(1).js.download
+|       analytics.js.download
+|       ast.js.download
+|       async_usersync
+|       async_usersync(1)
+|       async_usersync(2).html
+|       async_usersync(3).html
+|       async_usersync(4).html
+|       async_usersync.html
+|       B32808799.426203475
+|       B32971584.426190446
+|       banner.js.download
+|       capital_one_logofilepath.png
+|       common.6595a538c501120ef093.js.download
+|       common.685b90ae9befd2d30cf1.js.download
+|       config(1).js.download
+|       config.js.download
+|       cookieSync.html
+|       crum
+|       datadog-logs-v4.js.download
+|       experience.0cb57dea6e1d1ba5d4de.js.download
+|       experience.2382925a15de695f6e4f.js.download
+|       gtm.js.download
+|       ic
+|       ic(1)
+|       js
+|       main(1).js.download
+|       main.css
+|       main.js.download
+|       microsoft.006444c76d15e570ec2e.js.download
+|       microsoft.bfd53ffa4a1ec2609ee8.js.download
+|       pixel
+|       rate311876_logofilepath.png
+|       rd_log
+|       rd_log(1)
+|       runtime~main.js.download
+|       saved_resource(1).html
+|       saved_resource(2).html
+|       saved_resource(3).html
+|       saved_resource.html
+|       sdk.js.download
+|       setuid
+|       ssiframe.html
+|       style_banner_704028.css
+|       tag
+|       templates-72.css
+|       templates-72.js.download
+|       tr
+|       trk.js.download
+|       vendors.c0e688f5972d53d3f7c6.js.download
+|       vendors.f355e8d6d6d04d57b854.js.download
+|       vendors~main.js.download
+|       
++---Top employee monitoring app leaks 21 million screenshots on thousands of users_files
+|       115BTkNA0nL.js.download
+|       71oz-MMDQQL.js.download
+|       83734475-4c71-4517-9f8a-d1a98af47fb3.jpg
+|       adforensics_csmcollection(1).js.download
+|       adforensics_csmcollection.js.download
+|       adforensics_rtb(1).js.download
+|       adforensics_rtb.js.download
+|       ara(1).js.download
+|       ara.js.download
+|       ast.js.download
+|       async_usersync
+|       async_usersync(1)
+|       async_usersync(2).html
+|       async_usersync(3).html
+|       async_usersync(4).html
+|       async_usersync.html
+|       cb
+|       cb(1)
+|       common.0175b03f500a1acf23f3.js.download
+|       common.8158cfb53b7efcab2bf9.js.download
+|       config(1).js.download
+|       config.js.download
+|       creative(1).html
+|       creative.html
+|       csmtpmv1(1).js.download
+|       csmtpmv1.js.download
+|       d0b8aa27-d315-4616-89a3-b6cc95c181bd.jpg
+|       empty.js.download
+|       experience.57c923f96de6384eb2fa.js.download
+|       experience.8a4902fa67b2e0e923ed.js.download
+|       favicon.ico
+|       himp
+|       himp(1)
+|       impression
+|       impression(1)
+|       in-stream-video-sdk.2.2.6.js.download
+|       j
+|       j(1)
+|       microsoft.b87fb2cb8d039c78ab80.js.download
+|       microsoft.f27d3b49b41c8172204f.js.download
+|       omid-verification-client-v1.js.download
+|       pixel
+|       px(1).gif
+|       px.gif
+|       rd_log
+|       rd_log(1)
+|       saved_resource
+|       saved_resource(1)
+|       saved_resource(10).html
+|       saved_resource(11).html
+|       saved_resource(12).html
+|       saved_resource(13).html
+|       saved_resource(14).html
+|       saved_resource(15).html
+|       saved_resource(2)
+|       saved_resource(3)
+|       saved_resource(4).html
+|       saved_resource(5).html
+|       saved_resource(6).html
+|       saved_resource(7).html
+|       saved_resource(8).html
+|       saved_resource(9).html
+|       saved_resource.html
+|       sync
+|       tag
+|       textExpand_filled.svg
+|       trk(1).js.download
+|       trk.js.download
+|       t_(1).html
+|       t_(1).js.download
+|       t_.html
+|       t_.js.download
+|       uuid_mismatch
+|       vendors.7b583b500968cb2bbd34.js.download
+|       vendors.f918be55a51aec5cb0e8.js.download
+|       
++---Top gig platform service may have leaked over 14 million user files_files
+|       0
+|       0(1)
+|       0.gif
+|       081735c92c4aa336da0b87ec328727ee.gif
+|       115BTkNA0nL.js.download
+|       13926(1).html
+|       13926.html
+|       142
+|       275
+|       3ba89bf6b1f056ebb7c305723e972aee__scv1__622x368.png
+|       55537adc33d1b40300987e8e
+|       71oz-MMDQQL.js.download
+|       7d2fea400064b22652273d22c2e07bad.gif
+|       85cb4e4139de98a2.html
+|       adforensics_csmcollection.js.download
+|       adforensics_rtb.js.download
+|       ara.js.download
+|       ast.js.download
+|       async_usersync
+|       async_usersync(1)
+|       async_usersync(2).html
+|       async_usersync(3).html
+|       async_usersync(4).html
+|       async_usersync.html
+|       bsync.html
+|       cb
+|       cf.errors.css
+|       checksync(1).html
+|       checksync.html
+|       cksync
+|       cksync.php
+|       cm
+|       cm(1)
+|       cm(2).html
+|       cm-notify
+|       cm-notify(1)
+|       cm-notify(2).html
+|       cm-notify.html
+|       cm.html
+|       common.c56f88151e39c7ab3ec5.js.download
+|       common.f5cf49385d65dec85d23.js.download
+|       config(1).js.download
+|       config.js.download
+|       cookie
+|       cookie(1).html
+|       cookie(2).html
+|       cookie.html
+|       cookieSync.html
+|       cookie_sync.html
+|       creative.html
+|       crum
+|       csmtpmv1.js.download
+|       csync
+|       current
+|       current(1)
+|       d998591d-89f0-4a95-a565-42aa6c431eed.jpg
+|       e09bad714a425a93d6dea503dcf9c528.gif
+|       equativ
+|       eqx
+|       experience.34c653e087445ecf2e9d.js.download
+|       experience.efc693f7da19fbc2a091.js.download
+|       favicon.ico
+|       generic
+|       generic(1)
+|       generic(2)
+|       generic(3)
+|       generic(4).html
+|       generic.html
+|       getuid
+|       getuid(1)
+|       getuid(10)
+|       getuid(11)
+|       getuid(13)
+|       getuid(14)
+|       getuid(15).html
+|       getuid(16).html
+|       getuid(17).html
+|       getuid(18).html
+|       getuid(2)
+|       getuid(3)
+|       getuid(4)
+|       getuid(5)
+|       getuid(6)
+|       getuid(7)
+|       getuid(8)
+|       getuid(9)
+|       getuid.html
+|       gjIEMT18
+|       gumgum
+|       himp
+|       https___sync.cootlogix.com_api_cookie_partnerId=grid&userId=${BSW_UUID}&gdpr=&gdpr_consent=&us_privacy=
+|       ic
+|       ic(1)
+|       idsync(1).html
+|       idsync.html
+|       iframe(1).html
+|       iframe(2).html
+|       iframe(3).html
+|       iframe(4).html
+|       iframe.html
+|       ifs.js.download
+|       ImgSync
+|       ImgSync(1)
+|       ImgSync(2).html
+|       ImgSync.html
+|       in-stream-video-sdk.2.2.6.js.download
+|       j
+|       load-cookie(1).html
+|       load-cookie.html
+|       match
+|       match(1)
+|       match(2)
+|       match(3).html
+|       match.html
+|       microsoft.05ba994960777c7ee3c0.js.download
+|       microsoft.c2593402f5370c36ce9d.js.download
+|       missena.html
+|       msn-sync.es5.js.download
+|       multi-sync(1).html
+|       multi-sync(10).html
+|       multi-sync(11).html
+|       multi-sync(12).html
+|       multi-sync(13).html
+|       multi-sync(14).html
+|       multi-sync(15).html
+|       multi-sync(16).html
+|       multi-sync(17).html
+|       multi-sync(2).html
+|       multi-sync(3).html
+|       multi-sync(4).html
+|       multi-sync(5).html
+|       multi-sync(6).html
+|       multi-sync(7).html
+|       multi-sync(8).html
+|       multi-sync(9).html
+|       multi-sync.html
+|       occ
+|       occ(1)
+|       omid-verification-client-v1.js.download
+|       oRTB
+|       p-EtBqU4Lj3YbAv.gif
+|       pbs(1).html
+|       pbs-iframe(1).html
+|       pbs-iframe(2).html
+|       pbs-iframe.html
+|       pbs.html
+|       pbserverIframe(1).html
+|       pbserverIframe(2).html
+|       pbserverIframe.html
+|       pbsync
+|       pbsync.html
+|       pbs_sync.html
+|       pd.html
+|       pixel
+|       pixel(1)
+|       pixel(10).html
+|       pixel(2)
+|       pixel(3)
+|       pixel(4)
+|       pixel(5)
+|       pixel(6).html
+|       pixel(7).html
+|       pixel(8).html
+|       pixel(9).html
+|       pixel.html
+|       pixelSync
+|       prbds2s.html
+|       prebid
+|       prebid(1)
+|       prebid(2).html
+|       prebid(3).html
+|       prebid.html
+|       ps(1).html
+|       ps-sync.html
+|       ps.html
+|       psync.html
+|       px(1).gif
+|       px.gif
+|       rd_log
+|       rd_log(1)
+|       redirect.html
+|       rmphb
+|       rmphb(1).html
+|       rmphb.html
+|       rmpssp
+|       rmpssp(1)
+|       rmpssp(2)
+|       rmpssp(3)
+|       rtset
+|       rtset(1)
+|       rtset(2).html
+|       rtset(3).html
+|       rtset.html
+|       saved_resource
+|       saved_resource(1)
+|       saved_resource(10)
+|       saved_resource(11)
+|       saved_resource(12)
+|       saved_resource(13)
+|       saved_resource(14)
+|       saved_resource(15)
+|       saved_resource(16)
+|       saved_resource(17)
+|       saved_resource(18)
+|       saved_resource(19)
+|       saved_resource(2)
+|       saved_resource(20)
+|       saved_resource(21)
+|       saved_resource(22)
+|       saved_resource(23)
+|       saved_resource(24)
+|       saved_resource(25).html
+|       saved_resource(26).html
+|       saved_resource(27).html
+|       saved_resource(28).html
+|       saved_resource(29).html
+|       saved_resource(3)
+|       saved_resource(30).html
+|       saved_resource(31).html
+|       saved_resource(32).html
+|       saved_resource(33).html
+|       saved_resource(34).html
+|       saved_resource(35).html
+|       saved_resource(36).html
+|       saved_resource(37).html
+|       saved_resource(38).html
+|       saved_resource(39).html
+|       saved_resource(4)
+|       saved_resource(40).html
+|       saved_resource(41).html
+|       saved_resource(42).html
+|       saved_resource(43).html
+|       saved_resource(44).html
+|       saved_resource(45).html
+|       saved_resource(46).html
+|       saved_resource(47).html
+|       saved_resource(48).html
+|       saved_resource(5)
+|       saved_resource(6)
+|       saved_resource(7)
+|       saved_resource(8)
+|       saved_resource(9)
+|       saved_resource.html
+|       server_match
+|       server_match.html
+|       setuid
+|       setuid(1)
+|       setuid(10)
+|       setuid(11)
+|       setuid(12)
+|       setuid(13)
+|       setuid(14)
+|       setuid(15)
+|       setuid(16)
+|       setuid(17)
+|       setuid(18)
+|       setuid(19).html
+|       setuid(2)
+|       setuid(20).html
+|       setuid(21).html
+|       setuid(22).html
+|       setuid(3)
+|       setuid(4)
+|       setuid(5)
+|       setuid(6)
+|       setuid(7)
+|       setuid(8)
+|       setuid(9)
+|       setuid.html
+|       smart
+|       sspmatch-iframe(1).html
+|       sspmatch-iframe.html
+|       style_banner_d854f3.css
+|       su
+|       su(1)
+|       su(2).html
+|       su.html
+|       supply.html
+|       sync
+|       sync(10)
+|       sync(11).php
+|       sync(12)
+|       sync(13)
+|       sync(14)
+|       sync(15).html
+|       sync(16).html
+|       sync(17).html
+|       sync(18).html
+|       sync(19).html
+|       sync(2)
+|       sync(20).html
+|       sync(21).html
+|       sync(22).html
+|       sync(23).html
+|       sync(24).html
+|       sync(25).html
+|       sync(26).html
+|       sync(27).html
+|       sync(28).html
+|       sync(29).html
+|       sync(3)
+|       sync(30).html
+|       sync(31).html
+|       sync(32).html
+|       sync(4)
+|       sync(5)
+|       sync(6)
+|       sync(7)
+|       sync(8)
+|       sync(9)
+|       sync-iframe(1).html
+|       sync-iframe(2).html
+|       sync-iframe(3).html
+|       sync-iframe(4).html
+|       sync-iframe.html
+|       sync.html
+|       sync.php
+|       syncr
+|       tag
+|       textExpand_filled.svg
+|       trk(1).js.download
+|       trk(2).js.download
+|       trk(3).js.download
+|       trk(4).js.download
+|       trk(5).js.download
+|       trk.js.download
+|       uc.html
+|       UCookieSetPug
+|       um(1).html
+|       um.html
+|       umcheck
+|       umcheck(1)
+|       us
+|       user
+|       user-matching
+|       user-sync
+|       user-sync(1)
+|       user-sync(10).html
+|       user-sync(11).html
+|       user-sync(12).html
+|       user-sync(2)
+|       user-sync(3)
+|       user-sync(4).html
+|       user-sync(5).html
+|       user-sync(6).html
+|       user-sync(7).html
+|       user-sync(8).html
+|       user-sync(9).html
+|       user-sync.html
+|       usermatch(1).html
+|       usermatch(2).html
+|       usermatch(3).html
+|       usermatch.html
+|       usermatchredir
+|       usersync
+|       usersync(1)
+|       usersync(2).html
+|       usersync(3).html
+|       usersync(4).html
+|       usersync(5).html
+|       usersync.aspx
+|       usersync.html
+|       userSync.js.download
+|       user_sync(1).html
+|       user_sync(10).html
+|       user_sync(11).html
+|       user_sync(12).html
+|       user_sync(13).html
+|       user_sync(14).html
+|       user_sync(15).html
+|       user_sync(16).html
+|       user_sync(17).html
+|       user_sync(18).html
+|       user_sync(2).html
+|       user_sync(3).html
+|       user_sync(4).html
+|       user_sync(5).html
+|       user_sync(6).html
+|       user_sync(7).html
+|       user_sync(8).html
+|       user_sync(9).html
+|       user_sync.html
+|       usync
+|       usync(1)
+|       usync(2)
+|       usync(3)
+|       usync(4)
+|       usync(5).html
+|       usync(6).html
+|       usync.html
+|       usync.ingage.html
+|       usync.js.download
+|       v1
+|       v1(1)
+|       v1(2)
+|       vendors.c2fea3ac72f4c3ab3a39.js.download
+|       vendors.c4a819c848752d810f54.js.download
+|       yhsfle286.gif
+|       
++---Top US lab testing firm hit with major data leak, exposes health info on 1.6 million users_files
+|       ast.js.download
+|       async_usersync
+|       async_usersync(1)
+|       async_usersync(2).html
+|       async_usersync(3).html
+|       async_usersync.html
+|       common.ca33149422fef7e035db.js.download
+|       config(1).js.download
+|       config.js.download
+|       experience.fe3d0eb222093833def2.js.download
+|       favicon.ico
+|       in-stream-video-sdk.2.2.6.js.download
+|       microsoft.d8f6d252e5cc78f0f2dc.js.download
+|       omid-verification-client-v1.js.download
+|       px(1).gif
+|       px.gif
+|       rd_log
+|       saved_resource.html
+|       sdk.js.download
+|       tag
+|       textExpand_filled.svg
+|       th
+|       trk(1).js.download
+|       trk(2).js.download
+|       trk(3).js.download
+|       trk(4).js.download
+|       trk.js.download
+|       vendors.f918be55a51aec5cb0e8.js.download
+|       
++---Trustpilot shares hit by ‘mafia-style extortion’ claims_files
+|       0
+|       08f3140e964d35efaaa94ba9f2cdbf9edafbfde6673ba81ffe923565f70bc138
+|       1.html
+|       140531279643114268
+|       3360
+|       65568.js.download
+|       767
+|       767(1)
+|       88a66e5c-8fe8-48af-9c6c-3ec3f4983aad-web.js.download
+|       adchoices_blue_wb.png
+|       ads.times_render.min.js.download
+|       adview
+|       adview(1)
+|       amp-ad-exit-0.1.js.download
+|       amp-analytics-0.1.js.download
+|       amp-fit-text-0.1.js.download
+|       amp-form-0.1.js.download
+|       amp4ads-v0.js.download
+|       article.init.bundle-61da46752d.js.download
+|       article.react.bundle-f78c9c7ad4.js.download
+|       beacon.js.download
+|       c.js.download
+|       CeasI.css
+|       common.react.bundle-eb3d4f5757.js.download
+|       container(1).html
+|       container(2).html
+|       container(3).html
+|       container.html
+|       css
+|       d3-lines.71cb40e4.js.download
+|       d3-lines.thetimes-dark.7505860a.css
+|       d3-lines.thetimes.7505860a.css
+|       door.js.download
+|       dual-masthead-bcc5303ae7.png
+|       dw-2.0.min.a4f95ddf.js.download
+|       ebfa23da174faa55634171c5e49d0152.gif
+|       embeds.js.download
+|       en.png
+|       f(1).txt
+|       f.txt
+|       gdpr-tcf.fd0289ea28f774a797b7.bundle.js.download
+|       getpixels
+|       getuid
+|       hadron.js.download
+|       halo_match
+|       id5-api.js.download
+|       ima.js.download
+|       ip-check
+|       ipso-4039147f27.webp
+|       ip_match
+|       js
+|       js(1)
+|       js(2)
+|       load-polyfills.3ef2fbcd.js.download
+|       main.695fdb93.js.download
+|       nid_sp.js.download
+|       prebid.times_render.min.js.download
+|       pubcid.min.js.download
+|       publisher.js.download
+|       rtset
+|       saved_resource
+|       saved_resource(1).html
+|       saved_resource(2).html
+|       saved_resource(3).html
+|       saved_resource(4).html
+|       saved_resource(5).html
+|       saved_resource(6).html
+|       saved_resource(7).html
+|       saved_resource.html
+|       script.js.download
+|       SiteEvent.dotmetrics
+|       swg-button.css
+|       swg.init.bundle-ee45d295e7.js.download
+|       swg.js.download
+|       sync.min.js.download
+|       thetimes.js.download
+|       TimesBrandMark-748c3b1679.webp
+|       usnat-uspapi.090eccada574d39af6f8.bundle.js.download
+|       utag.119.js.download
+|       utag.120.js.download
+|       utag.125.js.download
+|       utag.65.js.download
+|       utag.86.js.download
+|       utag.89.js.download
+|       utag.js.download
+|       webcomponents-lite.min.js.download
+|       widgets.js.download
+|       widget_iframe.2f70fb173b9000da126c79afe2098f02.html
+|       zephr-browser.umd.js.download
+|       _77d944f9-0f0b-451e-ad90-4f7abd66859a.jpg
+|       _90063303-039c-4910-883d-44e30e57f26f.jpg
+|       _b392ac8c-c566-4545-9b1b-26490814d2b5.jpg
+|       _methode_times_prod_web_bin_0a51d8aa-cbe8-11ed-adc8-dcfa63cb4163.jpg
+|       
++---U.S. Senators Slam Treasury Secretary After $1M Trump Donation, _Who Does This Help___files
+|       10202284238906507113
+|       aframe.html
+|       app.js.download
+|       ast.js.download
+|       async_usersync
+|       async_usersync(1)
+|       async_usersync(2).html
+|       async_usersync(3).html
+|       async_usersync(4).html
+|       async_usersync.html
+|       banner.js.download
+|       common.0a95dc2795f4ed3adf02.js.download
+|       common.ea5ac3d3f2d846a977ca.js.download
+|       container.html
+|       EAp2b8sB_bigger.jpg
+|       embed.9449.78398904051446294e3d.js.download
+|       embed.runtime.01bcb76409c00f15f058.js.download
+|       embed.Tweet.23aa1579fc7458d3ccd1.js.download
+|       en-us_script.js.download
+|       experience.0217fd0cba19ded20227.js.download
+|       experience.dc9c3b5eeb976ccebebb.js.download
+|       f(1).txt
+|       f(2).txt
+|       f(3).txt
+|       f(4).txt
+|       f(5).txt
+|       f(6).txt
+|       f.txt
+|       gen_204
+|       jwQnwuaZ_x96.png
+|       Klz6NWr5.html
+|       l
+|       microsoft.7389c3026d471832f27c.js.download
+|       microsoft.8deb01a0da9370245904.js.download
+|       pixel.html
+|       rd_log
+|       rd_log(1)
+|       saved_resource.html
+|       sdk(1).js.download
+|       sdk.js.download
+|       sodar
+|       tag
+|       textExpand_filled.svg
+|       th
+|       topics_frame.html
+|       trk(1).js.download
+|       trk.js.download
+|       tweet.d7aeb21a88e025d2ea5f5431a103f586.js.download
+|       Tweet.html
+|       vendors.12c1f6e5ff43f6e8efda.js.download
+|       vendors.45d2e6f77b2f2d018a7e.js.download
+|       VFc2VJAc.js.download
+|       VLCoiOL__normal.jpg
+|       widgets.js.download
+|       widget_iframe.2f70fb173b9000da126c79afe2098f02.html
+|       
++---University of Pennsylvania confirms recent cyberattack led to major data theft_files
+|       300x250-example.png
+|       300x250-half-logo.png
+|       app.js.download
+|       ast.js.download
+|       async_usersync
+|       async_usersync(1)
+|       async_usersync(2).html
+|       async_usersync(3).html
+|       async_usersync(4).html
+|       async_usersync(5).html
+|       async_usersync.html
+|       banner.js.download
+|       ca
+|       common.0a95dc2795f4ed3adf02.js.download
+|       common.ea5ac3d3f2d846a977ca.js.download
+|       dcmads(1).js.download
+|       dcmads.js.download
+|       dv-measurements8884.js.download
+|       dvtp_src.js.download
+|       dynamicBuilder.min.js.download
+|       en-us_script.js.download
+|       Enabler_01_262.js.download
+|       experience.0217fd0cba19ded20227.js.download
+|       experience.dc9c3b5eeb976ccebebb.js.download
+|       f(1).txt
+|       f(2).txt
+|       f.txt
+|       get
+|       html_inpage_rendering_lib_200_287.js.download
+|       impl_v106.js.download
+|       index.html
+|       Klz6NWr5.html
+|       logic.js.download
+|       microsoft.7389c3026d471832f27c.js.download
+|       microsoft.8deb01a0da9370245904.js.download
+|       openx
+|       pd.html
+|       prebid
+|       rd_log
+|       rd_log(1)
+|       saved_resource(1).html
+|       saved_resource(2).html
+|       saved_resource(3).html
+|       saved_resource.html
+|       sca.17.6.4.js.download
+|       sdk(1).js.download
+|       sdk.js.download
+|       style.css
+|       tag
+|       th
+|       transparent.png
+|       vendors.12c1f6e5ff43f6e8efda.js.download
+|       vendors.45d2e6f77b2f2d018a7e.js.download
+|       VFc2VJAc.js.download
+|       visit.js.download
+|       
++---Users Flood X With Names of DOGE Employees After Elon Musk Attempts to Suppress Them_files
+|       1f1ea-1f1fa.svg
+|       1f1f2-1f1fd.svg
+|       1f1fa-1f1e6.svg
+|       1f349.svg
+|       1f3ad.svg
+|       1_multipart_xF8FF_6_DSCN2152_x96.jpg
+|       4.js.download
+|       62bHydCX.html
+|       aframe.html
+|       animation.js.download
+|       ast.js.download
+|       async_usersync
+|       async_usersync(1)
+|       async_usersync(2).html
+|       async_usersync(3).html
+|       async_usersync(4).html
+|       async_usersync(5).html
+|       async_usersync.html
+|       bg.jpg
+|       bt-rlink-storage-DJolxq7O.html
+|       card1.png
+|       card2.png
+|       card3.png
+|       cf754d6d899cf32f9cab8f96a8b4f612__scv1__622x368.png
+|       civicscience-widget.js.download
+|       common.ad4515752229cfa6a929.js.download
+|       config(1).js.download
+|       config(2).js.download
+|       config.js.download
+|       container.html
+|       cookieSync.html
+|       copy1a.png
+|       copy1b.png
+|       copy1c.png
+|       copy2a.png
+|       copy2b.png
+|       copy2c.png
+|       copy3a.png
+|       copy3b.png
+|       crum
+|       csw-frame.5.4.28.js.download
+|       csw-widget.5.4.28.js.download
+|       cta.png
+|       cta_arrow.png
+|       embed.9449.78398904051446294e3d.js.download
+|       embed.runtime.5c0ebab2383f6bc0454f.js.download
+|       embed.Tweet.a2329252a62e74ea6e7d.js.download
+|       EsiAbWBh_x96.jpg
+|       experience.e668b84ed9ef05ac6a10.js.download
+|       express_html_inpage_rendering_lib_200_281.js.download
+|       f(1).txt
+|       f(2).txt
+|       f(3).txt
+|       f(4).txt
+|       f(5).txt
+|       f(6).txt
+|       f(7).txt
+|       f(8).txt
+|       f.txt
+|       favicon.ico
+|       gen_204
+|       Gi321d2WAAA_JWY
+|       Gi321d2WAAA_JWY(1)
+|       Gi321d3WoAAljth
+|       Gi321d3WwAIpsdl
+|       Gi321d4XUAAhkkF
+|       Gi321d4XUAAhkkF(1)
+|       Gi330nNWYAAEOiD
+|       Gi3uIzXWEAAnyUE
+|       Gi3uIzXWEAAnyUE(1)
+|       Gi4NeWKWcAA7TID
+|       Gi4ZY6JWEAAe9EL
+|       gsap_3.11.5_min.js.download
+|       gzIskvxa_normal.jpg
+|       G_wP0BZJ_normal.jpg
+|       G_wP0BZJ_x96.jpg
+|       ic
+|       ic(1)
+|       in-stream-video-sdk.1.0.5.HF.js.download
+|       index.html
+|       KRAwwN2C_x96.jpg
+|       legal1.png
+|       legal2.png
+|       logo.png
+|       LynBnyXv_x96.jpg
+|       microsoft.b6e9673d3721e21dc39b.js.download
+|       omid-verification-client-v1.js.download
+|       pixel
+|       pixel.html
+|       px(1).gif
+|       px.gif
+|       Q12zgMmT.js.download
+|       QB21YgcO_x96.jpg
+|       QWZWo_PB_x96.jpg
+|       rd_log
+|       rd_log(1)
+|       rlink.js.download
+|       saved_resource(1).html
+|       saved_resource(2).html
+|       saved_resource(3).html
+|       saved_resource(4).html
+|       saved_resource(5).html
+|       saved_resource.html
+|       sca.17.6.4.js.download
+|       setuid
+|       skeleton.js.download
+|       sodar
+|       styles.css
+|       style_banner_d854f3.css
+|       tag
+|       textExpand_filled.svg
+|       topics_frame.html
+|       trk.js.download
+|       Tweet(1).html
+|       Tweet(2).html
+|       Tweet(3).html
+|       Tweet(4).html
+|       Tweet(5).html
+|       Tweet(6).html
+|       Tweet(7).html
+|       Tweet(8).html
+|       Tweet(9).html
+|       tweet.d7aeb21a88e025d2ea5f5431a103f586.js.download
+|       Tweet.html
+|       uP31si5x_x96.jpg
+|       vendors.9eebfeb363f102394bcf.js.download
+|       widgets.js.download
+|       widget_iframe.2f70fb173b9000da126c79afe2098f02.html
+|       wrap.js.download
+|       yz0n2yVJ_x96.jpg
+|       
++---Why No One Can Get Hired Anymore _ Inside America’s Job Market Collapse _ Watch_files
+|       115BTkNA0nL.js.download
+|       341ec041-3ced-4857-9a9e-ab6750cab4ad.html
+|       3c4f9216-3259-4cc3-87af-4927dc4ee9f2
+|       71jbA7qsyuL.js.download
+|       AA1G3Sbp.img.download
+|       adforensics_csmcollection.js.download
+|       adforensics_rtb.js.download
+|       analytics.js.download
+|       ara.js.download
+|       ast.js.download
+|       async_usersync
+|       async_usersync(1)
+|       async_usersync(2).html
+|       async_usersync(3).html
+|       async_usersync(4).html
+|       async_usersync.html
+|       B32808799.416307204
+|       B32971584.415780963
+|       c33ef236-b2ac-484d-a507-8f40d87b978c.jpg
+|       capital_one_logofilepath.png
+|       common.3d0b4276f5d28f4e15d1.js.download
+|       comscore.7.7.0.211006.min.js.download
+|       config(1).js.download
+|       config.js.download
+|       creative.html
+|       crem.js.download
+|       csmtpmv1.js.download
+|       css
+|       datadog-logs-v4.js.download
+|       experience.b2cfde4ad4e508d174d8.js.download
+|       favicon.ico
+|       gtm.js.download
+|       impb
+|       js
+|       main.css
+|       main.js.download
+|       microsoft.ab10190cf4986cb72f14.js.download
+|       px(1).gif
+|       px.gif
+|       rate311876_logofilepath.png
+|       rd_log
+|       rd_log(1)
+|       runtime~main.js.download
+|       saved_resource
+|       saved_resource.html
+|       sdk.js.download
+|       tag
+|       templates-18.css
+|       templates-18.js.download
+|       templates-19.js.download
+|       templates-21.js.download
+|       th
+|       th(1)
+|       th(2)
+|       th(3)
+|       th(4)
+|       th(5)
+|       th(6)
+|       trk.js.download
+|       trustedIframe(1).html
+|       trustedIframe.html
+|       usync.html
+|       usync.js.download
+|       vcd15cbe7772f49c399c6a5babf22c1241717689176015
+|       vendors.8d5ee32c24edfc151355.js.download
+|       vendors~main.js.download
+|       VideoJsPlay.svg
+|       
++---Your employer might be spying on you. Here’s how workers can check. _ The Seattle Times_files
+|   |   1x1-pixel.png
+|   |   25075460524.js
+|   |   3303
+|   |   605d2c78582df01d0ec93855950a4cfbd5a14db83d0f7eab211fd4894ae78c3c
+|   |   81279359
+|   |   a.htm
+|   |   a24397840812.htm
+|   |   aframe.htm
+|   |   AGSKWxUc-C8xE-Y1wrc2WED-Jks9lm6eR-CM9OpvERVb-bmoJE7P82vGWNxeqXjW
+|   |   AGSKWxVMrBdOV-il6L1GEJBBXZH6jp0Fojti-7A0PhFKzhfQtccUHLr0Wk9zgWQf
+|   |   AGSKWxW6SytWOcBrGxdCd_8KjJb-B-XKrCnPHnRZA4Aa4eAiib8Yh3OqqolQS11t
+|   |   apstag.js
+|   |   article-main.js
+|   |   async_usersync.htm
+|   |   a_002.htm
+|   |   a_003.htm
+|   |   a_004.htm
+|   |   a_005.htm
+|   |   a_006.htm
+|   |   a_007.htm
+|   |   bundle.min.js
+|   |   chartbeat.js
+|   |   chartbeat_mab.js
+|   |   check.htm
+|   |   checksync.htm
+|   |   client
+|   |   compass-multimedia-sdk.es5.js
+|   |   compass-multimedia-sdk.js
+|   |   cs.htm
+|   |   css.css
+|   |   dnsfeed
+|   |   ebx.js
+|   |   f.txt
+|   |   facebook_log_in.png
+|   |   f_002.txt
+|   |   google_log_in.png
+|   |   gtm.js
+|   |   htlbid.css
+|   |   htlbid.js
+|   |   iu3.htm
+|   |   ixmatch.htm
+|   |   js
+|   |   lty1dar.css
+|   |   main.css
+|   |   marfeel-sdk.es5.js
+|   |   marfeel-sdk.js
+|   |   ml.br.js
+|   |   newslettersignupsplashdesktop-style.css
+|   |   otBannerSdk.js
+|   |   otCCPAiab.js
+|   |   otSDKStub.js
+|   |   pd.htm
+|   |   publishertag.prebid.144.js
+|   |   pushly-sdk.min.js
+|   |   shortcodes-public.css
+|   |   st-advertising-bundle.js
+|   |   st-analytics-article-bundle.js
+|   |   st-blocking-bundle.js
+|   |   st-paywall-app.js
+|   |   st-sitewide-bundle.js
+|   |   st-spruce-app.js
+|   |   st-spruce-bundle.js
+|   |   st-user-messaging-main-bundle.js
+|   |   style.css
+|   |   styles.min.css
+|   |   style_002.css
+|   |   syncframe.htm
+|   |   umcheck_002.gif
+|   |   user_sync.htm
+|   |   usync.htm
+|   |   
+|   +---aframe_data
+|   +---async_usersync_data
+|   +---a_data
+|   |       11393001193588384288.jpg
+|   |       f.txt
+|   |       f_002.txt
+|   |       
+|   +---check_data
+|   |       Untitled
+|   |       
+|   +---ixmatch_data
+|   |   |   usermatch.htm
+|   |   |   
+|   |   \---usermatch_data
+|   |           htw-pixel.gif
+|   |           
+|   \---usync_data
+|           usync.js
+|           
++---Your team member is dominating AI project priorities. How can you ensure fair collaboration and success__files
+|   |   1516515353552.jpg
+|   |   1516586873702.jpg
+|   |   1516604858767.jpg
+|   |   1516875586914.jpg
+|   |   1519384759342.jpg
+|   |   1557406726871.jpg
+|   |   1573649371608.jpg
+|   |   1578046930248.jpg
+|   |   1579964226512.jpg
+|   |   1583360791678.jpg
+|   |   1610125919856.jpg
+|   |   1620019616988.jpg
+|   |   1636324102319.jpg
+|   |   1650576919345.jpg
+|   |   1653322289330.jpg
+|   |   1654486106889.jpg
+|   |   1657738242510.jpg
+|   |   1663064717413.jpg
+|   |   1663159545905.jpg
+|   |   1674595326389.jpg
+|   |   1674666379736.png
+|   |   1676190777202.jpg
+|   |   1681701145044.jpg
+|   |   1683049502028.jpg
+|   |   1684173942617.jpg
+|   |   1685243196119.jpg
+|   |   1686670347505.jpg
+|   |   1690406787461.jpg
+|   |   1692019470480.jpg
+|   |   1698592645121.jpg
+|   |   1698716426528.jpg
+|   |   1699198356625.jpg
+|   |   1699467467843.jpg
+|   |   1700583872410.jpg
+|   |   1700906453648.jpg
+|   |   1702905421805.jpg
+|   |   1703030676013.jpg
+|   |   1704732797648.jpg
+|   |   1707112661727.jpg
+|   |   1708062068919.jpg
+|   |   1709633874028.jpg
+|   |   1709813921972.jpg
+|   |   1711391339168.jpg
+|   |   1711888011033.jpg
+|   |   1711948576196.jpg
+|   |   1712407854923.jpg
+|   |   1713835037043.jpg
+|   |   1714581854153.jpg
+|   |   1715008562472.jpg
+|   |   1715033277666.jpg
+|   |   1715657711931.jpg
+|   |   1718258579462.jpg
+|   |   1718289839214.jpg
+|   |   1719045802821.jpg
+|   |   1722040181293.jpg
+|   |   1722170454417.jpg
+|   |   1722814107532.jpg
+|   |   1723815845669.jpg
+|   |   1723815987089.jpg
+|   |   1724325805871.jpg
+|   |   1725235934042.jpg
+|   |   1725938146446.jpg
+|   |   1726577150119.jpg
+|   |   1726582954171.jpg
+|   |   1726815163642.jpg
+|   |   1726864087471.jpg
+|   |   1726962980430.jpg
+|   |   1727178811221.jpg
+|   |   1727781947331.jpg
+|   |   1728887548044.jpg
+|   |   1729019355114.jpg
+|   |   1729075448608.jpg
+|   |   1729172220909.jpg
+|   |   1729318737139.jpg
+|   |   1729435456612.jpg
+|   |   1729780405199.jpg
+|   |   1729784840211.jpg
+|   |   1730093733877.jpg
+|   |   1730746726801.jpg
+|   |   1731003600966.jpg
+|   |   1731270498855.jpg
+|   |   1731639205288.jpg
+|   |   1731691253481.jpg
+|   |   1731788784546.jpg
+|   |   1731990583694.jpg
+|   |   1732021112998.jpg
+|   |   28dijrhu9vobrlktx9sldzhcu.svg
+|   |   37hg81qnm85dsy5mbqfifg9qs.svg
+|   |   386jtt1y855v8ytzhgqjs6x3j.svg
+|   |   3sk1a7shuwaygr9lvo0y8m9f9.svg
+|   |   4v7dh2d6cuqm24mzps1pqzeqt.svg
+|   |   5yukss5d7kh4xrbd5642z6tk0.svg
+|   |   7afqbxmmvf2fd13v48j33xizf.svg
+|   |   7itt46rafycxiwozfd111d2we
+|   |   7ze70iqo2l1rn7hwfoykiwjod.svg
+|   |   8kvqqk9m1eu5ffqkdlum1ka1m.svg
+|   |   9c8pery4andzj6ohjkjp54ma2.svg
+|   |   9ewdf4qtu7uo5bvtrz3r6z5pn.svg
+|   |   9qgtrs03x6wsu7e9jmv11cps7.svg
+|   |   9sun4diznbhgyelaeryxy75ur.svg
+|   |   cib97epu77mrzque5gqlzjgaw.svg
+|   |   cjrxeu0ese8oxe32kiom8kzoh.svg
+|   |   czva5w81r4b0pjr7sh5r4nbw9.svg
+|   |   e0rqrq0h755yqqu59fy047ayt.svg
+|   |   e5k064ysjg279mcbgh94y7m73
+|   |   e7ppwfmo0if15fgie4q5r4us4.svg
+|   |   es4dlamdpym2zbuhglwx2cuz0.svg
+|   |   gjqca1wf2zayj8qydu9z9xrh.css
+|   |   gs508lg3t2o81tq7pmcgn6m2.svg
+|   |   index.htm
+|   |   mdt.js
+|   |   qzs06836s8uf54bvi87yyefq.svg
+|   |   
+|   \---index_data
+|           main.min.js
+|           
+\---[2505.01524] The DCR Delusion_ Measuring the Privacy Risk of Synthetic Data_files
+        abs.css
+        accordion.js
+        arxiv-logo-one-color-white.svg
+        arxiv-logomark-small-white.svg
+        arXiv-print.css
+        arXiv.css
+        bibex.css
+        bibsonomy.png
+        browse_search.css
+        by-4.0.png
+        cite.js
+        cornell-reduced-white-SMALL.svg
+        cornell_seal_simple_black.svg
+        jquery-latest.min.js
+        js.cookie.min.js
+        MathJax.js
+        mathjaxToggle.min.js
+        member_acknowledgement.js
+        purify.min.js
+        reddit.png
+        toggle-labs.js
+        tooltip.css
+        

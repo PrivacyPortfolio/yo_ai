@@ -1,0 +1,6 @@
+Document which agents are allowed to interact with this Yo-ai Agent, 
+and which resources must be shared for each permitted operation.
+
+Agent			          Traffic Direction		      Operation			              Resource
+---------------			--------------------	  -------------------------	  ---------------------------
+
