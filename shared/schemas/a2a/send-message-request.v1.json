@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://yo-ai.ai/schemas/v1/send-message-request.json",
+  "title": "SendMessageRequest",
+  "type": "object",
+  "properties": {
+    "method": { "const": "send_message" },
+    "params": {
+      "type": "object",
+      "properties": {
+        "recipient": { "type": "string" },
+        "body": { "type": "object" }
+      },
+      "required": ["recipient", "body"]
+    },
+    "metadata": { "$ref": "common-metadata.v1.json" }
+  },
+  "required": ["method", "params", "metadata"]
+}

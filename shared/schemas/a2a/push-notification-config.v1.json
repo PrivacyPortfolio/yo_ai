@@ -1,0 +1,20 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://yo-ai.ai/schemas/v1/push-notification-config.json",
+  "title": "PushNotificationConfig",
+  "type": "object",
+  "properties": {
+    "method": { "const": "set_task_push_notification" },
+    "params": {
+      "type": "object",
+      "properties": {
+        "taskID": { "type": "string", "format": "uuid" },
+        "webhook_url": { "type": "string", "format": "uri" },
+        "auth_token": { "type": "string" }
+      },
+      "required": ["taskID", "webhook_url"]
+    },
+    "metadata": { "$ref": "common-metadata.v1.json" }
+  },
+  "required": ["method", "params", "metadata"]
+}

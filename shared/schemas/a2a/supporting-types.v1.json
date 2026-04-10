@@ -1,0 +1,26 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://yo-ai.ai/schemas/v1/supporting-types.json",
+  "title": "A2ASupportingTypes",
+  "definitions": {
+    "Timestamp": {
+      "type": "string",
+      "format": "date-time",
+      "description": "ISO 8601 standardized timestamp for v1.0"
+    },
+    "Struct": {
+      "type": "object",
+      "additionalProperties": true,
+      "description": "Flexible key-value structure for dynamic agent payloads"
+    },
+    "Artifact": {
+      "type": "object",
+      "properties": {
+        "id": { "type": "string", "format": "uuid" },
+        "type": { "type": "string" },
+        "uri": { "type": "string", "format": "uri" }
+      },
+      "required": ["id", "type", "uri"]
+    }
+  }
+}

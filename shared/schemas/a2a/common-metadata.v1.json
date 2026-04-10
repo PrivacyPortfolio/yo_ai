@@ -1,0 +1,22 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://yo-ai.ai/schemas/v1/common-metadata.json",
+  "title": "A2AMetadata",
+  "type": "object",
+  "properties": {
+    "taskID": { 
+      "type": "string", 
+      "format": "uuid",
+      "description": "Mandatory ID for asynchronous task tracking" 
+    },
+    "correlationID": { 
+      "type": "string",
+      "description": "Links messages across the Yo-ai platform" 
+    },
+    "status": {
+      "type": "string",
+      "enum": ["pending", "processing", "completed", "failed"]
+    }
+  },
+  "required": ["taskID"]
+}

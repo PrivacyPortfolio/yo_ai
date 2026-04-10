@@ -1,0 +1,24 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.com/schemas/a2a-response.json",
+  "title": "A2AResponse",
+  "description": "Discriminated union of all A2A JSON-RPC responses",
+  "type": "object",
+  "discriminator": {
+    "propertyName": "method",
+    "mapping": {
+      "send_message": "https://example.com/schemas/send-message-response.json",
+      "get_task": "https://example.com/schemas/get-task-response.json",
+      "cancel_task": "https://example.com/schemas/cancel-task-response.json",
+      "set_task_push_notification": "https://example.com/schemas/set-task-push-notification-response.json",
+      "get_task_push_notification": "https://example.com/schemas/get-task-push-notification-response.json"
+    }
+  },
+  "oneOf": [
+    { "$ref": "https://example.com/schemas/send-message-response.json" },
+    { "$ref": "https://example.com/schemas/get-task-response.json" },
+    { "$ref": "https://example.com/schemas/cancel-task-response.json" },
+    { "$ref": "https://example.com/schemas/set-task-push-notification-response.json" },
+    { "$ref": "https://example.com/schemas/get-task-push-notification-response.json" }
+  ]
+}

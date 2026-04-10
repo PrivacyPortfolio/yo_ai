@@ -1,0 +1,13 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://yo-ai.ai/schemas/v1/get-task-response.json",
+  "title": "GetTaskResponse",
+  "type": "object",
+  "properties": {
+    "method": { "const": "get_task" },
+    "result": { "type": "object" },
+    "error": { "$ref": "standard-error.v1.json" },
+    "metadata": { "$ref": "common-metadata.v1.json" }
+  },
+  "required": ["method", "metadata"]
+}

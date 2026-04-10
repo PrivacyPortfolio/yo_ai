@@ -1,0 +1,20 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://yo-ai.ai/schemas/v1/stream-message-request.json",
+  "title": "StreamMessageRequest",
+  "type": "object",
+  "properties": {
+    "method": { "const": "stream_message" },
+    "params": {
+      "type": "object",
+      "properties": {
+        "recipient": { "type": "string" },
+        "stream_id": { "type": "string", "format": "uuid" },
+        "content_type": { "type": "string" }
+      },
+      "required": ["recipient", "stream_id"]
+    },
+    "metadata": { "$ref": "common-metadata.v1.json" }
+  },
+  "required": ["method", "params", "metadata"]
+}

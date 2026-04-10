@@ -1,0 +1,15 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://yo-ai.ai/schemas/v1/standard-error.json",
+  "title": "A2AError",
+  "type": "object",
+  "properties": {
+    "code": { 
+      "type": "integer",
+      "description": "Standardized v1.0 error code" 
+    },
+    "message": { "type": "string" },
+    "data": { "type": "object" }
+  },
+  "required": ["code", "message"]
+}
