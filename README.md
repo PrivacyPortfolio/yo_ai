@@ -66,21 +66,31 @@ ________________________________________
 🤖 Agents (agents/)
 Agents are the core actors of the Yo ai ecosystem.
 Each agent is self contained and includes:
+
 •	agent_card/ — declarative manifests (basic, extended, authenticated)
+
 •	capabilities/ — Python implementations of capability handlers
+
 •	runtime/ — the agent’s main execution logic
+
 •	knowledge/ — articles, expertise, prompts
+
 •	policies/ — authorization and behavioral constraints
+
 •	agreements/ — DPAs, SLAs, or contractual metadata
+
 •	artifacts/ — agent owned templates or resources
+
 Agents do not contain platform level routing, tasks, or observability logic.
 ________________________________________
 🧩 Core Platform Runtime (core/)
 This subsystem contains the platform’s shared execution engine.
 It is not deployable and is shared across all agents and tools.
+
 core/handlers/ — Protocol Entrypoints
 Lambda handlers for HTTP, A2A, RPC, WebSocket, and other protocol surfaces.
 They normalize incoming requests into platform envelopes.
+
 core/routing/ — Semantic Routing Layer
 The decision making engine that determines:
 •	which agent to invoke
@@ -88,12 +98,14 @@ The decision making engine that determines:
 •	which tool to call
 •	which rules or overrides apply
 Includes resolvers, routing rules, and the unified capability map.
+
 core/tasks/ — Task + Workflow Engine
 Implements:
 •	task state machines
 •	workflow orchestration
 •	recovery + rehydration
 •	long running process management
+
 core/observability/ — Traces, Logs, Kafka Schemas
 Contains:
 •	Kafka topic schemas
@@ -101,6 +113,7 @@ Contains:
 •	dashboards
 •	structured logging formatters
 •	event definitions
+
 core/messages/ — Message Templates + Builders
 Defines:
 •	platform notifications
@@ -109,7 +122,8 @@ Defines:
 •	event log entries
 •	tool request/response messages
 Includes template files and Python builders.
-core/runtime/ — Envelope + Validation
+
+core/utils/ — Envelope + Validation
 Implements:
 •	envelope schema
 •	message types
