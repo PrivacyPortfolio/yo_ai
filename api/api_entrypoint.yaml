@@ -1,0 +1,24 @@
+paths:
+  /a2a:
+    post:
+      summary: A2A entrypoint for all agent-to-agent messages
+      operationId: a2aEntryPoint
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/JsonRpcRequest"
+      responses:
+        "200":
+          description: JSON-RPC 2.0 response envelope
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/JsonRpcResponse"
+        "400":
+          description: Invalid JSON-RPC request
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/JsonRpcError"

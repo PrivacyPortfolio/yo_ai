@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Solicitor-General Agent</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 40px; }
+        h1 { color: #333; }
+        .button {
+            display: inline-block;
+            padding: 12px 20px;
+            margin: 10px 0;
+            background-color: #0078D4;
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+        }
+        .button:hover { background-color: #005A9E; }
+        .main {
+            width: 100%;
+            background-color: gray;
+        }
+        .card-box {
+            margin-top: 20px;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            background: #fafafa;
+        }
+        .chat-bot {
+            margin-top: 20px;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            background: #fafafa;
+        }
+
+    </style>
+</head>
+<body>
+    <h1>Solicitor-General A2A Agent</h1>
+    <p>
+        This agent acts as the root authority for the Yo-ai Assurance Platform.  
+        It logs, routes, and correlates all requests.
+    </p>
+
+    <div class="main">
+        
+			<div class="gridContainer" style="position:relative; display:grid; display:-ms-grid;
+		  grid-template-columns:1fr 1fr; -ms-grid-columns:1fr 1fr;
+		  grid-template-rows:1fr; -ms-grid-rows:1fr; text-align:center; justify-content:right;">
+	
+                <div class="gridItem" style="-ms-grid-column:1; -ms-grid-row:1; max-width:90%;" id="Div1">
+                
+                    <div class="card-box">
+                        <h2>Choose an action</h2>
+
+                        <a class="button" href="/.well-known/agent-card.json">
+                            View the Solicitor-General Agent's Card
+                        </a>
+
+                        <form action="/present-agent-card" method="post" enctype="application/json">
+                            <p>Or present your own Agent Card:</p>
+                            <textarea name="agent_card" rows="10" cols="60" placeholder="Paste your agent card JSON here"></textarea><br>
+                            <button class="button" type="submit">Submit Agent Card</button>
+                        </form>
+                    
+                        <div style="text-align:center;">
+                        <p style="text-align:left; margin-left:100px; margin-right: 80px">
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            ALL AGENTS MUST REGISTER<br/>
+                            “Every AI Agent must be associated with a Registered Subscriber 
+                            — a human or organization responsible for the agent’s actions, 
+                            similar to how cloud platforms require a human owner for service accounts.”
+                    
+                        </p>
+
+                        <form action="/register-new-subscriber" method="post" enctype="application/json">
+                            <p>Or submit this registration form:</p>
+                            <input type="radio" id="option1" name="group1" value="Individual Consumer">
+                            <label for="option1">Individual Consumer</label>
+                            <input type="radio" id="option2" name="group1" value="Organization Representative">
+                            <label for="option2">Organization Representative</label>
+                            <br/><br/>
+                            
+                            <input type="text" id="subscriber-name" name="subscriber-registration" placeholder="Name" required><br>
+                            <input type="text" id="subscriber-org" name="subscriber-registration" placeholder="Organization"><br>
+                            <input type="text" id="subscriber-phone" name="subscriber-registration" placeholder="Telephone"><br>
+                            <input type="text" id="subscriber-email" name="subscriber-registration" placeholder="Email"><br>
+
+
+                            <textarea name="subscriber-registration" rows="10" cols="60" placeholder="reg form"></textarea><br>
+                            <label for="subscriber-registration">Mailing Address</label><br>
+                            <button class="button" type="submit">Submit Registration</button>
+                        </form>
+
+
+                        <p style="text-align:left; margin-left:100px; margin-right: 80px">
+                            Otherwise, If you have not subscribed,
+                            please contact solicitor-general@yo-ai.ai
+                            to subscribe and register your agent(s).
+                        </p>
+                        </div>
+                    </div>
+                </div>
+	
+			    <div class="gridItem" style="-ms-grid-column: 2; -ms-grid-row: 1; max-width:90%;" id="Div2">
+                    <div class="chat-bot">
+                        <img src="https://www.yo-ai.ai/images/Yo-Ai-Agents/Solicitor-General.png" alt="ask the solicitor-general"/>
+                        <h2>Chat with the Solicitor-General Agent</h2>
+                        <p>Use the chat bot below to interact with the Solicitor-General Agent:</p>
+                        <iframe src="https://chatbot.yo-ai.ai" width="100%" height="400px" frameborder="0"></iframe>
+                        <p>Or, view our <a href="https://yo-ai.ai/FAQs.html">FAQs</a> page.</p>
+                    </div>
+                </div>
+		  </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Solicitor-General Agent</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 40px; }
+        h1 { color: #333; }
+        .button {
+            display: inline-block;
+            padding: 12px 20px;
+            margin: 10px 0;
+            background-color: #0078D4;
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+        }
+        .button:hover { background-color: #005A9E; }
+        .main {
+            width: 100%;
+            background-color: gray;
+        }
+        .card-box {
+            margin-top: 20px;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            background: #fafafa;
+        }
+        .chat-bot {
+            margin-top: 20px;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            background: #fafafa;
+        }
+
+    </style>
+</head>
+<body>
+    <h1>Welcome to the Yo-ai Assurance Platform</h1>
+    <p>
+        The Platform is running normally.  
+    </p>
+
+    <div class="main">
+        
+			<div class="gridContainer" style="position:relative; display:grid; display:-ms-grid;
+		  grid-template-columns:1fr 1fr; -ms-grid-columns:1fr 1fr;
+		  grid-template-rows:1fr 1fr; -ms-grid-rows:1fr 1fr; text-align:center; justify-content:right;">
+	
+                <div class="gridItem" style="-ms-grid-column:1; -ms-grid-row:1; max-width:90%;" id="Div1">
+                
+                    <div class="card-box">
+                        <h2>Choose an action</h2>
+
+                        <a class="button" href="/authenticatedextendedcard/agent-card.json">
+                            View the Solicitor-General's Authenticated Extended Agent Card
+                        </a>
+
+                        <a class="button" href="/registered-agent/agent-card.json">
+                            View your agent's Registered Agent Card
+                        </a>
+
+                        <a class="button" href="/registered-subscriber/subscriber-card.json">
+                            View the Registered Subscriber Card for your agent.
+                        </a>
+
+                        <a class="button" href="/authenticatedextendedcard/agent-rights.json">
+                            View the Access Permissions for your agent.
+                        </a>
+
+                        <a class="button" href="/registered-subscriber/topics.json">
+                            View the topics you subscribe to and most recent events logged.
+                        </a>
+                        
+
+                        <form action="/negotiate-agreement" method="post" enctype="application/json">
+                            <p>Or negotiate an agreement:</p>
+                            <textarea name="agreement-request" rows="10" cols="60" placeholder="Paste your agreement request here"></textarea><br>
+                            <button class="button" type="submit">Submit Agreement Request</button>
+                        </form>
+                    
+                    </div>
+                </div>
+	
+                <div class="gridItem" style="-ms-grid-column:2; -ms-grid-row:1; max-width:90%;" id="Div2">
+                
+                    <div class="card-box">
+                        <h2>Display Action</h2>
+
+                        [placeholder]
+                    </div>
+                </div>
+
+                <div class="gridItem" style="-ms-grid-column: 1; -ms-grid-row: 2; max-width:90%;" id="Div3">
+                    <div class="chat-bot">
+                        <img src="https://www.yo-ai.ai/images/Yo-Ai-Agents/Solicitor-General.png" alt="ask the solicitor-general"/>
+                        <h2>Chat with the Solicitor-General Agent</h2>
+                        <iframe src="https://chatbot.yo-ai.ai" width="100%" height="400px" frameborder="0"></iframe>
+                        <p>Or, view our <a href="https://yo-ai.ai/FAQs.html">FAQs</a> page.</p>
+                    </div>
+                </div>
+
+			    <div class="gridItem" style="-ms-grid-column: 2; -ms-grid-row: 2; max-width:90%;" id="Div4">
+                    <div class="chat-bot">
+                        <img src="https://www.yo-ai.ai/images/registered-agents/RegisteredAgent.png" alt="ask the Solicitor-General a question"/>
+                        <h2>Ask the Solicitor-General a question</h2>
+                        <p>Use the chat bot below to see your agent interact with the Solicitor-General:</p>
+                        <iframe src="https://chatbot.yo-ai.ai" width="100%" height="400px" frameborder="0"></iframe>
+                        <p>Or, view your <a href="https://yo-ai.ai/registered-subscribers/subscriber-preferences.html">Registered Subscriber Preferences</a> page.</p>
+                    </div>
+                </div>
+
+            </div>
+    </div>
+</body>
+</html>
