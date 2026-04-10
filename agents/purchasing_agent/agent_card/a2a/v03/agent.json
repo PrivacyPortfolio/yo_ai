@@ -1,0 +1,186 @@
+{
+    "name": "Purchasing-Agent",
+    "description": "Agent responsible for managing purchases and any follow-up actions if needed.",
+    "url":   "https://privacyportfolio.com/agent-registry/purchasing-agent/agent.json",
+    "provider": {
+        "organization": "PrivacyPortfolio",
+        "url": "https://www.PrivacyPortfolio.com"
+        },
+    "iconUrl": "https://privacyportfolio.com/agent-registry/purchasing-agent/purchasing-agent-agent-icon.png",
+    "version": "1.0.0",
+    "documentationUrl": "https://privacyportfolio.com/agent-registry/purchasing-agent/Purchasing-Agent-AgentCard.md",
+    "capabilities": {
+        "streaming": true,
+        "pushNotifications": true,
+        "stateTransitionHistory": true
+    },
+    "securitySchemes": {
+        "yo-ai": {
+        "type": "apiKey",
+        "name": "yo-api",
+        "in": "header"
+        }
+    },
+    "security": [{ "yo-ai": ["apiKey", "yo-api", "header"] }],
+    "defaultInputModes": ["application/json", "text/plain"],
+    "defaultOutputModes": ["application/json", "text/plain"],
+    "skills": [
+        {
+            "name": "Budget.Check",
+            "description": "Retrieves the current balance of the dedicated checking account and determines available purchasing power for online purchases.",
+            "tags": ["budget", "accountBalance", "spendingLimit", "financialGovernance"],
+            "input_modes": ["application/json", "text/plain"],
+            "output_modes": ["application/json"],
+            "examples": [
+                "What is my available purchasing budget",
+                "Can I afford this $129 purchase"
+            ],
+            "inputSchema": { "$ref": "https://yo-ai.ai/schemas/budget.check.input.schema.json" },
+            "outputSchema": { "$ref": "https://yo-ai.ai/schemas/budget.check.output.schema.json" }
+        },
+        {
+            "name": "Purchase-Eligibility.Validate",
+            "description": "Confirms that a purchase is allowed based on budget, risk score, vendor trust tier, and user policy before creating an AP2 purchase intent.",
+            "tags": ["riskAssessment", "budgetCheck", "vendorTrust", "policyEnforcement"],
+            "input_modes": ["application/json"],
+            "output_modes": ["application/json"],
+            "examples": [
+                "Validate eligibility for this $300 purchase",
+                "Is it safe to buy from this seller"
+            ],
+            "inputSchema": { "$ref": "https://yo-ai.ai/schemas/purchase-eligibility.validate.input.schema.json" },
+            "outputSchema": { "$ref": "https://yo-ai.ai/schemas/purchase-eligibility.validate.output.schema.json" }
+        },
+        {
+            "name": "Purchase.Initiate",
+            "description": "Creates and submits an AP2 purchase intent and executes the purchase via Stripe, PayPal, or vendor checkout flows.",
+            "tags": ["checkout", "payment", "transaction", "AP2"],
+            "input_modes": ["application/json"],
+            "output_modes": ["application/json"],
+            "examples": [
+                "Buy this item from Vendor X",
+                "Complete checkout for this cart"
+            ],
+            "inputSchema": { "$ref": "https://yo-ai.ai/schemas/purchase.initiate.input.schema.json" },
+            "outputSchema": { "$ref": "https://yo-ai.ai/schemas/purchase.initiate.output.schema.json" }
+        },
+        {
+            "name": "Transaction-Complete.Verify",
+            "description": "Verifies AP2 transaction states, confirms that funds were transferred, and that the vendor acknowledged the order.",
+            "tags": ["transactionVerification", "paymentConfirmation", "audit"],
+            "input_modes": ["application/json"],
+            "output_modes": ["application/json"],
+            "examples": [
+                "Verify that this payment went through",
+                "Confirm the vendor accepted the order"
+            ],
+            "inputSchema": { "$ref": "https://yo-ai.ai/schemas/transaction-complete.verify.input.schema.json" },
+            "outputSchema": { "$ref": "https://yo-ai.ai/schemas/transaction-complete.verify.output.schema.json" }
+        },
+        {
+            "name": "Budget-After-Purchase.Update",
+            "description": "Updates the purchasing budget by deducting completed AP2 transaction amounts from the dedicated checking account balance.",
+            "tags": ["budgetUpdate", "accounting", "spendingTracking"],
+            "input_modes": ["application/json"],
+            "output_modes": ["application/json"],
+            "examples": [
+                "Update budget after this $45 purchase",
+                "Reflect this transaction in my spending balance"
+            ],
+            "inputSchema": { "$ref": "https://yo-ai.ai/schemas/budget-after-purchase.update.input.schema.json" },
+            "outputSchema": { "$ref": "https://yo-ai.ai/schemas/budget-after-purchase.update.output.schema.json" }
+        },
+        {
+            "name": "Order-Status.Track",
+            "description": "Monitors order status, shipping updates, delivery confirmations, and vendor notifications linked to AP2 transactions.",
+            "tags": ["orderTracking", "shipping", "delivery", "notifications"],
+            "input_modes": ["application/json", "text/plain"],
+            "output_modes": ["application/json"],
+            "examples": [
+                "Track my order from Vendor Y",
+                "Notify me when this item ships"
+            ],
+            "inputSchema": { "$ref": "https://yo-ai.ai/schemas/order-status.track.input.schema.json" },
+            "outputSchema": { "$ref": "https://yo-ai.ai/schemas/order-status.track.output.schema.json" }
+        },
+        {
+            "name": "Return-Or-Refund.Initiate",
+            "description": "Creates AP2-compatible return/refund intents, starts vendor workflows, and tracks their progress.",
+            "tags": ["returns", "refunds", "postPurchase", "vendorInteraction", "AP2"],
+            "input_modes": ["application/json"],
+            "output_modes": ["application/json"],
+            "examples": [
+                "Start a return for this defective item",
+                "Request a refund from Vendor Z"
+            ],
+            "inputSchema": { "$ref": "https://yo-ai.ai/schemas/return-or-refund.initiate.input.schema.json" },
+            "outputSchema": { "$ref": "https://yo-ai.ai/schemas/return-or-refund.initiate.output.schema.json" }
+        },
+        {
+            "name": "Purchase-Issues.Resolve",
+            "description": "Handles vendor disputes, missing items, incorrect shipments, or billing errors, and anchors all interactions to the AP2 transaction record.",
+            "tags": ["disputeResolution", "postPurchase", "vendorSupport"],
+            "input_modes": ["application/json", "text/plain"],
+            "output_modes": ["application/json"],
+            "examples": [
+                "Resolve a missing item issue",
+                "Fix a double charge from Vendor X"
+            ],
+            "inputSchema": { "$ref": "https://yo-ai.ai/schemas/purchase-issues.resolve.input.schema.json" },
+            "outputSchema": { "$ref": "https://yo-ai.ai/schemas/purchase-issues.resolve.output.schema.json" }
+        },
+        {
+            "name": "Purchase-Receipt.Generate",
+            "description": "Produces an AP2-compatible receipt artifact with transaction details, vendor metadata, and evidence for auditability.",
+            "tags": ["receipt", "audit", "documentation", "evidence", "AP2"],
+            "input_modes": ["application/json"],
+            "output_modes": ["application/json", "text/plain"],
+            "examples": [
+                "Generate a receipt for yesterday’s purchase",
+                "Provide documentation for this transaction"
+            ],
+            "inputSchema": { "$ref": "https://yo-ai.ai/schemas/purchase-receipt.generate.input.schema.json" },
+            "outputSchema": { "$ref": "https://yo-ai.ai/schemas/purchase-receipt.generate.output.schema.json" }
+        },
+        {
+            "name": "Purchase-History.Generate",
+            "description": "Generates an AP2-aligned history of past purchases, including receipts, vendor interactions, and follow-up actions.",
+            "tags": ["history", "audit", "documentation", "spendingAnalysis"],
+            "input_modes": ["application/json"],
+            "output_modes": ["application/json", "text/plain"],
+            "examples": [
+                "Show my last 10 purchases",
+                "Generate a spending summary for this month"
+            ],
+            "inputSchema": { "$ref": "https://yo-ai.ai/schemas/purchase-history.generate.input.schema.json" },
+            "outputSchema": { "$ref": "https://yo-ai.ai/schemas/purchase-history.generate.output.schema.json" }
+        },
+        {
+            "name": "Purchase-Risk.Evaluate",
+            "description": "Assesses fraud risk, vendor legitimacy, unusual pricing, and suspicious patterns before allowing an AP2 purchase intent to proceed.",
+            "tags": ["fraudDetection", "riskAssessment", "vendorLegitimacy"],
+            "input_modes": ["application/json", "text/plain"],
+            "output_modes": ["application/json"],
+            "examples": [
+                "Is this vendor trustworthy",
+                "Evaluate risk for this high-value purchase"
+            ],
+            "inputSchema": { "$ref": "https://yo-ai.ai/schemas/purchase-risk.evaluate.input.schema.json" },
+            "outputSchema": { "$ref": "https://yo-ai.ai/schemas/purchase-risk.evaluate.output.schema.json" }
+        },
+        {
+            "name": "Purchase-Options.Recommend",
+            "description": "Suggests alternative vendors, better prices, or safer purchasing paths consistent with budget and AP2-compatible channels.",
+            "tags": ["recommendations", "priceComparison", "vendorAlternatives"],
+            "input_modes": ["application/json", "text/plain"],
+            "output_modes": ["application/json", "text/plain"],
+            "examples": [
+                "Find a cheaper option for this product",
+                "Recommend a safer vendor for this purchase"
+            ],
+            "inputSchema": { "$ref": "https://yo-ai.ai/schemas/purchase-options.recommend.input.schema.json" },
+            "outputSchema": { "$ref": "https://yo-ai.ai/schemas/purchase-options.recommend.output.schema.json" }
+        }
+    ],
+    "supportsAuthenticatedExtendedCard": true
+}

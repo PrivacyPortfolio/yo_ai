@@ -1,0 +1,478 @@
+/**
+ * This Rewards-Seeker AuthenticatedExtendedCard conveys:
+ * - AuthenticatedExtendedCard contains tasks, messages, artifacts, and tools for Registered Agents.
+ * - Tasks: A task encapsulates the entire interaction related to a specific goal or request.
+ * - Messages: Messages are used for instructions, prompts, replies, and status updates.
+ * - Artifacts: Collection of artifacts created by the agent.
+ */
+
+
+/**
+* Rewards-Seeker Authenticated Extended Agent Card¶
+*/
+{
+    "name": "Rewards-Seeker",
+    "description": "Agent responsible for managing loyalty programs, rewards, cashback, and promotional eligibility. Uses SocialMedia-Checker for promotional verification.",
+    "url": "https://privacyportfolio.com/agent-registry/rewards-seeker/auth/agent.json",
+    "provider": {
+        "organization": "PrivacyPortfolio",
+        "url": "https://www.PrivacyPortfolio.com"
+    },
+    "iconUrl": "https://privacyportfolio.com/agent-registry/rewards-seeker/rewards-seeker-agent-icon.png",
+    "version": "1.0.0",
+    "documentationUrl": "https://privacyportfolio.com/agent-registry/rewards-seeker/auth/Rewards-Seeker-AuthenticatedExtendedAgentCard.md",
+    "capabilities": {
+        "streaming": true,
+        "pushNotifications": true,
+        "stateTransitionHistory": true,
+        "exposesTasks": true,
+        "exposesMessages": true,
+        "exposesArtifacts": true,
+        "exposesTools": true
+    },
+    "securitySchemes": {
+        "yo-ai": {
+        "type": "apiKey",
+        "name": "yo-api",
+        "in": "header"
+        }
+    },
+    "security": [
+        { "yo-ai": ["apiKey", "yo-api", "header"] }
+    ],
+    "defaultInputModes": ["application/json", "text/plain"],
+    "defaultOutputModes": ["application/json", "text/plain"],
+    "skills": [
+        {"name": "Rewards.Discover"},
+        {"name": "Promo-Eligibility.Verify"},
+        {"name": "Reward.Redeem"},
+        {"name": "Rewards-Profile.Request"},
+        {"name": "Redemption-Plan.Generate"}
+    ],
+    "x-capabilities": [
+        {
+            "Rewards.Discover": {
+                "artifacts": [
+                    {"artifact": {"type": "skill", "name": "Rewards.Discover"}},
+                    {"artifact": {"type": "task", "name": "Rewards.Discover"}},
+                    {"artifact": {"type": "tool", "name": "Rewards.Discover"}},
+                    {"artifact": {"type": "handler", "name": "Rewards.Discover"}},
+                    {"artifact": {"type": "messageType", "name": "Rewards.Discover.Input"}},
+                    {"artifact": {"type": "messageType", "name": "Rewards.Discover.Output"}}
+                ]
+            }
+        },
+        {
+            "Promo-Eligibility.Verify": {
+                "artifacts": [
+                    {"artifact": {"type": "skill", "name": "Promo-Eligibility.Verify"}},
+                    {"artifact": {"type": "task", "name": "Promo-Eligibility.Verify"}},
+                    {"artifact": {"type": "tool", "name": "Promo-Eligibility.Verify"}},
+                    {"artifact": {"type": "handler", "name": "Promo-Eligibility.Verify"}},
+                    {"artifact": {"type": "messageType", "name": "Promo-Eligibility.Verify.Input"}},
+                    {"artifact": {"type": "messageType", "name": "Promo-Eligibility.Verify.Output"}}
+                ]
+            }
+        },
+        {
+            "Reward.Redeem": {
+                "artifacts": [
+                    {"artifact": {"type": "skill", "name": "Reward.Redeem"}},
+                    {"artifact": {"type": "task", "name": "Reward.Redeem"}},
+                    {"artifact": {"type": "tool", "name": "Reward.Redeem"}},
+                    {"artifact": {"type": "handler", "name": "Reward.Redeem"}},
+                    {"artifact": {"type": "messageType", "name": "Reward.Redeem.Input"}},
+                    {"artifact": {"type": "messageType", "name": "Reward.Redeem.Output"}}
+                ]
+            }
+        },
+        {
+            "Rewards-Profile.Request": {
+                "artifacts": [
+                    {"artifact": {"type": "skill", "name": "Rewards-Profile.Request"}},
+                    {"artifact": {"type": "task", "name": "Rewards-Profile.Request"}},
+                    {"artifact": {"type": "tool", "name": "Rewards-Profile.Request"}},
+                    {"artifact": {"type": "handler", "name": "Rewards-Profile.Request"}},
+                    {"artifact": {"type": "messageType", "name": "Rewards-Profile.Request.Input"}},
+                    {"artifact": {"type": "messageType", "name": "Rewards-Profile.Request.Output"}}
+                ]
+            }
+        },
+        {
+            "Redemption-Plan.Generate": {
+                "artifacts": [
+                    {"artifact": {"type": "skill", "name": "Redemption-Plan.Generate"}},
+                    {"artifact": {"type": "task", "name": "Redemption-Plan.Generate"}},
+                    {"artifact": {"type": "tool", "name": "Redemption-Plan.Generate"}},
+                    {"artifact": {"type": "handler", "name": "Redemption-Plan.Generate"}},
+                    {"artifact": {"type": "messageType", "name": "Redemption-Plan.Generate.Input"}},
+                    {"artifact": {"type": "messageType", "name": "Redemption-Plan.Generate.Output"}}
+                ]
+            }
+        }
+    ],
+    "x-artifacts": [
+      {
+        "name": "Rewards.Discover",
+        "version": "1.0.0",
+        "artifactType": "skill",
+        "description": "Identifies loyalty opportunities, cashback offers, and promotional benefits.",
+        "tags": ["rewards", "loyalty", "opportunity", "logEvent"],
+        "examples": [
+          "Find cashback offers",
+          "Identify loyalty bonuses",
+          "Scan for reward-eligible purchases"
+        ]
+      },
+      {
+        "name": "Rewards.Discover",
+        "version": "1.0.0",
+        "artifactType": "task",
+        "description": "Identifies loyalty opportunities, cashback offers, and promotional benefits.",
+        "tags": ["rewards", "loyalty", "opportunity", "logEvent"],
+        "examples": [
+          "Find cashback offers",
+          "Identify loyalty bonuses",
+          "Scan for reward-eligible purchases"
+        ]
+      },
+      {
+        "name": "Rewards.Discover",
+        "version": "1.0.0",
+        "artifactType": "tool",
+        "description": "Identifies loyalty opportunities, cashback offers, and promotional benefits.",
+        "capabilities": ["discover"],
+        "path": "/",
+        "provider": {
+          "name": "PrivacyPortfolio",
+          "brand": "Yo-ai",
+          "product": "",
+          "version": "1.0.0",
+          "license": "Yo-ai Internal",
+          "url": "https://yo-ai.ai/docs/Rewards.Discover.html",
+          "config": { "backend": "" }
+        },
+        "inputSchema": {
+          "$ref": "https://yo-ai.ai/schemas/rewards.discover.input.schema.json"
+        },
+        "outputSchema": {
+          "$ref": "https://yo-ai.ai/schemas/rewards.discover.output.schema.json"
+        },
+        "auth": "apiKey"
+      },
+      {
+        "name": "Rewards.Discover",
+        "version": "1.0.0",
+        "artifactType": "handler",
+        "description": "Interface for integrating with tool executable.",
+        "path": "/"
+      },
+      {
+        "name": "Rewards.Discover.Input",
+        "version": "1.0.0",
+        "artifactType": "messageType",
+        "schema": {
+          "$ref": "https://yo-ai.ai/schemas/rewards.discover.input.schema.json"
+        },
+        "description": "Input schema for the Rewards.Discover capability."
+      },
+      {
+        "name": "Rewards.Discover.Output",
+        "version": "1.0.0",
+        "artifactType": "messageType",
+        "schema": {
+          "$ref": "https://yo-ai.ai/schemas/rewards.discover.output.schema.json"
+        },
+        "description": "Output schema for the Rewards.Discover capability."
+      },
+      {
+        "name": "Promo-Eligibility.Verify",
+        "version": "1.0.0",
+        "artifactType": "skill",
+        "description": "Verifies whether the user meets promotional requirements using SocialMedia-Checker.",
+        "tags": ["promotion", "verification", "socialMedia", "logEvent"],
+        "examples": [
+          "Check if user followed brand",
+          "Verify hashtag usage",
+          "Confirm social engagement"
+        ]
+      },
+      {
+        "name": "Promo-Eligibility.Verify",
+        "version": "1.0.0",
+        "artifactType": "task",
+        "description": "Verifies whether the user meets promotional requirements using SocialMedia-Checker.",
+        "tags": ["promotion", "verification", "socialMedia", "logEvent"],
+        "examples": [
+          "Check if user followed brand",
+          "Verify hashtag usage",
+          "Confirm social engagement"
+        ]
+      },
+      {
+        "name": "Promo-Eligibility.Verify",
+        "version": "1.0.0",
+        "artifactType": "tool",
+        "description": "Verifies whether the user meets promotional requirements using SocialMedia-Checker.",
+        "capabilities": ["verify"],
+        "path": "/",
+        "provider": {
+          "name": "PrivacyPortfolio",
+          "brand": "Yo-ai",
+          "product": "",
+          "version": "1.0.0",
+          "license": "Yo-ai Internal",
+          "url": "https://yo-ai.ai/docs/Promo-Eligibility.Verify.html",
+          "config": { "backend": "" }
+        },
+        "inputSchema": {
+          "$ref": "https://yo-ai.ai/schemas/promo-eligibility.verify.input.schema.json"
+        },
+        "outputSchema": {
+          "$ref": "https://yo-ai.ai/schemas/promo-eligibility.verify.output.schema.json"
+        },
+        "auth": "apiKey"
+      },
+      {
+        "name": "Promo-Eligibility.Verify",
+        "version": "1.0.0",
+        "artifactType": "handler",
+        "description": "Interface for integrating with tool executable.",
+        "path": "/"
+      },
+      {
+        "name": "Promo-Eligibility.Verify.Input",
+        "version": "1.0.0",
+        "artifactType": "messageType",
+        "schema": {
+          "$ref": "https://yo-ai.ai/schemas/promo-eligibility.verify.input.schema.json"
+        },
+        "description": "Input schema for the Promo-Eligibility.Verify capability."
+      },
+      {
+        "name": "Promo-Eligibility.Verify.Output",
+        "version": "1.0.0",
+        "artifactType": "messageType",
+        "schema": {
+          "$ref": "https://yo-ai.ai/schemas/promo-eligibility.verify.output.schema.json"
+        },
+        "description": "Output schema for the Promo-Eligibility.Verify capability."
+      },
+      {
+        "name": "Reward.Redeem",
+        "version": "1.0.0",
+        "artifactType": "skill",
+        "description": "Redeems loyalty points, cashback, or promotional credits.",
+        "tags": ["redeem", "loyalty", "reward", "logEvent"],
+        "examples": [
+          "Redeem points",
+          "Apply cashback",
+          "Claim promotional credit"
+        ]
+      },
+      {
+        "name": "Reward.Redeem",
+        "version": "1.0.0",
+        "artifactType": "task",
+        "description": "Redeems loyalty points, cashback, or promotional credits.",
+        "tags": ["redeem", "loyalty", "reward", "logEvent"],
+        "examples": [
+          "Redeem points",
+          "Apply cashback",
+          "Claim promotional credit"
+        ]
+      },
+      {
+        "name": "Reward.Redeem",
+        "version": "1.0.0",
+        "artifactType": "tool",
+        "description": "Redeems loyalty points, cashback, or promotional credits.",
+        "capabilities": ["redeem"],
+        "path": "/",
+        "provider": {
+          "name": "PrivacyPortfolio",
+          "brand": "Yo-ai",
+          "product": "",
+          "version": "1.0.0",
+          "license": "Yo-ai Internal",
+          "url": "https://yo-ai.ai/docs/Reward.Redeem.html",
+          "config": { "backend": "" }
+        },
+        "inputSchema": {
+          "$ref": "https://yo-ai.ai/schemas/reward.redeem.input.schema.json"
+        },
+        "outputSchema": {
+          "$ref": "https://yo-ai.ai/schemas/reward.redeem.output.schema.json"
+        },
+        "auth": "apiKey"
+      },
+      {
+        "name": "Reward.Redeem",
+        "version": "1.0.0",
+        "artifactType": "handler",
+        "description": "Interface for integrating with tool executable.",
+        "path": "/"
+      },
+      {
+        "name": "Reward.Redeem.Input",
+        "version": "1.0.0",
+        "artifactType": "messageType",
+        "schema": {
+          "$ref": "https://yo-ai.ai/schemas/reward.redeem.input.schema.json"
+        },
+        "description": "Input schema for the Reward.Redeem capability."
+      },
+      {
+        "name": "Reward.Redeem.Output",
+        "version": "1.0.0",
+        "artifactType": "messageType",
+        "schema": {
+          "$ref": "https://yo-ai.ai/schemas/reward.redeem.output.schema.json"
+        },
+        "description": "Output schema for the Reward.Redeem capability."
+      },
+      {
+        "name": "Rewards-Profile.Request",
+        "version": "1.0.0",
+        "artifactType": "skill",
+        "description": "Requests minimized loyalty profile from Data-Steward.",
+        "tags": ["requestData", "loyalty", "logEvent"],
+        "examples": [
+          "Request loyalty IDs",
+          "Request reward preferences"
+        ]
+      },
+      {
+        "name": "Rewards-Profile.Request",
+        "version": "1.0.0",
+        "artifactType": "task",
+        "description": "Requests minimized loyalty profile from Data-Steward.",
+        "tags": ["requestData", "loyalty", "logEvent"],
+        "examples": [
+          "Request loyalty IDs",
+          "Request reward preferences"
+        ]
+      },
+      {
+        "name": "Rewards-Profile.Request",
+        "version": "1.0.0",
+        "artifactType": "tool",
+        "description": "Requests minimized loyalty profile from Data-Steward.",
+        "capabilities": ["request"],
+        "path": "/",
+        "provider": {
+          "name": "PrivacyPortfolio",
+          "brand": "Yo-ai",
+          "product": "",
+          "version": "1.0.0",
+          "license": "Yo-ai Internal",
+          "url": "https://yo-ai.ai/docs/Rewards-Profile.Request.html",
+          "config": { "backend": "" }
+        },
+        "inputSchema": {
+          "$ref": "https://yo-ai.ai/schemas/rewards-profile.request.input.schema.json"
+        },
+        "outputSchema": {
+          "$ref": "https://yo-ai.ai/schemas/rewards-profile.request.output.schema.json"
+        },
+        "auth": "apiKey"
+      },
+      {
+        "name": "Rewards-Profile.Request",
+        "version": "1.0.0",
+        "artifactType": "handler",
+        "description": "Interface for integrating with tool executable.",
+        "path": "/"
+      },
+      {
+        "name": "Rewards-Profile.Request.Input",
+        "version": "1.0.0",
+        "artifactType": "messageType",
+        "schema": {
+          "$ref": "https://yo-ai.ai/schemas/rewards-profile.request.input.schema.json"
+        },
+        "description": "Input schema for the Rewards-Profile.Request capability."
+      },
+      {
+        "name": "Rewards-Profile.Request.Output",
+        "version": "1.0.0",
+        "artifactType": "messageType",
+        "schema": {
+          "$ref": "https://yo-ai.ai/schemas/rewards-profile.request.output.schema.json"
+        },
+        "description": "Output schema for the Rewards-Profile.Request capability."
+      },
+      {
+        "name": "Redemption-Plan.Generate",
+        "version": "1.0.0",
+        "artifactType": "skill",
+        "description": "Generates a personalized plan for earning and redeeming rewards across programs.",
+        "tags": ["qualifications", "terms", "restrictions", "automated decisions"],
+        "examples": [
+          "Generate a plan to earn rewards including what to track and how to improve my odds.",
+          "Rank which rewards programs I am most likely to qualify for and redeem."
+        ]
+      },
+      {
+        "name": "Redemption-Plan.Generate",
+        "version": "1.0.0",
+        "artifactType": "task",
+        "description": "Generates a personalized plan for earning and redeeming rewards across programs.",
+        "tags": ["qualifications", "terms", "restrictions", "automated decisions"],
+        "examples": [
+          "Generate a plan to earn rewards including what to track and how to improve my odds.",
+          "Rank which rewards programs I am most likely to qualify for and redeem."
+        ]
+      },
+      {
+        "name": "Redemption-Plan.Generate",
+        "version": "1.0.0",
+        "artifactType": "tool",
+        "description": "Generates a personalized plan for earning and redeeming rewards across programs.",
+        "capabilities": ["generate"],
+        "path": "/",
+        "provider": {
+          "name": "PrivacyPortfolio",
+          "brand": "Yo-ai",
+          "product": "",
+          "version": "1.0.0",
+          "license": "Yo-ai Internal",
+          "url": "https://yo-ai.ai/docs/Redemption-Plan.Generate.html",
+          "config": { "backend": "" }
+        },
+        "inputSchema": {
+          "$ref": "https://yo-ai.ai/schemas/redemption-plan.generate.input.schema.json"
+        },
+        "outputSchema": {
+          "$ref": "https://yo-ai.ai/schemas/redemption-plan.generate.output.schema.json"
+        },
+        "auth": "apiKey"
+      },
+      {
+        "name": "Redemption-Plan.Generate",
+        "version": "1.0.0",
+        "artifactType": "handler",
+        "description": "Interface for integrating with tool executable.",
+        "path": "/"
+      },
+      {
+        "name": "Redemption-Plan.Generate.Input",
+        "version": "1.0.0",
+        "artifactType": "messageType",
+        "schema": {
+          "$ref": "https://yo-ai.ai/schemas/redemption-plan.generate.input.schema.json"
+        },
+        "description": "Input schema for the Redemption-Plan.Generate capability."
+      },
+      {
+        "name": "Redemption-Plan.Generate.Output",
+        "version": "1.0.0",
+        "artifactType": "messageType",
+        "schema": {
+          "$ref": "https://yo-ai.ai/schemas/redemption-plan.generate.output.schema.json"
+        },
+        "description": "Output schema for the Redemption-Plan.Generate capability."
+      }
+    ],
+    "supportsAuthenticatedExtendedCard": true
+}

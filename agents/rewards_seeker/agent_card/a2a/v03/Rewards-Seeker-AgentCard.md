@@ -1,0 +1,111 @@
+/**
+ * This Rewards-Seeker AgentCard conveys:
+ * - Overall details (version, name, description, uses)
+ * - Skills: A set of capabilities the agent can perform
+ * - Default modalities/content types supported by the agent.
+ * - Authentication requirements
+ */
+
+/**
+* Rewards-Seeker AgentCard¶
+*/
+{
+    "name": "Rewards-Seeker",
+    "description": "Agent responsible for managing loyalty programs, rewards, cashback, and promotional eligibility. Uses SocialMedia-Checker for promotional verification.",
+    "url": "https://privacyportfolio.com/agent-registry/rewards-seeker/agent.json",
+    "provider": {
+        "organization": "PrivacyPortfolio",
+        "url": "https://www.PrivacyPortfolio.com"
+    },
+    "iconUrl": "https://privacyportfolio.com/agent-registry/rewards-seeker/rewards-seeker-agent-icon.png",
+    "version": "1.0.0",
+    "documentationUrl": "https://privacyportfolio.com/agent-registry/rewards-seeker/Rewards-Seeker-AgentCard.md",
+    "capabilities": {
+        "streaming": true,
+        "pushNotifications": true,
+        "stateTransitionHistory": true
+    },
+    "securitySchemes": {
+        "yo-ai": {
+        "type": "apiKey",
+        "name": "yo-api",
+        "in": "header"
+        }
+    },
+    "security": [
+        { "yo-ai": ["apiKey", "yo-api", "header"] }
+    ],
+    "defaultInputModes": ["application/json", "text/plain"],
+    "defaultOutputModes": ["application/json", "text/plain"],
+    "skills": [
+        {
+            "name": "Rewards.Discover",
+            "description": "Identify loyalty opportunities, cashback offers, and promotional benefits.",
+            "tags": ["rewards", "loyalty", "opportunity", "logEvent"],
+            "examples": [
+                "Find cashback offers",
+                "Identify loyalty bonuses",
+                "Scan for reward-eligible purchases"
+            ],
+            "inputModes": ["application/json"],
+            "outputModes": ["application/json"],
+            "inputSchema": { "$ref": "https://yo-ai.ai/schemas/rewards.discover.input.schema.json" },
+            "outputSchema": { "$ref": "https://yo-ai.ai/schemas/rewards.discover.output.schema.json" }
+        },
+        {
+            "name": "Promo-Eligibility.Verify",
+            "description": "Use SocialMedia-Checker to confirm promotional requirements.",
+            "tags": ["promotion", "verification", "socialMedia", "logEvent"],
+            "examples": [
+                "Check if user followed brand",
+                "Verify hashtag usage",
+                "Confirm social engagement"
+            ],
+            "inputModes": ["application/json"],
+            "outputModes": ["application/json"],
+            "inputSchema": { "$ref": "https://yo-ai.ai/schemas/promo-eligibility.verify.input.schema.json" },
+            "outputSchema": { "$ref": "https://yo-ai.ai/schemas/promo-eligibility.verify.output.schema.json" }
+        },
+        {
+            "name": "Reward.Redeem",
+            "description": "Redeem loyalty points, cashback, or promotional credits.",
+            "tags": ["redeem", "loyalty", "reward", "logEvent"],
+            "examples": [
+                "Redeem points",
+                "Apply cashback",
+                "Claim promotional credit"
+            ],
+            "inputModes": ["application/json"],
+            "outputModes": ["application/json"],
+            "inputSchema": { "$ref": "https://yo-ai.ai/schemas/reward.redeem.input.schema.json" },
+            "outputSchema": { "$ref": "https://yo-ai.ai/schemas/reward.redeem.output.schema.json" }
+        },
+        {
+            "name": "Rewards-Profile.Request",
+            "description": "Request minimized loyalty profile from Data-Steward.",
+            "tags": ["requestData", "loyalty", "logEvent"],
+            "examples": [
+                "Request loyalty IDs",
+                "Request reward preferences"
+            ],
+            "inputModes": ["application/json"],
+            "outputModes": ["application/json"],
+            "inputSchema": { "$ref": "https://yo-ai.ai/schemas/rewards-profile.request.input.schema.json" },
+            "outputSchema": { "$ref": "https://yo-ai.ai/schemas/rewards-profile.request.output.schema.json" }
+        },
+        {
+            "name": "Redemption-Plan.Generate",
+            "description": "Generates custom plan for earning and redeeming rewards based on user-defined preferences. Can include multiple rewards.",
+            "tags": ["qualifications", "terms", "restrictions", "automated decisions"],
+                "examples": [
+                    "Generate a plan to earn rewards including what to track and how to improve my odds of redeeming rewards.",
+                    "Rank which rewards programs I am most likely to qualify for and redeem, the organizations offering them, and the estimated reward value."
+                ],
+            "inputModes": ["application/json"],
+            "outputModes": ["image/png", "image/jpeg", "application/json", "text/html"],
+            "inputSchema": { "$ref": "https://yo-ai.ai/schemas/redemption-plan.generate.input.schema.json" },
+            "outputSchema": { "$ref": "https://yo-ai.ai/schemas/redemption-plan.generate.output.schema.json" }
+        }
+    ],
+    "supportsAuthenticatedExtendedCard": true
+}

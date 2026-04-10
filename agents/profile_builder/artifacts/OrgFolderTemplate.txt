@@ -1,0 +1,122 @@
++---OrgFolderTemplate
+    +---ADMT
+        This is where Risk Assessments on Automated Decision-Making Technologies are stored.
+        They are used by the Risk-Assessor and Compliance-Validator for conducting ADMT assessments,
+        the Decision-Master for analyzing decision-set-outcomes,
+        and receives input from Complaint-Manager, Profile-Builder, Vendor-Manager, and Data-Steward
+        for directing and using the assessments. ADMT assessments can also be treated as a complaint artifact.
+        The Rewards-Seeker can also leverage ADMT assessments to bring or join in lawsuits or bug bounties.
+    +---Articles
+        These saved webpages and documents are sources for:
+        •	Public signals
+        •	Market intelligence
+        •	Product announcements
+        •	Adverse media
+        •	Indicators of Compromise
+
+    +---Assets
+    ¦   +---IP
+            Assets/IP Inspector/Brands + Patents map directly to:
+                •	IP-Assets.Discover.Output
+                •	IP-to-Products.Map.Output
+                •	Implementation-Instances.Search.Output
+                •	Use-Cases.Infer.Output
+                •	IP-Portfolio.Cluster.Output
+                •	IP-Provenance.Trace.Output
+    ¦   ¦   +---Whitepapers
+                These differ from articles in that they are often proprietary, protected intellectual property,
+                which provides evidence sources for:
+                •	IP-Inspector
+                •	Tech-Inspector
+                •	Profile-Builder
+                •	Workflow-Builder
+                •	Tests
+
+    ¦   +---Tech
+                Assets/Tech Inspector/Vendors map to:
+                •	Third-Party-Assets.Discover.Output
+                •	Asset-Integrations.Map.Output
+                •	Implementation-Details.Analyze.Output
+                •	Usage-Instances.Search.Output
+                •	Technical-Impact.Infer.Output
+                •	Asset-Portfolio.Cluster.Output
+                •	Integration-Risk.Evaluate.Output
+                •	Integration-Provenance.Trace.Output
+                •	Related-Assets.Detect.Output
+    +---Complaints
+        These artifacts are used for:
+        •	Org-Profile.Manage operations
+        •	Vendor Manager governance fields
+        •	Decision traces
+        •	Negotiation workflows
+        •	Risk posture updates
+
+    +---Cybersecurity
+        This is where Cybersecurity Audits are stored.
+        They are used by the Risk-Assessor and Compliance-Validator for conducting cybersecurity audits,
+        and receives input from Complaint-Manager, Profile-Builder, Vendor-Manager, and Data-Steward
+        for directing and using the assessments. Cybersecurity Audits can also be treated as a complaint artifact.
+        The Rewards-Seeker can also leverage Cybersecurity Audits to bring or join in lawsuits or bug bounties.
+
+    +---Evidence
+        This is the catch all for:
+        •	Screenshots
+        •	PDFs
+        •	Contracts
+        •	Terms of service
+        •	Audit logs
+        •	External reports
+        •	Anything referenced in a decision trace
+    +---Jobs
+        These are saved job postings used by:
+        •	IP-Inspector
+        •	Tech-Inspector
+        •	Talent-Agent
+        •	Data-Steward
+
+    +---Policies
+        These artifacts are stored and linked into the Org Profile:
+        •	Vendor policies
+        •	Data handling statements
+        •	Terms & conditions
+        •	Compliance documents
+
+    +---Profile
+                This is where BasicProfile:
+                •	Vendor Manager’s governance metadata
+                •	External references (DUNS, URLs, filings)
+                •	Human in the loop notes
+                maps to:
+                •	Org-Profile.Build.Output
+    +---Requests
+        This is where ActivityLogs and message artifacts are stored as a single source of truth
+        for correspondence history between a Data-Steward and a Vendor-Manager.
+
+    +---Stakeholders
+        This is where personal profiles for "Named Stakeholders", such as:
+        •	Contacts
+        •	Executives
+        •	Legal representatives
+        •	Compliance officers
+        •	Technical owners
+        •	Board Members
+        •	Investors
+        are stored, along with "OrgProfiles" or references to them for:
+        •	Customers
+        •	Partners
+        •	Sponsors
+        •	Vendors
+        •	Regulators
+
+    +---Tests
+        This is where we store:
+        •	Red team results
+        •	Integration tests
+        •	Security tests
+        •	Model behavior tests
+
+    +---Website
+        These saved webpages are primary evidence artifacts for:
+        •	Public statements and claims
+        •	Discovery of internal and external stakeholders
+        •	Collection and Sharing of Personal Data

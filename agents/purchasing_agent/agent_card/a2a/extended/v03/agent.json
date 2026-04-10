@@ -1,0 +1,1511 @@
+{
+    "name": "Purchasing-Agent",
+    "description": "Agent responsible for managing purchases and any follow-up actions if needed.",
+    "url": "https://privacyportfolio.com/agent-registry/purchasing-agent/auth/agent.json",
+    "provider": {
+        "organization": "PrivacyPortfolio",
+        "url": "https://www.PrivacyPortfolio.com"
+        },
+    "iconUrl": "https://privacyportfolio.com/agent-registry/purchasing-agent/purchasing-agent-agent-icon.png",
+    "version": "1.0.0",
+    "documentationUrl": "https://privacyportfolio.com/agent-registry/purchasing-agent/auth/Purchasing-Agent-AuthenticatedExtendedAgentCard.md",
+    "capabilities": {
+        "streaming": true,
+        "pushNotifications": true,
+        "stateTransitionHistory": true,
+        "exposesTasks": true,
+        "exposesMessages": true,
+        "exposesArtifacts": true,
+        "exposesTools": true
+    },
+    "securitySchemes": {
+        "yo-ai": {
+            "type": "apiKey",
+            "name": "yo-api",
+            "in": "header"
+        }
+    },
+    "security": [{ "yo-ai": ["apiKey", "yo-api", "header"] }],
+    "defaultInputModes": ["application/json", "text/plain"],
+    "defaultOutputModes": ["application/json", "text/plain"],    
+    "skills": [
+        {"name": "Purchase-Options.Recommend"},
+        {"name": "Purchase-Risk.Evaluate"},
+        {"name": "Purchase-History.Generate"},
+        {"name": "Purchase-Receipt.Generate"},
+        {"name": "Purchase-Issues.Resolve"},
+        {"name": "Return-Or-Refund.Initiate"},
+        {"name": "Order-Status.Track"},
+        {"name": "Budget-After-Purchase.Update"},
+        {"name": "Transaction-Complete.Verify"},
+        {"name": "Purchase.Initiate"},
+        {"name": "Purchase-Eligibility.Validate"},
+        {"name": "Budget.Check"},
+        {"name": "Payment.Cancel"},
+        {"name": "Mandate.Manage"}
+    ],
+    "x-capabilities": [
+        {
+            "Purchase-Options.Recommend": {
+                "artifacts": [
+                    {"artifact": {"type": "skill", "name": "Purchase-Options.Recommend"}},
+                    {"artifact": {"type": "task", "name": "Purchase-Options.Recommend"}},
+                    {"artifact": {"type": "tool", "name": "Purchase-Options.Recommend"}},
+                    {"artifact": {"type": "handler", "name": "Purchase-Options.Recommend"}},
+                    {"artifact": {"type": "messageType", "name": "Purchase-Options.Recommend.Input"}},
+                    {"artifact": {"type": "messageType", "name": "Purchase-Options.Recommend.Output"}}
+                ]
+            }
+        },
+        {
+            "Purchase-Risk.Evaluate": {
+                "artifacts": [
+                    {"artifact": {"type": "skill", "name": "Purchase-Risk.Evaluate"}},
+                    {"artifact": {"type": "task", "name": "Purchase-Risk.Evaluate"}},
+                    {"artifact": {"type": "tool", "name": "Purchase-Risk.Evaluate"}},
+                    {"artifact": {"type": "tool", "name": "Risk-Engine"}},
+                    {"artifact": {"type": "handler", "name": "Purchase-Risk.Evaluate"}},
+                    {"artifact": {"type": "handler", "name": "Risk-Engine"}},
+                    {"artifact": {"type": "messageType", "name": "Purchase-Risk.Evaluate.Input"}},
+                    {"artifact": {"type": "messageType", "name": "Purchase-Risk.Evaluate.Output"}},
+                    {"artifact": {"type": "messageType", "name": "Risk-Engine.Input"}},
+                    {"artifact": {"type": "messageType", "name": "Risk-Engine.Output"}}
+                ]
+            }
+        },
+        {
+            "Purchase-History.Generate": {
+                "artifacts": [
+                    {"artifact": {"type": "skill", "name": "Purchase-History.Generate"}},
+                    {"artifact": {"type": "task", "name": "Purchase-History.Generate"}},
+                    {"artifact": {"type": "task", "name": "Purchase-History-Report.Run-Task"}},
+                    {"artifact": {"type": "tool", "name": "Purchase-History.Generate"}},
+                    {"artifact": {"type": "tool", "name": "Purchase-History-Report.Run-Task"}},
+                    {"artifact": {"type": "handler", "name": "Purchase-History.Generate"}},
+                    {"artifact": {"type": "handler", "name": "Purchase-History-Report.Run-Task"}},
+                    {"artifact": {"type": "messageType", "name": "Purchase-History.Generate.Input"}},
+                    {"artifact": {"type": "messageType", "name": "Purchase-History.Generate.Output"}},
+                    {"artifact": {"type": "messageType", "name": "Purchase-History-Report.Run-Task.Input"}},
+                    {"artifact": {"type": "messageType", "name": "Purchase-History-Report.Run-Task.Output"}}
+                ]
+            }
+        },
+        {
+            "Purchase-Receipt.Generate": {
+                "artifacts": [
+                    {"artifact": {"type": "skill", "name": "Purchase-Receipt.Generate"}},
+                    {"artifact": {"type": "task", "name": "Purchase-Receipt.Generate"}},
+                    {"artifact": {"type": "tool", "name": "Purchase-Receipt.Generate"}},
+                    {"artifact": {"type": "handler", "name": "Purchase-Receipt.Generate"}},
+                    {"artifact": {"type": "messageType", "name": "Purchase-Receipt.Generate.Input"}},
+                    {"artifact": {"type": "messageType", "name": "Purchase-Receipt.Generate.Output"}}
+                ]
+            }
+        },
+        {
+            "Purchase-Issues.Resolve": {
+                "artifacts": [
+                    {"artifact": {"type": "skill", "name": "Purchase-Issues.Resolve"}},
+                    {"artifact": {"type": "task", "name": "Purchase-Issues.Resolve"}},
+                    {"artifact": {"type": "tool", "name": "Purchase-Issues.Resolve"}},
+                    {"artifact": {"type": "handler", "name": "Purchase-Issues.Resolve"}},
+                    {"artifact": {"type": "messageType", "name": "Purchase-Issues.Resolve.Input"}},
+                    {"artifact": {"type": "messageType", "name": "Purchase-Issues.Resolve.Output"}}
+                ]
+            }
+        },
+        {
+            "Return-Or-Refund.Initiate": {
+                "artifacts": [
+                    {"artifact": {"type": "skill", "name": "Return-Or-Refund.Initiate"}},
+                    {"artifact": {"type": "task", "name": "Return-Or-Refund.Initiate"}},
+                    {"artifact": {"type": "task", "name": "AP2-Refund-Flow.Run-Task"}}, 
+                    {"artifact": {"type": "tool", "name": "Return-Or-Refund.Initiate"}},
+                    {"artifact": {"type": "tool", "name": "AP2-Refund-Flow.Run-Task"}},
+                    {"artifact": {"type": "handler", "name": "Return-Or-Refund.Initiate"}},
+                    {"artifact": {"type": "handler", "name": "AP2-Refund-Flow.Run-Task"}},
+                    {"artifact": {"type": "messageType", "name": "Return-Or-Refund.Initiate.Input"}},
+                    {"artifact": {"type": "messageType", "name": "Return-Or-Refund.Initiate.Output"}},
+                    {"artifact": {"type": "messageType", "name": "AP2-Refund-Flow.Run-Task.Input"}},
+                    {"artifact": {"type": "messageType", "name": "AP2-Refund-Flow.Run-Task.Output"}}
+                ]
+            }
+        },
+        {
+            "Order-Status.Track": {
+                "artifacts": [
+                    {"artifact": {"type": "skill", "name": "Order-Status.Track"}},
+                    {"artifact": {"type": "task", "name": "Order-Status.Track"}},
+                    {"artifact": {"type": "tool", "name": "Order-Status.Track"}},
+                    {"artifact": {"type": "tool", "name": "Order-Tracking-Adapter"}},
+                    {"artifact": {"type": "handler", "name": "Order-Status.Track"}},
+                    {"artifact": {"type": "handler", "name": "Order-Tracking-Adapter"}},
+                    {"artifact": {"type": "messageType", "name": "Order-Status.Track.Input"}},
+                    {"artifact": {"type": "messageType", "name": "Order-Status.Track.Output"}},
+                    {"artifact": {"type": "messageType", "name": "Order-Tracking-Adapter.Input"}},
+                    {"artifact": {"type": "messageType", "name": "Order-Tracking-Adapter.Output"}}
+                ]
+            }
+        },
+        {
+            "Budget-After-Purchase.Update": {
+                "artifacts": [
+                    {"artifact": {"type": "skill", "name": "Budget-After-Purchase.Update"}},
+                    {"artifact": {"type": "task", "name": "Budget-After-Purchase.Update"}},
+                    {"artifact": {"type": "tool", "name": "Budget-After-Purchase.Update"}},
+                    {"artifact": {"type": "tool", "name": "Budget-Engine"}},
+                    {"artifact": {"type": "handler", "name": "Budget-After-Purchase.Update"}},
+                    {"artifact": {"type": "handler", "name": "Budget-Engine"}},
+                    {"artifact": {"type": "messageType", "name": "Budget-After-Purchase.Update.Input"}},
+                    {"artifact": {"type": "messageType", "name": "Budget-After-Purchase.Update.Output"}},
+                    {"artifact": {"type": "messageType", "name": "Budget-Engine.Input"}},
+                    {"artifact": {"type": "messageType", "name": "Budget-Engine.Output"}}
+                ]
+            }
+        },
+        {
+            "Transaction-Complete.Verify": {
+                "artifacts": [
+                    {"artifact": {"type": "skill", "name": "Transaction-Complete.Verify"}},
+                    {"artifact": {"type": "task", "name": "Transaction-Complete.Verify"}},
+                    {"artifact": {"type": "tool", "name": "Transaction-Complete.Verify"}},
+                    {"artifact": {"type": "handler", "name": "Transaction-Complete.Verify"}},
+                    {"artifact": {"type": "messageType", "name": "Transaction-Complete.Verify.Input"}},
+                    {"artifact": {"type": "messageType", "name": "Transaction-Complete.Verify.Output"}}
+                ]
+            }
+        },
+        {
+            "Purchase.Initiate": {
+                "artifacts": [
+                    {"artifact": {"type": "skill", "name": "Purchase.Initiate"}},
+                    {"artifact": {"type": "task", "name": "Purchase.Initiate"}},
+                    {"artifact": {"type": "task", "name": "AP2-Purchase-Flow.Run-Task"}},
+                    {"artifact": {"type": "tool", "name": "Purchase.Initiate"}},
+                    {"artifact": {"type": "tool", "name": "AP2-Purchase-Flow.Run-Task"}},
+                    {"artifact": {"type": "tool", "name": "AP2.Client"}},
+                    {"artifact": {"type": "handler", "name": "Purchase.Initiate"}},
+                    {"artifact": {"type": "handler", "name": "AP2-Purchase-Flow.Run-Task"}},
+                    {"artifact": {"type": "handler", "name": "AP2.Client"}},
+                    {"artifact": {"type": "messageType", "name": "Purchase.Initiate.Input"}},
+                    {"artifact": {"type": "messageType", "name": "Purchase.Initiate.Output"}},
+                    {"artifact": {"type": "messageType", "name": "AP2-Purchase-Flow.Run-Task.Input"}},
+                    {"artifact": {"type": "messageType", "name": "AP2-Purchase-Flow.Run-Task.Output"}},
+                    {"artifact": {"type": "messageType", "name": "AP2.Client.Input"}},
+                    {"artifact": {"type": "messageType", "name": "AP2.Client.Output"}}
+                ]
+            }
+        },
+        {
+            "Purchase-Eligibility.Validate": {
+                "artifacts": [
+                    {"artifact": {"type": "skill", "name": "Purchase-Eligibility.Validate"}},
+                    {"artifact": {"type": "task", "name": "Purchase-Eligibility.Validate"}},
+                    {"artifact": {"type": "tool", "name": "Purchase-Eligibility.Validate"}},
+                    {"artifact": {"type": "handler", "name": "Purchase-Eligibility.Validate"}},
+                    {"artifact": {"type": "messageType", "name": "Purchase-Eligibility.Validate.Input"}},
+                    {"artifact": {"type": "messageType", "name": "Purchase-Eligibility.Validate.Output"}}
+                ]
+            }
+        },
+        {
+            "Budget.Check": {
+                "artifacts": [
+                    {"artifact": {"type": "skill", "name": "Budget.Check"}},
+                    {"artifact": {"type": "task", "name": "Budget.Check"}},
+                    {"artifact": {"type": "tool", "name": "Budget.Check"}},
+                    {"artifact": {"type": "handler", "name": "Budget.Check"}},
+                    {"artifact": {"type": "messageType", "name": "Budget.Check.Input"}},
+                    {"artifact": {"type": "messageType", "name": "Budget.Check.Output"}}
+                ]
+            }
+        },
+        {
+            "Payment.Cancel": {
+                "artifacts": [
+                    {"artifact": {"type": "skill", "name": "Payment.Cancel"}},
+                    {"artifact": {"type": "task", "name": "Payment.Cancel"}},
+                    {"artifact": {"type": "tool", "name": "Payment.Cancel"}},
+                    {"artifact": {"type": "handler", "name": "Payment.Cancel"}},
+                    {"artifact": {"type": "messageType", "name": "Payment.Cancel.Input"}},
+                    {"artifact": {"type": "messageType", "name": "Payment.Cancel.Output"}}
+                ]
+            }
+        },
+        {
+            "Mandate.Manage": {
+                "artifacts": [
+                    {"artifact": {"type": "skill", "name": "Mandate.Manage"}},
+                    {"artifact": {"type": "task", "name": "Mandate.Manage"}},
+                    {"artifact": {"type": "tool", "name": "Mandate.Manage"}},
+                    {"artifact": {"type": "handler", "name": "Mandate.Manage"}},
+                    {"artifact": {"type": "messageType", "name": "Mandate.Manage.Input"}},
+                    {"artifact": {"type": "messageType", "name": "Mandate.Manage.Output"}}
+                ]
+            }
+        }
+    ],
+    "x-artifacts": [
+        {
+            "name": "Purchase-Options.Recommend",
+            "version": "1.0.0",
+            "artifactType": "skill",
+            "description": "Suggests alternative vendors, better prices, or safer purchasing paths consistent with budget and AP2-compatible channels.",
+            "tags": ["recommendations", "priceComparison", "vendorAlternatives"],
+            "examples": [
+                "Find a cheaper option for this product",
+                "Recommend a safer vendor for this purchase"
+            ]
+        },
+        {
+            "name": "Purchase-Options.Recommend",
+            "version": "1.0.0",
+            "artifactType": "task",
+            "description": "Suggests alternative vendors, better prices, or safer purchasing paths consistent with budget and AP2-compatible channels.",
+            "tags": ["recommendations", "priceComparison", "vendorAlternatives"],
+            "examples": [
+                "Find a cheaper option for this product",
+                "Recommend a safer vendor for this purchase"
+            ]
+        },
+        {
+            "name": "Purchase-Options.Recommend",
+            "version": "1.0.0",
+            "artifactType": "tool",
+            "description": "Suggests alternative vendors, better prices, or safer purchasing paths consistent with budget and AP2-compatible channels.",
+            "capabilities": ["recommend"],
+            "path": "/",
+            "provider": {
+                "name": "PrivacyPortfolio",
+                "brand": "Yo-ai",
+                "product": "",
+                "version": "1.0.0",
+                "license": "Yo-ai Internal",
+                "url": "https://yo-ai.ai/docs/Purchase-Options.Recommend.html",
+                "config": {"backend": ""}
+            },
+            "inputSchema": { "$ref": "https://yo-ai.ai/schemas/purchase-options.recommend.input.schema.json" },
+            "outputSchema": { "$ref": "https://yo-ai.ai/schemas/purchase-options.recommend.output.schema.json"
+             },
+            "auth": "apiKey"
+        },
+        {
+            "name": "Purchase-Options.Recommend",
+            "version": "1.0.0",
+            "artifactType": "handler",
+            "description": "Interface for integrating with tool executable.",
+            "path": "/"
+        },
+        {
+            "name": "Purchase-Options.Recommend.Input",
+            "version": "1.0.0",
+            "artifactType": "messageType",
+            "schema": { "$ref": "https://yo-ai.ai/schemas/purchase-options.recommend.input.schema.json" },
+            "description": "Input schema for Purchase-Options.Recommend."
+        },
+        {
+            "name": "Purchase-Options.Recommend.Output",
+            "version": "1.0.0",
+            "artifactType": "messageType",
+            "schema": { "$ref": "https://yo-ai.ai/schemas/purchase-options.recommend.output.schema.json" },
+            "description": "Output schema for Purchase-Options.Recommend."
+        },
+        {
+            "name": "Purchase-Risk.Evaluate",
+            "version": "1.0.0",
+            "artifactType": "skill",
+            "description": "Assesses fraud risk, vendor legitimacy, unusual pricing, and suspicious patterns before allowing an AP2 purchase intent to proceed.",
+            "tags": ["fraudDetection", "riskAssessment", "vendorLegitimacy"],
+            "examples": [
+                "Is this vendor trustworthy",
+                "Evaluate risk for this high-value purchase"
+            ]
+        },
+        {
+            "name": "Purchase-Risk.Evaluate",
+            "version": "1.0.0",
+            "artifactType": "task",
+            "description": "Assesses fraud risk, vendor legitimacy, unusual pricing, and suspicious patterns before allowing an AP2 purchase intent to proceed.",
+            "tags": ["fraudDetection", "riskAssessment", "vendorLegitimacy"],
+            "examples": [
+                "Is this vendor trustworthy",
+                "Evaluate risk for this high-value purchase"
+            ]
+        },
+        {
+            "name": "Purchase-Risk.Evaluate",
+            "version": "1.0.0",
+            "artifactType": "tool",
+            "description": "Assesses fraud risk, vendor legitimacy, unusual pricing, and suspicious patterns before allowing an AP2 purchase intent to proceed.",
+            "capabilities": ["evaluate"],
+            "path": "/",
+            "provider": {
+                "name": "PrivacyPortfolio",
+                "brand": "Yo-ai",
+                "product": "",
+                "version": "1.0.0",
+                "license": "Yo-ai Internal",
+                "url": "https://yo-ai.ai/docs/Purchase-Risk.Evaluate.html",
+                "config": {
+                    "backend": ""
+                }
+            },
+            "inputSchema": { "$ref": "https://yo-ai.ai/schemas/purchase-risk.evaluate.input.schema.json" },
+            "outputSchema": { "$ref": "https://yo-ai.ai/schemas/purchase-risk.evaluate.output.schema.json" },
+            "auth": "apiKey"
+        },
+        {
+            "name": "Purchase-Risk.Evaluate",
+            "version": "1.0.0",
+            "artifactType": "handler",
+            "description": "Interface for integrating with tool executable.",
+            "path": "/"
+        },
+        {
+            "name": "Purchase-Risk.Evaluate.Input",
+            "version": "1.0.0",
+            "artifactType": "messageType",
+            "schema": { "$ref": "https://yo-ai.ai/schemas/purchase-risk.evaluate.input.schema.json" },
+            "description": "Input schema for Purchase-Risk.Evaluate."
+        },
+        {
+            "name": "Purchase-Risk.Evaluate.Output",
+            "version": "1.0.0",
+            "artifactType": "messageType",
+            "schema": { "$ref": "https://yo-ai.ai/schemas/purchase-risk.evaluate.output.schema.json" },
+            "description": "Output schema for Purchase-Risk.Evaluate."
+        },
+        {
+            "name": "Purchase-History.Generate",
+            "version": "1.0.0",
+            "artifactType": "skill",
+            "description": "Generates an AP2-aligned history of past purchases, including receipts, vendor interactions, and follow-up actions.",
+            "tags": ["history", "audit", "documentation", "spendingAnalysis"],
+            "examples": [
+                "Show my last 10 purchases",
+                "Generate a spending summary for this month"
+            ]
+        },
+        {
+            "name": "Purchase-History.Generate",
+            "version": "1.0.0",
+            "artifactType": "task",
+            "description": "Generates an AP2-aligned history of past purchases, including receipts, vendor interactions, and follow-up actions.",
+            "tags": ["history", "audit", "documentation", "spendingAnalysis"],
+            "examples": [
+                "Show my last 10 purchases",
+                "Generate a spending summary for this month"
+            ]
+        },
+        {
+            "name": "Purchase-History.Generate",
+            "version": "1.0.0",
+            "artifactType": "tool",
+            "description": "Generates an AP2-aligned history of past purchases, including receipts, vendor interactions, and follow-up actions.",
+            "capabilities": ["generate"],
+            "path": "/",
+            "provider": {
+                "name": "PrivacyPortfolio",
+                "brand": "Yo-ai",
+                "product": "",
+                "version": "1.0.0",
+                "license": "Yo-ai Internal",
+                "url": "https://yo-ai.ai/docs/Purchase-History.Generate.html",
+                "config": {
+                    "backend": ""
+                }
+            },
+            "inputSchema": { "$ref": "https://yo-ai.ai/schemas/purchase-history.generate.input.schema.json" },
+            "outputSchema": { "$ref": "https://yo-ai.ai/schemas/purchase-history.generate.output.schema.json" },
+            "auth": "apiKey"
+        },
+        {
+            "name": "Purchase-History.Generate",
+            "version": "1.0.0",
+            "artifactType": "handler",
+            "description": "Interface for integrating with tool executable.",
+            "path": "/"
+        },
+        {
+            "name": "Purchase-History.Generate.Input",
+            "version": "1.0.0",
+            "artifactType": "messageType",
+            "schema": { "$ref": "https://yo-ai.ai/schemas/purchase-history.generate.input.schema.json" },
+            "description": "Input schema for Purchase-History.Generate."
+        },
+        {
+            "name": "Purchase-History.Generate.Output",
+            "version": "1.0.0",
+            "artifactType": "messageType",
+            "schema": { "$ref": "https://yo-ai.ai/schemas/purchase-history.generate.output.schema.json" },
+            "description": "Output schema for Purchase-History.Generate."
+        },
+        {
+            "name": "Purchase-Receipt.Generate",
+            "version": "1.0.0",
+            "artifactType": "skill",
+            "description": "Produces an AP2-compatible receipt artifact with transaction details, vendor metadata, and evidence for auditability.",
+            "tags": ["receipt", "audit", "documentation", "evidence", "AP2"],
+            "examples": [
+                "Generate a receipt for yesterday’s purchase",
+                "Provide documentation for this transaction"
+            ]
+        },
+        {
+            "name": "Purchase-Receipt.Generate",
+            "version": "1.0.0",
+            "artifactType": "task",
+            "description": "Produces an AP2-compatible receipt artifact with transaction details, vendor metadata, and evidence for auditability.",
+            "tags": ["receipt", "audit", "documentation", "evidence", "AP2"],
+            "examples": [
+                "Generate a receipt for yesterday’s purchase",
+                "Provide documentation for this transaction"
+            ]
+        },
+        {
+            "name": "Purchase-Receipt.Generate",
+            "version": "1.0.0",
+            "artifactType": "tool",
+            "description": "Produces an AP2-compatible receipt artifact with transaction details, vendor metadata, and evidence for auditability.",
+            "capabilities": ["generate"],
+            "path": "/",
+            "provider": {
+                "name": "PrivacyPortfolio",
+                "brand": "Yo-ai",
+                "product": "",
+                "version": "1.0.0",
+                "license": "Yo-ai Internal",
+                "url": "https://yo-ai.ai/docs/Purchase-Receipt.Generate.html",
+                "config": {
+                    "backend": ""
+                }
+            },
+            "inputSchema": { "$ref": "https://yo-ai.ai/schemas/purchase-receipt.generate.input.schema.json" },
+            "outputSchema": { "$ref": "https://yo-ai.ai/schemas/purchase-receipt.generate.output.schema.json" },
+            "auth": "apiKey"
+        },
+        {
+            "name": "Purchase-Receipt.Generate",
+            "version": "1.0.0",
+            "artifactType": "handler",
+            "description": "Interface for integrating with tool executable.",
+            "path": "/"
+        },
+        {
+            "name": "Purchase-Receipt.Generate.Input",
+            "version": "1.0.0",
+            "artifactType": "messageType",
+            "schema": { "$ref": "https://yo-ai.ai/schemas/purchase-receipt.generate.input.schema.json" },
+            "description": "Input schema for Purchase-Receipt.Generate."
+        },
+        {
+            "name": "Purchase-Receipt.Generate.Output",
+            "version": "1.0.0",
+            "artifactType": "messageType",
+            "schema": { "$ref": "https://yo-ai.ai/schemas/purchase-receipt.generate.output.schema.json" },
+            "description": "Output schema for Purchase-Receipt.Generate."
+        },
+        {
+            "name": "Purchase-Issues.Resolve",
+            "version": "1.0.0",
+            "artifactType": "skill",
+            "description": "Handles vendor disputes, missing items, incorrect shipments, or billing errors, and anchors all interactions to the AP2 transaction record.",
+            "tags": ["disputeResolution", "postPurchase", "vendorSupport"],
+            "examples": [
+                "Resolve a missing item issue",
+                "Fix a double charge from Vendor X"
+            ]
+        },
+        {
+            "name": "Purchase-Issues.Resolve",
+            "version": "1.0.0",
+            "artifactType": "task",
+            "description": "Handles vendor disputes, missing items, incorrect shipments, or billing errors, and anchors all interactions to the AP2 transaction record.",
+            "tags": ["disputeResolution", "postPurchase", "vendorSupport"],
+            "examples": [
+                "Resolve a missing item issue",
+                "Fix a double charge from Vendor X"
+            ]
+        },
+        {
+            "name": "Purchase-Issues.Resolve",
+            "version": "1.0.0",
+            "artifactType": "tool",
+            "description": "Handles vendor disputes, missing items, incorrect shipments, or billing errors, and anchors all interactions to the AP2 transaction record.",
+            "capabilities": ["resolve"],
+            "path": "/",
+            "provider": {
+                "name": "PrivacyPortfolio",
+                "brand": "Yo-ai",
+                "product": "",
+                "version": "1.0.0",
+                "license": "Yo-ai Internal",
+                "url": "https://yo-ai.ai/docs/Purchase-Issues.Resolve.html",
+                "config": {
+                    "backend": ""
+                }
+            },
+            "inputSchema": { "$ref": "https://yo-ai.ai/schemas/purchase-issues.resolve.input.schema.json" },
+            "outputSchema": { "$ref": "https://yo-ai.ai/schemas/purchase-issues.resolve.output.schema.json" },
+            "auth": "apiKey"
+        },
+        {
+            "name": "Purchase-Issues.Resolve",
+            "version": "1.0.0",
+            "artifactType": "handler",
+            "description": "Interface for integrating with tool executable.",
+            "path": "/"
+        },
+        {
+            "name": "Purchase-Issues.Resolve.Input",
+            "version": "1.0.0",
+            "artifactType": "messageType",
+            "schema": { "$ref": "https://yo-ai.ai/schemas/purchase-issues.resolve.input.schema.json" },
+            "description": "Input schema for Purchase-Issues.Resolve."
+        },
+        {
+            "name": "Purchase-Issues.Resolve.Output",
+            "version": "1.0.0",
+            "artifactType": "messageType",
+            "schema": { "$ref": "https://yo-ai.ai/schemas/purchase-issues.resolve.output.schema.json" },
+            "description": "Output schema for Purchase-Issues.Resolve."
+        },
+        {
+            "name": "Return-Or-Refund.Initiate",
+            "version": "1.0.0",
+            "artifactType": "skill",
+            "description": "Creates AP2-compatible return/refund intents, starts vendor workflows, and tracks their progress.",
+            "tags": ["returns", "refunds", "postPurchase", "vendorInteraction", "AP2"],
+            "examples": [
+                "Start a return for this defective item",
+                "Request a refund from Vendor Z"
+            ]
+        },
+        {
+            "name": "Return-Or-Refund.Initiate",
+            "version": "1.0.0",
+            "artifactType": "task",
+            "description": "Creates AP2-compatible return/refund intents, starts vendor workflows, and tracks their progress.",
+            "tags": ["returns", "refunds", "postPurchase", "vendorInteraction", "AP2"],
+            "examples": [
+                "Start a return for this defective item",
+                "Request a refund from Vendor Z"
+            ]
+        },
+        {
+            "name": "Return-Or-Refund.Initiate",
+            "version": "1.0.0",
+            "artifactType": "tool",
+            "description": "Creates AP2-compatible return/refund intents, starts vendor workflows, and tracks their progress.",
+            "capabilities": ["initiate"],
+            "path": "/",
+            "provider": {
+                "name": "PrivacyPortfolio",
+                "brand": "Yo-ai",
+                "product": "",
+                "version": "1.0.0",
+                "license": "Yo-ai Internal",
+                "url": "https://yo-ai.ai/docs/Return-Or-Refund.Initiate.html",
+                "config": {
+                    "backend": ""
+                }
+            },
+            "inputSchema": { "$ref": "https://yo-ai.ai/schemas/return-or-refund.initiate.input.schema.json" },
+            "outputSchema": { "$ref": "https://yo-ai.ai/schemas/return-or-refund.initiate.output.schema.json" },
+            "auth": "apiKey"
+        },
+        {
+            "name": "Return-Or-Refund.Initiate",
+            "version": "1.0.0",
+            "artifactType": "handler",
+            "description": "Interface for integrating with tool executable.",
+            "path": "/"
+        },
+        {
+            "name": "Return-Or-Refund.Initiate.Input",
+            "version": "1.0.0",
+            "artifactType": "messageType",
+            "schema": { "$ref": "https://yo-ai.ai/schemas/return-or-refund.initiate.input.schema.json" },
+            "description": "Input schema for Return-Or-Refund.Initiate."
+        },
+        {
+            "name": "Return-Or-Refund.Initiate.Output",
+            "version": "1.0.0",
+            "artifactType": "messageType",
+            "schema": { "$ref": "https://yo-ai.ai/schemas/return-or-refund.initiate.output.schema.json" },
+            "description": "Output schema for Return-Or-Refund.Initiate."
+        },
+        {
+            "name": "Order-Status.Track",
+            "version": "1.0.0",
+            "artifactType": "skill",
+            "description": "Monitors order status, shipping updates, delivery confirmations, and vendor notifications linked to AP2 transactions.",
+            "tags": ["orderTracking", "shipping", "delivery", "notifications"],
+            "examples": [
+                "Track my order from Vendor Y",
+                "Notify me when this item ships"
+            ]
+        },
+        {
+            "name": "Order-Status.Track",
+            "version": "1.0.0",
+            "artifactType": "task",
+            "description": "Monitors order status, shipping updates, delivery confirmations, and vendor notifications linked to AP2 transactions.",
+            "tags": ["orderTracking", "shipping", "delivery", "notifications"],
+            "examples": [
+                "Track my order from Vendor Y",
+                "Notify me when this item ships"
+            ]
+        },
+        {
+            "name": "Order-Status.Track",
+            "version": "1.0.0",
+            "artifactType": "tool",
+            "description": "Monitors order status, shipping updates, delivery confirmations, and vendor notifications linked to AP2 transactions.",
+            "capabilities": ["track"],
+            "path": "/",
+            "provider": {
+                "name": "PrivacyPortfolio",
+                "brand": "Yo-ai",
+                "product": "",
+                "version": "1.0.0",
+                "license": "Yo-ai Internal",
+                "url": "https://yo-ai.ai/docs/Order-Status.Track.html",
+                "config": {
+                    "backend": ""
+                }
+            },
+            "inputSchema": { "$ref": "https://yo-ai.ai/schemas/order-status.track.input.schema.json" },
+            "outputSchema": { "$ref": "https://yo-ai.ai/schemas/order-status.track.output.schema.json" },
+            "auth": "apiKey"
+        },
+        {
+            "name": "Order-Status.Track",
+            "version": "1.0.0",
+            "artifactType": "handler",
+            "description": "Interface for integrating with tool executable.",
+            "path": "/"
+        },
+        {
+            "name": "Order-Status.Track.Input",
+            "version": "1.0.0",
+            "artifactType": "messageType",
+            "schema": { "$ref": "https://yo-ai.ai/schemas/order-status.track.input.schema.json" },
+            "description": "Input schema for Order-Status.Track."
+        },
+        {
+            "name": "Order-Status.Track.Output",
+            "version": "1.0.0",
+            "artifactType": "messageType",
+            "schema": { "$ref": "https://yo-ai.ai/schemas/order-status.track.output.schema.json" },
+            "description": "Output schema for Order-Status.Track."
+        },
+        {
+            "name": "Budget-After-Purchase.Update",
+            "version": "1.0.0",
+            "artifactType": "skill",
+            "description": "Updates the purchasing budget by deducting completed AP2 transaction amounts from the dedicated checking account balance.",
+            "tags": ["budgetUpdate", "accounting", "spendingTracking"],
+            "examples": [
+                "Update budget after this $45 purchase",
+                "Reflect this transaction in my spending balance"
+            ]
+        },
+        {
+            "name": "Budget-After-Purchase.Update",
+            "version": "1.0.0",
+            "artifactType": "task",
+            "description": "Updates the purchasing budget by deducting completed AP2 transaction amounts from the dedicated checking account balance.",
+            "tags": ["budgetUpdate", "accounting", "spendingTracking"],
+            "examples": [
+                "Update budget after this $45 purchase",
+                "Reflect this transaction in my spending balance"
+            ]
+        },
+        {
+            "name": "Budget-After-Purchase.Update",
+            "version": "1.0.0",
+            "artifactType": "tool",
+            "description": "Updates the purchasing budget by deducting completed AP2 transaction amounts from the dedicated checking account balance.",
+            "capabilities": ["update"],
+            "path": "/",
+            "provider": {
+                "name": "PrivacyPortfolio",
+                "brand": "Yo-ai",
+                "product": "",
+                "version": "1.0.0",
+                "license": "Yo-ai Internal",
+                "url": "https://yo-ai.ai/docs/Budget-After-Purchase.Update.html",
+                "config": {
+                    "backend": ""
+                }
+            },
+            "inputSchema": { "$ref": "https://yo-ai.ai/schemas/budget-after-purchase.update.input.schema.json" },
+            "outputSchema": { "$ref": "https://yo-ai.ai/schemas/budget-after-purchase.update.output.schema.json" },
+            "auth": "apiKey"
+        },
+        {
+            "name": "Budget-After-Purchase.Update",
+            "version": "1.0.0",
+            "artifactType": "handler",
+            "description": "Interface for integrating with tool executable.",
+            "path": "/"
+        },
+        {
+            "name": "Budget-After-Purchase.Update.Input",
+            "version": "1.0.0",
+            "artifactType": "messageType",
+            "schema": { "$ref": "https://yo-ai.ai/schemas/budget-after-purchase.update.input.schema.json" },
+            "description": "Input schema for Budget-After-Purchase.Update."
+        },
+        {
+            "name": "Budget-After-Purchase.Update.Output",
+            "version": "1.0.0",
+            "artifactType": "messageType",
+            "schema": { "$ref": "https://yo-ai.ai/schemas/budget-after-purchase.update.output.schema.json" },
+            "description": "Output schema for Budget-After-Purchase.Update."
+        },
+        {
+            "name": "Transaction-Complete.Verify",
+            "version": "1.0.0",
+            "artifactType": "skill",
+            "description": "Verifies AP2 transaction states, confirms that funds were transferred, and that the vendor acknowledged the order.",
+            "tags": ["transactionVerification", "paymentConfirmation", "audit"],
+            "examples": [
+                "Verify that this payment went through",
+                "Confirm the vendor accepted the order"
+            ]
+        },
+        {
+            "name": "Transaction-Complete.Verify",
+            "version": "1.0.0",
+            "artifactType": "task",
+            "description": "Verifies AP2 transaction states, confirms that funds were transferred, and that the vendor acknowledged the order.",
+            "tags": ["transactionVerification", "paymentConfirmation", "audit"],
+            "examples": [
+                "Verify that this payment went through",
+                "Confirm the vendor accepted the order"
+            ]
+        },
+        {
+            "name": "Transaction-Complete.Verify",
+            "version": "1.0.0",
+            "artifactType": "tool",
+            "description": "Verifies AP2 transaction states, confirms that funds were transferred, and that the vendor acknowledged the order.",
+            "capabilities": ["verify"],
+            "path": "/",
+            "provider": {
+                "name": "PrivacyPortfolio",
+                "brand": "Yo-ai",
+                "product": "",
+                "version": "1.0.0",
+                "license": "Yo-ai Internal",
+                "url": "https://yo-ai.ai/docs/Transaction-Complete.Verify.html",
+                "config": {
+                    "backend": ""
+                }
+            },
+            "inputSchema": { "$ref": "https://yo-ai.ai/schemas/transaction-complete.verify.input.schema.json" },
+            "outputSchema": { "$ref": "https://yo-ai.ai/schemas/transaction-complete.verify.output.schema.json" },
+            "auth": "apiKey"
+        },
+        {
+            "name": "Transaction-Complete.Verify",
+            "version": "1.0.0",
+            "artifactType": "handler",
+            "description": "Interface for integrating with tool executable.",
+            "path": "/"
+        },
+        {
+            "name": "Transaction-Complete.Verify.Input",
+            "version": "1.0.0",
+            "artifactType": "messageType",
+            "schema": { "$ref": "https://yo-ai.ai/schemas/transaction-complete.verify.input.schema.json" },
+            "description": "Input schema for Transaction-Complete.Verify."
+        },
+        {
+            "name": "Transaction-Complete.Verify.Output",
+            "version": "1.0.0",
+            "artifactType": "messageType",
+            "schema": { "$ref": "https://yo-ai.ai/schemas/transaction-complete.verify.output.schema.json" },
+            "description": "Output schema for Transaction-Complete.Verify."
+        },
+        {
+            "name": "Purchase.Initiate",
+            "version": "1.0.0",
+            "artifactType": "skill",
+            "description": "Creates and submits an AP2 purchase intent and executes the purchase via Stripe, PayPal, or vendor checkout flows.",
+            "tags": ["checkout", "payment", "transaction", "AP2"],
+            "examples": [
+                "Buy this item from Vendor X",
+                "Complete checkout for this cart"
+            ]
+        },
+        {
+            "name": "Purchase.Initiate",
+            "version": "1.0.0",
+            "artifactType": "task",
+            "description": "Creates and submits an AP2 purchase intent and executes the purchase via Stripe, PayPal, or vendor checkout flows.",
+            "tags": ["checkout", "payment", "transaction", "AP2"],
+            "examples": [
+                "Buy this item from Vendor X",
+                "Complete checkout for this cart"
+            ]
+        },
+        {
+            "name": "Purchase.Initiate",
+            "version": "1.0.0",
+            "artifactType": "tool",
+            "description": "Creates and submits an AP2 purchase intent and executes the purchase via Stripe, PayPal, or vendor checkout flows.",
+            "capabilities": ["initiate"],
+            "path": "/",
+            "provider": {
+                "name": "PrivacyPortfolio",
+                "brand": "Yo-ai",
+                "product": "",
+                "version": "1.0.0",
+                "license": "Yo-ai Internal",
+                "url": "https://yo-ai.ai/docs/Purchase.Initiate.html",
+                "config": {
+                    "backend": ""
+                }
+            },
+            "inputSchema": { "$ref": "https://yo-ai.ai/schemas/purchase.initiate.input.schema.json" },
+            "outputSchema": { "$ref": "https://yo-ai.ai/schemas/purchase.initiate.output.schema.json" },
+            "auth": "apiKey"
+        },
+        {
+            "name": "Purchase.Initiate",
+            "version": "1.0.0",
+            "artifactType": "handler",
+            "description": "Interface for integrating with tool executable.",
+            "path": "/"
+        },
+        {
+            "name": "Purchase.Initiate.Input",
+            "version": "1.0.0",
+            "artifactType": "messageType",
+            "schema": { "$ref": "https://yo-ai.ai/schemas/purchase.initiate.input.schema.json" },
+            "description": "Input schema for Purchase.Initiate."
+        },
+        {
+            "name": "Purchase.Initiate.Output",
+            "version": "1.0.0",
+            "artifactType": "messageType",
+            "schema": { "$ref": "https://yo-ai.ai/schemas/purchase.initiate.output.schema.json" },
+            "description": "Output schema for Purchase.Initiate."
+        },
+        {
+            "name": "Purchase-Eligibility.Validate",
+            "version": "1.0.0",
+            "artifactType": "skill",
+            "description": "Confirms that a purchase is allowed based on budget, risk score, vendor trust tier, and user policy before creating an AP2 purchase intent.",
+            "tags": ["riskAssessment", "budgetCheck", "vendorTrust", "policyEnforcement"],
+            "examples": [
+                "Validate eligibility for this $300 purchase",
+                "Is it safe to buy from this seller"
+            ]
+        },
+        {
+            "name": "Purchase-Eligibility.Validate",
+            "version": "1.0.0",
+            "artifactType": "task",
+            "description": "Confirms that a purchase is allowed based on budget, risk score, vendor trust tier, and user policy before creating an AP2 purchase intent.",
+            "tags": ["riskAssessment", "budgetCheck", "vendorTrust", "policyEnforcement"],
+            "examples": [
+                "Validate eligibility for this $300 purchase",
+                "Is it safe to buy from this seller"
+            ]
+        },
+        {
+            "name": "Purchase-Eligibility.Validate",
+            "version": "1.0.0",
+            "artifactType": "tool",
+            "description": "Confirms that a purchase is allowed based on budget, risk score, vendor trust tier, and user policy before creating an AP2 purchase intent.",
+            "capabilities": ["validate"],
+            "path": "/",
+            "provider": {
+                "name": "PrivacyPortfolio",
+                "brand": "Yo-ai",
+                "product": "",
+                "version": "1.0.0",
+                "license": "Yo-ai Internal",
+                "url": "https://yo-ai.ai/docs/Purchase-Eligibility.Validate.html",
+                "config": {
+                    "backend": ""
+                }
+            },
+            "inputSchema": { "$ref": "https://yo-ai.ai/schemas/purchase-eligibility.validate.input.schema.json" },
+            "outputSchema": { "$ref": "https://yo-ai.ai/schemas/purchase-eligibility.validate.output.schema.json" },
+            "auth": "apiKey"
+        },
+        {
+            "name": "Purchase-Eligibility.Validate",
+            "version": "1.0.0",
+            "artifactType": "handler",
+            "description": "Interface for integrating with tool executable.",
+            "path": "/"
+        },
+        {
+            "name": "Purchase-Eligibility.Validate.Input",
+            "version": "1.0.0",
+            "artifactType": "messageType",
+            "schema": { "$ref": "https://yo-ai.ai/schemas/purchase-eligibility.validate.input.schema.json" },
+            "description": "Input schema for Purchase-Eligibility.Validate."
+        },
+        {
+            "name": "Purchase-Eligibility.Validate.Output",
+            "version": "1.0.0",
+            "artifactType": "messageType",
+            "schema": { "$ref": "https://yo-ai.ai/schemas/purchase-eligibility.validate.output.schema.json" },
+            "description": "Output schema for Purchase-Eligibility.Validate."
+        },
+        {
+            "name": "Budget.Check",
+            "version": "1.0.0",
+            "artifactType": "skill",
+            "description": "Retrieves the current balance of the dedicated checking account and determines available purchasing power for online purchases.",
+            "tags": ["budget", "accountBalance", "spendingLimit", "financialGovernance"],
+            "examples": [
+                "What is my available purchasing budget",
+                "Can I afford this $129 purchase"
+            ]
+        },
+        {
+            "name": "Budget.Check",
+            "version": "1.0.0",
+            "artifactType": "task",
+            "description": "Retrieves the current balance of the dedicated checking account and determines available purchasing power for online purchases.",
+            "tags": ["budget", "accountBalance", "spendingLimit", "financialGovernance"],
+            "examples": [
+                "What is my available purchasing budget",
+                "Can I afford this $129 purchase"
+            ]
+        },
+        {
+            "name": "Budget.Check",
+            "version": "1.0.0",
+            "artifactType": "tool",
+            "description": "Retrieves the current balance of the dedicated checking account and determines available purchasing power for online purchases.",
+            "tags": ["budget", "accountBalance", "spendingLimit", "financialGovernance"],
+            "capabilities": ["check"],
+            "path": "/",
+            "provider": {
+                "name": "PrivacyPortfolio",
+                "brand": "Yo-ai",
+                "product": "",
+                "version": "1.0.0",
+                "license": "Yo-ai Internal",
+                "url": "https://yo-ai.ai/docs/Budget.Check.html",
+                "config": {
+                    "backend": ""
+                }
+            },
+            "inputSchema": { "$ref": "https://yo-ai.ai/schemas/budget.check.input.schema.json" },
+            "outputSchema": { "$ref": "https://yo-ai.ai/schemas/budget.check.output.schema.json" },
+            "auth": "apiKey"
+        },
+        {
+            "name": "Budget.Check",
+            "version": "1.0.0",
+            "artifactType": "handler",
+            "description": "Interface for integrating with tool executable.",
+            "path": "/"
+        },
+        {
+            "name": "Budget.Check.Input",
+            "version": "1.0.0",
+            "artifactType": "messageType",
+            "schema": { "$ref": "https://yo-ai.ai/schemas/budget.check.input.schema.json" },
+            "description": "Input schema for Budget.Check."
+        },
+        {
+            "name": "Budget.Check.Output",
+            "version": "1.0.0",
+            "artifactType": "messageType",
+            "schema": { "$ref": "https://yo-ai.ai/schemas/budget.check.output.schema.json" },
+            "description": "Output schema for Budget.Check."
+        },
+        {
+            "name": "Purchase-History-Report.Run-Task",
+            "version": "1.0.0",
+            "artifactType": "task",
+            "description": "Generates an AP2-aligned purchase history, grouped by vendor, category, or time period.",
+            "produces": [
+                "purchase_history",
+                "spending_summary",
+                "evidence_manifest"
+            ]
+        },
+        {
+            "name": "Purchase-History-Report.Run-Task",
+            "version": "1.0.0",
+            "artifactType": "tool",
+            "description": "Generates an AP2-aligned purchase history, grouped by vendor, category, or time period.",
+            "capabilities": ["report"],
+            "path": "/",
+            "provider": {
+                "name": "PrivacyPortfolio",
+                "brand": "Yo-ai",
+                "product": "",
+                "version": "1.0.0",
+                "license": "Yo-ai Internal",
+                "url": "https://yo-ai.ai/docs/Purchase-History-Report.Run-Task.html",
+                "config": {
+                    "backend": ""
+                }
+            },
+            "inputSchema": { "$ref": "https://yo-ai.ai/schemas/purchase-history-report.run-task.input.schema.json" },
+            "outputSchema": { "$ref": "https://yo-ai.ai/schemas/purchase-history-report.run-task.output.schema.json" },
+            "auth": "apiKey"
+        },
+        {
+            "name": "Purchase-History-Report.Run-Task",
+            "version": "1.0.0",
+            "artifactType": "handler",
+            "description": "Interface for integrating with tool executable.",
+            "path": "/"
+        },
+        {
+            "name": "Purchase-History-Report.Run-Task.Input",
+            "version": "1.0.0",
+            "artifactType": "messageType",
+            "schema": { "$ref": "https://yo-ai.ai/schemas/purchase-history-report.run-task.input.schema.json" },
+            "description": "Input schema for Purchase-History-Report.Run-Task."
+        },
+        {
+            "name": "Purchase-History-Report.Run-Task.Output",
+            "version": "1.0.0",
+            "artifactType": "messageType",
+            "schema": { "$ref": "https://yo-ai.ai/schemas/purchase-history-report.run-task.output.schema.json" },
+            "description": "Output schema for Purchase-History-Report.Run-Task."
+        },
+        {
+            "name": "AP2-Refund-Flow.Run-Task",
+            "version": "1.0.0",
+            "artifactType": "task",
+            "description": "Runs an AP2-compatible return/refund flow, including vendor communication and transaction state updates.",
+            "produces": [
+                "ap2_refund_intent",
+                "ap2_refund_transaction",
+                "refund_receipt",
+                "evidence_manifest"
+            ]
+        },
+        {
+            "name": "AP2-Refund-Flow.Run-Task",
+            "version": "1.0.0",
+            "artifactType": "tool",
+            "description": "Runs an AP2-compatible return/refund flow, including vendor communication and transaction state updates.",
+            "produces": [
+                "ap2_refund_intent",
+                "ap2_refund_transaction",
+                "refund_receipt",
+                "evidence_manifest"
+            ],
+            "capabilities": ["run-task"],
+            "path": "/",
+            "provider": {
+                "name": "PrivacyPortfolio",
+                "brand": "Yo-ai",
+                "product": "",
+                "version": "1.0.0",
+                "license": "Yo-ai Internal",
+                "url": "https://yo-ai.ai/docs/AP2-Refund-Flow.Run-Task.html",
+                "config": {
+                    "backend": ""
+                }
+            },
+            "inputSchema": { "$ref": "https://yo-ai.ai/schemas/purchase-history-report.run-task.input.schema.json" },
+            "outputSchema": { "$ref": "https://yo-ai.ai/schemas/purchase-history-report.run-task.output.schema.json" },
+            "auth": "apiKey"
+        },
+        {
+            "name": "AP2-Refund-Flow.Run-Task",
+            "version": "1.0.0",
+            "artifactType": "handler",
+            "description": "Interface for integrating with tool executable.",
+            "path": "/"
+        },
+        {
+            "name": "AP2-Refund-Flow.Run-Task.Input",
+            "version": "1.0.0",
+            "artifactType": "messageType",
+            "schema": { "$ref": "https://yo-ai.ai/schemas/purchase-history-report.run-task.input.schema.json" },
+            "description": "Input schema for AP2-Refund-Flow.Run-Task."
+        },
+        {
+            "name": "AP2-Refund-Flow.Run-Task.Output",
+            "version": "1.0.0",
+            "artifactType": "messageType",
+            "schema": { "$ref": "https://yo-ai.ai/schemas/purchase-history-report.run-task.output.schema.json" },
+            "description": "Output schema for AP2-Refund-Flow.Run-Task."
+        },
+        {
+            "name": "AP2-Purchase-Flow.Run-Task",
+            "version": "1.0.0",
+            "artifactType": "task",
+            "description": "Runs the full AP2 purchase flow: validate eligibility, create intent, execute transaction, verify completion, and update budget.",
+            "produces": [
+                "ap2_intent",
+                "ap2_transaction",
+                "ap2_state",
+                "purchase_receipt",
+                "evidence_manifest"
+            ]
+        },
+        {
+            "name": "AP2-Purchase-Flow.Run-Task",
+            "version": "1.0.0",
+            "artifactType": "tool",
+            "description": "Runs the full AP2 purchase flow: validate eligibility, create intent, execute transaction, verify completion, and update budget.",
+            "produces": [
+                "ap2_intent",
+                "ap2_transaction",
+                "ap2_state",
+                "purchase_receipt",
+                "evidence_manifest"
+            ],
+            "capabilities": ["run-task"],
+            "path": "/",
+            "provider": {
+                "name": "PrivacyPortfolio",
+                "brand": "Yo-ai",
+                "product": "",
+                "version": "1.0.0",
+                "license": "Yo-ai Internal",
+                "url": "https://yo-ai.ai/docs/AP2-Purchase-Flow.Run-Task.html",
+                "config": {
+                    "backend": ""
+                }
+            },
+            "inputSchema": { "$ref": "https://yo-ai.ai/schemas/ap2-purchase-flow.run-task.input.schema.json" },
+            "outputSchema": { "$ref": "https://yo-ai.ai/schemas/ap2-purchase-flow.run-task.output.schema.json" },
+            "auth": "apiKey"
+        },
+        {
+            "name": "AP2-Purchase-Flow.Run-Task",
+            "version": "1.0.0",
+            "artifactType": "handler",
+            "description": "Interface for integrating with tool executable.",
+            "path": "/"
+        },
+        {
+            "name": "AP2-Purchase-Flow.Run-Task.Input",
+            "version": "1.0.0",
+            "artifactType": "messageType",
+            "schema": { "$ref": "https://yo-ai.ai/schemas/ap2-purchase-flow.run-task.input.schema.json" },
+            "description": "Input schema for AP2-Purchase-Flow.Run-Task."
+        },
+        {
+            "name": "AP2-Purchase-Flow.Run-Task.Output",
+            "version": "1.0.0",
+            "artifactType": "messageType",
+            "schema": { "$ref": "https://yo-ai.ai/schemas/ap2-purchase-flow.run-task.output.schema.json" },
+            "description": "Output schema for AP2-Purchase-Flow.Run-Task."
+        },
+        {
+            "name": "Order-Tracking-Adapter",
+            "version": "1.0.0",
+            "artifactType": "tool",
+            "description": "Integrates with vendor APIs and tracking services to monitor order and shipment status.",
+            "capabilities": ["track"],
+            "path": "/",
+            "provider": {
+                "name": "PrivacyPortfolio",
+                "brand": "Yo-ai",
+                "product": "",
+                "version": "1.0.0",
+                "license": "Yo-ai Internal",
+                "url": "https://yo-ai.ai/docs/Order-Tracking-Adapter.html",
+                "config": {
+                    "backend": ""
+                }
+            },
+            "inputSchema": { "$ref": "https://yo-ai.ai/schemas/order-tracking-adapter.input.schema.json" },
+            "outputSchema": { "$ref": "https://yo-ai.ai/schemas/order-tracking-adapter.output.schema.json" },
+            "auth": "apiKey"
+        },
+        {
+            "name": "Order-Tracking-Adapter",
+            "version": "1.0.0",
+            "artifactType": "handler",
+            "description": "Interface for integrating with tool executable.",
+            "path": "/"
+        },
+        {
+            "name": "Order-Tracking-Adapter.Input",
+            "version": "1.0.0",
+            "artifactType": "messageType",
+            "schema": { "$ref": "https://yo-ai.ai/schemas/order-tracking-adapter.input.schema.json" },
+            "description": "Input schema for Order-Tracking-Adapter."
+        },
+        {
+            "name": "Order-Tracking-Adapter.Output",
+            "version": "1.0.0",
+            "artifactType": "messageType",
+            "schema": { "$ref": "https://yo-ai.ai/schemas/order-tracking-adapter.output.schema.json" },
+            "description": "Output schema for Order-Tracking-Adapter."
+        },
+        {
+            "name": "Risk-Engine",
+            "version": "1.0.0",
+            "artifactType": "tool",
+            "description": "Evaluates vendor trust, fraud risk, and anomaly detection for purchases.",
+            "capabilities": ["evaluate"],
+            "path": "/",
+            "provider": {
+                "name": "PrivacyPortfolio",
+                "brand": "Yo-ai",
+                "product": "",
+                "version": "1.0.0",
+                "license": "Yo-ai Internal",
+                "url": "https://yo-ai.ai/docs/Risk-Engine.html",
+                "config": {
+                    "backend": ""
+                }
+            },
+            "inputSchema": { "$ref": "https://yo-ai.ai/schemas/risk-engine.input.schema.json" },
+            "outputSchema": { "$ref": "https://yo-ai.ai/schemas/risk-engine.output.schema.json" },
+            "auth": "apiKey"
+        },
+        {
+            "name": "Risk-Engine",
+            "version": "1.0.0",
+            "artifactType": "handler",
+            "description": "Interface for integrating with tool executable.",
+            "path": "/"
+        },
+        {
+            "name": "Risk-Engine.Input",
+            "version": "1.0.0",
+            "artifactType": "messageType",
+            "schema": { "$ref": "https://yo-ai.ai/schemas/risk-engine.input.schema.json" },
+            "description": "Input schema for Risk-Engine."
+        },
+        {
+            "name": "Risk-Engine.Output",
+            "version": "1.0.0",
+            "artifactType": "messageType",
+            "schema": { "$ref": "https://yo-ai.ai/schemas/risk-engine.output.schema.json" },
+            "description": "Output schema for Risk-Engine."
+        },
+        {
+            "name": "Budget-Engine",
+            "version": "1.0.0",
+            "artifactType": "tool",
+            "description": "Computes available purchasing power from the dedicated checking account and enforces budget constraints.",
+            "capabilities": ["compute"],
+            "path": "/",
+            "provider": {
+                "name": "PrivacyPortfolio",
+                "brand": "Yo-ai",
+                "product": "",
+                "version": "1.0.0",
+                "license": "Yo-ai Internal",
+                "url": "https://yo-ai.ai/docs/Budget-Engine.html",
+                "config": {
+                    "backend": ""
+                }
+            },
+            "inputSchema": { "$ref": "https://yo-ai.ai/schemas/budget-engine.input.schema.json" },
+            "outputSchema": { "$ref": "https://yo-ai.ai/schemas/budget-engine.output.schema.json" },
+            "auth": "apiKey"
+        },
+        {
+            "name": "Budget-Engine",
+            "version": "1.0.0",
+            "artifactType": "handler",
+            "description": "Interface for integrating with tool executable.",
+            "path": "/"
+        },
+        {
+            "name": "Budget-Engine.Input",
+            "version": "1.0.0",
+            "artifactType": "messageType",
+            "schema": { "$ref": "https://yo-ai.ai/schemas/budget-engine.input.schema.json" },
+            "description": "Input schema for Budget-Engine."
+        },
+        {
+            "name": "Budget-Engine.Output",
+            "version": "1.0.0",
+            "artifactType": "messageType",
+            "outputSchema": { "$ref": "https://yo-ai.ai/schemas/budget-engine.output.schema.json" },
+            "description": "Output schema for Budget-Engine."
+        },
+        {
+            "name": "AP2.Client",
+            "version": "1.0.0",
+            "artifactType": "tool",
+            "description": "Internal client for creating, signing, submitting, and tracking AP2 intents and transactions.",
+            "capabilities": ["client"],
+            "path": "/",
+            "provider": {
+                "name": "PrivacyPortfolio",
+                "brand": "Yo-ai",
+                "product": "",
+                "version": "1.0.0",
+                "license": "Yo-ai Internal",
+                "url": "https://yo-ai.ai/docs/AP2.Client.html",
+                "config": {
+                    "backend": ""
+                }
+            },
+            "inputSchema": { "$ref": "https://yo-ai.ai/schemas/ap2.client.input.schema.json" },
+            "outputSchema": { "$ref": "https://yo-ai.ai/schemas/ap2.client.output.schema.json" },
+            "auth": "apiKey"
+        },
+        {
+            "name": "AP2.Client",
+            "version": "1.0.0",
+            "artifactType": "handler",
+            "description": "Interface for integrating with tool executable.",
+            "path": "/"
+        },
+        {
+            "name": "AP2.Client.Input",
+            "version": "1.0.0",
+            "artifactType": "messageType",
+            "schema": { "$ref": "https://yo-ai.ai/schemas/ap2.client.input.schema.json" },
+            "description": "Input schema for AP2.Client."
+        },
+        {
+            "name": "AP2.Client.Output",
+            "version": "1.0.0",
+            "artifactType": "messageType",
+            "schema": { "$ref": "https://yo-ai.ai/schemas/ap2.client.output.schema.json" },
+            "description": "Output schema for AP2.Client."
+        },
+        {
+            "name": "Payment.Cancel",
+            "version": "1.0.0",
+            "artifactType": "skill",
+            "description": "",
+            "tags": ["AP2"],
+            "examples": [
+                "",
+                ""
+            ]
+        },
+        {
+            "name": "Payment.Cancel",
+            "version": "1.0.0",
+            "artifactType": "task",
+            "description": "",
+            "tags": ["AP2"],
+            "examples": [
+                "",
+                ""
+            ]
+        },
+        {
+            "name": "Payment.Cancel",
+            "version": "1.0.0",
+            "artifactType": "tool",
+            "description": "",
+            "capabilities": ["cancel"],
+            "path": "/",
+            "provider": {
+                "name": "PrivacyPortfolio",
+                "brand": "Yo-ai",
+                "product": "",
+                "version": "1.0.0",
+                "license": "Yo-ai Internal",
+                "url": "https://yo-ai.ai/docs/Payment.Cancel.html",
+                "config": {
+                    "backend": ""
+                }
+            },
+            "inputSchema": { "$ref": "https://yo-ai.ai/schemas/payment.cancel.input.schema.json" },
+            "outputSchema": { "$ref": "https://yo-ai.ai/schemas/payment.cancel.output.schema.json" },
+            "auth": "apiKey"
+        },
+        {
+            "name": "Payment.Cancel",
+            "version": "1.0.0",
+            "artifactType": "handler",
+            "description": "Interface for integrating with tool executable.",
+            "path": "/"
+        },
+        {
+            "name": "Payment.Cancel.Input",
+            "version": "1.0.0",
+            "artifactType": "messageType",
+            "schema": { "$ref": "https://yo-ai.ai/schemas/payment.cancel.input.schema.json" },
+            "description": "Input schema for Payment.Cancel."
+        },
+        {
+            "name": "Payment.Cancel.Output",
+            "version": "1.0.0",
+            "artifactType": "messageType",
+            "schema": { "$ref": "https://yo-ai.ai/schemas/payment.cancel.output.schema.json" },
+            "description": "Output schema for Payment.Cancel."
+        },
+        {
+            "name": "Mandate.Manage",
+            "version": "1.0.0",
+            "artifactType": "skill",
+            "description": "",
+            "tags": ["AP2"],
+            "examples": [
+                "",
+                ""
+            ]
+        },
+        {
+            "name": "Mandate.Manage",
+            "version": "1.0.0",
+            "artifactType": "task",
+            "description": ".",
+            "tags": ["AP2"],
+            "examples": [
+                "",
+                ""
+            ]
+        },
+        {
+            "name": "Mandate.Manage",
+            "version": "1.0.0",
+            "artifactType": "tool",
+            "description": "",
+            "capabilities": ["manage"],
+            "path": "/",
+            "provider": {
+                "name": "PrivacyPortfolio",
+                "brand": "Yo-ai",
+                "product": "",
+                "version": "1.0.0",
+                "license": "Yo-ai Internal",
+                "url": "https://yo-ai.ai/docs/Mandate.Manage.html",
+                "config": {
+                    "backend": ""
+                }
+            },
+            "inputSchema": { "$ref": "https://yo-ai.ai/schemas/mandate.manage.input.schema.json" },
+            "outputSchema": { "$ref": "https://yo-ai.ai/schemas/mandate.manage.output.schema.json" },
+            "auth": "apiKey"
+        },
+        {
+            "name": "Mandate.Manage",
+            "version": "1.0.0",
+            "artifactType": "handler",
+            "description": "Interface for integrating with tool executable.",
+            "path": "/"
+        },
+        {
+            "name": "Mandate.Manage.Input",
+            "version": "1.0.0",
+            "artifactType": "messageType",
+            "schema": { "$ref": "https://yo-ai.ai/schemas/mandate.manage.input.schema.json" },
+            "description": "Input schema for Mandate.Manage."
+        },
+        {
+            "name": "Mandate.Manage.Output",
+            "version": "1.0.0",
+            "artifactType": "messageType",
+            "schema": { "$ref": "https://yo-ai.ai/schemas/mandate.manage.output.schema.json" },
+            "description": "Output schema for Mandate.Manage."
+        }
+    ],
+    "supportsAuthenticatedExtendedCard": true
+}
