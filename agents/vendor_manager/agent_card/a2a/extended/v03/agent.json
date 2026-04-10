@@ -1,0 +1,116 @@
+{
+    "name": "Vendor-Manager",
+    "description": "Agent responsible for monitoring vendors to maintain Responsible AI certification status.",
+    "url":   "https://privacyportfolio.com/agent-registry/vendor-manager/auth/agent.json",
+    "provider": {
+        "organization": "PrivacyPortfolio",
+        "url": "https://www.PrivacyPortfolio.com"
+        },
+    "iconUrl": "https://privacyportfolio.com/agent-registry/vendor-manager/vendor-manager-agent-icon.png",
+    "version": "1.0.0",
+    "documentationUrl": "https://privacyportfolio.com/agent-registry/vendor-manager/auth/Vendor-Manager-AuthenticatedExtendedAgentCard.md",
+    "capabilities": {
+        "streaming": true,
+        "pushNotifications": true,
+        "stateTransitionHistory": true,
+        "exposesTasks": true,
+        "exposesMessages": true,
+        "exposesArtifacts": true,
+        "exposesTools": true
+    },
+    "securitySchemes": {
+        "yo-ai": {
+        "type": "apiKey",
+        "name": "yo-api",
+        "in": "header"
+        }
+    },
+    "security": [{ "yo-ai": ["apiKey", "yo-api", "header"] }],
+    "defaultInputModes": ["application/json", "text/plain"],
+    "defaultOutputModes": ["application/json", "text/plain"],
+    "skills": [
+        {"name": "Org-Profile.Manage"}
+    ],
+    "x-capabilities": [
+        {
+            "Org-Profile.Manage": {
+                "artifacts": [
+                    {"artifact": {"type": "skill", "name": "Org-Profile.Manage"}},
+                    {"artifact": {"type": "task", "name": "Org-Profile.Manage"}},
+                    {"artifact": {"type": "tool", "name": "Org-Profile.Manage"}},
+                    {"artifact": {"type": "handler", "name": "Org-Profile.Manage"}},
+                    {"artifact": {"type": "messageType", "name": "Org-Profile.Manage.Input"}},
+                    {"artifact": {"type": "messageType", "name": "Org-Profile.Manage.Output"}}
+                ]
+            }
+        }
+    ],
+    "x-artifacts": [
+        {
+            "name": "Org-Profile.Manage",
+            "version": "1.0.0",
+            "artifactType": "skill",
+            "description": "Manage an organization profile as a resource (not as an agent).",
+            "tags": ["verifyOrg", "shareData", "createTask", "buildWorkflow", "logEvent"],
+            "examples": [
+                "Identify the incorporated entity",
+                "Get terms and conditions",
+                "Send request"
+            ]
+        },
+        {
+            "name": "Org-Profile.Manage",
+            "version": "1.0.0",
+            "artifactType": "task",
+            "description": "Manage an organization profile as a resource (not as an agent).",
+            "tags": ["verifyOrg", "shareData", "createTask", "buildWorkflow", "logEvent"],
+            "examples": [
+                "Identify the incorporated entity",
+                "Get terms and conditions",
+                "Send request"
+            ]
+        },
+        {
+            "name": "Org-Profile.Manage",
+            "version": "1.0.0",
+            "artifactType": "tool",
+            "description": "Manage an organization profile as a resource (not as an agent).",
+            "capabilities": ["manage"],
+            "path": "/",
+            "provider": {
+                "name": "PrivacyPortfolio",
+                "brand": "Yo-ai",
+                "product": "",
+                "version": "1.0.0",
+                "license": "Yo-ai Internal",
+                "url": "https://yo-ai.ai/docs/Org-Profile.Manage.html",
+                "config": {"backend": ""}
+            },
+            "inputSchema": { "$ref": "https://yo-ai.ai/schemas/org-profile.manage.input.schema.json" },
+            "outputSchema": { "$ref": "https://yo-ai.ai/schemas/org-profile.manage.output.schema.json" },
+            "auth": "apiKey"
+        },
+        {
+            "name": "Org-Profile.Manage",
+            "version": "1.0.0",
+            "artifactType": "handler",
+            "description": "Interface for integrating with tool executable.",
+            "path": "/"
+        },
+        {
+            "name": "Org-Profile.Manage.Input",
+            "version": "1.0.0",
+            "artifactType": "messageType",
+            "schema": { "$ref": "https://yo-ai.ai/schemas/org-profile.manage.input.schema.json" },
+            "description": "Input messageType for the Org-Profile.Manage capability."
+        },
+        {
+            "name": "Org-Profile.Manage.Output",
+            "version": "1.0.0",
+            "artifactType": "messageType",
+            "schema": { "$ref": "https://yo-ai.ai/schemas/org-profile.manage.output.schema.json" },
+            "description": "Output messageType for the Org-Profile.Manage capability."
+        }
+    ],
+    "supportsAuthenticatedExtendedCard": true
+}

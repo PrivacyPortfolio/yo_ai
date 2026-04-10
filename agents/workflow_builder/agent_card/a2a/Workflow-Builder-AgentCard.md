@@ -1,0 +1,57 @@
+/**
+ * This Workflow-Builder AgentCard conveys:
+ * - Overall details (version, name, description, uses)
+ * - Skills: A set of capabilities the agent can perform
+ * - Default modalities/content types supported by the agent.
+ * - ExtendedCard contains tasks and messages for Registered Agents
+ */
+
+/**
+* Workflow-Builder AgentCard¶
+*/
+{
+    "name": "Workflow-Builder",
+    "description": "Agent that builds workflows connecting agents with endpoints.",
+    "id": "com.privacyportfolio.workflow-builder",
+    "provider": {
+      "organization": "PrivacyPortfolio",
+      "url": "https://www.PrivacyPortfolio.com"
+      },
+    "iconUrl": "https://privacyportfolio.com/agent-directory/workflow-builder/workflow-builder-agent-icon.png",
+    "protocolVersion": "1.0.0",
+    "documentationUrl": "https://privacyportfolio.com/agent-directory/workflow-builder/Workflow-Builder-AgentCard.md",
+    "supportedInterfaces": [
+      {
+        "url": "https://privacyportfolio.com/agents/vendor_manager/a2a",
+        "protocolBinding": "JSONRPC-HTTP",
+        "protocolVersion": "1.0"
+      }
+    ],
+    "capabilities": {
+      "streaming": true,
+      "pushNotifications": true,
+      "extendedAgentCard": true
+    },
+    "securitySchemes": {
+      "yo-ai": {
+        "type": "apiKey",
+        "name": "yo-api",
+        "in": "header"
+      }
+    },
+    "security": [
+      { "yo-ai": [] }
+    ],
+    "defaultInputModes": ["application/json", "text/plain"],
+    "defaultOutputModes": ["application/json", "image/png"],
+    "skills": [
+        {
+            "name": "Workflow.Build",
+            "description": "Builds orchestrated workflows connecting agents with endpoints.",
+            "version": "1.0.0", 
+            "tags": ["-wf", "internal", "external"],
+            "inputSchema": { "$ref": "https://yo-ai.ai/schemas/workflow.build.input.schema.json" },
+            "outputSchema": { "$ref": "https://yo-ai.ai/schemas/workflow.build.output.schema.json" }
+        }
+    ]
+}
