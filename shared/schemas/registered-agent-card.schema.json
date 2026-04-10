@@ -1,0 +1,372 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Registered Agent Card",
+  "description": "Identity, integrity, and accountability card for agents registered on the Yo-ai Platform. Enables friction-less authentication and verification.",
+  "type": "object",
+  "required": [
+    "agent_id",
+    "name",
+    "version",
+    "url",
+    "registered_at",
+    "subscriber",
+    "fingerprints",
+    "auth",
+    "capabilities"
+  ],
+  "properties": {
+    "agent_id": {
+      "type": "string",
+      "description": "Globally unique agent identifier (UUID or DID format)",
+      "pattern": "^(AGENT-[A-Z0-9]+|[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12})$"
+    },
+    "name": {
+      "type": "string",
+      "description": "Human-readable agent name (e.g., 'Decision-Master', 'Door-Keeper')"
+    },
+    "agent_kind": {
+      "type": "string",
+      "description": "Agent type/category (e.g., 'data-steward', 'compliance-validator')"
+    },
+    "version": {
+      "type": "string",
+      "description": "Agent version following semver (e.g., '1.2.3')",
+      "pattern": "^\\d+\\.\\d+\\.\\d+$",
+      "default": "1.0.0"
+    },
+    "url": {
+      "type": "string",
+      "format": "uri",
+      "description": "Primary endpoint URL for this agent"
+    },
+    "domain": {
+      "type": "string",
+      "format": "hostname",
+      "description": "Domain where agent is hosted"
+    },
+    "description": {
+      "type": "string",
+      "description": "Brief description of agent's purpose and functionality"
+    },
+    "registered_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "ISO 8601 timestamp when agent was registered"
+    },
+    "updated_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Last update timestamp for this card"
+    },
+    "subscriber": {
+      "type": "object",
+      "description": "Link to the Registered Subscriber responsible for this agent",
+      "required": ["subscriber_id", "responsible_human_id", "contact"],
+      "properties": {
+        "subscriber_id": {
+          "type": "string",
+          "description": "ID of the Registered Subscriber (e.g., SUB12345)",
+          "pattern": "^SUB[A-Z0-9]+$"
+        },
+        "responsible_human_id": {
+          "type": "string",
+          "description": "ID of the responsible human (e.g., RH-123)",
+          "pattern": "^RH-[A-Z0-9]+$"
+        },
+        "contact": {
+          "type": "object",
+          "required": ["name", "email"],
+          "properties": {
+            "name": {
+              "type": "string",
+              "description": "Full name of authorized representative"
+            },
+            "email": {
+              "type": "string",
+              "format": "email",
+              "description": "Direct contact email (no group emails)"
+            }
+          }
+        },
+        "org_id": {
+          "type": "string",
+          "description": "Organization ID of the provider"
+        },
+        "org_name": {
+          "type": "string",
+          "description": "Legal name of provider organization"
+        }
+      }
+    },
+    "fingerprints": {
+      "type": "object",
+      "description": "Integrity verification signatures computed from agent card and capabilities",
+      "required": [
+        "identity_signature",
+        "capability_signature",
+        "contract_signature"
+      ],
+      "properties": {
+        "identity_signature": {
+          "type": "string",
+          "description": "SHA256 hash of identity block (name, version, description, domain)",
+          "pattern": "^[a-f0-9]{64}$"
+        },
+        "capability_signature": {
+          "type": "string",
+          "description": "SHA256 hash of sorted capabilities array",
+          "pattern": "^[a-f0-9]{64}$"
+        },
+        "tooling_signature": {
+          "type": "string",
+          "description": "SHA256 hash of sorted tools array",
+          "pattern": "^[a-f0-9]{64}$"
+        },
+        "schema_signature": {
+          "type": "string",
+          "description": "SHA256 hash of sorted schemas array",
+          "pattern": "^[a-f0-9]{64}$"
+        },
+        "routing_signature": {
+          "type": "string",
+          "description": "SHA256 hash of sorted routes array",
+          "pattern": "^[a-f0-9]{64}$"
+        },
+        "contract_signature": {
+          "type": "string",
+          "description": "SHA256 hash of entire merged agent card (full contract verification)",
+          "pattern": "^[a-f0-9]{64}$"
+        },
+        "computed_at": {
+          "type": "string",
+          "format": "date-time",
+          "description": "When fingerprints were last computed"
+        },
+        "verification_url": {
+          "type": "string",
+          "format": "uri",
+          "description": "Optional URL where fingerprints can be independently verified"
+        }
+      }
+    },
+    "auth": {
+      "type": "object",
+      "description": "Authentication configuration for friction-less agent access",
+      "required": ["method", "token_type"],
+      "properties": {
+        "method": {
+          "type": "string",
+          "enum": ["JWT", "OAuth2", "APIKey", "MutualTLS"],
+          "description": "Primary authentication method"
+        },
+        "token_type": {
+          "type": "string",
+          "enum": ["Bearer", "Certificate", "APIKey"],
+          "description": "Type of authentication token"
+        },
+        "token_endpoint": {
+          "type": "string",
+          "format": "uri",
+          "description": "Endpoint for token generation/refresh"
+        },
+        "scopes": {
+          "type": "array",
+          "items": { "type": "string" },
+          "description": "OAuth2 scopes or permission levels (e.g., 'workflow:execute', 'task:read')"
+        },
+        "public_key": {
+          "type": "string",
+          "description": "Base64-encoded public key for signature verification (if using JWT/MutualTLS)"
+        },
+        "delegation": {
+          "type": "string",
+          "enum": ["full", "limited"],
+          "description": "Level of delegation from responsible human",
+          "default": "limited"
+        },
+        "expires_at": {
+          "type": "string",
+          "format": "date-time",
+          "description": "When current auth token/credential expires"
+        }
+      }
+    },
+    "capabilities": {
+      "type": "array",
+      "description": "Declared agent capabilities/handlers",
+      "items": {
+        "type": "string"
+      },
+      "minItems": 1,
+      "examples": [
+        ["liability.discover", "complaint.generate", "stakeholder.notify"]
+      ]
+    },
+    "tools": {
+      "type": "array",
+      "description": "Tools or integrations this agent uses",
+      "items": {
+        "type": "string"
+      }
+    },
+    "schemas": {
+      "type": "array",
+      "description": "JSON schema references for input/output validation",
+      "items": {
+        "type": "object",
+        "properties": {
+          "capability": {
+            "type": "string",
+            "description": "Capability name this schema applies to"
+          },
+          "input_schema_url": {
+            "type": "string",
+            "format": "uri",
+            "description": "URL to input schema JSON"
+          },
+          "output_schema_url": {
+            "type": "string",
+            "format": "uri",
+            "description": "URL to output schema JSON"
+          }
+        }
+      }
+    },
+    "routes": {
+      "type": "array",
+      "description": "API routes/endpoints exposed by this agent",
+      "items": {
+        "type": "object",
+        "properties": {
+          "path": {
+            "type": "string",
+            "description": "Endpoint path (e.g., '/agents/complaintManager/liabilityDiscover')"
+          },
+          "method": {
+            "type": "string",
+            "enum": ["GET", "POST", "PUT", "PATCH", "DELETE"],
+            "description": "HTTP method"
+          },
+          "capability": {
+            "type": "string",
+            "description": "Capability this route implements"
+          }
+        }
+      }
+    },
+    "compliance": {
+      "type": "object",
+      "description": "Compliance and regulatory information",
+      "properties": {
+        "regimes": {
+          "type": "array",
+          "items": { "type": "string" },
+          "description": "Declared compliance regimes (e.g., 'CPRA', 'HIPAA', 'GDPR')"
+        },
+        "evidence_url": {
+          "type": "string",
+          "format": "uri",
+          "description": "Link to compliance evidence or audit trail"
+        },
+        "certifications": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "type": {
+                "type": "string",
+                "description": "Certification type (e.g., 'SOC2', 'ISO27001')"
+              },
+              "issued_at": {
+                "type": "string",
+                "format": "date"
+              },
+              "expires_at": {
+                "type": "string",
+                "format": "date"
+              }
+            }
+          }
+        }
+      }
+    },
+    "a2a_protocol": {
+      "type": "object",
+      "description": "A2A Protocol compliance and configuration",
+      "properties": {
+        "version": {
+          "type": "string",
+          "description": "A2A Protocol version supported (e.g., '1.0')",
+          "default": "1.0"
+        },
+        "discovery_url": {
+          "type": "string",
+          "format": "uri",
+          "description": "A2A discovery endpoint"
+        },
+        "supports_async": {
+          "type": "boolean",
+          "description": "Whether agent supports asynchronous A2A communication",
+          "default": true
+        }
+      }
+    },
+    "kafka": {
+      "type": "object",
+      "description": "Kafka integration for agent activity logging, metrics, and health status. Monitoring data delivered via subscriber-specific topics (not separate endpoints).",
+      "properties": {
+        "publishes_to": {
+          "type": "array",
+          "items": { "type": "string" },
+          "description": "Kafka topics this agent publishes to (e.g., 'agents.SUB12345.activity', 'agents.SUB12345.metrics', 'agents.SUB12345.errors')"
+        },
+        "subscribes_to": {
+          "type": "array",
+          "items": { "type": "string" },
+          "description": "Kafka topics this agent consumes from"
+        }
+      }
+    },
+    "metadata": {
+      "type": "object",
+      "description": "Additional metadata for UI display and discovery",
+      "properties": {
+        "logo": {
+          "type": "string",
+          "format": "uri",
+          "description": "Agent logo URL for UI display"
+        },
+        "documentation_url": {
+          "type": "string",
+          "format": "uri",
+          "description": "Link to agent documentation"
+        },
+        "source_code_url": {
+          "type": "string",
+          "format": "uri",
+          "description": "Link to source repository (if open source)"
+        },
+        "license": {
+          "type": "string",
+          "description": "Software license (e.g., 'MIT', 'Apache-2.0', 'Proprietary')"
+        },
+        "tags": {
+          "type": "array",
+          "items": { "type": "string" },
+          "description": "Custom tags for filtering or grouping"
+        }
+      }
+    },
+    "status": {
+      "type": "string",
+      "enum": ["active", "maintenance", "deprecated", "suspended"],
+      "description": "Current operational status of the agent",
+      "default": "active"
+    },
+    "card_version": {
+      "type": "string",
+      "description": "Version of this card schema",
+      "default": "1.0.0"
+    }
+  }
+}

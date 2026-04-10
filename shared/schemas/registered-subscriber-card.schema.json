@@ -1,0 +1,304 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Registered Subscriber Card",
+  "description": "Identity and access card for authorized representatives who sign agreements and manage agents on the Yo-ai Platform",
+  "type": "object",
+  "required": [
+    "subscriber_id",
+    "responsible_human_id",
+    "contact",
+    "org_id",
+    "registered_agents",
+    "agreements",
+    "credentials",
+    "kafka_access"
+  ],
+  "properties": {
+    "subscriber_id": {
+      "type": "string",
+      "description": "Unique subscriber identifier (e.g., SUB12345)",
+      "pattern": "^SUB[A-Z0-9]+$"
+    },
+    "responsible_human_id": {
+      "type": "string",
+      "description": "Identifier for the responsible human linked to this subscriber",
+      "pattern": "^RH-[A-Z0-9]+$"
+    },
+    "contact": {
+      "type": "object",
+      "description": "Direct contact information - no anonymous or group emails allowed",
+      "required": ["name", "email"],
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "Full legal name of the authorized representative"
+        },
+        "email": {
+          "type": "string",
+          "format": "email",
+          "description": "Direct individual email address (not group email like legal@company.com)",
+          "pattern": "^(?!.*@.*\\b(legal|info|contact|support|admin)@).*$"
+        },
+        "phone": {
+          "type": "string",
+          "description": "Optional direct phone contact"
+        },
+        "title": {
+          "type": "string",
+          "description": "Role/title (e.g., 'Corporate Member', 'Chief Privacy Officer')"
+        }
+      }
+    },
+    "org_id": {
+      "type": "string",
+      "description": "Organization identifier for the provider"
+    },
+    "org_name": {
+      "type": "string",
+      "description": "Legal name of the provider organization"
+    },
+    "registered_agents": {
+      "type": "array",
+      "description": "List of agent IDs this subscriber is responsible for",
+      "items": {
+        "type": "object",
+        "required": ["agent_id", "agent_name"],
+        "properties": {
+          "agent_id": {
+            "type": "string",
+            "description": "Unique agent identifier"
+          },
+          "agent_name": {
+            "type": "string",
+            "description": "Human-readable agent name"
+          },
+          "agent_card_url": {
+            "type": "string",
+            "format": "uri",
+            "description": "URL to the agent's card/definition"
+          },
+          "registered_at": {
+            "type": "string",
+            "format": "date-time",
+            "description": "When this agent was registered by this subscriber"
+          }
+        }
+      }
+    },
+    "agreements": {
+      "type": "object",
+      "description": "Signed agreements and legal documents",
+      "required": ["platform_terms"],
+      "properties": {
+        "platform_terms": {
+          "type": "object",
+          "required": ["version", "signed_at", "signature"],
+          "properties": {
+            "version": {
+              "type": "string",
+              "description": "Version of platform terms agreed to"
+            },
+            "signed_at": {
+              "type": "string",
+              "format": "date-time",
+              "description": "Timestamp when terms were signed"
+            },
+            "signature": {
+              "type": "string",
+              "description": "Digital signature or acceptance token"
+            },
+            "ip_address": {
+              "type": "string",
+              "description": "IP address from which agreement was signed"
+            }
+          }
+        },
+        "data_processing_agreement": {
+          "type": "object",
+          "description": "Optional DPA if applicable",
+          "properties": {
+            "version": { "type": "string" },
+            "signed_at": { "type": "string", "format": "date-time" },
+            "signature": { "type": "string" }
+          }
+        },
+        "custom_agreements": {
+          "type": "array",
+          "description": "Any additional custom agreements",
+          "items": {
+            "type": "object",
+            "properties": {
+              "agreement_type": { "type": "string" },
+              "version": { "type": "string" },
+              "signed_at": { "type": "string", "format": "date-time" },
+              "signature": { "type": "string" }
+            }
+          }
+        }
+      }
+    },
+    "credentials": {
+      "type": "object",
+      "description": "Credential management for subscriber and their agents",
+      "required": ["subscriber_auth"],
+      "properties": {
+        "subscriber_auth": {
+          "type": "object",
+          "description": "Subscriber's own authentication credentials",
+          "required": ["auth_method", "mfa_enabled"],
+          "properties": {
+            "auth_method": {
+              "type": "string",
+              "enum": ["Cognito", "OAuth2", "SAML"],
+              "description": "Primary authentication method"
+            },
+            "mfa_enabled": {
+              "type": "boolean",
+              "description": "Whether multi-factor authentication is enabled"
+            },
+            "mfa_level": {
+              "type": "string",
+              "enum": ["low", "medium", "high"],
+              "description": "MFA security level"
+            },
+            "last_password_change": {
+              "type": "string",
+              "format": "date-time"
+            }
+          }
+        },
+        "agent_credentials": {
+          "type": "array",
+          "description": "Credentials managed for registered agents",
+          "items": {
+            "type": "object",
+            "required": ["agent_id", "credential_type"],
+            "properties": {
+              "agent_id": {
+                "type": "string",
+                "description": "Agent this credential is for"
+              },
+              "credential_type": {
+                "type": "string",
+                "enum": ["JWT", "APIKey", "Certificate", "OAuth2"],
+                "description": "Type of credential"
+              },
+              "created_at": {
+                "type": "string",
+                "format": "date-time"
+              },
+              "expires_at": {
+                "type": "string",
+                "format": "date-time"
+              },
+              "status": {
+                "type": "string",
+                "enum": ["active", "expired", "revoked"],
+                "default": "active"
+              }
+            }
+          }
+        }
+      }
+    },
+    "kafka_access": {
+      "type": "object",
+      "description": "Kafka topic access for monitoring agents and receiving notifications",
+      "required": ["enabled", "subscribed_topics"],
+      "properties": {
+        "enabled": {
+          "type": "boolean",
+          "description": "Whether Kafka access is enabled for this subscriber"
+        },
+        "consumer_group": {
+          "type": "string",
+          "description": "Kafka consumer group ID for this subscriber"
+        },
+        "subscribed_topics": {
+          "type": "array",
+          "description": "List of Kafka topics subscriber has access to",
+          "items": {
+            "type": "object",
+            "required": ["topic_name", "purpose"],
+            "properties": {
+              "topic_name": {
+                "type": "string",
+                "description": "Kafka topic name (e.g., 'agents.SUB12345.notifications', 'agents.SUB12345.activity')"
+              },
+              "purpose": {
+                "type": "string",
+                "enum": [
+                  "notifications",
+                  "agent_activity",
+                  "audit_logs",
+                  "errors",
+                  "metrics"
+                ],
+                "description": "Purpose of this topic"
+              },
+              "subscribed_at": {
+                "type": "string",
+                "format": "date-time",
+                "description": "When subscription was created"
+              },
+              "retention_days": {
+                "type": "integer",
+                "description": "How long messages are retained in this topic",
+                "default": 7
+              }
+            }
+          }
+        },
+        "connection_string": {
+          "type": "string",
+          "description": "Kafka connection endpoint (if applicable)"
+        },
+        "auth_mechanism": {
+          "type": "string",
+          "enum": ["SASL_SSL", "SSL", "PLAINTEXT"],
+          "description": "Kafka authentication mechanism"
+        }
+      }
+    },
+    "verification": {
+      "type": "object",
+      "description": "Verification status of the subscriber",
+      "properties": {
+        "verified": {
+          "type": "boolean",
+          "description": "Whether subscriber identity has been verified"
+        },
+        "verified_at": {
+          "type": "string",
+          "format": "date-time",
+          "description": "When verification was completed"
+        },
+        "verification_method": {
+          "type": "string",
+          "description": "Method used to verify identity (e.g., 'corporate_docs', 'legal_representative')"
+        }
+      }
+    },
+    "created_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "When this subscriber card was created"
+    },
+    "updated_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Last update timestamp"
+    },
+    "version": {
+      "type": "string",
+      "description": "Schema version",
+      "default": "1.0.0"
+    },
+    "status": {
+      "type": "string",
+      "enum": ["active", "suspended", "terminated"],
+      "description": "Current status of the subscriber account",
+      "default": "active"
+    }
+  }
+}

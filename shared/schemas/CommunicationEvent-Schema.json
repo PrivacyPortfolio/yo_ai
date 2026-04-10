@@ -1,0 +1,143 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://privacyportfolio.com/schemas/communication-event.schema.json",
+  "title": "CommunicationEvent",
+  "description": "Unified event for any communication between the subject (or authorized agent) and an organization, across all channels.",
+  "type": "object",
+  "required": [
+    "event_id",
+    "timestamp",
+    "subject_id",
+    "organization",
+    "channel",
+    "direction",
+    "risk_score",
+    "behavioral_risk_band",
+    "representative_identity",
+    "thread_id",
+    "raw_content_location",
+    "content_hash"
+  ],
+  "properties": {
+    "event_id": {
+      "type": "string",
+      "description": "Unique identifier (UUID) for this communication event."
+    },
+    "timestamp": {
+      "type": "string",
+      "format": "date-time",
+      "description": "When the communication occurred or was logged (UTC)."
+    },
+    "subject_id": {
+      "type": "string",
+      "description": "Identifier of the individual represented by Data-Steward."
+    },
+    "household_id": {
+      "type": ["string", "null"],
+      "description": "Household identifier, if applicable."
+    },
+    "organization": {
+      "type": "string",
+      "description": "Name of the organization (e.g., 'Accenture', 'Adidas')."
+    },
+    "organization_unit": {
+      "type": ["string", "null"],
+      "description": "Sub-unit (e.g., 'Privacy Team', 'Sales')."
+    },
+    "channel": {
+      "type": "string",
+      "enum": ["email", "webform", "portal", "phone", "social", "letter", "api", "unknown"],
+      "description": "Channel used for this communication."
+    },
+    "direction": {
+      "type": "string",
+      "enum": ["inbound", "outbound"],
+      "description": "From the subject’s perspective."
+    },
+    "thread_id": {
+      "type": "string",
+      "description": "Logical conversation thread identifier across messages and channels."
+    },
+    "related_request_id": {
+      "type": ["string", "null"],
+      "description": "ID of the underlying data rights request, complaint, or workflow, if any."
+    },
+    "request_type": {
+      "type": ["string", "null"],
+      "description": "Structured type (e.g., 'CCPA-KNOW', 'CCPA-DELETE', 'Privacy Question', 'Verification')."
+    },
+    "status": {
+      "type": ["string", "null"],
+      "description": "Derived status at this step (e.g., 'ACK', 'FULFILLMENT', 'REDIRECT', 'INAPPROPRIATE', 'NO_RESPONSE')."
+    },
+    "representative_identity": {
+      "type": "string",
+      "enum": ["named", "anonymous", "bot", "unknown"],
+      "description": "How identifiable the responder/sender is."
+    },
+    "representative_name": {
+      "type": ["string", "null"],
+      "description": "Name or alias of the representative, if given."
+    },
+    "representative_contact": {
+      "type": ["string", "null"],
+      "description": "Contact info (email, phone) if provided."
+    },
+    "response_time_hours": {
+      "type": ["number", "null"],
+      "description": "Time elapsed since the previous event in this thread, in hours (from subject’s last outbound to org’s inbound)."
+    },
+    "risk_score": {
+      "type": "number",
+      "minimum": 0.0,
+      "maximum": 1.0,
+      "description": "Computed behavioral risk score for the organization at this point in time."
+    },
+    "behavioral_risk_band": {
+      "type": "string",
+      "enum": ["highest", "quantifiable", "lowest"],
+      "description": "Band derived from risk_score and behavior."
+    },
+    "quantifiable_risk_usd": {
+      "type": ["number", "null"],
+      "description": "Estimated net exposure or opportunity in USD, if quantifiable."
+    },
+    "flow_type": {
+      "type": ["string", "null"],
+      "enum": ["risk_mitigation", "opportunity_seeking", "mixed", null],
+      "description": "Primary intent of the interaction."
+    },
+    "content_hash": {
+      "type": "string",
+      "description": "SHA-256 hash of normalized message content, for integrity."
+    },
+    "raw_content_location": {
+      "type": "string",
+      "description": "URI/pointer to full content in the vault (e.g., Dropbox path, S3 URL)."
+    },
+    "attachments": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["attachment_id", "type", "location", "hash"],
+        "properties": {
+          "attachment_id": { "type": "string" },
+          "type": { "type": "string" },
+          "location": { "type": "string" },
+          "hash": { "type": "string" }
+        }
+      },
+      "description": "Evidence artifacts related to this communication."
+    },
+    "summary": {
+      "type": ["string", "null"],
+      "description": "Short LLM-generated summary suitable for CSV/log views."
+    },
+    "metadata": {
+      "type": "object",
+      "description": "Channel- or workflow-specific details.",
+      "additionalProperties": true
+    }
+  },
+  "additionalProperties": false
+}

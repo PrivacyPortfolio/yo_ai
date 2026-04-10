@@ -1,0 +1,140 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://privacyportfolio.com/schemas/blocked-communication-event.schema.json",
+  "title": "BlockedCommunicationEvent",
+  "description": "Event representing a detected block on email, phone, network, or other communication channels.",
+  "type": "object",
+  "required": [
+    "event_id",
+    "timestamp",
+    "subject_id",
+    "organization",
+    "channel",
+    "block_type",
+    "block_mechanism",
+    "direction",
+    "risk_score",
+    "behavioral_risk_band",
+    "content_hash",
+    "raw_context_location"
+  ],
+  "properties": {
+    "event_id": {
+      "type": "string",
+      "description": "Unique identifier (UUID) for this block event."
+    },
+    "timestamp": {
+      "type": "string",
+      "format": "date-time",
+      "description": "When the block was detected (UTC)."
+    },
+    "subject_id": {
+      "type": "string",
+      "description": "Identifier of the individual represented by the Data-Steward."
+    },
+    "household_id": {
+      "type": ["string", "null"],
+      "description": "Household identifier, if applicable."
+    },
+    "organization": {
+      "type": "string",
+      "description": "Name of the organization (e.g., 'Accenture', 'Adidas')."
+    },
+    "organization_unit": {
+      "type": ["string", "null"],
+      "description": "Sub-unit (e.g., 'Privacy Team', 'Sales')."
+    },
+    "channel": {
+      "type": "string",
+      "enum": ["email", "phone", "network", "portal", "social", "api", "unknown"],
+      "description": "Channel where the block was observed."
+    },
+    "direction": {
+      "type": "string",
+      "enum": ["inbound", "outbound"],
+      "description": "From the subject’s perspective."
+    },
+    "block_type": {
+      "type": "string",
+      "enum": ["hard", "soft", "rate_limit", "silent_drop", "captcha_loop", "other"],
+      "description": "High-level block classification."
+    },
+    "block_mechanism": {
+      "type": "string",
+      "enum": [
+        "spam_filter",
+        "fraud_detection",
+        "bot_detection",
+        "ip_reputation",
+        "phone_reputation",
+        "waf",
+        "policy_block",
+        "retaliation_suspected",
+        "misconfiguration",
+        "unknown"
+      ],
+      "description": "Best-effort attribution of the system causing the block."
+    },
+    "http_status_code": {
+      "type": ["integer", "null"],
+      "description": "HTTP status code if the block occurred over HTTP(S)."
+    },
+    "smtp_status_code": {
+      "type": ["string", "null"],
+      "description": "SMTP status code if the block occurred during email delivery."
+    },
+    "telephony_status_code": {
+      "type": ["string", "null"],
+      "description": "Telephony or carrier status code, if known."
+    },
+    "twilio_product": {
+      "type": ["string", "null"],
+      "description": "Twilio product involved, if any (e.g., 'Voice', 'SendGrid', 'Conversations')."
+    },
+    "thread_id": {
+      "type": ["string", "null"],
+      "description": "Logical conversation thread identifier if tied to ongoing communication."
+    },
+    "related_request_id": {
+      "type": ["string", "null"],
+      "description": "Associated DSAR or complaint ID, if applicable."
+    },
+    "risk_score": {
+      "type": "number",
+      "minimum": 0.0,
+      "maximum": 1.0,
+      "description": "Behavioral risk score at the time of the block."
+    },
+    "behavioral_risk_band": {
+      "type": "string",
+      "enum": ["highest", "quantifiable", "lowest"],
+      "description": "Band derived from the risk score."
+    },
+    "retaliation_indicator": {
+      "type": "boolean",
+      "description": "True if timing and context suggest possible retaliation."
+    },
+    "prior_responsiveness_hours": {
+      "type": ["number", "null"],
+      "description": "Most recent measured response time from this organization in hours, if any."
+    },
+    "content_hash": {
+      "type": "string",
+      "description": "SHA-256 hash of normalized technical context (headers/logs/error body)."
+    },
+    "raw_context_location": {
+      "type": "string",
+      "description": "URI/pointer to full technical context (logs, screenshots) in the vault."
+    },
+    "summary": {
+      "type": ["string", "null"],
+      "description": "Short LLM-generated summary of what was blocked and how."
+    },
+    "metadata": {
+      "type": "object",
+      "description": "Channel-specific details (SMTP banner, SIP reason, WAF rule ID, etc.).",
+      "additionalProperties": true
+    }
+  },
+  "additionalProperties": false
+}
