@@ -1,0 +1,44 @@
+{
+  "$id": "https://yo-ai.ai/schemas/k-anonymity.compute.input.schema.json",
+  "title": "K-Anonymity.Compute.Input",
+  "description": "Profile-aware input for the K-Anonymity.Compute capability.",
+  "type": "object",
+  "properties": {
+    "profile": {
+      "$ref": "https://yo-ai.ai/schemas/profile.schema.json",
+      "description": "Optional reference to the subject/org profile to load."
+    },
+    "profilePatch": {
+      "$ref": "https://yo-ai.ai/schemas/common/profile.patch.schema.json",
+      "description": "Optional modifications to apply to the loaded profile."
+    },
+    "payload": {
+      "type": "object",
+      "description": "Capability-specific input fields for computing k-anonymity, l-diversity, and t-closeness.",
+      "properties": {
+        "dataset": {
+          "type": "array",
+          "description": "Tabular dataset represented as an array of objects.",
+          "items": { "type": "object", "additionalProperties": true }
+        },
+        "quasi_identifiers": {
+          "type": "array",
+          "description": "Attributes used to form equivalence classes.",
+          "items": { "type": "string" }
+        },
+        "sensitive_attributes": {
+          "type": "array",
+          "description": "Sensitive attributes used for l-diversity and t-closeness calculations.",
+          "items": { "type": "string" }
+        },
+        "parameters": {
+          "type": "object",
+          "description": "Optional computation parameters (e.g., minimum k threshold).",
+          "additionalProperties": true
+        }
+      },
+      "required": ["dataset", "quasi_identifiers"]
+    }
+  },
+  "required": ["payload"]
+}

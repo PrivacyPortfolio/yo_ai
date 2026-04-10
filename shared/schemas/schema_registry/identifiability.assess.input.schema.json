@@ -1,0 +1,39 @@
+{
+  "$id": "https://yo-ai.ai/schemas/identifiability.assess.input.schema.json",
+  "title": "Identifiability.Assess.Input",
+  "description": "Profile-aware input for the Identifiability.Assess capability.",
+  "type": "object",
+  "properties": {
+    "profile": {
+      "$ref": "https://yo-ai.ai/schemas/profile.schema.json",
+      "description": "Optional reference to the subject/org profile to load."
+    },
+    "profilePatch": {
+      "$ref": "https://yo-ai.ai/schemas/profile.patch.schema.json",
+      "description": "Optional modifications to apply to the loaded profile."
+    },
+    "payload": {
+      "type": "object",
+      "description": "Capability-specific input fields for identifiability assessment.",
+      "properties": {
+        "dataset": {
+          "type": "array",
+          "description": "Tabular dataset represented as an array of objects.",
+          "items": { "type": "object", "additionalProperties": true }
+        },
+        "quasi_identifiers": {
+          "type": "array",
+          "description": "Attributes that may contribute to re-identification risk.",
+          "items": { "type": "string" }
+        },
+        "sensitive_attributes": {
+          "type": "array",
+          "description": "Sensitive attributes used to assess identifiability and linkage risk.",
+          "items": { "type": "string" }
+        }
+      },
+      "required": ["dataset"]
+    }
+  },
+  "required": ["payload"]
+}

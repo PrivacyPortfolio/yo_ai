@@ -1,0 +1,38 @@
+{
+  "$id": "https://yo-ai.ai/schemas/handle.exception.output.schema.json",
+  "title": "Handle.Exception.Output",
+  "description": "Profile-aware output for the Handle.Exception capability.",
+  "type": "object",
+  "properties": {
+    "result": {
+      "type": "object",
+      "description": "Primary capability output fields.",
+      "properties": {
+        "exception_ref": {
+          "type": "string",
+          "description": "Opaque reference to the recorded exception event."
+        },
+        "severity": {
+          "type": "string",
+          "description": "Severity classification of the exception (e.g., 'low', 'medium', 'high', 'critical')."
+        },
+        "recommended_actions": {
+          "type": "array",
+          "description": "List of recommended remediation or mitigation actions.",
+          "items": { "type": "string" }
+        }
+      },
+      "required": ["exception_ref", "severity"]
+    },
+    "profile": {
+      "$ref": "https://yo-ai.ai/schemas/profile.schema.json"
+    },
+    "profilePatch": {
+      "$ref": "https://yo-ai.ai/schemas/profile.patch.schema.json"
+    },
+    "governanceLabels": {
+      "$ref": "https://yo-ai.ai/schemas/governanceLabels.schema.json"
+    }
+  },
+  "required": ["result"]
+}

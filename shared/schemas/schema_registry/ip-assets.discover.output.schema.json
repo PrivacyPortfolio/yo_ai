@@ -1,0 +1,37 @@
+{
+  "$id": "https://yo-ai.ai/schemas/ip-assets.discover.output.schema.json",
+  "title": "IP-Assets.Discover.Output",
+  "description": "Profile-aware output for the IP-Assets.Discover capability.",
+  "type": "object",
+  "properties": {
+    "result": {
+      "type": "object",
+      "description": "Primary capability output fields.",
+      "properties": {
+        "ip_assets": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "asset_id": { "type": "string" },
+              "asset_type": { "type": "string" },
+              "title": { "type": "string" },
+              "jurisdiction": { "type": "string" },
+              "status": { "type": "string" }
+            }
+          }
+        }
+      }
+    },
+    "profile": {
+      "$ref": "https://yo-ai.ai/schemas/profile.schema.json"
+    },
+    "profilePatch": {
+      "$ref": "https://yo-ai.ai/schemas/profile.patch.schema.json"
+    },
+    "governanceLabels": {
+      "$ref": "https://yo-ai.ai/schemas/governanceLabels.schema.json"
+    }
+  },
+  "required": ["result"]
+}

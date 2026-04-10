@@ -1,0 +1,40 @@
+{
+  "$id": "https://yo-ai.ai/schemas/org-profile.manage.input.schema.json",
+  "title": "Org-Profile.Manage.Input",
+  "description": "Profile-aware input for the Org-Profile.Manage capability.",
+  "type": "object",
+  "properties": {
+    "profile": {
+      "$ref": "https://yo-ai.ai/schemas/profile.schema.json",
+      "description": "Optional reference to the organization profile to load."
+    },
+    "profilePatch": {
+      "$ref": "https://yo-ai.ai/schemas/profile.patch.schema.json",
+      "description": "Optional modifications to apply to the loaded profile."
+    },
+    "payload": {
+      "type": "object",
+      "description": "Capability-specific input fields for Org-Profile.Manage.",
+      "properties": {
+        "org_ref": { "type": "string" },
+        "operation": {
+          "type": "string",
+          "enum": [
+            "verify",
+            "fetch_terms",
+            "share_data",
+            "create_task",
+            "build_workflow",
+            "log_event"
+          ]
+        },
+        "details": {
+          "type": "object",
+          "description": "Optional operation-specific parameters."
+        }
+      },
+      "required": ["org_ref", "operation"]
+    }
+  },
+  "required": ["payload"]
+}

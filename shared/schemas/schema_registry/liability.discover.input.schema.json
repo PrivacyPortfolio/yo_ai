@@ -1,0 +1,35 @@
+{
+  "$id": "https://yo-ai.ai/schemas/liability.discover.input.schema.json",
+  "title": "Liability.Discover.Input",
+  "description": "Profile-aware input for the Liability.Discover capability.",
+  "type": "object",
+  "properties": {
+    "profile": {
+      "$ref": "https://yo-ai.ai/schemas/profile.schema.json"
+    },
+    "profilePatch": {
+      "$ref": "https://yo-ai.ai/schemas/profile.patch.schema.json"
+    },
+    "payload": {
+      "type": "object",
+      "properties": {
+        "org_ref": {
+          "type": "string",
+          "description": "Reference to the organization being evaluated."
+        },
+        "facts": {
+          "type": "object",
+          "description": "Structured facts relevant to the liability assessment.",
+          "additionalProperties": true
+        },
+        "mandates": {
+          "type": "array",
+          "description": "Applicable mandates or legal requirements.",
+          "items": { "type": "string" }
+        }
+      },
+      "required": ["org_ref", "facts"]
+    }
+  },
+  "required": ["payload"]
+}

@@ -1,0 +1,47 @@
+{
+  "$id": "https://yo-ai.ai/schemas/integration-risk.evaluate.output.schema.json",
+  "title": "Integration-Risk.Evaluate.Output",
+  "description": "Profile-aware output for the Integration-Risk.Evaluate capability.",
+  "type": "object",
+  "properties": {
+    "result": {
+      "type": "object",
+      "description": "Primary capability output fields.",
+      "properties": {
+        "integration_risk": {
+          "type": "object",
+          "description": "Evaluated integration risk dimensions.",
+          "properties": {
+            "security_risk": {
+              "type": "string",
+              "description": "Security-related integration risk."
+            },
+            "privacy_risk": {
+              "type": "string",
+              "description": "Privacy-related integration risk."
+            },
+            "operational_risk": {
+              "type": "string",
+              "description": "Operational integration risk."
+            }
+          },
+          "required": ["security_risk", "privacy_risk", "operational_risk"]
+        }
+      },
+      "required": ["integration_risk"]
+    },
+    "profile": {
+      "$ref": "https://yo-ai.ai/schemas/profile.schema.json",
+      "description": "Optional updated profile after applying profilePatch."
+    },
+    "profilePatch": {
+      "$ref": "https://yo-ai.ai/schemas/profile.patch.schema.json",
+      "description": "Optional patch representing modifications applied during execution."
+    },
+    "governanceLabels": {
+      "$ref": "https://yo-ai.ai/schemas/governanceLabels.schema.json",
+      "description": "Optional governance labels for downstream classification."
+    }
+  },
+  "required": ["result"]
+}

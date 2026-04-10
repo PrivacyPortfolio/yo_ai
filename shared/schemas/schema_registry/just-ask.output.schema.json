@@ -1,0 +1,48 @@
+{
+  "$id": "https://yo-ai.ai/schemas/just-ask.output.schema.json",
+  "title": "Just-Ask.Output",
+  "description": "Profile-aware output for the Just-Ask capability, returning interpreted intent and routed results.",
+  "type": "object",
+  "properties": {
+    "result": {
+      "type": "object",
+      "description": "Primary capability output fields.",
+      "properties": {
+        "interpretedIntent": {
+          "type": "string",
+          "description": "The Solicitor-General's interpretation of the caller's request."
+        },
+        "routedTo": {
+          "type": "string",
+          "description": "The agent or capability selected to handle the request."
+        },
+        "result": {
+          "type": "object",
+          "description": "The response or output from the routed agent or capability.",
+          "additionalProperties": true
+        },
+        "needsClarification": {
+          "type": "boolean",
+          "description": "Indicates whether additional information is required."
+        },
+        "clarifyingQuestions": {
+          "type": "array",
+          "description": "Questions the Solicitor-General needs answered to proceed.",
+          "items": { "type": "string" }
+        }
+      },
+      "required": ["interpretedIntent", "routedTo"],
+      "additionalProperties": false
+    },
+    "profile": {
+      "$ref": "https://yo-ai.ai/schemas/profile.schema.json"
+    },
+    "profilePatch": {
+      "$ref": "https://yo-ai.ai/schemas/profile.patch.schema.json"
+    },
+    "governanceLabels": {
+      "$ref": "https://yo-ai.ai/schemas/governanceLabels.schema.json"
+    }
+  },
+  "required": ["result"]
+}

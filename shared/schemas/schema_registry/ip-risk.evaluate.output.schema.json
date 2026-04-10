@@ -1,0 +1,32 @@
+{
+  "$id": "https://yo-ai.ai/schemas/ip-risk.evaluate.output.schema.json",
+  "title": "IP-Risk.Evaluate.Output",
+  "description": "Profile-aware output for the IP-Risk.Evaluate capability.",
+  "type": "object",
+  "properties": {
+    "result": {
+      "type": "object",
+      "description": "Primary capability output fields.",
+      "properties": {
+        "ip_risk": {
+          "type": "object",
+          "properties": {
+            "infringement_risk": { "type": "string" },
+            "licensing_obligations": { "type": "string" },
+            "competitive_risk": { "type": "string" }
+          }
+        }
+      }
+    },
+    "profile": {
+      "$ref": "https://yo-ai.ai/schemas/profile.schema.json"
+    },
+    "profilePatch": {
+      "$ref": "https://yo-ai.ai/schemas/profile.patch.schema.json"
+    },
+    "governanceLabels": {
+      "$ref": "https://yo-ai.ai/schemas/governanceLabels.schema.json"
+    }
+  },
+  "required": ["result"]
+}

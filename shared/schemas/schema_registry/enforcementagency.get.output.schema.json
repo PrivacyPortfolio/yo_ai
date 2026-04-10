@@ -1,0 +1,32 @@
+{
+  "$id": "https://yo-ai.ai/schemas/enforcementagency.get.output.schema.json",
+  "title": "EnforcementAgency.Get.Output",
+  "description": "Profile-aware output for the EnforcementAgency.Get capability.",
+  "type": "object",
+  "properties": {
+    "result": {
+      "type": "object",
+      "properties": {
+        "agency": {
+          "type": "string",
+          "description": "Name of the enforcement agency."
+        },
+        "contact_url": {
+          "type": "string",
+          "description": "URL for contacting the agency."
+        }
+      },
+      "required": ["agency"]
+    },
+    "profile": {
+      "$ref": "https://yo-ai.ai/schemas/profile.schema.json"
+    },
+    "profilePatch": {
+      "$ref": "https://yo-ai.ai/schemas/profile.patch.schema.json"
+    },
+    "governanceLabels": {
+      "$ref": "https://yo-ai.ai/schemas/governanceLabels.schema.json"
+    }
+  },
+  "required": ["result"]
+}

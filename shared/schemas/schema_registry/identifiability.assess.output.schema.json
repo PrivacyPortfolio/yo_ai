@@ -1,0 +1,39 @@
+{
+  "$id": "https://yo-ai.ai/schemas/identifiability.assess.output.schema.json",
+  "title": "Identifiability.Assess.Output",
+  "description": "Profile-aware output for the Identifiability.Assess capability.",
+  "type": "object",
+  "properties": {
+    "result": {
+      "type": "object",
+      "description": "Primary capability output fields.",
+      "properties": {
+        "risk_score": {
+          "type": "number",
+          "description": "Quantitative identifiability risk score (0–1 scale)."
+        },
+        "identifiability_level": {
+          "type": "string",
+          "description": "High-level classification of identifiability risk.",
+          "enum": ["low", "medium", "high", "critical"]
+        },
+        "recommended_mitigations": {
+          "type": "array",
+          "description": "Suggested mitigations to reduce identifiability risk.",
+          "items": { "type": "string" }
+        }
+      },
+      "required": ["risk_score", "identifiability_level"]
+    },
+    "profile": {
+      "$ref": "https://yo-ai.ai/schemas/profile.schema.json"
+    },
+    "profilePatch": {
+      "$ref": "https://yo-ai.ai/schemas/profile.patch.schema.json"
+    },
+    "governanceLabels": {
+      "$ref": "https://yo-ai.ai/schemas/governanceLabels.schema.json"
+    }
+  },
+  "required": ["result"]
+}

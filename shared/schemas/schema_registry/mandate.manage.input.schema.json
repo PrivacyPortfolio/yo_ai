@@ -1,0 +1,71 @@
+{
+  "$id": "https://yo-ai.ai/schemas/mandate.manage.input.schema.json",
+  "title": "Mandate.Manage.Input",
+  "description": "Profile-aware input for the Mandate.Manage capability.",
+  "type": "object",
+  "properties": {
+    "profile": {
+      "$ref": "https://yo-ai.ai/schemas/profile.schema.json",
+      "description": "Optional reference to the subject/org profile to load."
+    },
+    "profilePatch": {
+      "$ref": "https://yo-ai.ai/schemas/profile.patch.schema.json",
+      "description": "Optional modifications to apply to the loaded profile."
+    },
+    "payload": {
+      "type": "object",
+      "description": "Capability-specific input fields for Mandate.Manage.",
+      "properties": {
+        "action": {
+          "type": "string",
+          "enum": ["create", "update", "revoke", "get"],
+          "description": "Mandate lifecycle action."
+        },
+        "mandateId": {
+          "type": "string",
+          "description": "Existing mandate identifier (required for update/revoke/get)."
+        },
+        "account": {
+          "type": "object",
+          "description": "Account or funding source associated with the mandate.",
+          "properties": {
+            "accountId": { "type": "string" },
+            "provider": { "type": "string" },
+            "type": { "type": "string" }
+          }
+        },
+        "vendor": {
+          "type": "object",
+          "description": "Vendor or merchant receiving authorization.",
+          "properties": {
+            "vendorId": { "type": "string" },
+            "name": { "type": "string" }
+          }
+        },
+        "limits": {
+          "type": "object",
+          "description": "Optional spending or frequency limits.",
+          "properties": {
+            "maxAmount": { "type": "number" },
+            "currency": { "type": "string" },
+            "frequency": { "type": "string" }
+          }
+        },
+        "reason": {
+          "type": "string",
+          "description": "Reason for mandate creation or modification."
+        },
+        "requestedBy": {
+          "type": "string",
+          "description": "Actor requesting mandate management."
+        },
+        "metadata": {
+          "type": "object",
+          "description": "Provider-specific or routing metadata."
+        }
+      },
+      "required": ["action", "requestedBy"]
+    }
+  },
+  "required": ["payload"]
+}

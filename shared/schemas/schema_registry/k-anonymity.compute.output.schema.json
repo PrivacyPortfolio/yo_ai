@@ -1,0 +1,60 @@
+{
+  "$id": "https://yo-ai.ai/schemas/k-anonymity.compute.output.schema.json",
+  "title": "K-Anonymity.Compute.Output",
+  "description": "Profile-aware output for the K-Anonymity.Compute capability.",
+  "type": "object",
+  "properties": {
+    "result": {
+      "type": "object",
+      "description": "Primary capability output fields.",
+      "properties": {
+        "k_anonymity": {
+          "type": "number",
+          "description": "Computed k-anonymity value for the dataset."
+        },
+        "l_diversity": {
+          "type": "number",
+          "description": "Computed l-diversity value, if sensitive attributes were provided."
+        },
+        "t_closeness": {
+          "type": "number",
+          "description": "Computed t-closeness value, if sensitive attributes were provided."
+        },
+        "equivalence_classes": {
+          "type": "array",
+          "description": "Summary of equivalence classes formed by quasi-identifiers.",
+          "items": {
+            "type": "object",
+            "properties": {
+              "class_size": { "type": "number" },
+              "qi_values": {
+                "type": "object",
+                "additionalProperties": true
+              },
+              "sensitive_distribution": {
+                "type": "object",
+                "additionalProperties": true
+              }
+            }
+          }
+        },
+        "risk_level": {
+          "type": "string",
+          "description": "High-level risk classification based on computed metrics.",
+          "enum": ["low", "medium", "high"]
+        }
+      },
+      "required": ["k_anonymity"]
+    },
+    "profile": {
+      "$ref": "https://yo-ai.ai/schemas/profile.schema.json"
+    },
+    "profilePatch": {
+      "$ref": "https://yo-ai.ai/schemas/profile.patch.schema.json"
+    },
+    "governanceLabels": {
+      "$ref": "https://yo-ai.ai/schemas/governanceLabels.schema.json"
+    }
+  },
+  "required": ["result"]
+}

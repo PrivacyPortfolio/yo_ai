@@ -1,0 +1,29 @@
+{
+  "$id": "https://yo-ai.ai/schemas/data-steward/email.read.input.schema.json",
+  "title": "Email.Read.Input",
+  "description": "Profile-aware input for reading inbound email and extracting metadata for classification and workflow triggers.",
+  "type": "object",
+  "properties": {
+    "profile": {
+      "$ref": "https://yo-ai.ai/schemas/profile.schema.json",
+      "description": "Optional reference to the subject/org profile to load."
+    },
+    "profilePatch": {
+      "$ref": "https://yo-ai.ai/schemas/profile.patch.schema.json",
+      "description": "Optional modifications to apply to the loaded profile."
+    },
+    "payload": {
+      "type": "object",
+      "description": "Capability-specific input fields for Email.Read.",
+      "properties": {
+        "rawEmail": { "type": "string" },
+        "metadata": {
+          "type": "object",
+          "additionalProperties": true
+        }
+      },
+      "required": ["rawEmail"]
+    }
+  },
+  "required": ["payload"]
+}

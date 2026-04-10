@@ -1,0 +1,25 @@
+{
+  "$id": "https://yo-ai.ai/schemas/ip-risk.evaluate.input.schema.json",
+  "title": "IP-Risk.Evaluate.Input",
+  "description": "Profile-aware input for the IP-Risk.Evaluate capability.",
+  "type": "object",
+  "properties": {
+    "profile": {
+      "$ref": "https://yo-ai.ai/schemas/profile.schema.json",
+      "description": "Optional reference to the subject/org profile to load."
+    },
+    "profilePatch": {
+      "$ref": "https://yo-ai.ai/schemas/profile.patch.schema.json",
+      "description": "Optional modifications to apply to the loaded profile."
+    },
+    "payload": {
+      "type": "object",
+      "description": "Capability-specific input fields for IP-Risk.Evaluate.",
+      "properties": {
+        "org_ref": { "type": "string" }
+      },
+      "required": ["org_ref"]
+    }
+  },
+  "required": ["payload"]
+}

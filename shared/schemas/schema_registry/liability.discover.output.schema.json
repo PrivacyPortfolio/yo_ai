@@ -1,0 +1,32 @@
+{
+  "$id": "https://yo-ai.ai/schemas/liability.discover.output.schema.json",
+  "title": "Liability.Discover.Output",
+  "description": "Profile-aware output for the Liability.Discover capability.",
+  "type": "object",
+  "properties": {
+    "result": {
+      "type": "object",
+      "properties": {
+        "liability_findings": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "recommended_actions": {
+          "type": "array",
+          "items": { "type": "string" }
+        }
+      },
+      "required": ["liability_findings"]
+    },
+    "profile": {
+      "$ref": "https://yo-ai.ai/schemas/profile.schema.json"
+    },
+    "profilePatch": {
+      "$ref": "https://yo-ai.ai/schemas/profile.patch.schema.json"
+    },
+    "governanceLabels": {
+      "$ref": "https://yo-ai.ai/schemas/governanceLabels.schema.json"
+    }
+  },
+  "required": ["result"]
+}

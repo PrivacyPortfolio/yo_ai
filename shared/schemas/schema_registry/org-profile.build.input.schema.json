@@ -1,0 +1,26 @@
+{
+  "$id": "https://yo-ai.ai/schemas/org-profile.build.input.schema.json",
+  "title": "Org-Profile.Build.Input",
+  "description": "Profile-aware input for the Org-Profile.Build capability.",
+  "type": "object",
+  "properties": {
+    "profile": {
+      "$ref": "https://yo-ai.ai/schemas/profile.schema.json",
+      "description": "Optional reference to the organization profile to load."
+    },
+    "profilePatch": {
+      "$ref": "https://yo-ai.ai/schemas/profile.patch.schema.json",
+      "description": "Optional modifications to apply to the loaded profile."
+    },
+    "payload": {
+      "type": "object",
+      "description": "Capability-specific input fields for Org-Profile.Build.",
+      "properties": {
+        "org_ref": { "type": "string" },
+        "assets": { "type": "string" }
+      },
+      "required": ["org_ref", "assets"]
+    }
+  },
+  "required": ["payload"]
+}

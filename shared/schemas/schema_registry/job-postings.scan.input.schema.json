@@ -1,0 +1,46 @@
+{
+  "$id": "https://yo-ai.ai/schemas/job-postings.scan.input.schema.json",
+  "title": "Job-Postings.Scan.Input",
+  "description": "Profile-aware input for the Job-Postings.Scan capability.",
+  "type": "object",
+  "properties": {
+    "profile": {
+      "$ref": "https://yo-ai.ai/schemas/profile.schema.json",
+      "description": "Optional reference to the applicant profile to load."
+    },
+    "profilePatch": {
+      "$ref": "https://yo-ai.ai/schemas/profile.patch.schema.json",
+      "description": "Optional modifications to apply to the loaded profile."
+    },
+    "payload": {
+      "type": "object",
+      "description": "Capability-specific input fields for Job-Postings.Scan.",
+      "properties": {
+        "keywords": {
+          "type": "array",
+          "description": "Keywords to match against job postings.",
+          "items": { "type": "string" }
+        },
+        "location": {
+          "type": "string",
+          "description": "Preferred job location."
+        },
+        "remote_ok": {
+          "type": "boolean",
+          "description": "Whether remote roles are acceptable."
+        },
+        "request_id": {
+          "type": "string",
+          "description": "Correlation ID for async workflows."
+        },
+        "context": {
+          "type": "object",
+          "description": "Optional context from the requesting agent.",
+          "additionalProperties": true
+        }
+      },
+      "required": ["keywords"]
+    }
+  },
+  "required": ["payload"]
+}

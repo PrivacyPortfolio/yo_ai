@@ -1,0 +1,25 @@
+{
+  "$id": "https://yo-ai.ai/schemas/order-status.track.input.schema.json",
+  "title": "Order-Status.Track.Input",
+  "description": "Profile-aware input for the Order-Status.Track capability.",
+  "type": "object",
+  "properties": {
+    "profile": {
+      "$ref": "https://yo-ai.ai/schemas/profile.schema.json",
+      "description": "Optional reference to the subject/org profile to load."
+    },
+    "profilePatch": {
+      "$ref": "https://yo-ai.ai/schemas/profile.patch.schema.json",
+      "description": "Optional modifications to apply to the loaded profile."
+    },
+    "payload": {
+      "type": "object",
+      "description": "Capability-specific input fields for Order-Status.Track.",
+      "properties": {
+        "orderId": { "type": "string" }
+      },
+      "required": ["orderId"]
+    }
+  },
+  "required": ["payload"]
+}

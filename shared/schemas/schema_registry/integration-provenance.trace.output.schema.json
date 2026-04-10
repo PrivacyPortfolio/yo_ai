@@ -1,0 +1,65 @@
+{
+  "$id": "https://yo-ai.ai/schemas/integration-provenance.trace.output.schema.json",
+  "title": "Integration-Provenance.Trace.Output",
+  "description": "Profile-aware output for the Integration-Provenance.Trace capability.",
+  "type": "object",
+  "properties": {
+    "result": {
+      "type": "object",
+      "description": "Primary capability output fields.",
+      "properties": {
+        "provenance": {
+          "type": "array",
+          "description": "Provenance history for each asset.",
+          "items": {
+            "type": "object",
+            "properties": {
+              "asset_name": {
+                "type": "string",
+                "description": "The asset whose integration provenance is being reported."
+              },
+              "history": {
+                "type": "array",
+                "description": "Historical integration records for the asset.",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "version": {
+                      "type": "string",
+                      "description": "Version identifier associated with the integration event."
+                    },
+                    "released": {
+                      "type": "string",
+                      "format": "date",
+                      "description": "Release date of the integration event."
+                    },
+                    "notes": {
+                      "type": "string",
+                      "description": "Optional notes describing the integration event."
+                    }
+                  },
+                  "required": ["version", "released"]
+                }
+              }
+            },
+            "required": ["asset_name", "history"]
+          }
+        }
+      },
+      "required": ["provenance"]
+    },
+    "profile": {
+      "$ref": "https://yo-ai.ai/schemas/profile.schema.json",
+      "description": "Optional updated profile after applying profilePatch."
+    },
+    "profilePatch": {
+      "$ref": "https://yo-ai.ai/schemas/profile.patch.schema.json",
+      "description": "Optional patch representing modifications applied during execution."
+    },
+    "governanceLabels": {
+      "$ref": "https://yo-ai.ai/schemas/governanceLabels.schema.json",
+      "description": "Optional governance labels for downstream classification."
+    }
+  },
+  "required": ["result"]
+}

@@ -1,0 +1,35 @@
+{
+  "$id": "https://yo-ai.ai/schemas/data-steward/email.read.output.schema.json",
+  "title": "Email.Read.Output",
+  "description": "Profile-aware output containing classification, extracted intent, and identified entities from inbound email.",
+  "type": "object",
+  "properties": {
+    "result": {
+      "type": "object",
+      "description": "Primary capability output fields.",
+      "properties": {
+        "messageId": { "type": "string" },
+        "classification": {
+          "type": "string",
+          "enum": ["spam", "phishing", "solicitation", "transactional", "personal"]
+        },
+        "extractedIntent": { "type": "string" },
+        "entities": {
+          "type": "array",
+          "items": { "type": "string" }
+        }
+      },
+      "required": ["messageId", "classification"]
+    },
+    "profile": {
+      "$ref": "https://yo-ai.ai/schemas/profile.schema.json"
+    },
+    "profilePatch": {
+      "$ref": "https://yo-ai.ai/schemas/profile.patch.schema.json"
+    },
+    "governanceLabels": {
+      "$ref": "https://yo-ai.ai/schemas/governanceLabels.schema.json"
+    }
+  },
+  "required": ["result"]
+}

@@ -1,0 +1,38 @@
+{
+  "$id": "https://yo-ai.ai/schemas/just-ask.input.schema.json",
+  "title": "Just-Ask.Input",
+  "description": "Profile-aware input for the Just-Ask capability, allowing free-form questions or requests.",
+  "type": "object",
+  "properties": {
+    "profile": {
+      "$ref": "https://yo-ai.ai/schemas/profile.schema.json",
+      "description": "Optional reference to the subject or agent profile to load."
+    },
+    "profilePatch": {
+      "$ref": "https://yo-ai.ai/schemas/profile.patch.schema.json",
+      "description": "Optional modifications to apply to the loaded profile."
+    },
+    "payload": {
+      "type": "object",
+      "description": "Capability-specific input fields for Just-Ask.",
+      "properties": {
+        "query": {
+          "type": "string",
+          "description": "Free-form question, request, or instruction from the caller."
+        },
+        "context": {
+          "type": "object",
+          "description": "Optional contextual hints provided by the caller.",
+          "additionalProperties": true
+        },
+        "caller": {
+          "type": "string",
+          "description": "Identifier of the requesting agent or subscriber."
+        }
+      },
+      "required": ["query"],
+      "additionalProperties": false
+    }
+  },
+  "required": ["payload"]
+}

@@ -1,0 +1,27 @@
+{
+  "$id": "https://yo-ai.ai/schemas/order-status.track.output.schema.json",
+  "title": "Order-Status.Track.Output",
+  "description": "Profile-aware output for the Order-Status.Track capability.",
+  "type": "object",
+  "properties": {
+    "result": {
+      "type": "object",
+      "description": "Primary capability output fields.",
+      "properties": {
+        "status": { "type": "string" },
+        "lastUpdated": { "type": "string" }
+      },
+      "required": ["status"]
+    },
+    "profile": {
+      "$ref": "https://yo-ai.ai/schemas/profile.schema.json"
+    },
+    "profilePatch": {
+      "$ref": "https://yo-ai.ai/schemas/profile.patch.schema.json"
+    },
+    "governanceLabels": {
+      "$ref": "https://yo-ai.ai/schemas/governanceLabels.schema.json"
+    }
+  },
+  "required": ["result"]
+}

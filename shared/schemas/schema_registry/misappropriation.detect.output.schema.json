@@ -1,0 +1,51 @@
+{
+  "$id": "https://yo-ai.ai/schemas/misappropriation.detect.output.schema.json",
+  "title": "Misappropriation.Detect.Output",
+  "description": "Profile-aware output for the Misappropriation.Detect capability.",
+  "type": "object",
+  "properties": {
+    "result": {
+      "type": "object",
+      "description": "Primary capability output fields.",
+      "properties": {
+        "misappropriation_detected": {
+          "type": "boolean",
+          "description": "Whether any misappropriation indicators were found."
+        },
+        "indicators": {
+          "type": "array",
+          "description": "List of detected misappropriation indicators.",
+          "items": {
+            "type": "object",
+            "properties": {
+              "indicator_type": { "type": "string" },
+              "description": { "type": "string" },
+              "platform": { "type": "string" },
+              "timestamp": { "type": "string", "format": "date-time" },
+              "proof_hash": { "type": "string" },
+              "metadata": {
+                "type": "object",
+                "additionalProperties": true
+              }
+            }
+          }
+        },
+        "evidence_bundle_ref": {
+          "type": "string",
+          "description": "Optional reference to an Evidence.Collect bundle for downstream agents."
+        }
+      },
+      "required": ["misappropriation_detected", "indicators"]
+    },
+    "profile": {
+      "$ref": "https://yo-ai.ai/schemas/profile.schema.json"
+    },
+    "profilePatch": {
+      "$ref": "https://yo-ai.ai/schemas/profile.patch.schema.json"
+    },
+    "governanceLabels": {
+      "$ref": "https://yo-ai.ai/schemas/governanceLabels.schema.json"
+    }
+  },
+  "required": ["result"]
+}

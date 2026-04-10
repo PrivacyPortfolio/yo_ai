@@ -1,0 +1,44 @@
+{
+  "$id": "https://yo-ai.ai/schemas/event.log.output.schema.json",
+  "title": "Event.Log.Output",
+  "description": "Profile-aware output for the Event.Log capability.",
+  "type": "object",
+  "properties": {
+    "result": {
+      "type": "object",
+      "description": "Primary capability output fields.",
+      "properties": {
+        "eventId": {
+          "type": "string",
+          "description": "Unique identifier for the logged event."
+        },
+        "status": {
+          "type": "string",
+          "enum": ["logged", "failed"],
+          "description": "Indicates whether the event was successfully logged."
+        },
+        "timestamp": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Timestamp when the log entry was recorded."
+        },
+        "error": {
+          "type": "string",
+          "description": "Error message if logging failed."
+        }
+      },
+      "required": ["eventId", "status"],
+      "additionalProperties": false
+    },
+    "profile": {
+      "$ref": "https://yo-ai.ai/schemas/profile.schema.json"
+    },
+    "profilePatch": {
+      "$ref": "https://yo-ai.ai/schemas/profile.patch.schema.json"
+    },
+    "governanceLabels": {
+      "$ref": "https://yo-ai.ai/schemas/governanceLabels.schema.json"
+    }
+  },
+  "required": ["result"]
+}

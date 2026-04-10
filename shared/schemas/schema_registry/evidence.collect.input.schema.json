@@ -1,0 +1,50 @@
+{
+  "$id": "https://yo-ai.ai/schemas/evidence.collect.input.schema.json",
+  "title": "Evidence.Collect.Input",
+  "description": "Profile-aware input for the Evidence.Collect capability.",
+  "type": "object",
+  "properties": {
+    "profile": {
+      "$ref": "https://yo-ai.ai/schemas/profile.schema.json",
+      "description": "Optional reference to the subject/org profile to load."
+    },
+    "profilePatch": {
+      "$ref": "https://yo-ai.ai/schemas/profile.patch.schema.json",
+      "description": "Optional modifications to apply to the loaded profile."
+    },
+    "payload": {
+      "type": "object",
+      "description": "Capability-specific input fields for Evidence.Collect.",
+      "properties": {
+        "evidence_type": {
+          "type": "string",
+          "description": "Type of evidence being collected (e.g., promotional_engagement, misappropriation, impersonation)."
+        },
+        "source_platform": {
+          "type": "string",
+          "description": "Platform where the evidence was found."
+        },
+        "content_ref": {
+          "type": "string",
+          "description": "Reference to the content (URL, post ID, or opaque identifier)."
+        },
+        "proof_hash": {
+          "type": "string",
+          "description": "Hash of the captured content for integrity verification."
+        },
+        "metadata": {
+          "type": "object",
+          "description": "Additional metadata such as screenshot info, engagement details, or platform-specific fields.",
+          "additionalProperties": true
+        },
+        "context": {
+          "type": "object",
+          "description": "Optional context from the requesting agent.",
+          "additionalProperties": true
+        }
+      },
+      "required": ["evidence_type", "source_platform", "content_ref"]
+    }
+  },
+  "required": ["payload"]
+}

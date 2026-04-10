@@ -1,0 +1,27 @@
+{
+  "$id": "https://yo-ai.ai/schemas/ip-report.generate.output.schema.json",
+  "title": "IP-Report.Generate.Output",
+  "description": "Profile-aware output for the IP-Report.Generate capability.",
+  "type": "object",
+  "properties": {
+    "result": {
+      "type": "object",
+      "description": "Primary capability output fields.",
+      "properties": {
+        "report_url": {
+          "type": "string"
+        }
+      }
+    },
+    "profile": {
+      "$ref": "https://yo-ai.ai/schemas/profile.schema.json"
+    },
+    "profilePatch": {
+      "$ref": "https://yo-ai.ai/schemas/profile.patch.schema.json"
+    },
+    "governanceLabels": {
+      "$ref": "https://yo-ai.ai/schemas/governanceLabels.schema.json"
+    }
+  },
+  "required": ["result"]
+}

@@ -1,0 +1,45 @@
+{
+  "$id": "https://yo-ai.ai/schemas/handle.exception.input.schema.json",
+  "title": "Handle.Exception.Input",
+  "description": "Profile-aware input for the Handle.Exception capability.",
+  "type": "object",
+  "properties": {
+    "profile": {
+      "$ref": "https://yo-ai.ai/schemas/profile.schema.json",
+      "description": "Optional reference to the subject/org profile to load."
+    },
+    "profilePatch": {
+      "$ref": "https://yo-ai.ai/schemas/profile.patch.schema.json",
+      "description": "Optional modifications to apply to the loaded profile."
+    },
+    "payload": {
+      "type": "object",
+      "description": "Capability-specific input fields for Handle.Exception.",
+      "properties": {
+        "agent_ref": {
+          "type": "string",
+          "description": "Reference to the agent that encountered the exception."
+        },
+        "exception_type": {
+          "type": "string",
+          "description": "Type or category of the exception."
+        },
+        "exception_message": {
+          "type": "string",
+          "description": "Human-readable message describing the exception."
+        },
+        "stack_trace": {
+          "type": "string",
+          "description": "Stack trace associated with the exception, if available."
+        },
+        "context": {
+          "type": "object",
+          "description": "Additional contextual information relevant to the exception.",
+          "additionalProperties": true
+        }
+      },
+      "required": ["agent_ref", "exception_type", "exception_message"]
+    }
+  },
+  "required": ["payload"]
+}

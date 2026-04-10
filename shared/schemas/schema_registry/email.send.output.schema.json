@@ -1,0 +1,34 @@
+{
+  "$id": "https://yo-ai.ai/schemas/data-steward/email.send.output.schema.json",
+  "title": "Email.Send.Output",
+  "description": "Profile-aware output representing the result of an outbound email send attempt.",
+  "type": "object",
+  "properties": {
+    "result": {
+      "type": "object",
+      "description": "Primary capability output fields.",
+      "properties": {
+        "messageId": { "type": "string" },
+        "status": {
+          "type": "string",
+          "enum": ["queued", "sent", "failed"]
+        },
+        "providerMetadata": {
+          "type": "object",
+          "additionalProperties": true
+        }
+      },
+      "required": ["messageId", "status"]
+    },
+    "profile": {
+      "$ref": "https://yo-ai.ai/schemas/profile.schema.json"
+    },
+    "profilePatch": {
+      "$ref": "https://yo-ai.ai/schemas/profile.patch.schema.json"
+    },
+    "governanceLabels": {
+      "$ref": "https://yo-ai.ai/schemas/governanceLabels.schema.json"
+    }
+  },
+  "required": ["result"]
+}

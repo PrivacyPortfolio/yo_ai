@@ -1,0 +1,29 @@
+{
+  "$id": "https://yo-ai.ai/schemas/enforcementagency.get.input.schema.json",
+  "title": "EnforcementAgency.Get.Input",
+  "description": "Profile-aware input for the EnforcementAgency.Get capability.",
+  "type": "object",
+  "properties": {
+    "profile": {
+      "$ref": "https://yo-ai.ai/schemas/profile.schema.json"
+    },
+    "profilePatch": {
+      "$ref": "https://yo-ai.ai/schemas/profile.patch.schema.json"
+    },
+    "payload": {
+      "type": "object",
+      "properties": {
+        "org_ref": {
+          "type": "string",
+          "description": "Reference to the organization."
+        },
+        "mandate": {
+          "type": "string",
+          "description": "Applicable mandate or legal requirement."
+        }
+      },
+      "required": ["org_ref", "mandate"]
+    }
+  },
+  "required": ["payload"]
+}

@@ -1,0 +1,65 @@
+{
+  "$id": "https://yo-ai.ai/schemas/mandate.manage.output.schema.json",
+  "description": "Profile-aware output for the Mandate.Manage capability.",
+  "type": "object",
+  "properties": {
+    "result": {
+      "type": "object",
+      "description": "Primary capability output fields.",
+      "properties": {
+        "action": {
+          "type": "string",
+          "enum": ["create", "update", "revoke", "get"],
+          "description": "Mandate lifecycle action performed."
+        },
+        "status": {
+          "type": "string",
+          "enum": ["success", "failed", "pending"],
+          "description": "Outcome of the mandate operation."
+        },
+        "mandateId": {
+          "type": "string",
+          "description": "Mandate identifier (new or existing)."
+        },
+        "provider": {
+          "type": "string",
+          "description": "Payment provider that processed the mandate."
+        },
+        "providerResponse": {
+          "type": "object",
+          "description": "Raw or normalized provider response for auditability."
+        },
+        "limits": {
+          "type": "object",
+          "description": "Final mandate limits after operation.",
+          "properties": {
+            "maxAmount": { "type": "number" },
+            "currency": { "type": "string" },
+            "frequency": { "type": "string" }
+          }
+        },
+        "timestamp": {
+          "type": "string",
+          "format": "date-time",
+          "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}(\\.\\d+)?Z$",
+          "description": "ISO 8601 UTC timestamp of the operation."
+        }
+        "metadata": {
+          "type": "object",
+          "description": "Additional metadata for reconciliation or downstream workflows."
+        }
+      },
+      "required": ["action", "status"]
+    },
+    "profile": {
+      "$ref": "https://yo-ai.ai/schemas/profile.schema.json"
+    },
+    "profilePatch": {
+      "$ref": "https://yo-ai.ai/schemas/profile.patch.schema.json"
+    },
+    "governanceLabels": {
+      "$ref": "https://yo-ai.ai/schemas/governanceLabels.schema.json"
+    }
+  },
+  "required": ["result"]
+}

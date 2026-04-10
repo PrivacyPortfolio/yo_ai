@@ -1,0 +1,56 @@
+{
+  "$id": "https://yo-ai.ai/schemas/event.log.input.schema.json",
+  "title": "Event.Log.Input",
+  "description": "Profile-aware input for the Event.Log capability.",
+  "type": "object",
+  "properties": {
+    "profile": {
+      "$ref": "https://yo-ai.ai/schemas/profile.schema.json",
+      "description": "Optional reference to the subject/org profile to load."
+    },
+    "profilePatch": {
+      "$ref": "https://yo-ai.ai/schemas/profile.patch.schema.json",
+      "description": "Optional modifications to apply to the loaded profile."
+    },
+    "payload": {
+      "type": "object",
+      "description": "Capability-specific input fields for Event.Log.",
+      "properties": {
+        "eventId": {
+          "type": "string",
+          "description": "Unique identifier for the event."
+        },
+        "timestamp": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Timestamp when the event occurred."
+        },
+        "actor": {
+          "type": "string",
+          "description": "Identifier of the agent or system that generated the event."
+        },
+        "topic": {
+          "type": "string",
+          "description": "Topic or category associated with the event."
+        },
+        "severity": {
+          "type": "string",
+          "enum": ["debug", "info", "warn", "error"],
+          "description": "Severity level of the event."
+        },
+        "message": {
+          "type": "string",
+          "description": "Human-readable description of the event."
+        },
+        "metadata": {
+          "type": "object",
+          "description": "Additional structured metadata associated with the event.",
+          "additionalProperties": true
+        }
+      },
+      "required": ["eventId", "timestamp", "actor", "message"],
+      "additionalProperties": false
+    }
+  },
+  "required": ["payload"]
+}

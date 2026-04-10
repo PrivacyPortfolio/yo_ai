@@ -1,0 +1,44 @@
+{
+  "$id": "https://yo-ai.ai/schemas/evidence.collect.output.schema.json",
+  "title": "Evidence.Collect.Output",
+  "description": "Profile-aware output for the Evidence.Collect capability.",
+  "type": "object",
+  "properties": {
+    "result": {
+      "type": "object",
+      "description": "Primary capability output fields.",
+      "properties": {
+        "evidence_id": {
+          "type": "string",
+          "description": "Unique identifier for the collected evidence."
+        },
+        "status": {
+          "type": "string",
+          "enum": ["captured", "failed", "partial"],
+          "description": "Status of the evidence capture process."
+        },
+        "stored_metadata": {
+          "type": "object",
+          "description": "Structured metadata stored with the evidence.",
+          "additionalProperties": true
+        },
+        "downstream_refs": {
+          "type": "array",
+          "description": "References for downstream agents (Rewards-Seeker, Data-Steward, Risk-Assessor).",
+          "items": { "type": "string" }
+        }
+      },
+      "required": ["evidence_id", "status"]
+    },
+    "profile": {
+      "$ref": "https://yo-ai.ai/schemas/profile.schema.json"
+    },
+    "profilePatch": {
+      "$ref": "https://yo-ai.ai/schemas/profile.patch.schema.json"
+    },
+    "governanceLabels": {
+      "$ref": "https://yo-ai.ai/schemas/governanceLabels.schema.json"
+    }
+  },
+  "required": ["result"]
+}

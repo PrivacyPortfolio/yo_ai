@@ -1,0 +1,42 @@
+{
+  "$id": "https://yo-ai.ai/schemas/implementation-details.analyze.output.schema.json",
+  "title": "Implementation-Details.Analyze.Output",
+  "description": "Profile-aware output for the Implementation-Details.Analyze capability.",
+  "type": "object",
+  "properties": {
+    "result": {
+      "type": "object",
+      "description": "Primary capability output fields.",
+      "properties": {
+        "implementation_details": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "asset_name": { "type": "string" },
+              "configuration": { "type": "object" },
+              "data_flows": {
+                "type": "array",
+                "items": { "type": "string" }
+              },
+              "operational_dependencies": {
+                "type": "array",
+                "items": { "type": "string" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "profile": {
+      "$ref": "https://yo-ai.ai/schemas/profile.schema.json"
+    },
+    "profilePatch": {
+      "$ref": "https://yo-ai.ai/schemas/profile.patch.schema.json"
+    },
+    "governanceLabels": {
+      "$ref": "https://yo-ai.ai/schemas/governanceLabels.schema.json"
+    }
+  },
+  "required": ["result"]
+}

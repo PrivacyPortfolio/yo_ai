@@ -1,0 +1,27 @@
+{
+  "$id": "https://yo-ai.ai/schemas/org-profile.build.output.schema.json",
+  "title": "Org-Profile.Build.Output",
+  "description": "Profile-aware output for the Org-Profile.Build capability.",
+  "type": "object",
+  "properties": {
+    "result": {
+      "type": "object",
+      "description": "Primary capability output fields.",
+      "properties": {
+        "org_ref": { "type": "string" },
+        "profile_url": { "type": "string" }
+      },
+      "required": ["org_ref"]
+    },
+    "profile": {
+      "$ref": "https://yo-ai.ai/schemas/profile.schema.json"
+    },
+    "profilePatch": {
+      "$ref": "https://yo-ai.ai/schemas/profile.patch.schema.json"
+    },
+    "governanceLabels": {
+      "$ref": "https://yo-ai.ai/schemas/governanceLabels.schema.json"
+    }
+  },
+  "required": ["result"]
+}

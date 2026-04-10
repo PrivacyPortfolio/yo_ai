@@ -1,0 +1,44 @@
+{
+  "$id": "https://yo-ai.ai/schemas/misappropriation.detect.input.schema.json",
+  "title": "Misappropriation.Detect.Input",
+  "description": "Profile-aware input for the Misappropriation.Detect capability.",
+  "type": "object",
+  "properties": {
+    "profile": {
+      "$ref": "https://yo-ai.ai/schemas/profile.schema.json",
+      "description": "Optional reference to the subject profile to load."
+    },
+    "profilePatch": {
+      "$ref": "https://yo-ai.ai/schemas/profile.patch.schema.json",
+      "description": "Optional modifications to apply to the loaded profile."
+    },
+    "payload": {
+      "type": "object",
+      "description": "Capability-specific input fields for Misappropriation.Detect.",
+      "properties": {
+        "subject_handles": {
+          "type": "object",
+          "description": "Known social media handles belonging to the subject.",
+          "additionalProperties": true
+        },
+        "indicators_to_search": {
+          "type": "array",
+          "description": "List of misappropriation indicators to search for (e.g., false likes, false endorsements, impersonation).",
+          "items": { "type": "string" }
+        },
+        "platforms": {
+          "type": "array",
+          "description": "Platforms to search (e.g., twitter, instagram, tiktok).",
+          "items": { "type": "string" }
+        },
+        "context": {
+          "type": "object",
+          "description": "Optional context from the requesting agent.",
+          "additionalProperties": true
+        }
+      },
+      "required": ["subject_handles"]
+    }
+  },
+  "required": ["payload"]
+}

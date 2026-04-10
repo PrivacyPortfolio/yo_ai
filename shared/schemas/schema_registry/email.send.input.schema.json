@@ -1,0 +1,31 @@
+{
+  "$id": "https://yo-ai.ai/schemas/data-steward/email.send.input.schema.json",
+  "title": "Email.Send.Input",
+  "description": "Profile-aware input for sending outbound email as the authorized agent of the data subject.",
+  "type": "object",
+  "properties": {
+    "profile": {
+      "$ref": "https://yo-ai.ai/schemas/profile.schema.json",
+      "description": "Optional reference to the subject/org profile to load for this operation."
+    },
+    "profilePatch": {
+      "$ref": "https://yo-ai.ai/schemas/profile.patch.schema.json",
+      "description": "Optional modifications to apply to the loaded profile before sending the email."
+    },
+    "payload": {
+      "type": "object",
+      "description": "Capability-specific input fields for sending an email.",
+      "properties": {
+        "to": { "type": "string" },
+        "subject": { "type": "string" },
+        "body": { "type": "string" },
+        "attachments": {
+          "type": "array",
+          "items": { "type": "string" }
+        }
+      },
+      "required": ["to", "subject", "body"]
+    }
+  },
+  "required": ["payload"]
+}

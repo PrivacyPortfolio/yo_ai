@@ -1,0 +1,35 @@
+{
+  "$id": "https://yo-ai.ai/schemas/integration-provenance.trace.input.schema.json",
+  "title": "Integration-Provenance.Trace.Input",
+  "description": "Profile-aware input for the Integration-Provenance.Trace capability.",
+  "type": "object",
+  "properties": {
+    "profile": {
+      "$ref": "https://yo-ai.ai/schemas/profile.schema.json",
+      "description": "Optional reference to the org or system profile to load."
+    },
+    "profilePatch": {
+      "$ref": "https://yo-ai.ai/schemas/profile.patch.schema.json",
+      "description": "Optional modifications to apply to the loaded profile."
+    },
+    "payload": {
+      "type": "object",
+      "description": "Capability-specific input fields for Integration-Provenance.Trace.",
+      "properties": {
+        "org_ref": {
+          "type": "string",
+          "description": "Non-PII reference to the organization whose integration provenance should be traced."
+        },
+        "asset_names": {
+          "type": "array",
+          "description": "List of asset names whose integration provenance should be traced.",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "required": ["org_ref", "asset_names"]
+    }
+  },
+  "required": ["payload"]
+}
