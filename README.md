@@ -44,7 +44,7 @@ The platform is organized around four core principles:
 The repository is structured into clear subsystems:
 
 yo_ai/
-│
+
 ├── agents/          # Agent implementations (runtime + capabilities)
 
 ├── api/             # Public API contracts (OpenAPI)
