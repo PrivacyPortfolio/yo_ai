@@ -1,0 +1,171 @@
+/**
+ * This Incident-Responder ExtendedCard conveys:
+ * - Tasks: A task encapsulates the entire interaction related to a specific goal or request.
+ * - Messages: Messages are used for instructions, prompts, replies, and status updates.
+ * - Artifacts: Collection of artifacts created by the agent.
+ * - Tasks, messages, and tools for Registered Agents.
+ */
+
+/**
+* Incident-Responder Extended Agent Card¶
+*/
+{
+    "name": "Incident-Responder",
+    "description": "Handles all unhandled exceptions and responds to platform incidents. (aka Agent-terminator, Kill-switch, etc)",
+    "id": "com.privacyportfolio.incident-responder",
+    "provider": {
+      "organization": "PrivacyPortfolio",
+      "url": "https://www.PrivacyPortfolio.com"
+      },
+    "iconUrl": "https://privacyportfolio.com/agent-directory/incident-responder/incident-responder-agent-icon.png",
+    "protocolVersion": "1.0.0",
+    "documentationUrl": "https://privacyportfolio.com/agent-directory/incident-responder/auth/Incident-Responder-ExtendedAgentCard.md",
+    "supportedInterfaces": [
+      {      "url": "https://privacyportfolio.com/agents/incident_responder/a2a",
+        "protocolBinding": "JSONRPC_HTTP",      "protocolVersion": "1.0"    },
+      {      "url": "https://privacyportfolio.com/agents/incident_responder/mesh",
+        "protocolBinding": "RPC",      "protocolVersion": "1.0"    },
+      {      "url": "https://privacyportfolio.com/agents/incident_responder/api",
+        "protocolBinding": "OPENAI_API",      "protocolVersion": "1.0"    },
+      {      "url": "https://privacyportfolio.com/agents/incident_responder/app",
+        "protocolBinding": "MCP",      "protocolVersion": "1.0"    },
+      {      "url": "https://privacyportfolio.com/agents/incident_responder/op",
+        "protocolBinding": "REST",      "protocolVersion": "1.0"    }
+    ], 
+    "capabilities": {
+        "streaming": true,
+        "pushNotifications": true,
+        "exposesTasks": true,
+        "exposesMessages": true,
+        "exposesArtifacts": true,
+        "exposesTools": true
+    },
+    "securitySchemes": {
+        "yo-ai": {
+            "type": "apiKey",
+            "name": "yo-api",
+            "in": "header"
+        }
+    },
+    "security": [{ "yo-ai": [] }],
+    "defaultInputModes": ["application/json", "text/plain"],
+    "defaultOutputModes": ["application/json", "text/plain"],
+    "skills": [
+        {"name": "Handle.Exception"}
+    ],
+    "x-ai": {
+      "providers": [
+        {
+          "provider": "google-gemini",
+          "model": "gemini-2.0-pro",
+          "api_key_env": "GEMINI_API_KEY",
+          "endpoint": "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-pro:generateContent"
+        },
+        {
+          "provider": "anthropic",
+          "model": "claude-3-sonnet-20240229",
+          "api_key_env": "ANTHROPIC_API_KEY"
+        },
+        {
+          "provider": "openai",
+          "model": "gpt-4-turbo",
+          "api_key_env": "OPENAI_API_KEY"
+        },
+        {
+          "provider": "azure-openai",
+          "deployment": "gpt-4o",
+          "endpoint": "https://my-azure.openai.azure.com",
+          "api_key_env": "AZURE_OPENAI_KEY"
+        }
+      ],
+      "strategy": "failover",
+      "health_ttl_seconds": 300
+    },  
+    "x-capabilities": [
+        {
+          "Handle.Exception": {
+              "artifacts": [
+                  {"artifact": {"type": "skill", "name": "Handle.Exception"}},
+                  {"artifact": {"type": "task", "name": "Handle.Exception"}},
+                  {"artifact": {"type": "tool", "name": "Handle.Exception"}},
+                  {"artifact": {"type": "handler", "name": "Handle.Exception"}},
+                  {"artifact": {"type": "messageType", "name": "Handle.Exception.Input"}},
+                  {"artifact": {"type": "messageType", "name": "Handle.Exception.Output"}}
+              ]
+          }
+        }
+    ],
+    "x-artifacts": [
+        {
+          "name": "Handle.Exception",
+          "version": "1.0.0",
+          "artifactType": "skill",
+          "description": "Handle unhandled exception.",
+          "tags": ["issue", "anomaly", "falsePositive", "warning"],
+          "examples": [
+            "Identify the code module",
+            "Evaluate impact",
+            "Build remediation workflow"
+          ]
+        },
+        {
+          "name": "Handle.Exception",
+          "version": "1.0.0",
+          "artifactType": "task",
+          "description": "Handle unhandled exception.",
+          "tags": ["issue", "anomaly", "falsePositive", "warning"],
+          "examples": [
+            "Identify the code module",
+            "Evaluate impact",
+            "Build remediation workflow"
+          ]
+        },
+        {
+          "name": "Handle.Exception",
+          "version": "1.0.0",
+          "artifactType": "tool",
+          "description": "Handle unhandled exception.",
+          "capabilities": ["handle"],
+          "path": "/",
+          "provider": {
+            "name": "PrivacyPortfolio",
+            "brand": "Yo-ai",
+            "product": "",
+            "version": "1.0.0",
+            "license": "Yo-ai Internal",
+            "url": "https://yo-ai.ai/docs/Handle.Exception.html",
+            "config": {
+              "backend": ""
+            }
+          },
+          "inputSchema": { "$ref": "https://yo-ai.ai/schemas/handle.exception.input.schema.json" },
+          "outputSchema": { "$ref": "https://yo-ai.ai/schemas/handle.exception.output.schema.json" },
+          "auth": "apiKey"
+        },
+        {
+          "name": "Handle.Exception",
+          "version": "1.0.0",
+          "artifactType": "handler",
+          "description": "Interface for integrating with tool executable.",
+          "path": "/"
+        },
+        {
+          "name": "Handle.Exception.Input",
+          "version": "1.0.0",
+          "artifactType": "messageType",
+          "schema": {
+            "$ref": "https://yo-ai.ai/schemas/handle.exception.input.schema.json"
+          },
+          "description": "Input schema for the Handle.Exception capability."
+        },
+        {
+          "name": "Handle.Exception.Output",
+          "version": "1.0.0",
+          "artifactType": "messageType",
+          "schema": {
+            "$ref": "https://yo-ai.ai/schemas/handle.exception.output.schema.json"
+          },
+          "description": "Output schema for the Handle.Exception capability."
+        }
+    ]
+}

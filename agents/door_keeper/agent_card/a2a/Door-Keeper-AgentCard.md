@@ -1,0 +1,113 @@
+/**
+ * This Door-Keeper AgentCard conveys:
+ * - Overall details (version, name, description, uses)
+ * - Skills: A set of capabilities the agent can perform
+ * - Default modalities/content types supported by the agent.
+ * - ExtendedCard contains tasks and messages for Registered Agents
+ */
+
+/**
+* Door-Keeper AgentCard¶
+*/
+{
+  "name": "Door-Keeper",
+  "description": "Profiles guests and decides who to allow in and for what purpose.",
+  "id": "com.privacyportfolio.door-keeper",
+  "provider": {
+    "organization": "PrivacyPortfolio",
+    "url": "https://www.PrivacyPortfolio.com"
+  },
+  "iconUrl": "https://privacyportfolio.com/agent-directory/door-keeper/door-keeper-agent-icon.png",
+  "protocolVersion": "1.0.0",
+  "documentationUrl": "https://privacyportfolio.com/agent-directory/Door-Keeper-AgentCard.md",
+  "supportedInterfaces": [
+    {
+      "url": "https://privacyportfolio.com/agents/door_keeper/a2a",
+      "protocolBinding": "JSONRPC-HTTP",
+      "protocolVersion": "1.0"
+    }
+  ],
+    "capabilities": {
+      "streaming": true,
+      "pushNotifications": true,
+      "extendedAgentCard": true
+    },
+    "securitySchemes": {
+      "yo-ai": {
+        "type": "apiKey",
+        "name": "yo-api",
+        "in": "header"
+      }
+    },
+    "security": [
+      { "yo-ai": [] }
+    ],
+    "defaultInputModes": ["application/json", "text/plain"],
+    "defaultOutputModes": ["application/json", "text/plain"],
+    "skills": [
+        {
+            "name": "Visitor.Identify",
+            "description": "Identify platform users and activity.",
+            "version": "1.0.0", 
+            "tags": ["decision-event", "decision-factor", "decision-outcome"],
+            "inputSchema": { "$ref": "https://yo-ai.ai/schemas/visitor.identify.input.schema.json" },
+            "outputSchema": { "$ref": "https://yo-ai.ai/schemas/visitor.identify.output.schema.json" }
+        },
+        {
+            "name": "Subscriber.Register",
+            "description": "Generates a RegisteredSubscriber card for qualified subscribers.",
+            "version": "1.0.0", 
+            "tags": ["decision-event", "decision-factor", "decision-outcome"],
+            "inputSchema": { "$ref": "https://yo-ai.ai/schemas/subscriber.register.input.schema.json" },
+            "outputSchema": { "$ref": "https://yo-ai.ai/schemas/subscriber.register.output.schema.json" }
+        },
+        {
+            "name": "Credentials.Generate",
+            "description": "Generates credentials for RegisteredAgents and RegisteredSubscribers.",
+            "version": "1.0.0", 
+            "tags": ["RegisteredAgent", "RegisteredSubscriber", "Visitor"],
+            "inputSchema": { "$ref": "https://yo-ai.ai/schemas/credentials.generate.input.schema.json" },
+            "outputSchema": { "$ref": "https://yo-ai.ai/schemas/credentials.generate.output.schema.json" }
+        },
+        {
+            "name": "Subscriber.Authenticate",
+            "description": "Authenticate subscribers and monitor activity.",
+            "version": "1.0.0", 
+            "tags": ["decision-event", "decision-factor", "decision-outcome"],
+            "inputSchema": { "$ref": "https://yo-ai.ai/schemas/subscriber.authenticate.input.schema.json" },
+            "outputSchema": { "$ref": "https://yo-ai.ai/schemas/subscriber.authenticate.output.schema.json" }
+        },
+        {
+            "name": "Agent.Register",
+            "description": "Generates a RegisteredAgent card for qualified agents.",
+            "version": "1.0.0", 
+            "tags": ["registered-agent", "denied-agent", "pending-registration"],
+            "inputSchema": { "$ref": "https://yo-ai.ai/schemas/agent.register.input.schema.json" },
+            "outputSchema": { "$ref": "https://yo-ai.ai/schemas/agent.register.output.schema.json" }
+        },
+        {
+            "name": "Trust.Assign",
+            "description": "Assigns a trust tier to a visitor and emits VisitorTrustTierAssigned.",
+            "version": "1.0.0", 
+            "tags": [""],
+            "inputSchema": { "$ref": "https://yo-ai.ai/schemas/trust.assign.input.schema.json" },
+            "outputSchema": { "$ref": "https://yo-ai.ai/schemas/trust.assign.output.schema.json" }
+        },
+        {
+            "name": "AccessRights.Manage",
+            "description": "Manage access rights for RegisteredAgents and RegisteredSubscribers.",
+            "version": "1.0.0", 
+            "tags": ["RegisteredAgent", "RegisteredSubscriber", "Visitor"],
+            "inputSchema": { "$ref": "https://yo-ai.ai/schemas/accessrights.manage.input.schema.json" },
+            "outputSchema": { "$ref": "https://yo-ai.ai/schemas/accessrights.manage.output.schema.json" }
+        },
+        {
+            "name": "Agent.Authenticate",
+            "description": "Authenticate agents and monitor activity.",
+            "version": "1.0.0", 
+            "tags": ["decision-event", "decision-factor", "decision-outcome"],
+            "inputSchema": { "$ref": "https://yo-ai.ai/schemas/agent.authenticate.input.schema.json" },
+            "outputSchema": { "$ref": "https://yo-ai.ai/schemas/agent.authenticate.output.schema.json" }
+        }
+    ]
+}

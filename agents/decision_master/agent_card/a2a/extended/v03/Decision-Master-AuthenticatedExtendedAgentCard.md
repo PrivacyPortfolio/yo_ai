@@ -1,0 +1,338 @@
+/**
+ * This Decision-Master AuthenticatedExtendedCard conveys:
+ * - AuthenticatedExtendedCard contains tasks, messages, tools, and artifacts for Registered Agents
+ * - Tasks: A task encapsulates the entire interaction related to a specific goal or request.
+ * - Messages: Messages are used for instructions, prompts, replies, and status updates.
+ * - Artifacts: Collection of artifacts created by the agent.
+ */
+
+/**
+* Decision-Master Authenticated Extended AgentCard¶
+*/
+{
+  "name": "Decision-Master",
+  "description": "The Decision-Master agent identifies and analyzes decision-making events in event logs and publishes them to the Decision-Diary topic.",
+  "url": "https://privacyportfolio.com/agent-registry/decision-master/auth/agent.json",
+  "provider": {
+    "organization": "PrivacyPortfolio",
+    "url": "https://privacyportfolio.com"
+  },
+  "iconUrl": "https://privacyportfolio.com/agent-registry/decision-master/decision-master-agent-icon.png",
+  "version": "1.0.0",
+  "documentationUrl": "https://privacyportfolio.com/agent-registry/decision-master/auth/Decision-Master-AuthenticatedExtendedAgentCard.md",
+  "capabilities": {
+    "streaming": true,
+    "pushNotifications": true,
+    "stateTransitionHistory": true,
+    "exposesTasks": true,
+    "exposesMessages": true,
+    "exposesArtifacts": true,
+    "exposesTools": true
+  },
+  "securitySchemes": {
+    "yo-ai": {
+      "type": "apiKey",
+      "name": "yo-api",
+      "in": "header"
+    }
+  },
+  "security": [
+    { "yo-ai": ["apiKey", "yo-api", "header"] }
+  ],
+  "defaultInputModes": ["application/json", "text/plain"],
+  "defaultOutputModes": ["application/json", "text/plain"],
+  "skills": [
+    {"name": "Decision-Diary.Manage"},
+    {"name": "Decision-Events.Identify"},
+    {"name": "Decision-Outcome.Identify"},
+    {"name": "Decision-Outcome.Analyze"}
+  ],
+  "x-capabilities": [
+    {
+      "Decision-Diary.Manage": {
+        "artifacts": [
+          {"artifact": {"type": "skill", "name": "Decision-Diary.Manage"}},
+          {"artifact": {"type": "task", "name": "Decision-Diary.Manage"}},
+          {"artifact": {"type": "tool", "name": "publish.decision-diary-event"}},
+          {"artifact": {"type": "handler", "name": "Decision-Diary.Manage"}},
+          {"artifact": {"type": "messageType", "name": "Decision-Diary.Manage.Input"}},
+          {"artifact": {"type": "messageType", "name": "Decision-Diary.Manage.Output"}}
+        ]
+      }
+    },
+    {
+      "Decision-Events.Identify": {
+        "artifacts": [
+          {"artifact": {"type": "skill", "name": "Decision-Events.Identify"}},
+          {"artifact": {"type": "task", "name": "Decision-Events.Identify"}},
+          {"artifact": {"type": "tool", "name": "Decision-Events.Identify"}},
+          {"artifact": {"type": "handler", "name": "Decision-Events.Identify"}},
+          {"artifact": {"type": "messageType", "name": "Decision-Events.Identify.Input"}},
+          {"artifact": {"type": "messageType", "name": "Decision-Events.Identify.Output"}}
+        ]
+      }
+    },
+    {
+      "Decision-Outcome.Identify": {
+        "artifacts": [
+          {"artifact": {"type": "skill", "name": "Decision-Outcome.Identify"}},
+          {"artifact": {"type": "task", "name": "Decision-Outcome.Identify"}},
+          {"artifact": {"type": "tool", "name": "Decision-Outcome.Identify"}},
+          {"artifact": {"type": "handler", "name": "Decision-Outcome.Identify"}},
+          {"artifact": {"type": "messageType", "name": "Decision-Outcome.Identify.Input"}},
+          {"artifact": {"type": "messageType", "name": "Decision-Outcome.Identify.Output"}}
+        ]
+      }
+    },
+    {
+      "Decision-Outcome.Analyze": {
+        "artifacts": [
+          {"artifact": {"type": "skill", "name": "Decision-Outcome.Analyze"}},
+          {"artifact": {"type": "task", "name": "Decision-Outcome.Analyze"}},
+          {"artifact": {"type": "tool", "name": "Decision-Outcome.Analyze"}},
+          {"artifact": {"type": "handler", "name": "Decision-Outcome.Analyze"}},
+          {"artifact": {"type": "messageType", "name": "Decision-Outcome.Analyze.Input"}},
+          {"artifact": {"type": "messageType", "name": "Decision-Outcome.Analyze.Output"}}
+        ]
+      }
+    }
+  ],
+  "x-artifacts": [
+    {
+      "name": "Decision-Diary.Manage",
+      "version": "1.0.0",
+      "artifactType": "skill",
+      "description": "Add, remove, correlate, and prune events associated with decision sets.",
+      "tags": ["decision-event", "decision-factor", "decision-outcome"]
+    },
+    {
+      "name": "Decision-Diary.Manage",
+      "version": "1.0.0",
+      "artifactType": "task",
+      "description": "Add, remove, correlate, and prune events associated with decision sets.",
+      "tags": ["decision-event", "decision-factor", "decision-outcome"]
+    },
+    {
+      "name": "publish.decision-diary-event",
+      "path": "/publish.decision-diary-event.py",
+      "description": "Publishes event to Decision-Diary topic.",
+      "capabilities": ["publish"],
+      "provider": {
+        "name": "PrivacyPortfolio",
+        "brand": "Yo-ai",
+        "product": "Decision-Diary Event Publisher",
+        "version": "1.0.0",
+        "license": "Yo-ai Internal",
+        "url": "https://yo-ai.ai/docs/publish.decision-diary-event.html",
+        "config": {
+          "backend": "KafkaPublisher"
+        }
+      },
+      "inputSchema": { "$ref": "https://yo-ai.ai/schemas/decision-diary.manage.input.schema.json" },
+      "outputSchema": { "$ref": "https://yo-ai.ai/schemas/decision-diary.manage.output.schema.json" },
+      "auth": "apiKey"
+    },
+    {
+      "name": "Decision-Diary.Manage",
+      "version": "1.0.0",
+      "artifactType": "handler",
+      "description": "Interface for integrating with tool executable.",
+      "path": "/publish.decision-diary-event.py"
+    },
+
+    {
+      "name": "Decision-Diary.Manage.Input",
+      "version": "1.0.0",
+      "artifactType": "messageType",
+      "schema": { "$ref": "https://yo-ai.ai/schemas/decision-diary.manage.input.schema.json" },
+      "description": "Input schema for managing decision-sets."
+    },
+    {
+      "name": "Decision-Diary.Manage.Output",
+      "version": "1.0.0",
+      "artifactType": "messageType",
+      "schema": { "$ref": "https://yo-ai.ai/schemas/decision-diary.manage.output.schema.json" },
+      "description": "Output schema for managing decision-sets."
+    },
+    {
+      "name": "Decision-Diary",
+      "version": "1.0.0",
+      "artifactType": "kafkaTopicSchema",
+      "schema": { "$ref": "#/schemas/Decision-Diary-Schema" },
+      "description": "Schema for the Decision Diary kafka topic."
+    },
+    {
+      "name": "Decision-Events.Identify",
+      "version": "1.0.0",
+      "artifactType": "skill",
+      "description": "Identifies likely decision-making events.",
+      "tags": ["approval", "denial", "no-decision"]
+    },
+    {
+      "name": "Decision-Events.Identify",
+      "version": "1.0.0",
+      "artifactType": "task",
+      "description": "Identifies likely decision-making events.",
+      "tags": ["approval", "denial", "no-decision"]
+    },
+    {
+      "name": "Decision-Events.Identify",
+      "version": "1.0.0",
+      "artifactType": "tool",
+      "description": "Identifies likely decision-making events.",
+      "capabilities": ["identify"],
+      "path": "/identify.decision-event.py",
+      "provider": {
+        "name": "PrivacyPortfolio",
+        "brand": "Yo-ai",
+        "product": "Decision-Event Collector",
+        "version": "1.0.0",
+        "license": "Yo-ai Internal",
+        "url": "https://yo-ai.ai/docs/Decision-Events.Identify.html",
+        "config": {
+          "backend": "KafkaPublisher"
+        }
+      },
+      "inputSchema": { "$ref": "https://yo-ai.ai/schemas/decision-events.identify.input.schema.json" },
+      "outputSchema": { "$ref": "https://yo-ai.ai/schemas/decision-events.identify.output.schema.json" },
+      "auth": "apiKey"
+    },
+    {
+      "name": "Decision-Events.Identify",
+      "version": "1.0.0",
+      "artifactType": "handler",
+      "description": "Interface for integrating with tool executable.",
+      "path": "/identify.decision-event.py"
+    },
+    {
+      "name": "Decision-Events.Identify.Input",
+      "version": "1.0.0",
+      "artifactType": "messageType",
+      "schema": { "$ref": "https://yo-ai.ai/schemas/decision-events.identify.input.schema.json" },
+      "description": "Input schema for managing decision-events."
+    },
+    {
+      "name": "Decision-Events.Identify.Output",
+      "version": "1.0.0",
+      "artifactType": "messageType",
+      "schema": { "$ref": "https://yo-ai.ai/schemas/decision-events.identify.output.schema.json" },
+      "description": "Output schema for managing decision-events."
+    },
+    {
+      "name": "Decision-Outcome.Identify",
+      "version": "1.0.0",
+      "artifactType": "skill",
+      "description": "Identifies the outcome of each decision-set.",
+      "tags": ["approval", "denial", "no-decision"]
+    },
+    {
+      "name": "Decision-Outcome.Identify",
+      "version": "1.0.0",
+      "artifactType": "task",
+      "description": "Identifies the outcome of each decision-set.",
+      "tags": ["approval", "denial", "no-decision"]
+    },
+    {
+      "name": "Decision-Outcome.Identify",
+      "version": "1.0.0",
+      "artifactType": "tool",
+      "description": "Identifies the outcome of each decision-set.",
+      "capabilities": ["identify"],
+      "path": "/",
+      "provider": {
+        "name": "PrivacyPortfolio",
+        "brand": "Yo-ai",
+        "product": "",
+        "version": "1.0.0",
+        "license": "Yo-ai Internal",
+        "url": "https://yo-ai.ai/docs/Decision-Outcome.Identify.html",
+        "config": {
+          "backend": ""
+        }
+      },
+      "inputSchema": { "$ref": "https://yo-ai.ai/schemas/decision-outcome.identify.input.schema.json" },
+      "outputSchema": { "$ref": "https://yo-ai.ai/schemas/decision-outcome.identify.output.schema.json" },
+      "auth": "apiKey"
+    },
+    {
+      "name": "Decision-Outcome.Identify",
+      "version": "1.0.0",
+      "artifactType": "handler",
+      "description": "Interface for integrating with tool executable.",
+      "path": "/"
+    },
+    {
+      "name": "Decision-Outcome.Identify.Input",
+      "version": "1.0.0",
+      "artifactType": "messageType",
+      "schema": { "$ref": "https://yo-ai.ai/schemas/decision-outcome.identify.input.schema.json" },
+      "description": "Input schema for getting the outcome of each decision-set.",
+      "tags": ["approval", "denial", "no-decision"]
+    },
+    {
+      "name": "Decision-Outcome.Identify.Output",
+      "version": "1.0.0",
+      "artifactType": "messageType",
+      "schema": { "$ref": "https://yo-ai.ai/schemas/decision-outcome.identify.output.schema.json" },
+      "description": "Output schema for getting the outcome of each decision-set."
+    },
+    {
+      "name": "Decision-Outcome.Analyze",
+      "version": "1.0.0",
+      "artifactType": "skill",
+      "description": "Analyzes explanation of decision-set outcome based on decision factors, evidence, and applicable mandates.",
+      "tags": ["approval", "denial", "no-decision"]
+    },
+    {
+      "name": "Decision-Outcome.Analyze",
+      "version": "1.0.0",
+      "artifactType": "task",
+      "description": "Monitor event logs for events related to a decision and outputs the event when criteria is matched.",
+      "tags": ["approval", "denial", "no-decision"]
+    },
+    {
+      "name": "Decision-Outcome.Analyze",
+      "version": "1.0.0",
+      "artifactType": "tool",
+      "description": "Monitor event logs for events related to a decision and outputs the event when criteria is matched.",
+      "capabilities": ["analyze"],
+      "path": "/",
+      "provider": {
+        "name": "PrivacyPortfolio",
+        "brand": "Yo-ai",
+        "product": "",
+        "version": "1.0.0",
+        "license": "Yo-ai Internal",
+        "url": "https://yo-ai.ai/docs/Decision-Outcome.Analyze.html",
+        "config": {
+          "backend": ""
+        }
+      },
+      "inputSchema": { "$ref": "https://yo-ai.ai/schemas/decision-outcome.analyze.input.schema.json" },
+      "outputSchema": { "$ref": "https://yo-ai.ai/schemas/decision-outcome.analyze.output.schema.json" },
+      "auth": "apiKey"
+    },
+    {
+      "name": "Decision-Outcome.Analyze",
+      "version": "1.0.0",
+      "artifactType": "handler",
+      "description": "Interface for integrating with tool executable.",
+      "path": "/"
+    },
+    {
+      "name": "Decision-Outcome.Analyze.Input",
+      "version": "1.0.0",
+      "artifactType": "messageType",
+      "schema": { "$ref": "https://yo-ai.ai/schemas/decision-outcome.analyze.input.schema.json" },
+      "description": "Input schema for decision-set to analyze."
+    },
+    {
+      "name": "Decision-Outcome.Analyze.Output",
+      "version": "1.0.0",
+      "artifactType": "messageType",
+      "schema": { "$ref": "https://yo-ai.ai/schemas/decision-outcome.analyze.output.schema.json" },
+      "description": "Output schema for analysis of decision-set."
+    }
+  ],
+  "supportsAuthenticatedExtendedCard": true
+}

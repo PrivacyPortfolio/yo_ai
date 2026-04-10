@@ -1,0 +1,53 @@
+{
+    "name": "Incident-Responder",
+    "description": "Handles all unhandled exceptions and responds to platform incidents. (aka Agent-terminator, Kill-switch, etc)",
+    "id": "com.privacyportfolio.incident-responder",
+    "provider": {
+        "organization": "PrivacyPortfolio",
+        "url": "https://www.PrivacyPortfolio.com"
+        },
+    "iconUrl": "https://privacyportfolio.com/agent-directory/incident-responder/incident-responder-agent-icon.png",
+    "protocolVersion": "1.0.0",
+    "documentationUrl": "https://privacyportfolio.com/agent-directory/incident-responder/Incident-Responder-AgentCard.md",
+    "supportedInterfaces": [
+      {
+        "url": "https://privacyportfolio.com/agents/incident_responder/a2a",
+        "protocolBinding": "JSONRPC-HTTP",
+        "protocolVersion": "1.0"
+      }
+    ],
+    "capabilities": {
+      "streaming": true,
+      "pushNotifications": true,
+      "extendedAgentCard": true
+    },
+    "securitySchemes": {
+      "yo-ai": {
+        "type": "apiKey",
+        "name": "yo-api",
+        "in": "header"
+      }
+    },
+    "security": [
+      { "yo-ai": [] }
+    ],
+    "defaultInputModes": ["application/json", "text/plain"],
+    "defaultOutputModes": ["application/json", "text/plain"],
+    "skills": [
+        {
+            "name": "Handle.Exception",
+            "description": "Handle unhandled exception.",
+            "version": "1.0.0", 
+            "tags": ["issue", "anomaly", "falsePositive", "warning"],
+            "examples": [
+                "Identify the code module",
+                "Evaluate impact",
+                "Build remediation workflow"
+            ],
+            "inputModes": ["application/json", "text/plain"],
+            "outputModes": ["application/json", "text/plain"],
+            "inputSchema": { "$ref": "https://yo-ai.ai/schemas/handle.exception.input.schema.json" },
+            "outputSchema": { "$ref": "https://yo-ai.ai/schemas/handle.exception.output.schema.json" }
+        }
+    ]
+}

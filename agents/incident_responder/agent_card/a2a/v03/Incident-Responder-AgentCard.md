@@ -1,0 +1,56 @@
+/**
+ * This Incident-Responder AgentCard conveys:
+ * - Overall details (version, name, description, uses)
+ * - Skills: A set of capabilities the agent can perform
+ * - Default modalities/content types supported by the agent.
+ * - Authentication requirements
+ * - AuthenticatedExtendedCard contains tasks and messages for Registered Agents
+ */
+
+/**
+* Incident-Responder AgentCard¶
+*/
+{
+    "name": "Incident-Responder",
+    "description": "Handles all unhandled exceptions and responds to platform incidents. (aka Agent-terminator, Kill-switch, etc)",
+    "url": "https://privacyportfolio.com/agent-registry/incident-responder/agent.json",
+    "provider": {
+        "organization": "PrivacyPortfolio",
+        "url": "https://www.PrivacyPortfolio.com"
+        },
+    "iconUrl": "https://privacyportfolio.com/agent-registry/incident-responder/incident-responder-agent-icon.png",
+    "version": "1.0.0",
+    "documentationUrl": "https://privacyportfolio.com/agent-registry/incident-responder/Incident-Responder-AgentCard.md",
+    "capabilities": {
+        "streaming": true,
+        "pushNotifications": true,
+        "stateTransitionHistory": true
+    },
+    "securitySchemes": {
+        "yo-ai": {
+        "type": "apiKey",
+        "name": "yo-api",
+        "in": "header"
+        }
+    },
+    "security": [{ "yo-ai": ["apiKey", "yo-api", "header"] }],
+    "defaultInputModes": ["application/json", "text/plain"],
+    "defaultOutputModes": ["application/json", "text/plain"],
+    "skills": [
+        {
+            "name": "Handle.Exception",
+            "description": "Handle unhandled exception.",
+            "tags": ["issue", "anomaly", "falsePositive", "warning"],
+            "examples": [
+                "Identify the code module",
+                "Evaluate impact",
+                "Build remediation workflow"
+            ],
+            "inputModes": ["application/json", "text/plain"],
+            "outputModes": ["application/json", "text/plain"],
+            "inputSchema": { "$ref": "https://yo-ai.ai/schemas/handle.exception.input.schema.json" },
+            "outputSchema": { "$ref": "https://yo-ai.ai/schemas/handle.exception.output.schema.json" }
+        }
+    ],
+    "supportsAuthenticatedExtendedCard": true
+}

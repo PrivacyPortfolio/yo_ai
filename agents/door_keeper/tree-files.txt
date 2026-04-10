@@ -1,0 +1,83 @@
+Folder PATH listing for volume Windows
+C:/repos/yo_ai/agents/door_keeper.
+¦   tree-files.txt
+¦   __init__.py
+¦   
++---agent_card
+¦   ¦   .gitkeep
+¦   ¦   
+¦   +---a2a
+¦   ¦   ¦   .gitkeep
+¦   ¦   ¦   agent.json
+¦   ¦   ¦   door-keeper-agent-icon.png
+¦   ¦   ¦   Door-Keeper-AgentCard.md
+¦   ¦   ¦   
+¦   ¦   +---extended
+¦   ¦   ¦   ¦   .gitkeep
+¦   ¦   ¦   ¦   agent.json
+¦   ¦   ¦   ¦   Door-Keeper-ExtendedAgentCard.md
+¦   ¦   ¦   ¦   
+¦   ¦   ¦   +---v03
+¦   ¦   ¦           .gitkeep
+¦   ¦   ¦           agent.json
+¦   ¦   ¦           Door-Keeper-AuthenticatedExtendedAgentCard.md
+¦   ¦   ¦           
+¦   ¦   +---v03
+¦   ¦           .gitkeep
+¦   ¦           agent.json
+¦   ¦           Door-Keeper-AgentCard.md
+¦   ¦           
+¦   +---registrations
+¦       ¦   .gitkeep
+¦       ¦   
+¦       +---agents
+¦       ¦       .gitkeep
+¦       ¦       
+¦       +---subscribers
+¦               .gitkeep
+¦               
++---agreements
+¦       .gitkeep
+¦       
++---artifacts
+¦       .gitkeep
+¦       
++---capabilities
+¦       accessrights_manage.py
+¦       agent_authenticate.py
+¦       agent_register.py
+¦       credentials_generate.py
+¦       score_agreements.py
+¦       subscriber_authenticate.py
+¦       subscriber_register.py
+¦       trust_assign.py
+¦       visitor_identify.py
+¦       __init__.py
+¦       
++---knowledge
+¦   ¦   .gitkeep
+¦   ¦   A2A ACL.docx
+¦   ¦   API KEYS.docx
+¦   ¦   ClientCertificates.docx
+¦   ¦   Identity Management for AI Agents.docx
+¦   ¦   Malicious AI agents.docx
+¦   ¦   TrustTiers.docx
+¦   ¦   Yo-ai_Agent_Registry.docx
+¦   ¦   
+¦   +---articles
+¦   ¦       .gitkeep
+¦   ¦       
+¦   +---expertise
+¦   ¦       .gitkeep
+¦   ¦       
+¦   +---prompts
+¦           .gitkeep
+¦           
++---policies
+¦       .gitkeep
+¦       
++---runtime
+        door_keeper.py
+        door_keeper_handler.py
+        __init__.py
+        
