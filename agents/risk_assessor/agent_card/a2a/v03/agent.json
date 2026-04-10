@@ -1,0 +1,50 @@
+{
+    "name": "Risk-Assessor",
+    "description": "Builds, conducts, and maintains risk assessments.",
+    "url": "https://privacyportfolio.com/agent-registry/risk-assessor/agent.json",
+    "provider": {
+        "organization": "PrivacyPortfolio",
+        "url": "https://www.PrivacyPortfolio.com"
+        },
+    "iconUrl": "https://privacyportfolio.com/agent-registry/risk-assessor/risk-assessor-agent-icon.png",
+    "version": "1.0.0",
+    "documentationUrl": "https://privacyportfolio.com/agent-registry/risk-assessor/Risk-Assessor-AgentCard.md",
+    "capabilities": {
+        "streaming": true,
+        "pushNotifications": true,
+        "stateTransitionHistory": true
+    },
+    "securitySchemes": {
+        "yo-ai": {
+        "type": "apiKey",
+        "name": "yo-api",
+        "in": "header"
+        }
+    },
+    "security": [{ "yo-ai": ["apiKey", "yo-api", "header"] }],
+    "defaultInputModes": ["application/json", "text/plain"],
+    "defaultOutputModes": ["application/json", "text/plain"],
+    "skills": [
+    {
+        "name": "Risks.Assess",
+        "description": "Conducts a structured risk assessment for a given organization using specified standards, evidence sources, and assessment models.",
+        "tags": [
+            "riskAssessment",
+            "fraudDetection",
+            "complianceSupport",
+            "bulkOperations",
+            "orgAnalysis"
+        ],
+        "examples": [
+            "Assess risk of ACME Corp using NIST AI RMF",
+            "Evaluate fraud indicators for vendor:123",
+            "Perform bulk risk assessment for all cloud providers"
+        ],
+        "inputModes": ["application/json", "text/plain"],
+        "outputModes": ["application/json", "text/plain"],
+        "inputSchema": { "$ref": "https://yo-ai.ai/schemas/risks.assess.input.schema.json" },
+        "outputSchema": { "$ref": "https://yo-ai.ai/schemas/risks.assess.output.schema.json" }
+    }
+  ],
+  "supportsAuthenticatedExtendedCard": true
+}

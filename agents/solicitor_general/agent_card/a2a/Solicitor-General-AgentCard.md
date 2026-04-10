@@ -1,0 +1,70 @@
+/**
+ * This Solicitor-General AgentCard conveys:
+ * - Overall details (version, name, description, uses)
+ * - Skills: A set of capabilities the agent can perform
+ * - Default modalities/content types supported by the agent.
+ * - Authentication requirements
+ */
+
+/**
+* Solicitor-General AgentCard¶
+*/
+{
+    "name": "Solicitor-General",
+    "description": "Agent that log all platform events and correlates requests with responses for routing.",
+    "id": "com.privacyportfolio.solicitor-general",
+    "provider": {
+        "organization": "PrivacyPortfolio",
+        "url": "https://privacyportfolio.com"
+    },
+    "iconUrl": "https://privacyportfolio.com/agent-directory/solicitor-general/solicitor-general-agent-icon.png",
+    "protocolVersion": "1.0.0",
+    "documentationUrl": "https://privacyportfolio.com/agent-directory/solicitor-general/Solicitor-General-AgentCard.md",
+    "supportedInterfaces": [
+      {
+        "url": "https://privacyportfolio.com/agents/solicitor_general/a2a",
+        "protocolBinding": "JSONRPC-HTTP",
+        "protocolVersion": "1.0"
+      }
+    ],
+    "capabilities": {
+      "streaming": true,
+      "pushNotifications": true,
+      "extendedAgentCard": true
+    },
+    "securitySchemes": {
+      "yo-ai": {
+        "type": "apiKey",
+        "name": "yo-api",
+        "in": "header"
+      }
+    },
+    "security": [
+      { "yo-ai": [] }
+    ],
+    "defaultInputModes": ["application/json", "text/plain"],
+    "defaultOutputModes": ["application/json", "text/plain"],
+    "skills": [
+        {
+            "name": "Just-Ask",
+            "description": "Provides an introduction to the Yo-ai platform and guidance on how to interact with the Solicitor-General.",
+            "version": "1.0.0", 
+            "tags": ["help", "introspection", "guidance"],
+            "examples": ["Help", "What can you do", "Introduce yourself"],
+            "inputModes": ["application/json", "text/plain"],
+            "outputModes": ["application/json", "text/plain"],
+            "inputSchema": { "$ref": "https://yo-ai.ai/schemas/just-ask.input.schema.json" },
+            "outputSchema": { "$ref": "https://yo-ai.ai/schemas/just-ask.output.schema.json" }
+        },
+        {
+            "name": "Event.Log",
+            "description": "Inserts a record into the EventLog.",
+            "version": "1.0.0", 
+            "examples": ["Log event"],
+            "inputModes": ["application/json", "text/plain"],
+            "outputModes": ["application/json", "text/plain"],
+            "inputSchema": { "$ref": "https://yo-ai.ai/schemas/event.log.input.schema.json" },
+            "outputSchema": { "$ref": "https://yo-ai.ai/schemas/event.log.output.schema.json" }
+        }
+    ]
+}

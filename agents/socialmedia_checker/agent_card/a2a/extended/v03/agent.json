@@ -1,0 +1,296 @@
+{
+    "name": "SocialMedia-Checker",
+    "description": "Evaluates social media activity to verify promotional requirements and detect potential misappropriation of personal data.",
+    "url": "https://privacyportfolio.com/agent-registry/socialmedia-checker/auth/agent.json",
+    "provider": {
+      "organization": "PrivacyPortfolio",
+      "url": "https://www.PrivacyPortfolio.com"
+    },
+    "iconUrl": "https://privacyportfolio.com/agent-registry/socialmedia-checker/socialmedia-checker-agent-icon.png",
+    "version": "1.0.0",
+    "documentationUrl": "https://privacyportfolio.com/agent-registry/socialmedia-checker/auth/SocialMedia-Checker-SocialMedia-Checker-AuthenticatedExtendedAgentCard.md",
+    "capabilities": {
+      "streaming": true,
+      "pushNotifications": true,
+      "stateTransitionHistory": true,
+      "exposesTasks": true,
+      "exposesMessages": true,
+      "exposesArtifacts": true,
+      "exposesTools": true
+    },
+    "securitySchemes": {
+      "yo-ai": {
+        "type": "apiKey",
+        "name": "yo-api",
+        "in": "header"
+      }
+    },
+    "security": [{ "yo-ai": ["apiKey", "yo-api", "header"] }],
+    "defaultInputModes": ["application/json", "text/plain"],
+    "defaultOutputModes": ["application/json", "text/plain"],
+    "skills": [
+        {"name": "Promotional-Engagement.Verify"},
+        {"name": "Misappropriation.Detect"},
+        {"name": "Evidence.Collect"}
+    ],
+    "x-capabilities": [
+        {
+            "Promotional-Engagement.Verify": {
+                "artifacts": [
+                    {"artifact": {"type": "skill", "name": "Promotional-Engagement.Verify"}},
+                    {"artifact": {"type": "task", "name": "Promotional-Engagement.Verify"}},
+                    {"artifact": {"type": "tool", "name": "Promotional-Engagement.Verify"}},
+                    {"artifact": {"type": "handler", "name": "Promotional-Engagement.Verify"}},
+                    {"artifact": {"type": "messageType", "name": "Promotional-Engagement.Verify.Input"}},
+                    {"artifact": {"type": "messageType", "name": "Promotional-Engagement.Verify.Output"}}
+                ]
+            }
+        },
+        {
+            "Misappropriation.Detect": {
+                "artifacts": [
+                    {"artifact": {"type": "skill", "name": "Misappropriation.Detect"}},
+                    {"artifact": {"type": "task", "name": "Misappropriation.Detect"}},
+                    {"artifact": {"type": "tool", "name": "Misappropriation.Detect"}},
+                    {"artifact": {"type": "handler", "name": "Misappropriation.Detect"}},
+                    {"artifact": {"type": "messageType", "name": "Misappropriation.Detect.Input"}},
+                    {"artifact": {"type": "messageType", "name": "Misappropriation.Detect.Output"}}
+                ]
+            }
+        },
+        {
+            "Evidence.Collect": {
+                "artifacts": [
+                    {"artifact": {"type": "skill", "name": "Evidence.Collect"}},
+                    {"artifact": {"type": "task", "name": "Evidence.Collect"}},
+                    {"artifact": {"type": "tool", "name": "Evidence.Collect"}},
+                    {"artifact": {"type": "handler", "name": "Evidence.Collect"}},
+                    {"artifact": {"type": "messageType", "name": "Evidence.Collect.Input"}},
+                    {"artifact": {"type": "messageType", "name": "Evidence.Collect.Output"}}
+                ]
+            }
+        }
+    ],
+    "x-artifacts": [
+      {
+        "name": "Promotional-Engagement.Verify",
+        "version": "1.0.0",
+        "artifactType": "skill",
+        "description": "Checks whether required social media actions (follow, like, repost, hashtag usage, etc.) were completed for promotional eligibility.",
+        "tags": ["promotion", "verification", "rewards", "logEvent"],
+        "examples": [
+          "Verify user followed brand",
+          "Check hashtag usage",
+          "Confirm engagement for reward eligibility"
+        ]
+      },
+      {
+        "name": "Promotional-Engagement.Verify",
+        "version": "1.0.0",
+        "artifactType": "task",
+        "description": "Checks whether required social media actions (follow, like, repost, hashtag usage, etc.) were completed for promotional eligibility.",
+        "tags": ["promotion", "verification", "rewards", "logEvent"],
+        "examples": [
+          "Verify user followed brand",
+          "Check hashtag usage",
+          "Confirm engagement for reward eligibility"
+        ]
+      },
+      {
+        "name": "Promotional-Engagement.Verify",
+        "version": "1.0.0",
+        "artifactType": "tool",
+        "description": "Checks whether required social media actions (follow, like, repost, hashtag usage, etc.) were completed for promotional eligibility.",
+        "capabilities": ["verify"],
+        "path": "/",
+        "provider": {
+          "name": "PrivacyPortfolio",
+          "brand": "Yo-ai",
+          "product": "",
+          "version": "1.0.0",
+          "license": "Yo-ai Internal",
+          "url": "https://yo-ai.ai/docs/Promotional-Engagement.Verify.html",
+          "config": { "backend": "" }
+        },
+        "inputSchema": {
+          "$ref": "https://yo-ai.ai/schemas/promotional-engagement.verify.input.schema.json"
+        },
+        "outputSchema": {
+          "$ref": "https://yo-ai.ai/schemas/promotional-engagement.verify.output.schema.json"
+        },
+        "auth": "apiKey"
+      },
+      {
+        "name": "Promotional-Engagement.Verify",
+        "version": "1.0.0",
+        "artifactType": "handler",
+        "description": "Interface for integrating with tool executable.",
+        "path": "/"
+      },
+      {
+        "name": "Promotional-Engagement.Verify.Input",
+        "version": "1.0.0",
+        "artifactType": "messageType",
+        "schema": {
+          "$ref": "https://yo-ai.ai/schemas/promotional-engagement.verify.input.schema.json"
+        },
+        "description": "Input schema for the Promotional-Engagement.Verify capability."
+      },
+      {
+        "name": "Promotional-Engagement.Verify.Output",
+        "version": "1.0.0",
+        "artifactType": "messageType",
+        "schema": {
+          "$ref": "https://yo-ai.ai/schemas/promotional-engagement.verify.output.schema.json"
+        },
+        "description": "Output schema for the Promotional-Engagement.Verify capability."
+      },
+      {
+        "name": "Misappropriation.Detect",
+        "version": "1.0.0",
+        "artifactType": "skill",
+        "description": "Searches social media for indicators that falsely imply identity, actions, preferences, or endorsements.",
+        "tags": ["misappropriation", "fraud", "identity", "logEvent"],
+        "examples": [
+          "Detect false likes implying endorsement",
+          "Find impersonation accounts using my name",
+          "Identify posts suggesting I did something I did not do"
+        ]
+      },
+      {
+        "name": "Misappropriation.Detect",
+        "version": "1.0.0",
+        "artifactType": "task",
+        "description": "Searches social media for indicators that falsely imply identity, actions, preferences, or endorsements.",
+        "tags": ["misappropriation", "fraud", "identity", "logEvent"],
+        "examples": [
+          "Detect false likes implying endorsement",
+          "Find impersonation accounts using my name",
+          "Identify posts suggesting I did something I did not do"
+        ]
+      },
+      {
+        "name": "Misappropriation.Detect",
+        "version": "1.0.0",
+        "artifactType": "tool",
+        "description": "Searches social media for indicators that falsely imply identity, actions, preferences, or endorsements.",
+        "capabilities": ["detect"],
+        "path": "/",
+        "provider": {
+          "name": "PrivacyPortfolio",
+          "brand": "Yo-ai",
+          "product": "",
+          "version": "1.0.0",
+          "license": "Yo-ai Internal",
+          "url": "https://yo-ai.ai/docs/Misappropriation.Detect.html",
+          "config": { "backend": "" }
+        },
+        "inputSchema": {
+          "$ref": "https://yo-ai.ai/schemas/misappropriation.detect.input.schema.json"
+        },
+        "outputSchema": {
+          "$ref": "https://yo-ai.ai/schemas/misappropriation.detect.output.schema.json"
+        },
+        "auth": "apiKey"
+      },
+      {
+        "name": "Misappropriation.Detect",
+        "version": "1.0.0",
+        "artifactType": "handler",
+        "description": "Interface for integrating with tool executable.",
+        "path": "/"
+      },
+      {
+        "name": "Misappropriation.Detect.Input",
+        "version": "1.0.0",
+        "artifactType": "messageType",
+        "schema": {
+          "$ref": "https://yo-ai.ai/schemas/misappropriation.detect.input.schema.json"
+        },
+        "description": "Input schema for the Misappropriation.Detect capability."
+      },
+      {
+        "name": "Misappropriation.Detect.Output",
+        "version": "1.0.0",
+        "artifactType": "messageType",
+        "schema": {
+          "$ref": "https://yo-ai.ai/schemas/misappropriation.detect.output.schema.json"
+        },
+        "description": "Output schema for the Misappropriation.Detect capability."
+      },
+      {
+        "name": "Evidence.Collect",
+        "version": "1.0.0",
+        "artifactType": "skill",
+        "description": "Captures structured evidence of misappropriation or promotional compliance for downstream agents.",
+        "tags": ["evidence", "compliance", "logEvent"],
+        "examples": [
+          "Capture screenshot metadata for a promotional post",
+          "Record engagement proof for Budweiser Rewards",
+          "Store impersonation indicators for later complaint"
+        ]
+      },
+      {
+        "name": "Evidence.Collect",
+        "version": "1.0.0",
+        "artifactType": "task",
+        "description": "Captures structured evidence of misappropriation or promotional compliance for downstream agents.",
+        "tags": ["evidence", "compliance", "logEvent"],
+        "examples": [
+          "Capture screenshot metadata for a promotional post",
+          "Record engagement proof for Budweiser Rewards",
+          "Store impersonation indicators for later complaint"
+        ]
+      },
+      {
+        "name": "Evidence.Collect",
+        "version": "1.0.0",
+        "artifactType": "tool",
+        "description": "Captures structured evidence of misappropriation or promotional compliance for downstream agents.",
+        "capabilities": ["collect"],
+        "path": "/",
+        "provider": {
+          "name": "PrivacyPortfolio",
+          "brand": "Yo-ai",
+          "product": "",
+          "version": "1.0.0",
+          "license": "Yo-ai Internal",
+          "url": "https://yo-ai.ai/docs/Evidence.Collect.html",
+          "config": { "backend": "" }
+        },
+        "inputSchema": {
+          "$ref": "https://yo-ai.ai/schemas/evidence.collect.input.schema.json"
+        },
+        "outputSchema": {
+          "$ref": "https://yo-ai.ai/schemas/evidence.collect.output.schema.json"
+        },
+        "auth": "apiKey"
+      },
+      {
+        "name": "Evidence.Collect",
+        "version": "1.0.0",
+        "artifactType": "handler",
+        "description": "Interface for integrating with tool executable.",
+        "path": "/"
+      },
+      {
+        "name": "Evidence.Collect.Input",
+        "version": "1.0.0",
+        "artifactType": "messageType",
+        "schema": {
+          "$ref": "https://yo-ai.ai/schemas/evidence.collect.input.schema.json"
+        },
+        "description": "Input schema for the Evidence.Collect capability."
+      },
+      {
+        "name": "Evidence.Collect.Output",
+        "version": "1.0.0",
+        "artifactType": "messageType",
+        "schema": {
+          "$ref": "https://yo-ai.ai/schemas/evidence.collect.output.schema.json"
+        },
+        "description": "Output schema for the Evidence.Collect capability."
+      }
+    ],
+    "supportsAuthenticatedExtendedCard": true
+}

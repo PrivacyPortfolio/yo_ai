@@ -1,0 +1,70 @@
+/**
+ * This Risk-Assessor AgentCard conveys:
+ * - Overall details (version, name, description, uses)
+ * - Skills: A set of capabilities the agent can perform
+ * - Default modalities/content types supported by the agent.
+ * - Authentication requirements
+ */
+
+/**
+* Risk-Assessor AgentCard¶
+*/
+{
+    "name": "Risk-Assessor",
+    "description": "Builds, conducts, and maintains risk assessments.",
+    "id": "com.privacyportfolio.risk-assessor",
+    "provider": {
+        "organization": "PrivacyPortfolio",
+        "url": "https://www.PrivacyPortfolio.com"
+        },
+    "iconUrl": "https://privacyportfolio.com/agent-directory/risk-assessor/risk-assessor-agent-icon.png",
+    "protocolVersion": "1.0.0",
+    "documentationUrl": "https://privacyportfolio.com/agent-directory/risk-assessor/Risk-Assessor-AgentCard.md",
+    "supportedInterfaces": [
+      {
+        "url": "https://privacyportfolio.com/agents/risk_assessor/a2a",
+        "protocolBinding": "JSONRPC-HTTP",
+        "protocolVersion": "1.0"
+      }
+    ],
+    "capabilities": {
+      "streaming": true,
+      "pushNotifications": true,
+      "extendedAgentCard": true
+    },
+    "securitySchemes": {
+      "yo-ai": {
+        "type": "apiKey",
+        "name": "yo-api",
+        "in": "header"
+      }
+    },
+    "security": [
+      { "yo-ai": [] }
+    ],
+    "defaultInputModes": ["application/json", "text/plain"],
+    "defaultOutputModes": ["application/json", "text/plain"],
+    "skills": [
+    {
+        "name": "Risks.Assess",
+        "description": "Conducts a structured risk assessment for a given organization using specified standards, evidence sources, and assessment models.",
+        "version": "1.0.0", 
+        "tags": [
+            "riskAssessment",
+            "fraudDetection",
+            "complianceSupport",
+            "bulkOperations",
+            "orgAnalysis"
+        ],
+        "examples": [
+            "Assess risk of ACME Corp using NIST AI RMF",
+            "Evaluate fraud indicators for vendor:123",
+            "Perform bulk risk assessment for all cloud providers"
+        ],
+        "inputModes": ["application/json", "text/plain"],
+        "outputModes": ["application/json", "text/plain"],
+        "inputSchema": { "$ref": "https://yo-ai.ai/schemas/risks.assess.input.schema.json" },
+        "outputSchema": { "$ref": "https://yo-ai.ai/schemas/risks.assess.output.schema.json" }
+    }
+  ]
+}

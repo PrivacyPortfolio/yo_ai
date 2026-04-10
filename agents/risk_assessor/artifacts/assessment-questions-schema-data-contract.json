@@ -1,0 +1,23 @@
+{
+  "type": "record",
+  "namespace": "com.privacyportfolio.riskassessor",
+  "name": "assessmentQuestion",
+  "doc": "risk-assessor-agent-doc",
+  "fields": [
+    {
+      "name": "question-id",
+      "type": "string",
+      "doc": "id for question."
+    },
+    {
+      "name": "question-text",
+      "type": "string",
+      "doc": "text for assessment question."
+    },
+        {
+      "name": "question-tag",
+      "type": "string",
+      "doc": "tag for attribute or action."
+    }
+  ]
+}

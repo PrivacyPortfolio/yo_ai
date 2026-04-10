@@ -1,0 +1,1261 @@
+[
+  {
+    "question-id": "q-100001",
+    "question-text": "Where can consumers find a Notice of Privacy Policies?",
+    "question-tag": "Disclosures"
+  },
+  {
+    "question-id": "q-100002",
+    "question-text": "How do you document every collection point involving a consumer's personal information?",
+    "question-tag": "Disclosures"
+  },
+  {
+    "question-id": "q-100003",
+    "question-text": "Under what circumstances is providing a Notice of Right to Opt-out of Sale/Sharing or the Alternative Opt-out Link required?",
+    "question-tag": "Disclosures"
+  },
+  {
+    "question-id": "q-100004",
+    "question-text": "For what purposes do you use or disclose a consumer’s sensitive personal information?",
+    "question-tag": "Disclosures"
+  },
+  {
+    "question-id": "q-100005",
+    "question-text": "Do you offer a financial incentive or price or service difference to any consumer?",
+    "question-tag": "Disclosures"
+  },
+  {
+    "question-id": "q-100006",
+    "question-text": "Why is your business legally obligated to comply with the CCPA?",
+    "question-tag": "Disclosures"
+  },
+  {
+    "question-id": "q-100007",
+    "question-text": "Where can consumers find a comprehensive description of your business’s online and offline Information Practices?",
+    "question-tag": "Disclosures"
+  },
+  {
+    "question-id": "q-100008",
+    "question-text": "Which format options are used to communicate your Privacy Policy to consumers?",
+    "question-tag": "Disclosures"
+  },
+  {
+    "question-id": "q-100009",
+    "question-text": "How do you determine if your Privacy Policy or Notice is conspicuous to consumers?",
+    "question-tag": "Disclosures"
+  },
+  {
+    "question-id": "q-100010",
+    "question-text": "For what period of time do the categories of personal information collected about consumers represent?",
+    "question-tag": "Disclosures"
+  },
+  {
+    "question-id": "q-100011",
+    "question-text": "How are data sources of personal information collect about consumers categorized?",
+    "question-tag": "Disclosures"
+  },
+  {
+    "question-id": "q-100012",
+    "question-text": "For what purposes is personal information collected?",
+    "question-tag": "Disclosures"
+  },
+  {
+    "question-id": "q-100013",
+    "question-text": "How do you determine which categories are used for personal information sold to or shared with third parties?",
+    "question-tag": "Disclosures"
+  },
+  {
+    "question-id": "q-100014",
+    "question-text": "How do you determine which categories are used for third parties who personal information is sold to or shared with?",
+    "question-tag": "Disclosures"
+  },
+  {
+    "question-id": "q-100015",
+    "question-text": "For which business or commercial purpose(s) is personal information sold?",
+    "question-tag": "Disclosures"
+  },
+  {
+    "question-id": "q-100016",
+    "question-text": "Does your privacy policy include a statement about personal information of consumers under 16 years of age?",
+    "question-tag": "Disclosures"
+  },
+  {
+    "question-id": "q-100017",
+    "question-text": "Are you required to disclose in your Privacy Policy whether or not a consumers’ personal information has been shared with Third Parties in the preceding 12 months?",
+    "question-tag": "Disclosures"
+  },
+  {
+    "question-id": "q-100018",
+    "question-text": "Are all PI disclosures to Third Parties documented?",
+    "question-tag": "Disclosures"
+  },
+  {
+    "question-id": "q-100019",
+    "question-text": "How can a consumer find out if PI can be disclosed to Third Parties?",
+    "question-tag": "Disclosures"
+  },
+  {
+    "question-id": "q-100020",
+    "question-text": "How can a consumer find out what rights the CCPA provides?",
+    "question-tag": "Disclosures"
+  },
+  {
+    "question-id": "q-100021",
+    "question-text": "How can a consumer find out what is included in the Right to Know?",
+    "question-tag": "Disclosures"
+  },
+  {
+    "question-id": "q-100022",
+    "question-text": "How can a consumer find out what the Right to Delete means?",
+    "question-tag": "Disclosures"
+  },
+  {
+    "question-id": "q-100023",
+    "question-text": "How can a consumer find out what the Right to Correct means?",
+    "question-tag": "Disclosures"
+  },
+  {
+    "question-id": "q-100024",
+    "question-text": "How can a consumer find out if they have the Right to Opt-out?",
+    "question-tag": "Disclosures"
+  },
+  {
+    "question-id": "q-100025",
+    "question-text": "Does your explanation of how consumers can exercise their CCPA rights include what consumers can expect from that process?",
+    "question-tag": "Disclosures"
+  },
+  {
+    "question-id": "q-100026",
+    "question-text": "Does your explanation of how consumers can exercise their CCPA rights include an explanation of the request methods for exercising their rights?",
+    "question-tag": "Disclosures"
+  },
+  {
+    "question-id": "q-100027",
+    "question-text": "Does your explanation of how consumers can exercise their CCPA rights include any links to an online request form or portal for making such a request?",
+    "question-tag": "Disclosures"
+  },
+  {
+    "question-id": "q-100028",
+    "question-text": "Does your explanation of how consumers can exercise their CCPA rights include a Notice of Right to Opt-out of Sale/Sharing?",
+    "question-tag": "Disclosures"
+  },
+  {
+    "question-id": "q-100029",
+    "question-text": "Does your explanation of how consumers can exercise their CCPA rights include a Notice of Right to Limit?",
+    "question-tag": "Disclosures"
+  },
+  {
+    "question-id": "q-100030",
+    "question-text": "Does your explanation of how consumers can exercise their CCPA rights include a general description of the process the business uses to verify a consumer's identity?",
+    "question-tag": "Disclosures"
+  },
+  {
+    "question-id": "q-100031",
+    "question-text": "Does your explanation of how consumers can exercise their CCPA rights include how an opt-out preference signal will be processed?",
+    "question-tag": "Disclosures"
+  },
+  {
+    "question-id": "q-100032",
+    "question-text": "Does your explanation of how consumers can exercise their CCPA rights include information on how consumers can implement opt-out preference signals?",
+    "question-tag": "Disclosures"
+  },
+  {
+    "question-id": "q-100033",
+    "question-text": "Does your explanation of how consumers can exercise their CCPA rights include information on how an authorized agent can make a request under the CCPA on the consumer’s behalf?",
+    "question-tag": "Disclosures"
+  },
+  {
+    "question-id": "q-100034",
+    "question-text": "Does your explanation of how consumers can exercise their CCPA rights include acknowledgment knowledge that it sells the personal information of consumers under 16 years of age?",
+    "question-tag": "Disclosures"
+  },
+  {
+    "question-id": "q-100035",
+    "question-text": "Does your explanation of how consumers can exercise their CCPA rights include a contact for questions or concerns about the business’s privacy policies and Information Practices?",
+    "question-tag": "Disclosures"
+  },
+  {
+    "question-id": "q-100036",
+    "question-text": "Is the effective date of your Privacy Policy before or after the CCPA became law?",
+    "question-tag": "Disclosures"
+  },
+  {
+    "question-id": "q-100037",
+    "question-text": "Does your Privacy Policy include any data reporting requirements the business is subject to?",
+    "question-tag": "Disclosures"
+  },
+  {
+    "question-id": "q-100038",
+    "question-text": "How can consumers use your Notices of Collection to make choices about engaging with the business?",
+    "question-tag": "Disclosures"
+  },
+  {
+    "question-id": "q-100039",
+    "question-text": "Where or when are you required to post a conspicuous link to your Notice of Collection?",
+    "question-tag": "Disclosures"
+  },
+  {
+    "question-id": "q-100040",
+    "question-text": "Is a webform used to collect consumers’ personal information?",
+    "question-tag": "Disclosures"
+  },
+  {
+    "question-id": "q-100041",
+    "question-text": "Are mobile phones used to collect consumers’ personal information?",
+    "question-tag": "Disclosures"
+  },
+  {
+    "question-id": "q-100042",
+    "question-text": "Do you collect consumers’ personal information in-person?",
+    "question-tag": "Disclosures"
+  },
+  {
+    "question-id": "q-100043",
+    "question-text": "Do you collect consumers’ personal information by mail?",
+    "question-tag": "Disclosures"
+  },
+  {
+    "question-id": "q-100044",
+    "question-text": "Do you collect consumers’ personal information orally by telephone?",
+    "question-tag": "Disclosures"
+  },
+  {
+    "question-id": "q-100045",
+    "question-text": "How do you ensure that the data collection categories listed in your Notice of Collection or Privacy Policy are meaningful to consumers?",
+    "question-tag": "Disclosures"
+  },
+  {
+    "question-id": "q-100046",
+    "question-text": "How do you ensure that the categories of purposes for data collection are listed in your Notice of Collection or Privacy Policy?",
+    "question-tag": "Disclosures"
+  },
+  {
+    "question-id": "q-100047",
+    "question-text": "Are categories of personal information sold or shared listed in Notices of Collection?",
+    "question-tag": "Disclosures"
+  },
+  {
+    "question-id": "q-100048",
+    "question-text": "Are data retention periods determined by categories of personal information or some other criteria?",
+    "question-tag": "Disclosures"
+  },
+  {
+    "question-id": "q-100049",
+    "question-text": "How do consumers know if the business sells or shares personal information?",
+    "question-tag": "Disclosures"
+  },
+  {
+    "question-id": "q-100050",
+    "question-text": "How do consumers find out about your Privacy Policies and Practices?",
+    "question-tag": "Disclosures"
+  },
+  {
+  },
+  {
+    "question-id": "q-100051",
+    "question-text": "Do you collect personal information from any consumers online?",
+    "question-tag": "Disclosures"
+  },
+  {
+    "question-id": "q-100052",
+    "question-text": "Which Third Parties are used that control the Collection of Personal Information?",
+    "question-tag": "Disclosures"
+  },
+  {
+    "question-id": "q-100053",
+    "question-text": "Do you comply with a consumer’s request to opt-out of sale/sharing when a Third Party controls the collection of PI?",
+    "question-tag": "Disclosures"
+  },
+  {
+    "question-id": "q-100054",
+    "question-text": "Under what circumstances is the business NOT required to notify consumers?",
+    "question-tag": "Disclosures"
+  },
+  {
+    "question-id": "q-100055",
+    "question-text": "Is the business registered as a Data Broker with the California Attorney General?",
+    "question-tag": "Disclosures"
+  },
+  {
+    "question-id": "q-100056",
+    "question-text": "Do you collect consumers’ personal information by email?",
+    "question-tag": "Disclosures"
+  },
+  {
+    "question-id": "q-100057",
+    "question-text": "Do you collect consumers’ personal information by an internet-connected device (Internet-of-Things)?",
+    "question-tag": "Disclosures"
+  },
+  {
+    "question-id": "q-100058",
+    "question-text": "What evidence proves that every consumer submitting an access request via email is received and processed?",
+    "question-tag": "AccessRequests"
+  },
+  {
+    "question-id": "q-100059",
+    "question-text": "Does your business operate exclusively online and have direct relationships with consumers?",
+    "question-tag": "AccessRequests"
+  },
+  {
+    "question-id": "q-100060",
+    "question-text": "Which methods are used primarily to interact with consumers (e.g. in-person, online, by-telephone, etc.)?",
+    "question-tag": "AccessRequests"
+  },
+  {
+    "question-id": "q-100061",
+    "question-text": "Which type of assessments are used to determine if the user interface for submitting requests subvert or impair user choice?",
+    "question-tag": "AccessRequests"
+  },
+  {
+    "question-id": "q-100062",
+    "question-text": "Does your business maintain a toll-free number the consumer can call to submit requests?",
+    "question-tag": "AccessRequests"
+  },
+  {
+    "question-id": "q-100063",
+    "question-text": "Which type of assessments are used to determine if consent is not freely given, specific, informed, and unambiguous?",
+    "question-tag": "AccessRequests"
+  },
+  {
+    "question-id": "q-100064",
+    "question-text": "Which type of assessments are used to determine if choices offered to consumers in submitting requests are symmetric?",
+    "question-tag": "AccessRequests"
+  },
+  {
+    "question-id": "q-100065",
+    "question-text": "Which type of assessments are used to determine if methods for submitting consumer requests are difficult or hard to understand?",
+    "question-tag": "AccessRequests"
+  },
+  {
+    "question-id": "q-100066",
+    "question-text": "How do you prevent a Request to Know, Correct, Opt-out, Limit, or Delete from being processed as another type of access request?",
+    "question-tag": "AccessRequests"
+  },
+  {
+    "question-id": "q-100067",
+    "question-text": "How are Deficient Requests processed?",
+    "question-tag": "AccessRequests"
+  },
+  {
+    "question-id": "q-100068",
+    "question-text": "What information is provided to a consumer in acknowledgement of receiving their request to Know, Correct, or Delete?",
+    "question-tag": "AccessRequests"
+  },
+  {
+    "question-id": "q-100069",
+    "question-text": "Are requests to Know, Correct, or Delete denied if verifying the consumer's identity is not completed within the required timeline to respond?",
+    "question-tag": "AccessRequests"
+  },
+  {
+    "question-id": "q-100070",
+    "question-text": "What proof is required that an agent who represents a consumer is authorized to act on behalf of that consumer?",
+    "question-tag": "AccessRequests"
+  },
+  {
+    "question-id": "q-100071",
+    "question-text": "Which type(s) of assessment are used to ensure an Authorized Agent does not present a security issue to the consumer it represents?",
+    "question-tag": "AccessRequests"
+  },
+  {
+    "question-id": "q-100072",
+    "question-text": "For what purposes can an authorized agent use a consumer's personal information, according to CCPA Final Regulations?",
+    "question-tag": "AccessRequests"
+  },
+  {
+    "question-id": "q-100073",
+    "question-text": "What guidance do you provide to staff who process consumer requests submitted by authorized agents?",
+    "question-tag": "AccessRequests"
+  },
+  {
+    "question-id": "q-100074",
+    "question-text": "What instructions do you provide to authorized agents for submitting consumer requests?",
+    "question-tag": "AccessRequests"
+  },
+  {
+    "question-id": "q-100075",
+    "question-text": "What is the primary requirement for fulfilling requests that seek the disclosure of specific pieces of information about the consumer?",
+    "question-tag": "Know Requests"
+  },
+  {
+    "question-id": "q-100076",
+    "question-text": "How do you inform a consumer submitting a Request to Know that their identity cannot be verified?",
+    "question-tag": "Know Requests"
+  },
+  {
+    "question-id": "q-100077",
+    "question-text": "Do you direct the consumer to Information Practices set forth in your privacy policy, if a request is denied in whole, or in part?",
+    "question-tag": "Know Requests"
+  },
+  {
+    "question-id": "q-100078",
+    "question-text": "Do you direct the consumer to Information Practices set forth in your privacy policy, if a request is denied in whole, or in part?",
+    "question-tag": "Know Requests"
+  },
+  {
+    "question-id": "q-100079",
+    "question-text": "Do you store all personal information in a searchable or reasonably accessible format?",
+    "question-tag": "Know Requests"
+  },
+  {
+    "question-id": "q-100080",
+    "question-text": "How do you identify PI used for legal or compliance purposes?",
+    "question-tag": "Know Requests"
+  },
+  {
+    "question-id": "q-100081",
+    "question-text": "What PI collected by the business is not sold or used for any commercial purpose?",
+    "question-tag": "Know Requests"
+  },
+  {
+    "question-id": "q-100082",
+    "question-text": "What notification(s) to the consumer are required when a Request To Know is denied when PI is not searchable or accessible?",
+    "question-tag": "Know Requests"
+  },
+  {
+    "question-id": "q-100083",
+    "question-text": "What process or tool is used to determine that requested PI is not searchable or accessible?",
+    "question-tag": "Know Requests"
+  },
+  {
+    "question-id": "q-100084",
+    "question-text": "How is “Disproportionate effort” documented when Requests to Know are denied?",
+    "question-tag": "Know Requests"
+  },
+  {
+    "question-id": "q-100085",
+    "question-text": "How do you ensure that the data collection categories listed in your Notice of Collection or Privacy Policy are meaningful to consumers?",
+    "question-tag": "Know Requests"
+  },
+  {
+    "question-id": "q-100086",
+    "question-text": "What categories of personal information does the business collect about consumers?",
+    "question-tag": "Know Requests"
+  },
+  {
+    "question-id": "q-100087",
+    "question-text": "How are data sources of personal information collect about consumers categorized?",
+    "question-tag": "Know Requests"
+  },
+  {
+    "question-id": "q-100088",
+    "question-text": "For which business or commercial purpose is personal information sold?",
+    "question-tag": "Know Requests"
+  },
+  {
+    "question-id": "q-100089",
+    "question-text": "Which category of third party do you share the most PI with?",
+    "question-tag": "Know Requests"
+  },
+  {
+    "question-id": "q-100090",
+    "question-text": "Which category of third party do you sell the most PI to?",
+    "question-tag": "Know Requests"
+  },
+  {
+    "question-id": "q-100091",
+    "question-text": "What role or person is responsible for responding to Requests to Know?",
+    "question-tag": "Know Requests"
+  },
+  {
+    "question-id": "q-100092",
+    "question-text": "Are Requests to Know limited a specific number from each consumer?",
+    "question-tag": "Know Requests"
+  },
+  {
+    "question-id": "q-100093",
+    "question-text": "What must be updated when an undisclosed collection is discovered?",
+    "question-tag": "Know Requests"
+  },
+  {
+    "question-id": "q-100094",
+    "question-text": "How do you prevent a Request to Know, Correct, Opt-out, Limit, or Delete from being processed as another type of access request?",
+    "question-tag": "Know Requests"
+  },
+  {
+    "question-id": "q-100095",
+    "question-text": "What is the primary requirement for fulfilling Requests to Correct?",
+    "question-tag": "Correct Requests"
+  },
+  {
+    "question-id": "q-100096",
+    "question-text": "How do you inform a consumer submitting a Request to Correct that their identity cannot be verified?",
+    "question-tag": "Correct Requests"
+  },
+  {
+    "question-id": "q-100097",
+    "question-text": "How do you determine when contested personal information is more likely than not accurate based on the totality of the circumstances?",
+    "question-tag": "Correct Requests"
+  },
+  {
+    "question-id": "q-100098",
+    "question-text": "How do consumers know when Requests To Correct are fulfilled?",
+    "question-tag": "Correct Requests"
+  },
+  {
+    "question-id": "q-100099",
+    "question-text": "How do consumers know when Requests To Correct are denied?",
+    "question-tag": "Correct Requests"
+  },
+  {
+    "question-id": "q-100100",
+    "question-text": "How do you determine if a consumer’s request to correct would be impossible or would involve disproportionate effort?",
+    "question-tag": "Correct Requests"
+  },
+  {
+    "question-id": "q-100101",
+    "question-text": "Which options must be provided when denying a consumer’s request to correct personal information that concerns the consumer’s health?",
+    "question-tag": "Correct Requests"
+  },
+  {
+    "question-id": "q-100102",
+    "question-text": "How often can a consumer submit Requests to Correct Within a 12-month period?",
+    "question-tag": "Correct Requests"
+  },
+  {
+    "question-id": "q-100103",
+    "question-text": "What is the criteria for determining if a request is considered fraudulent or abusive?",
+    "question-tag": "Correct Requests"
+  },
+  {
+    "question-id": "q-100104",
+    "question-text": "When are you obligated to provide the consumer with the name of the source from which the business received the alleged inaccurate information?",
+    "question-tag": "Correct Requests"
+  },
+  {
+    "question-id": "q-100105",
+    "question-text": "Under what circumstances can a Request to Correct also be treated as a Request to Know?",
+    "question-tag": "Correct Requests"
+  },
+  {
+    "question-id": "q-100106",
+    "question-text": "How do you track whether a service provider, or contractor has implemented measures to ensure that personal information that is the subject of a request to correct remains corrected?",
+    "question-tag": "Correct Requests"
+  },
+  {
+    "question-id": "q-100107",
+    "question-text": "How do you prevent a Request to Know, Correct, Opt-out, Limit, or Delete from being processed as another type of access request?",
+    "question-tag": "Correct Requests"
+  },
+  {
+    "question-id": "q-100108",
+    "question-text": "How do consumers know when Requests To Delete are fulfilled?",
+    "question-tag": "Delete Requests"
+  },
+  {
+    "question-id": "q-100109",
+    "question-text": "Under which circumstances do you notify service providers or contractors to delete from their records the consumer’s personal information that they collected pursuant to their written contract?",
+    "question-tag": "Delete Requests"
+  },
+  {
+    "question-id": "q-100110",
+    "question-text": "What evidence is maintained when notifying third parties that a consumer's PI must be deleted?",
+    "question-tag": "Delete Requests"
+  },
+  {
+    "question-id": "q-100111",
+    "question-text": "Are service providers, contractors, or third parties permitted to retain records of delete requests?",
+    "question-tag": "Delete Requests"
+  },
+  {
+    "question-id": "q-100112",
+    "question-text": "How do you prevent a Request to Know, Correct, Opt-out, Limit, or Delete from being processed as another type of access request?",
+    "question-tag": "Delete Requests"
+  },
+  {
+    "question-id": "q-100113",
+    "question-text": "Where can consumers learn more about their Right to Opt-Out of Sale/Sharing?",
+    "question-tag": "Opt-out"
+  },
+  {
+    "question-id": "q-100114",
+    "question-text": "Why should I opt-out if you don't sell or share my personal information?",
+    "question-tag": "Opt-out"
+  },
+  {
+    "question-id": "q-100115",
+    "question-text": "How can I opt-out of Sale/Sharing?",
+    "question-tag": "Opt-out"
+  },
+  {
+    "question-id": "q-100116",
+    "question-text": "Is your company exempt from posting a 'Do Not Sell or Share My Personal Information' Link?",
+    "question-tag": "Opt-out"
+  },
+  {
+    "question-id": "q-100117",
+    "question-text": "What happens when I click on the 'Do Not Sell or Share My Personal Information' link?",
+    "question-tag": "Opt-out"
+  },
+  {
+    "question-id": "q-100118",
+    "question-text": "Where is your online interactive form for submitting a request to opt-out of sale/sharing?",
+    "question-tag": "Opt-out"
+  },
+  {
+    "question-id": "q-100119",
+    "question-text": "Does your business need to provide a Notice of Right to Opt-out of Sale/Sharing or the 'Do Not Sell or Share My Personal Information' link?",
+    "question-tag": "Opt-out"
+  },
+  {
+    "question-id": "q-100120",
+    "question-text": "When did you first post a Notice of Right to Opt-out of Sale/Sharing, and what did you do with my personal information prior to that date?",
+    "question-tag": "Opt-out"
+  },
+  {
+    "question-id": "q-100121",
+    "question-text": "What is the immediate effect of limiting the use and disclosure of the consumer’s sensitive personal information when they click the 'Limit the Use of My Sensitive Personal Information' link?",
+    "question-tag": "Opt-out"
+  },
+  {
+    "question-id": "q-100122",
+    "question-text": "What does section 7003, subsections (a) and (b) require businesses to comply with?",
+    "question-tag": "Opt-out"
+  },
+  {
+    "question-id": "q-100123",
+    "question-text": "What makes a link a conspicuous to consumers?",
+    "question-tag": "Opt-out"
+  },
+  {
+    "question-id": "q-100124",
+    "question-text": "Does the business post a Notice of Right to Limit?",
+    "question-tag": "Opt-out"
+  },
+  {
+    "question-id": "q-100125",
+    "question-text": "For what purposes does the business use or disclose a consumer’s sensitive personal information?",
+    "question-tag": "Opt-out"
+  },
+  {
+    "question-id": "q-100126",
+    "question-text": "Where is the interactive form by which the consumer can submit their request to limit?",
+    "question-tag": "Opt-out"
+  },
+  {
+    "question-id": "q-100127",
+    "question-text": "Does the business infer characteristics about a consumer from sensitive personal information?",
+    "question-tag": "Opt-out"
+  },
+  {
+    "question-id": "q-100128",
+    "question-text": "On which date did the business first post a Notice of Right to Limit?",
+    "question-tag": "Opt-out"
+  },
+  {
+    "question-id": "q-100129",
+    "question-text": "Do you provide consumers with a single, clearly-labeled link that allows consumers to easily exercise both their right to opt-out of sale/sharing and right to limit, and inform them of both their right to opt-out of sale/sharing and right to limit and provide them with the opportunity to exercise both rights?",
+    "question-tag": "Opt-out"
+  },
+  {
+    "question-id": "q-100130",
+    "question-text": "Do you use an Alternative Opt-out Link titled, ''Your Privacy Choices' or 'Your California Privacy Choices'?",
+    "question-tag": "Opt-out"
+  },
+  {
+    "question-id": "q-100131",
+    "question-text": "Where is the webpage a consumer is directed to when clicking on the Alternative Opt-out Link?",
+    "question-tag": "Opt-out"
+  },
+  {
+    "question-id": "q-100132",
+    "question-text": "How many steps is a consumer required to take online for submitting their request to opt-out of sale/sharing and their right to limit?",
+    "question-tag": "Opt-out"
+  },
+  {
+    "question-id": "q-100133",
+    "question-text": "Do you detect and respond to Opt-out Preference Signals (e.g. GPC-Global Privacy Control)?",
+    "question-tag": "Opt-out"
+  },
+  {
+    "question-id": "q-100134",
+    "question-text": "What commonly used format does your Opt-out Preference signal use (e.g. HTTP header or JavaScript)?",
+    "question-tag": "Opt-out"
+  },
+  {
+    "question-id": "q-100135",
+    "question-text": "How do you prevent an Opt-out Request from being processed as another type of access request?",
+    "question-tag": "Opt-out"
+  },
+  {
+    "question-id": "q-100136",
+    "question-text": "How do you prevent an Opt-out Request from being processed as another type of access request?",
+    "question-tag": "Opt-out"
+  },
+  {
+    "question-id": "q-100137",
+    "question-text": "Which conditions allow the business to ignore a consumer's opt-out preference signal?",
+    "question-tag": "Opt-out"
+  },
+  {
+    "question-id": "q-100138",
+    "question-text": "Can a consumer participate in a business’s financial incentive program if they use an Opt-out Preference Signal?",
+    "question-tag": "Opt-out"
+  },
+  {
+    "question-id": "q-100139",
+    "question-text": "How do you prevent an Opt-out Request from being processed as another type of access request?",
+    "question-tag": "Opt-out"
+  },
+  {
+    "question-id": "q-100140",
+    "question-text": "When must a business display whether it has processed the consumer’s opt-out preference signal?",
+    "question-tag": "Opt-out"
+  },
+  {
+    "question-id": "q-100141",
+    "question-text": "What consumer information is disclosed or collected when processing an Opt-out Preference Signal?",
+    "question-tag": "Opt-out"
+  },
+  {
+    "question-id": "q-100142",
+    "question-text": "Under which conditions can a business not provide the 'Do Not Sell or Share My Personal Information' and 'Limit the Use of My Sensitive Personal Information' links or the Alternative Opt-out Link?",
+    "question-tag": "Opt-out"
+  },
+  {
+    "question-id": "q-100143",
+    "question-text": "What is the meaning of 'processing an opt-out preference signal in a frictionless manner'?",
+    "question-tag": "Opt-out"
+  },
+  {
+    "question-id": "q-100144",
+    "question-text": "Are you required to post the “Do Not Sell or Share My Personal Information” link or the Alternative Opt-out Link?",
+    "question-tag": "Opt-out"
+  },
+  {
+    "question-id": "q-100145",
+    "question-text": "How many designated methods are offered to consumers for submitting requests to opt-out of sale/sharing?",
+    "question-tag": "Opt-out"
+  },
+  {
+    "question-id": "q-100146",
+    "question-text": "How many steps does it take for submitting requests to opt-out of sale/sharing?",
+    "question-tag": "Opt-out"
+  },
+  {
+    "question-id": "q-100147",
+    "question-text": "Are consumers who submit requests to opt-out required to create online accounts?",
+    "question-tag": "Opt-out"
+  },
+  {
+    "question-id": "q-100148",
+    "question-text": "Are consumers requesting to opt-out required to take a picture of themselves with their driver’s license?",
+    "question-tag": "Opt-out"
+  },
+  {
+    "question-id": "q-100149",
+    "question-text": "How does one know if a request to opt-out of sale/sharing is fraudulent?",
+    "question-tag": "Opt-out"
+  },
+  {
+    "question-id": "q-100150",
+    "question-text": "How many days do you allow for the fulfillment of Opt-out requests?",
+    "question-tag": "Opt-out"
+  },
+  {
+    "question-id": "q-100151",
+    "question-text": "How do consumers know when Opt-out requests are fulfilled?",
+    "question-tag": "Opt-out"
+  },
+  {
+    "question-id": "q-100152",
+    "question-text": "What is your response to an opt-out preference signal from a consumer's browser or device?",
+    "question-tag": "Opt-out"
+  },
+  {
+    "question-id": "q-100153",
+    "question-text": "When responding to a request to opt-out, does the business mention in any way charges for the use of any product or service?",
+    "question-tag": "Opt-out"
+  },
+  {
+    "question-id": "q-100154",
+    "question-text": "Can a consumer's authorized agent use an opt-out preference signal to avoid providing written authorization?",
+    "question-tag": "Opt-out"
+  },
+  {
+    "question-id": "q-100155",
+    "question-text": "After an opt-out request is processed, how long does the opt-out period last?",
+    "question-tag": "Opt-out"
+  },
+  {
+    "question-id": "q-100156",
+    "question-text": "How do you prevent an Opt-out Request from being processed as another type of access request?",
+    "question-tag": "Opt-out"
+  },
+  {
+    "question-id": "q-100157",
+    "question-text": "How can a consumer opt-in to sale/sharing of personal information?",
+    "question-tag": "Opt-out"
+  },
+  {
+    "question-id": "q-100158",
+    "question-text": "How do consumers know when Opt-in requests are fulfilled?",
+    "question-tag": "Opt-out"
+  },
+  {
+    "question-id": "q-100159",
+    "question-text": "Which controls does the business use when attempts to use a product or service requires the use or disclosure of sensitive personal information?",
+    "question-tag": "Opt-out"
+  },
+  {
+    "question-id": "q-100160",
+    "question-text": "When clicking the business’s 'Limit the Use of My Sensitive Personal Information' link, will it immediately limit the use and disclosure of the consumer’s sensitive personal information, or will it lead the consumer to a webpage where the consumer can learn about it and make that choice?",
+    "question-tag": "Limit"
+  },
+  {
+    "question-id": "q-100161",
+    "question-text": "What does section 7003, subsections (a) and (b) require businesses to comply with?",
+    "question-tag": "Limit"
+  },
+  {
+    "question-id": "q-100162",
+    "question-text": "What makes a link a conspicuous to consumers?",
+    "question-tag": "Limit"
+  },
+  {
+    "question-id": "q-100163",
+    "question-text": "Does the business post a Notice of Right to Limit?",
+    "question-tag": "Limit"
+  },
+  {
+    "question-id": "q-100164",
+    "question-text": "For what purposes does the business use or disclose a consumer’s sensitive personal information?",
+    "question-tag": "Limit"
+  },
+  {
+    "question-id": "q-100165",
+    "question-text": "Do you post a Notice of Right to Limit or the 'Limit the Use of My Sensitive Personal Information' Link?",
+    "question-tag": "Limit"
+  },
+  {
+    "question-id": "q-100166",
+    "question-text": "If your organization does not have a website, how the consumer can submit a request to limit?",
+    "question-tag": "Limit"
+  },
+  {
+    "question-id": "q-1001067",
+    "question-text": "If you do not post a Notice of Right to Limit or the 'Limit the Use of My Sensitive Personal Information' Link, why not?",
+    "question-tag": "Limit"
+  },
+  {
+    "question-id": "q-100168",
+    "question-text": "Does your Privacy Policy include a statement that sensitive personal information is only collected or processed without the purpose of inferring characteristics about a consumer?",
+    "question-tag": "Limit"
+  },
+  {
+    "question-id": "q-100169",
+    "question-text": "On which date did the business first post a Notice of Right to Limit?",
+    "question-tag": "Limit"
+  },
+  {
+    "question-id": "q-100170",
+    "question-text": "Which uses of sensitive personal information cannot be limited by a consumer?",
+    "question-tag": "Limit"
+  },
+  {
+    "question-id": "q-100171",
+    "question-text": "Which method for submitting requests to limit reflects the manner in which the business primarily interacts with the consumer?",
+    "question-tag": "Limit"
+  },
+  {
+    "question-id": "q-100172",
+    "question-text": "How many steps is a consumer required to take online for submitting their request to Limit Use and Disclosure of Sensitive Personal Information?",
+    "question-tag": "Limit"
+  },
+  {
+    "question-id": "q-100173",
+    "question-text": "Which conditions must be met for directing the business to limit the use or disclosure of the consumer’s sensitive personal information?",
+    "question-tag": "Limit"
+  },
+  {
+    "question-id": "q-100174",
+    "question-text": "Do you require that consumers provide additional information for verifying their identity when submitting a request to limit?",
+    "question-tag": "Limit"
+  },
+  {
+    "question-id": "q-100175",
+    "question-text": "How does one know if a request to Limit Use and Disclosure of Sensitive Personal Information is fraudulent?",
+    "question-tag": "Limit"
+  },
+  {
+    "question-id": "q-100176",
+    "question-text": "In responding to a request to limit, do you present the consumer with the choice to allow specific uses for the sensitive personal information?",
+    "question-tag": "Limit"
+  },
+  {
+    "question-id": "q-100177",
+    "question-text": "How do consumers know when Limit requests are fulfilled?",
+    "question-tag": "Limit"
+  },
+  {
+    "question-id": "q-100178",
+    "question-text": "Does the business allow consumers the choice to limit specific uses for their sensitive personal information?",
+    "question-tag": "Limit"
+  },
+  {
+    "question-id": "q-100179",
+    "question-text": "Can a request to Limit Use of Sensitive Personal Information from an authorized agent be denied if the business does not provide a reasonable method for the agent to submit its authorization to the business?",
+    "question-tag": "Limit"
+  },
+  {
+    "question-id": "q-100180",
+    "question-text": "When responding to a request to limit, does the business mention in any way charges for the use of any product or service?",
+    "question-tag": "Limit"
+  },
+  {
+    "question-id": "q-100181",
+    "question-text": "After a limit request is processed, how long does the limit period last?",
+    "question-tag": "Limit"
+  },
+  {
+    "question-id": "q-100182",
+    "question-text": "How are Business Purposes documented for each 'other disclosed purpose'?",
+    "question-tag": "Limit"
+  },
+  {
+    "question-id": "q-100183",
+    "question-text": "Is there documentation of a security issue or incident?",
+    "question-tag": "Limit"
+  },
+  {
+    "question-id": "q-100184",
+    "question-text": "Is there documentation of sensitive information disclosed for investigation of security issues or incidents?",
+    "question-tag": "Limit"
+  },
+  {
+    "question-id": "q-100185",
+    "question-text": "Is there documentation of of sensitive information disclosed for investigating a safety issue or incident?",
+    "question-tag": "Limit"
+  },
+  {
+    "question-id": "q-100186",
+    "question-text": "Are you required to post a Notice of Right to Limit or provide a method for submitting a request to limit?",
+    "question-tag": "Limit"
+  },
+  {
+    "question-id": "q-100187",
+    "question-text": "Is there documentation of of sensitive information used for providing services?",
+    "question-tag": "Limit"
+  },
+  {
+    "question-id": "q-100188",
+    "question-text": "Is there documentation of of sensitive information used for improving products and services?",
+    "question-tag": "Limit"
+  },
+  {
+    "question-id": "q-100189",
+    "question-text": "How do you know that sensitive information provided by the consumer is used without inferring characteristics about the consumer?",
+    "question-tag": "Limit"
+  },
+  {
+    "question-id": "q-100190",
+    "question-text": "How do you prevent a Request to Limit from being processed as another type of access request?",
+    "question-tag": "Limit"
+  },
+  {
+    "question-id": "q-100191",
+    "question-text": "How do you know if consent is given by a child under 13 years old or by the parent or guardian of that child?",
+    "question-tag": "Limit"
+  },
+  {
+    "question-id": "q-100192",
+    "question-text": "When do you inform the parent or guardian of the right to opt-out of sale/sharing and of the process for doing so on behalf of their child under 13 years old?",
+    "question-tag": "Limit"
+  },
+  {
+    "question-id": "q-100193",
+    "question-text": "What reasonable method is used to determine that a person submitting a request to delete, request to correct, or request to know the personal information of a child under the age of 13 is the parent or guardian of that child?",
+    "question-tag": "Limit"
+  },
+  {
+    "question-id": "q-100194",
+    "question-text": "How do you know if consent for a child between 13 and 16 years old is given by the parent or guardian of that child?",
+    "question-tag": "Limit"
+  },
+  {
+    "question-id": "q-100195",
+    "question-text": "When do you inform the parent or guardian of the right to opt-out of sale/sharing and of the process for doing so on behalf of their child between 13 and 16 years old?",
+    "question-tag": "Limit"
+  },
+  {
+    "question-id": "q-100196",
+    "question-text": "Where do you provide a description of processing data of a child under 16 years old?",
+    "question-tag": "Limit"
+  },
+  {
+    "question-id": "q-100197",
+    "question-text": "For what purposes is personal information collected?",
+    "question-tag": "Restrictions"
+  },
+  {
+    "question-id": "q-100198",
+    "question-text": "How do consumers typically interact with the business, and what if any exceptions are made for specific roles or contexts?",
+    "question-tag": "Restrictions"
+  },
+  {
+    "question-id": "q-100199",
+    "question-text": "Is every purpose disclosed for every personal data element collected?",
+    "question-tag": "Restrictions"
+  },
+  {
+    "question-id": "q-100200",
+    "question-text": "Is every source of personal information disclosed for every purpose personal data element is collected or used?",
+    "question-tag": "Restrictions"
+
+
+  },
+  {
+    "question-id": "q-100201",
+    "question-text": "What method or tool is used to determine if the purpose(s) for which the personal information was collected or processed is consistent with the reasonable expectations of the consumer?",
+    "question-tag": "Restrictions"
+  },
+  {
+    "question-id": "q-100202",
+    "question-text": "How can a consumer learn if service providers, contractors, third parties, or other entities collecting or processing personal information is reasonably expected?",
+    "question-tag": "Restrictions"
+  },
+  {
+    "question-id": "q-100203",
+    "question-text": "How is the context and time of collection documented for every purpose personal data element is collected or used for?",
+    "question-tag": "Restrictions"
+  },
+  {
+    "question-id": "q-100204",
+    "question-text": "What is the retention period for PI of another individual provided by consumer for an 'other disclosed purpose'?",
+    "question-tag": "Restrictions"
+  },
+  {
+    "question-id": "q-100205",
+    "question-text": "How are Business Purposes documented for each 'other disclosed purpose'?",
+    "question-tag": "Restrictions"
+  },
+  {
+    "question-id": "q-100206,",
+    "question-text": "What method is used to evaluate if the purpose for collecting and processing a consumer’s personal information is reasonably necessary and proportionate?",
+    "question-tag": "Restrictions"
+  },
+  {
+    "question-id": "q-100207,",
+    "question-text": "How are consumer consents stored and accessed for checking authorizations?",
+    "question-tag": "Restrictions"
+  },
+  {
+    "question-id": "q-100208,",
+    "question-text": "What safeguards or controls monitors the collection of categories of personal information that are not disclosed in its Notice at Collection?",
+    "question-tag": "Restrictions"
+  },
+  {
+    "question-id": "q-100209,",
+    "question-text": "Is the business changing a price or service for everyone, or does it vary?",
+    "question-tag": "Restrictions"
+  },
+  {
+    "question-id": "q-100210,",
+    "question-text": "Has the business calculated a good faith estimate of the value of my data as a consumer?",
+    "question-tag": "Restrictions"
+  },
+  {
+    "question-id": "q-100211,",
+    "question-text": "Is a businesses' denial of consumer requests considered discriminatory?",
+    "question-tag": "Restrictions"
+  },
+  {
+    "question-id": "q-100212,",
+    "question-text": "If I request that all my data be deleted, can I still participate in the loyalty program?",
+    "question-tag": "Restrictions"
+  },
+  {
+    "question-id": "q-100213,",
+    "question-text": "Under what circumstances does the business notify consumers of any financial incentive or price or service difference?",
+    "question-tag": "Restrictions"
+  },
+  {
+    "question-id": "q-100214,",
+    "question-text": "Does the business charge any fees pursuant to Civil Code section 1798.145, subdivision (h)(3)?",
+    "question-tag": "Restrictions"
+  },
+  {
+    "question-id": "q-100215,",
+    "question-text": "Is the business allowed to change a price or service due to increased costs of complying with federal or state laws?",
+    "question-tag": "Restrictions"
+  },
+  {
+    "question-id": "q-100216,",
+    "question-text": "What is the marginal value to the business of selling, collecting, or deleting my data?",
+    "question-tag": "Restrictions"
+  },
+  {
+    "question-id": "q-100217,",
+    "question-text": "What is the value to the business of the data of all natural persons in the United States?",
+    "question-tag": "Restrictions"
+  },
+  {
+    "question-id": "q-100218,",
+    "question-text": "Which method is used to verify the identity of a consumer?",
+    "question-tag": "Verification"
+  },
+  {
+    "question-id": "q-100219,",
+    "question-text": "Which rights requests do not allow businesses to require identity verification?",
+    "question-tag": "Verification"
+  },
+  {
+    "question-id": "q-100220,",
+    "question-text": "Is the Matching Method used by a third-party identification service to verify the identity of a consumer?",
+    "question-tag": "Verification"
+  },
+  {
+    "question-id": "q-100221,",
+    "question-text": "Is sensitive data used for verifying the identity of a consumer?",
+    "question-tag": "Verification"
+  },
+  {
+    "question-id": "q-100222,",
+    "question-text": "Is public data used for verifying the identity of a consumer?",
+    "question-tag": "Verification"
+  },
+  {
+    "question-id": "q-100223,",
+    "question-text": "For which purposes can businesses request additional verification information?",
+    "question-tag": "Verification"
+  },
+  {
+    "question-id": "q-100224,",
+    "question-text": "Does your company require a consumer to provide a notarized affidavit to verify their identity?",
+    "question-tag": "Verification"
+  },
+  {
+    "question-id": "q-100225,",
+    "question-text": "Which reasonable security measures does your company use to detect fraudulent identity-verification activity and prevent the unauthorized deletion, correction, or access to my personal information, or access to information about a business’s use of ADMT with respect to me as a California Consumer?",
+    "question-tag": "Verification"
+  },
+  {
+    "question-id": "q-100226,",
+    "question-text": "Does your business maintain deidentified consumer information that includes my information?",
+    "question-tag": "Verification"
+  },
+  {
+    "question-id": "q-100227,",
+    "question-text": "Do any datapoints used for verification match the subject of a request to correct?",
+    "question-tag": "Verification"
+  },
+  {
+    "question-id": "q-100228,",
+    "question-text": "Is password authentication a reasonable security method for verifying identity?",
+    "question-tag": "Verification"
+  },
+  {
+    "question-id": "q-100229,",
+    "question-text": "Is there documentation of a security issue or incident?",
+    "question-tag": "Verification"
+  },
+  {
+    "question-id": "q-100230,",
+    "question-text": "Which method of verification poses the least privacy risk to the consumer?",
+    "question-tag": "Verification"
+  },
+  {
+    "question-id": "q-100231,",
+    "question-text": "How many pieces of personal information provided by the consumer are maintained for verification purposes?",
+    "question-tag": "Verification"
+  },
+  {
+    "question-id": "q-100232,",
+    "question-text": "What authorization is required to fulfill a request to delete?",
+    "question-tag": "Verification"
+  },
+  {
+    "question-id": "q-100233,",
+    "question-text": "Does your company have a reasonable method by which it can verify my identity to the degree of certainty required?",
+    "question-tag": "Verification"
+  },
+  {
+    "question-id": "q-100234,",
+    "question-text": "What is the retention period for records of consumer requests made?",
+    "question-tag": "Enforcement"
+  },
+  {
+    "question-id": "q-100235,",
+    "question-text": "Do your records include how the business responded to consumer requests?",
+    "question-tag": "Enforcement"
+  },
+  {
+    "question-id": "q-100236,",
+    "question-text": "What reasonable security procedures and practices are used to maintain these records?",
+    "question-tag": "Enforcement"
+  },
+  {
+    "question-id": "q-100237,",
+    "question-text": "In what format(s) are the records maintained?",
+    "question-tag": "Enforcement"
+  },
+  {
+    "question-id": "q-100238,",
+    "question-text": "Which person(s) or Role(s) has access to these records?",
+    "question-tag": "Enforcement"
+  },
+  {
+    "question-id": "q-100239,",
+    "question-text": "Is personal information retained solely for the purpose of fulfilling a consumer request?",
+    "question-tag": "Enforcement"
+  },
+  {
+    "question-id": "q-100240,",
+    "question-text": "Does your privacy policy include CCPA Reporting Requirements?",
+    "question-tag": "Enforcement"
+  },
+  {
+    "question-id": "q-100241,",
+    "question-text": "What person or role is responsible for maintaining records of complaints filed?",
+    "question-tag": "Enforcement"
+  },
+  {
+    "question-id": "q-100242,",
+    "question-text": "Can the Agency conduct an audit if your business has a history of noncompliance with the CCPA or any other privacy protection law?",
+    "question-tag": "Enforcement"
+  },
+  {
+    "question-id": "q-100243,",
+    "question-text": "How does the CPPA determine how many businesses are NOT EXEMPT from complying with the CCPA?",
+    "question-tag": "Enforcement"
+  },
+  {
+    "question-id": "q-100244,",
+    "question-text": "How many employees does your business have?",
+    "question-tag": "Enforcement"
+  },
+  {
+    "question-id": "q-100245,",
+    "question-text": "Is your business registered in the official California Data Broker Registry?",
+    "question-tag": "Enforcement"
+  },
+  {
+    "question-id": "q-100246,",
+    "question-text": "What NAICS code best represents the industry your firm is in?",
+    "question-tag": "Enforcement"
+  },
+  {
+    "question-id": "q-100247,",
+    "question-text": "Do you maintain Reasonable Security practices by encrypting or redacting all Consumer's PI, or by password-protected accounts to prevent unauthorized access and exfiltration, theft, or disclosure?",
+    "question-tag": "Enforcement"
+  },
+  {
+    "question-id": "q-100248,",
+    "question-text": "Do you maintain Reasonable Security practices by encrypting or redacting all Consumer's PI, or by password-protected accounts to prevent unauthorized access and exfiltration, theft, or disclosure?",
+    "question-tag": "Enforcement"
+  },
+  {
+    "question-id": "q-100249,",
+    "question-text": "Do you maintain Reasonable Security practices by encrypting or redacting all Consumer's PI, or by password-protected accounts to prevent unauthorized access and exfiltration, theft, or disclosure?",
+    "question-tag": "Enforcement"
+  },
+  {
+    "question-id": "q-100250,",
+    "question-text": "How many individuals on staff are responsible for handling consumer inquiries or complying with the CCPA are informed of all of the requirements in the CCPA and these regulations?",
+    "question-tag": "Enforcement"
+  },
+  {
+    "question-id": "q-100251,",
+    "question-text": "Is your firm required to document and comply with a training policy to ensure that all individuals responsible for handling consumer requests made under the CCPA are informed of all of the requirements in the CCPA and these regulations?",
+    "question-tag": "Enforcement"
+  }
+]
