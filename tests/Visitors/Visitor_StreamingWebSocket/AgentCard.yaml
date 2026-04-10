@@ -1,0 +1,45 @@
+id: visiting-agent-pedantic
+name: Visiting Agent (FastA2A WebSocket)
+version: 0.1.0
+description: >
+  Minimal Visiting Agent that connects to a FastA2A WebSocket server,
+  sends observations, and reacts to actions.
+
+entrypoint: run_agent.py
+
+agent:
+  type: visiting
+  vendor: pedantic.ai
+  language: python
+  runtime: "3.11"
+
+skills:
+  - id: explore-environment
+    name: Explore Environment
+    description: >
+      Sends periodic observations (position, velocity, emotion) to the FastA2A server
+      and interprets returned actions.
+
+tools:
+  - id: websocket-client
+    name: WebSocket Client
+    type: network
+    protocol: websocket
+    config_ref: websocket-config
+
+tasks:
+  - id: visiting-session
+    name: Visiting Session
+    description: >
+      Open a WebSocket session, send a small sequence of observations,
+      log received actions, then terminate.
+    skill: explore-environment
+    tool_refs:
+      - websocket-client
+
+configs:
+  - id: websocket-config
+    type: websocket
+    url: "ws://localhost:8000/ws"
+    reconnect: false
+    timeout_seconds: 10
