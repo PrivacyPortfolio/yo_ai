@@ -1,0 +1,38 @@
+{
+  "$id": "https://yo-ai.ai/schemas/asset-portfolio.cluster.output.schema.json",
+  "title": "Asset-Portfolio.Cluster.Output",
+  "description": "Profile-aware output for the Asset-Portfolio.Cluster capability.",
+  "type": "object",
+  "properties": {
+    "result": {
+      "type": "object",
+      "description": "Primary capability output fields.",
+      "properties": {
+        "asset_clusters": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "cluster_id": { "type": "string" },
+              "label": { "type": "string" },
+              "assets": {
+                "type": "array",
+                "items": { "type": "string" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "profile": {
+      "$ref": "https://yo-ai.ai/schemas/profile.schema.json"
+    },
+    "profilePatch": {
+      "$ref": "https://yo-ai.ai/schemas/profile.patch.schema.json"
+    },
+    "governanceLabels": {
+      "$ref": "https://yo-ai.ai/schemas/governanceLabels.schema.json"
+    }
+  },
+  "required": ["result"]
+}

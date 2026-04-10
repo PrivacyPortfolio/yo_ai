@@ -1,0 +1,32 @@
+{
+  "$id": "https://yo-ai.ai/schemas/complaint.submit.output.schema.json",
+  "title": "Complaint.Submit.Output",
+  "description": "Profile-aware output for the Complaint.Submit capability.",
+  "type": "object",
+  "properties": {
+    "result": {
+      "type": "object",
+      "properties": {
+        "submission_id": {
+          "type": "string",
+          "description": "Unique identifier for the submission event."
+        },
+        "status": {
+          "type": "string",
+          "description": "Status of the submission process."
+        }
+      },
+      "required": ["submission_id", "status"]
+    },
+    "profile": {
+      "$ref": "https://yo-ai.ai/schemas/profile.schema.json"
+    },
+    "profilePatch": {
+      "$ref": "https://yo-ai.ai/schemas/profile.patch.schema.json"
+    },
+    "governanceLabels": {
+      "$ref": "https://yo-ai.ai/schemas/governanceLabels.schema.json"
+    }
+  },
+  "required": ["result"]
+}

@@ -1,0 +1,38 @@
+{
+  "$id": "https://yo-ai.ai/schemas/dark-web.scan.input.schema.json",
+  "title": "Dark-Web.Scan.Input",
+  "description": "Profile-aware input for the Dark-Web.Scan capability.",
+  "type": "object",
+  "properties": {
+    "profile": {
+      "$ref": "https://yo-ai.ai/schemas/profile.schema.json",
+      "description": "Optional reference to the subject/org profile to load."
+    },
+    "profilePatch": {
+      "$ref": "https://yo-ai.ai/schemas/profile.patch.schema.json",
+      "description": "Optional modifications to apply to the loaded profile."
+    },
+    "payload": {
+      "type": "object",
+      "description": "Capability-specific input fields for Dark-Web.Scan.",
+      "properties": {
+        "query_terms": {
+          "type": "array",
+          "description": "PI or identifiers to search for.",
+          "items": { "type": "string" }
+        },
+        "context": {
+          "type": "object",
+          "description": "Optional context from the requesting agent.",
+          "additionalProperties": true
+        },
+        "request_id": {
+          "type": "string",
+          "description": "Correlation ID for async workflows."
+        }
+      },
+      "required": ["query_terms"]
+    }
+  },
+  "required": ["payload"]
+}

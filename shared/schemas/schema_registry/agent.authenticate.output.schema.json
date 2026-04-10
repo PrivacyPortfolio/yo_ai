@@ -1,0 +1,35 @@
+{
+  "$id": "https://yo-ai.ai/schemas/agent.authenticate.output.schema.json",
+  "title": "Agent.Authenticate.Output",
+  "description": "Profile-aware output for the Agent.Authenticate capability.",
+  "type": "object",
+  "properties": {
+    "result": {
+      "type": "object",
+      "description": "Primary capability output fields.",
+      "properties": {
+        "registration_identifier_ref": {
+          "type": "string"
+        },
+        "finding": {
+          "type": "string"
+        },
+        "log_refs": {
+          "type": "array",
+          "items": { "type": "string" }
+        }
+      },
+      "required": ["registration_identifier_ref", "finding", "log_refs"]
+    },
+    "profile": {
+      "$ref": "https://yo-ai.ai/schemas/profile.schema.json"
+    },
+    "profilePatch": {
+      "$ref": "https://yo-ai.ai/schemas/profile.patch.schema.json"
+    },
+    "governanceLabels": {
+      "$ref": "https://yo-ai.ai/schemas/governanceLabels.schema.json"
+    }
+  },
+  "required": ["result"]
+}

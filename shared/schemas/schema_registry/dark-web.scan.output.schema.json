@@ -1,0 +1,48 @@
+{
+  "$id": "https://yo-ai.ai/schemas/dark-web.scan.output.schema.json",
+  "title": "Dark-Web.Scan.Output",
+  "description": "Profile-aware output for the Dark-Web.Scan capability.",
+  "type": "object",
+  "properties": {
+    "result": {
+      "type": "object",
+      "description": "Primary capability output fields.",
+      "properties": {
+        "scan_id": { "type": "string" },
+        "results": {
+          "type": "array",
+          "description": "Matches found on dark web sources.",
+          "items": {
+            "type": "object",
+            "required": ["source", "match_type", "evidence_hash"],
+            "properties": {
+              "source": { "type": "string" },
+              "match_type": { "type": "string" },
+              "evidence_hash": { "type": "string" },
+              "listing_metadata": {
+                "type": "object",
+                "additionalProperties": true
+              }
+            }
+          }
+        },
+        "risk_indicator": {
+          "type": "string",
+          "enum": ["low", "medium", "high", "critical"]
+        }
+      },
+      "required": ["scan_id", "results"]
+    },
+    "profile": {
+      "$ref": "https://yo-ai.ai/schemas/profile.schema.json",
+      "description": "Optional updated profile after applying profilePatch."
+    },
+    "profilePatch": {
+      "$ref": "https://yo-ai.ai/schemas/profile.patch.schema.json"
+    },
+    "governanceLabels": {
+      "$ref": "https://yo-ai.ai/schemas/governanceLabels.schema.json"
+    }
+  },
+  "required": ["result"]
+}

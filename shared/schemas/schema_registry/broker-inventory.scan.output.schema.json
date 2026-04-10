@@ -1,0 +1,43 @@
+{
+  "$id": "https://yo-ai.ai/schemas/broker-inventory.scan.output.schema.json",
+  "title": "Broker-Inventory.Scan.Output",
+  "description": "Profile-aware output for the Broker-Inventory.Scan capability.",
+  "type": "object",
+  "properties": {
+    "result": {
+      "type": "object",
+      "description": "Primary capability output fields.",
+      "properties": {
+        "scan_id": {
+          "type": "string",
+          "description": "Unique identifier for the scan operation."
+        },
+        "matches": {
+          "type": "array",
+          "description": "Matches found across broker datasets.",
+          "items": {
+            "type": "object",
+            "required": ["broker", "match_confidence"],
+            "properties": {
+              "broker": { "type": "string" },
+              "match_confidence": { "type": "number" },
+              "evidence_hash": { "type": "string" },
+              "dataset_ref": { "type": "string" }
+            }
+          }
+        }
+      },
+      "required": ["scan_id", "matches"]
+    },
+    "profile": {
+      "$ref": "https://yo-ai.ai/schemas/profile.schema.json"
+    },
+    "profilePatch": {
+      "$ref": "https://yo-ai.ai/schemas/profile.patch.schema.json"
+    },
+    "governanceLabels": {
+      "$ref": "https://yo-ai.ai/schemas/governanceLabels.schema.json"
+    }
+  },
+  "required": ["result"]
+}

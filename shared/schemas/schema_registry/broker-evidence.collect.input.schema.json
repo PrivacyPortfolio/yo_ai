@@ -1,0 +1,35 @@
+{
+  "$id": "https://yo-ai.ai/schemas/broker-evidence.collect.input.schema.json",
+  "title": "Broker-Evidence.Collect.Input",
+  "description": "Profile-aware input for the Broker-Evidence.Collect capability.",
+  "type": "object",
+  "properties": {
+    "profile": {
+      "$ref": "#/components/schemas/Profile"
+    },
+    "profilePatch": {
+      "$ref": "#/components/schemas/ProfilePatch"
+    },
+    "payload": {
+      "type": "object",
+      "description": "Capability-specific input fields for collecting broker evidence.",
+      "properties": {
+        "broker": {
+          "type": "string",
+          "description": "Broker from whom evidence is being collected."
+        },
+        "evidence_hash": {
+          "type": "string",
+          "description": "Hash of the matched dataset or listing."
+        },
+        "metadata": {
+          "type": "object",
+          "description": "Additional metadata associated with the evidence.",
+          "additionalProperties": true
+        }
+      },
+      "required": ["broker", "evidence_hash"]
+    }
+  },
+  "required": ["payload"]
+}

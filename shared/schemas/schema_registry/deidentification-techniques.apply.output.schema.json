@@ -1,0 +1,40 @@
+{
+  "$id": "https://yo-ai.ai/schemas/deidentification-techniques.apply.output.schema.json",
+  "title": "Deidentification-Techniques.Apply.Output",
+  "description": "Profile-aware output for the Deidentification-Techniques.Apply capability.",
+  "type": "object",
+  "properties": {
+    "result": {
+      "type": "object",
+      "description": "Primary capability output fields.",
+      "properties": {
+        "transformed_dataset": {
+          "type": "array",
+          "description": "Dataset after applying the specified de-identification techniques.",
+          "items": { "type": "object", "additionalProperties": true }
+        },
+        "applied_techniques": {
+          "type": "array",
+          "description": "List of techniques that were successfully applied.",
+          "items": { "type": "string" }
+        },
+        "residual_risk": {
+          "type": "string",
+          "description": "High-level assessment of remaining re-identification risk.",
+          "enum": ["low", "medium", "high"]
+        }
+      },
+      "required": ["transformed_dataset", "applied_techniques"]
+    },
+    "profile": {
+      "$ref": "https://yo-ai.ai/schemas/profile.schema.json"
+    },
+    "profilePatch": {
+      "$ref": "https://yo-ai.ai/schemas/profile.patch.schema.json"
+    },
+    "governanceLabels": {
+      "$ref": "https://yo-ai.ai/schemas/governanceLabels.schema.json"
+    }
+  },
+  "required": ["result"]
+}

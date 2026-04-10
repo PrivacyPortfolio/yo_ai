@@ -1,0 +1,58 @@
+{
+  "$id": "https://yo-ai.ai/schemas/consulting-services.pitch.input.schema.json",
+  "title": "Consulting-Services.Pitch.Input",
+  "description": "Profile-aware input for the Consulting-Services.Pitch capability.",
+  "type": "object",
+  "properties": {
+    "profile": {
+      "$ref": "https://yo-ai.ai/schemas/profile.schema.json",
+      "description": "Optional reference to the consultant or organization profile to load."
+    },
+    "profilePatch": {
+      "$ref": "https://yo-ai.ai/schemas/profile.patch.schema.json",
+      "description": "Optional modifications to apply to the loaded profile."
+    },
+    "payload": {
+      "type": "object",
+      "description": "Capability-specific input fields for Consulting-Services.Pitch.",
+      "properties": {
+        "client_ref": {
+          "type": "string",
+          "description": "Opaque identifier for the prospective client or vendor."
+        },
+        "opportunity_details": {
+          "type": "object",
+          "description": "Details about the consulting opportunity.",
+          "additionalProperties": true
+        },
+        "pitch_profile": {
+          "type": "object",
+          "description": "Minimized professional profile from Data-Steward.",
+          "additionalProperties": true
+        },
+        "attachments": {
+          "type": "array",
+          "description": "Optional attachments such as PDFs, portfolios, or capability statements.",
+          "items": {
+            "type": "object",
+            "properties": {
+              "filename": { "type": "string" },
+              "content": {
+                "type": "string",
+                "contentEncoding": "base64",
+                "contentMediaType": "application/octet-stream"
+              }
+            }
+          }
+        },
+        "context": {
+          "type": "object",
+          "description": "Optional context from the requesting agent.",
+          "additionalProperties": true
+        }
+      },
+      "required": ["client_ref", "pitch_profile"]
+    }
+  },
+  "required": ["payload"]
+}

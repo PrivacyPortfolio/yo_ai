@@ -1,0 +1,52 @@
+{
+  "$id": "https://yo-ai.ai/schemas/deidentification-standard.map.input.schema.json",
+  "title": "Deidentification-Standard.Map.Input",
+  "description": "Profile-aware input for the Deidentification-Standard.Map capability.",
+  "type": "object",
+  "properties": {
+    "profile": {
+      "$ref": "https://yo-ai.ai/schemas/profile.schema.json"
+    },
+    "profilePatch": {
+      "$ref": "https://yo-ai.ai/schemas/profile.patch.schema.json"
+    },
+    "payload": {
+      "type": "object",
+      "properties": {
+        "dataset_schema": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["name"],
+            "properties": {
+              "name": { "type": "string" },
+              "type": { "type": "string" },
+              "sensitivity": {
+                "type": "string",
+                "enum": ["low", "medium", "high", "sensitive", "special_category"]
+              }
+            }
+          }
+        },
+        "applied_techniques": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "privacy_metrics": {
+          "type": "object",
+          "additionalProperties": true
+        },
+        "standards": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "context": {
+          "type": "object",
+          "additionalProperties": true
+        }
+      },
+      "required": ["dataset_schema", "applied_techniques", "standards"]
+    }
+  },
+  "required": ["payload"]
+}

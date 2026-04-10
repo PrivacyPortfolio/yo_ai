@@ -1,0 +1,39 @@
+{
+  "$id": "https://yo-ai.ai/schemas/data-origins.trace.input.schema.json",
+  "title": "Data-Origins.Trace.Input",
+  "description": "Profile-aware input for the Data-Origins.Trace capability.",
+  "type": "object",
+  "properties": {
+    "profile": {
+      "$ref": "https://yo-ai.ai/schemas/profile.schema.json"
+    },
+    "profilePatch": {
+      "$ref": "https://yo-ai.ai/schemas/profile.patch.schema.json"
+    },
+    "payload": {
+      "type": "object",
+      "description": "Capability-specific input fields for origin tracing.",
+      "properties": {
+        "evidence_hash": {
+          "type": "string",
+          "description": "Hash of the stolen dataset or listing."
+        },
+        "sample_records": {
+          "type": "array",
+          "description": "Optional sample records for structural comparison.",
+          "items": {
+            "type": "object",
+            "additionalProperties": true
+          }
+        },
+        "context": {
+          "type": "object",
+          "description": "Optional context from the requesting agent.",
+          "additionalProperties": true
+        }
+      },
+      "required": ["evidence_hash"]
+    }
+  },
+  "required": ["payload"]
+}

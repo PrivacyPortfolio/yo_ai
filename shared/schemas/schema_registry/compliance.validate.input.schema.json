@@ -1,0 +1,38 @@
+{
+  "$id": "https://yo-ai.ai/schemas/compliance.validate.input.schema.json",
+  "title": "Compliance.Validate.Input",
+  "description": "Profile-aware input for the Compliance.Validate capability.",
+  "type": "object",
+  "properties": {
+    "profile": {
+      "$ref": "https://yo-ai.ai/schemas/profile.schema.json",
+      "description": "Optional reference to the subject/org profile to load."
+    },
+    "profilePatch": {
+      "$ref": "https://yo-ai.ai/schemas/profile.patch.schema.json",
+      "description": "Optional modifications to apply to the loaded profile."
+    },
+    "payload": {
+      "type": "object",
+      "description": "Capability-specific input fields for Compliance.Validate.",
+      "properties": {
+        "org_ref": {
+          "type": "string",
+          "description": "Organization being evaluated."
+        },
+        "facts": {
+          "type": "object",
+          "description": "Facts or evidence to validate (from Risk-Assessor, Vendor-Manager, Worker agents, etc.)."
+        },
+        "standards": {
+          "type": "array",
+          "description": "List of standards, mandates, or clauses to validate against.",
+          "items": { "type": "string" }
+        }
+      },
+      "required": ["org_ref", "facts", "standards"],
+      "additionalProperties": false
+    }
+  },
+  "required": ["payload"]
+}

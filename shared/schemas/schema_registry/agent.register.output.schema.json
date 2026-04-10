@@ -1,0 +1,38 @@
+{
+  "$id": "https://yo-ai.ai/schemas/agent.register.output.schema.json",
+  "title": "Agent.Register.Output",
+  "description": "Profile-aware output for the Agent.Register capability.",
+  "type": "object",
+  "properties": {
+    "result": {
+      "type": "object",
+      "description": "Primary capability output fields.",
+      "properties": {
+        "registration_identifier_ref": {
+          "type": "string",
+          "description": "Opaque reference to the newly created registration record."
+        },
+        "finding": {
+          "type": "string",
+          "description": "Outcome of the registration evaluation (e.g., 'approved', 'denied', 'pending')."
+        },
+        "log_refs": {
+          "type": "array",
+          "description": "Logs used or generated during the registration process.",
+          "items": { "type": "string" }
+        }
+      },
+      "required": ["registration_identifier_ref", "finding", "log_refs"]
+    },
+    "profile": {
+      "$ref": "https://yo-ai.ai/schemas/profile.schema.json"
+    },
+    "profilePatch": {
+      "$ref": "https://yo-ai.ai/schemas/profile.patch.schema.json"
+    },
+    "governanceLabels": {
+      "$ref": "https://yo-ai.ai/schemas/governanceLabels.schema.json"
+    }
+  },
+  "required": ["result"]
+}

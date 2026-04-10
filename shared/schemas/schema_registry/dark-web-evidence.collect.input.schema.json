@@ -1,0 +1,38 @@
+{
+  "$id": "https://yo-ai.ai/schemas/dark-web-evidence.collect.input.schema.json",
+  "title": "Dark-Web-Evidence.Collect.Input",
+  "description": "Profile-aware input for the Dark-Web-Evidence.Collect capability.",
+  "type": "object",
+  "properties": {
+    "profile": {
+      "$ref": "#/components/schemas/Profile"
+    },
+    "profilePatch": {
+      "$ref": "#/components/schemas/ProfilePatch"
+    },
+    "payload": {
+      "type": "object",
+      "description": "Capability-specific input fields for Dark-Web-Evidence.Collect.",
+      "properties": {
+        "listing_url": {
+          "type": "string",
+          "description": "URL or identifier of the dark web listing to capture evidence from."
+        },
+        "evidence_hash": {
+          "type": "string",
+          "description": "Hash of the listing or dataset for integrity verification."
+        },
+        "context": {
+          "type": "object",
+          "description": "Optional context from the requesting agent.",
+          "additionalProperties": true
+        }
+      },
+      "required": [
+        "listing_url",
+        "evidence_hash"
+      ]
+    }
+  },
+  "required": ["payload"]
+}

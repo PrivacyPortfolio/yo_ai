@@ -1,0 +1,41 @@
+{
+  "$id": "https://yo-ai.ai/schemas/deidentification-report.generate.output.schema.json",
+  "title": "Deidentification-Report.Generate.Output",
+  "description": "Profile-aware output for the Deidentification-Report.Generate capability.",
+  "type": "object",
+  "properties": {
+    "result": {
+      "type": "object",
+      "properties": {
+        "report_id": { "type": "string" },
+        "summary": {
+          "type": "object",
+          "additionalProperties": true
+        },
+        "evidence": {
+          "type": "array",
+          "items": { "type": "object", "additionalProperties": true }
+        },
+        "compliance_mapping": {
+          "type": "object",
+          "additionalProperties": true
+        },
+        "residual_risk": {
+          "type": "string",
+          "enum": ["low", "medium", "high"]
+        }
+      },
+      "required": ["report_id", "summary"]
+    },
+    "profile": {
+      "$ref": "https://yo-ai.ai/schemas/profile.schema.json"
+    },
+    "profilePatch": {
+      "$ref": "https://yo-ai.ai/schemas/profile.patch.schema.json"
+    },
+    "governanceLabels": {
+      "$ref": "https://yo-ai.ai/schemas/governanceLabels.schema.json"
+    }
+  },
+  "required": ["result"]
+}

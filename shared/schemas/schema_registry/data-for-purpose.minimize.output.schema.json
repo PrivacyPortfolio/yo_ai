@@ -1,0 +1,40 @@
+{
+  "$id": "https://yo-ai.ai/schemas/data-for-purpose.minimize.output.schema.json",
+  "title": "Data-For-Purpose.Minimize.Output",
+  "description": "Profile-aware output for the Data-For-Purpose.Minimize capability.",
+  "type": "object",
+  "properties": {
+    "result": {
+      "type": "object",
+      "properties": {
+        "required_fields": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "unnecessary_fields": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "minimization_recommendations": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "compliance_rationale": {
+          "type": "object",
+          "additionalProperties": true
+        }
+      },
+      "required": ["required_fields", "unnecessary_fields"]
+    },
+    "profile": {
+      "$ref": "https://yo-ai.ai/schemas/profile.schema.json"
+    },
+    "profilePatch": {
+      "$ref": "https://yo-ai.ai/schemas/profile.patch.schema.json"
+    },
+    "governanceLabels": {
+      "$ref": "https://yo-ai.ai/schemas/governanceLabels.schema.json"
+    }
+  },
+  "required": ["result"]
+}

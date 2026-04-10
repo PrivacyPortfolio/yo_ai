@@ -1,0 +1,25 @@
+{
+  "$id": "https://yo-ai.ai/schemas/decision-outcome.identify.input.schema.json",
+  "title": "Decision-Outcome.Identify.Input",
+  "description": "Profile-aware input for the Decision-Outcome.Identify capability.",
+  "type": "object",
+  "properties": {
+    "profile": {
+      "$ref": "https://yo-ai.ai/schemas/profile.schema.json",
+      "description": "Optional reference to the subject/org profile to load."
+    },
+    "profilePatch": {
+      "$ref": "https://yo-ai.ai/schemas/profile.patch.schema.json",
+      "description": "Optional modifications to apply to the loaded profile."
+    },
+    "payload": {
+      "type": "object",
+      "description": "Capability-specific input fields for Decision-Outcome.Identify.",
+      "properties": {
+        "decision_ref": { "type": "string" }
+      },
+      "required": ["decision_ref"]
+    }
+  },
+  "required": ["payload"]
+}

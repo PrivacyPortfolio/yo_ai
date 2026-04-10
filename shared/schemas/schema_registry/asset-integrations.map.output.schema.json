@@ -1,0 +1,41 @@
+{
+  "$id": "https://yo-ai.ai/schemas/asset-integrations.map.output.schema.json",
+  "title": "Asset-Integrations.Map.Output",
+  "description": "Profile-aware output for the Asset-Integrations.Map capability.",
+  "type": "object",
+  "properties": {
+    "result": {
+      "type": "object",
+      "description": "Primary capability output fields.",
+      "properties": {
+        "integrations": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "asset_name": { "type": "string" },
+              "integration_points": {
+                "type": "array",
+                "items": { "type": "string" }
+              },
+              "data_flows": {
+                "type": "array",
+                "items": { "type": "string" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "profile": {
+      "$ref": "https://yo-ai.ai/schemas/profile.schema.json"
+    },
+    "profilePatch": {
+      "$ref": "https://yo-ai.ai/schemas/profile.patch.schema.json"
+    },
+    "governanceLabels": {
+      "$ref": "https://yo-ai.ai/schemas/governanceLabels.schema.json"
+    }
+  },
+  "required": ["result"]
+}

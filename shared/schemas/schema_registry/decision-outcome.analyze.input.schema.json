@@ -1,0 +1,33 @@
+{
+  "$id": "https://yo-ai.ai/schemas/decision-outcome.analyze.input.schema.json",
+  "title": "Decision-Outcome.Analyze.Input",
+  "description": "Profile-aware input for the Decision-Outcome.Analyze capability.",
+  "type": "object",
+  "properties": {
+    "profile": {
+      "$ref": "https://yo-ai.ai/schemas/profile.schema.json",
+      "description": "Optional reference to the subject/org profile to load."
+    },
+    "profilePatch": {
+      "$ref": "https://yo-ai.ai/schemas/profile.patch.schema.json",
+      "description": "Optional modifications to apply to the loaded profile."
+    },
+    "payload": {
+      "type": "object",
+      "description": "Capability-specific input fields for Decision-Outcome.Analyze.",
+      "properties": {
+        "decision_ref": { "type": "string" },
+        "factors": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "evidence": {
+          "type": "array",
+          "items": { "type": "object" }
+        }
+      },
+      "required": ["decision_ref", "factors", "evidence"]
+    }
+  },
+  "required": ["payload"]
+}

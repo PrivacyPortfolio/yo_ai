@@ -1,0 +1,33 @@
+{
+  "$id": "https://yo-ai.ai/schemas/accessrights.manage.input.schema.json",
+  "title": "AccessRights.Manage.Input",
+  "description": "Profile-aware input for the AccessRights.Manage capability.",
+  "type": "object",
+  "properties": {
+    "profile": {
+      "$ref": "https://yo-ai.ai/schemas/profile.schema.json",
+      "description": "Optional reference to the subject/org profile to load."
+    },
+    "profilePatch": {
+      "$ref": "https://yo-ai.ai/schemas/profile.patch.schema.json",
+      "description": "Optional modifications to apply to the loaded profile."
+    },
+    "payload": {
+      "type": "object",
+      "description": "Capability-specific input fields for AccessRights.Manage.",
+      "properties": {
+        "registration_identifier_ref": {
+          "type": "string",
+          "description": "Opaque reference to the registration record."
+        },
+        "log_refs": {
+          "type": "array",
+          "description": "List of log references relevant to the access decision.",
+          "items": { "type": "string" }
+        }
+      },
+      "required": ["registration_identifier_ref", "log_refs"]
+    }
+  },
+  "required": ["payload"]
+}

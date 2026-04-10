@@ -1,0 +1,42 @@
+{
+  "$id": "https://yo-ai.ai/schemas/downstream-vendors.identify.output.schema.json",
+  "title": "Downstream-Vendors.Identify.Output",
+  "description": "Profile-aware output for the Downstream-Vendors.Identify capability.",
+  "type": "object",
+  "properties": {
+    "result": {
+      "type": "object",
+      "description": "Primary capability output fields.",
+      "properties": {
+        "vendor_list": {
+          "type": "array",
+          "description": "List of vendors identified as downstream purchasers.",
+          "items": {
+            "type": "object",
+            "properties": {
+              "vendor": { "type": "string" },
+              "confidence": { "type": "number" },
+              "evidence_hash": { "type": "string" }
+            }
+          }
+        },
+        "relationship_graph": {
+          "type": "object",
+          "description": "Optional graph structure showing broker → vendor relationships.",
+          "additionalProperties": true
+        }
+      },
+      "required": ["vendor_list"]
+    },
+    "profile": {
+      "$ref": "https://yo-ai.ai/schemas/profile.schema.json"
+    },
+    "profilePatch": {
+      "$ref": "https://yo-ai.ai/schemas/profile.patch.schema.json"
+    },
+    "governanceLabels": {
+      "$ref": "https://yo-ai.ai/schemas/governanceLabels.schema.json"
+    }
+  },
+  "required": ["result"]
+}

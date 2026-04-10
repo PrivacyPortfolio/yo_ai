@@ -1,0 +1,27 @@
+{
+  "$id": "https://yo-ai.ai/schemas/compliance-standard.get.input.schema.json",
+  "title": "Compliance-Standard.Get.Input",
+  "description": "Profile-aware input for the Compliance-Standard.Get capability.",
+  "type": "object",
+  "properties": {
+    "profile": {
+      "$ref": "https://yo-ai.ai/schemas/profile.schema.json"
+    },
+    "profilePatch": {
+      "$ref": "https://yo-ai.ai/schemas/profile.patch.schema.json"
+    },
+    "payload": {
+      "type": "object",
+      "description": "Capability-specific input fields for retrieving a compliance standard.",
+      "properties": {
+        "standard_ref": {
+          "type": "string",
+          "description": "Identifier for the standard or clause (e.g., GDPR-ART5, CCPA-1798.100, ISO27001-A.5.1)."
+        }
+      },
+      "required": ["standard_ref"],
+      "additionalProperties": false
+    }
+  },
+  "required": ["payload"]
+}

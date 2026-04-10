@@ -1,0 +1,32 @@
+{
+  "$id": "https://yo-ai.ai/schemas/complaint.publish.output.schema.json",
+  "title": "Complaint.Publish.Output",
+  "description": "Profile-aware output for the Complaint.Publish capability.",
+  "type": "object",
+  "properties": {
+    "result": {
+      "type": "object",
+      "properties": {
+        "publication_id": {
+          "type": "string",
+          "description": "Unique identifier for the publication event."
+        },
+        "status": {
+          "type": "string",
+          "description": "Status of the publication process."
+        }
+      },
+      "required": ["publication_id", "status"]
+    },
+    "profile": {
+      "$ref": "https://yo-ai.ai/schemas/profile.schema.json"
+    },
+    "profilePatch": {
+      "$ref": "https://yo-ai.ai/schemas/profile.patch.schema.json"
+    },
+    "governanceLabels": {
+      "$ref": "https://yo-ai.ai/schemas/governanceLabels.schema.json"
+    }
+  },
+  "required": ["result"]
+}

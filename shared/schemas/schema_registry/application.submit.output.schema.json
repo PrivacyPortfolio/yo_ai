@@ -1,0 +1,42 @@
+{
+  "$id": "https://yo-ai.ai/schemas/application.submit.output.schema.json",
+  "title": "Application.Submit.Output",
+  "description": "Profile-aware output for the Application.Submit capability.",
+  "type": "object",
+  "properties": {
+    "result": {
+      "type": "object",
+      "description": "Primary capability output fields.",
+      "properties": {
+        "submission_id": {
+          "type": "string",
+          "description": "Unique identifier for the application submission."
+        },
+        "status": {
+          "type": "string",
+          "enum": ["submitted", "queued", "failed"]
+        },
+        "ats_tracking_id": {
+          "type": "string",
+          "description": "Tracking ID assigned by the ATS, if available."
+        },
+        "delivery_metadata": {
+          "type": "object",
+          "description": "Metadata about submission delivery.",
+          "additionalProperties": true
+        }
+      },
+      "required": ["submission_id", "status"]
+    },
+    "profile": {
+      "$ref": "https://yo-ai.ai/schemas/profile.schema.json"
+    },
+    "profilePatch": {
+      "$ref": "https://yo-ai.ai/schemas/profile.patch.schema.json"
+    },
+    "governanceLabels": {
+      "$ref": "https://yo-ai.ai/schemas/governanceLabels.schema.json"
+    }
+  },
+  "required": ["result"]
+}

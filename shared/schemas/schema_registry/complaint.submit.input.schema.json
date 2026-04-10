@@ -1,0 +1,30 @@
+{
+  "$id": "https://yo-ai.ai/schemas/complaint.submit.input.schema.json",
+  "title": "Complaint.Submit.Input",
+  "description": "Profile-aware input for the Complaint.Submit capability.",
+  "type": "object",
+  "properties": {
+    "profile": {
+      "$ref": "https://yo-ai.ai/schemas/profile.schema.json"
+    },
+    "profilePatch": {
+      "$ref": "https://yo-ai.ai/schemas/profile.patch.schema.json"
+    },
+    "payload": {
+      "type": "object",
+      "description": "Capability-specific input fields for submitting a complaint.",
+      "properties": {
+        "complaint_id": {
+          "type": "string",
+          "description": "Identifier of the complaint being submitted."
+        },
+        "enforcement_agency": {
+          "type": "string",
+          "description": "Target enforcement agency."
+        }
+      },
+      "required": ["complaint_id", "enforcement_agency"]
+    }
+  },
+  "required": ["payload"]
+}

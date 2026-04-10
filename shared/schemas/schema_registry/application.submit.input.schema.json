@@ -1,0 +1,62 @@
+{
+  "$id": "https://yo-ai.ai/schemas/application.submit.input.schema.json",
+  "title": "Application.Submit.Input",
+  "description": "Profile-aware input for the Application.Submit capability.",
+  "type": "object",
+  "properties": {
+    "profile": {
+      "$ref": "https://yo-ai.ai/schemas/profile.schema.json",
+      "description": "Optional reference to the applicant profile to load."
+    },
+    "profilePatch": {
+      "$ref": "https://yo-ai.ai/schemas/profile.patch.schema.json",
+      "description": "Optional modifications to apply to the loaded profile."
+    },
+    "payload": {
+      "type": "object",
+      "description": "Capability-specific input fields for Application.Submit.",
+      "properties": {
+        "job_posting_ref": {
+          "type": "string",
+          "description": "Reference to the job posting being applied to."
+        },
+        "resume_bundle": {
+          "type": "object",
+          "description": "Minimized resume and skills bundle from Data-Steward.",
+          "additionalProperties": true
+        },
+        "cover_letter": {
+          "type": "string",
+          "description": "Optional cover letter text."
+        },
+        "attachments": {
+          "type": "array",
+          "description": "Optional attachments such as PDFs, portfolios, or writing samples.",
+          "items": {
+            "type": "object",
+            "properties": {
+              "filename": { "type": "string" },
+              "content": {
+                "type": "string",
+                "contentEncoding": "base64",
+                "contentMediaType": "application/octet-stream"
+              }
+            }
+          }
+        },
+        "ats_metadata": {
+          "type": "object",
+          "description": "Applicant Tracking System metadata (e.g., submission channel, form fields).",
+          "additionalProperties": true
+        },
+        "context": {
+          "type": "object",
+          "description": "Optional context from the requesting agent.",
+          "additionalProperties": true
+        }
+      },
+      "required": ["job_posting_ref", "resume_bundle"]
+    }
+  },
+  "required": ["payload"]
+}

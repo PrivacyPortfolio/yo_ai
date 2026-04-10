@@ -1,0 +1,26 @@
+{
+  "$id": "https://yo-ai.ai/schemas/budget-check.input.schema.json",
+  "title": "Budget.Check.Input",
+  "description": "Profile-aware input for the Budget.Check capability.",
+  "type": "object",
+  "properties": {
+    "profile": {
+      "$ref": "https://yo-ai.ai/schemas/profile.schema.json",
+      "description": "Optional reference to the subject/org profile to load."
+    },
+    "profilePatch": {
+      "$ref": "https://yo-ai.ai/schemas/profile.patch.schema.json",
+      "description": "Optional modifications to apply to the loaded profile."
+    },
+    "payload": {
+      "type": "object",
+      "description": "Capability-specific input fields for Budget.Check.",
+      "properties": {
+        "amount": { "type": "number" },
+        "currency": { "type": "string" }
+      },
+      "required": ["amount", "currency"]
+    }
+  },
+  "required": ["payload"]
+}

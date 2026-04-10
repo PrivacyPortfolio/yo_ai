@@ -1,0 +1,42 @@
+{
+  "$id": "https://yo-ai.ai/schemas/dark-web-evidence.collect.output.schema.json",
+  "title": "Dark-Web-Evidence.Collect.Output",
+  "description": "Profile-aware output for the Dark-Web-Evidence.Collect capability.",
+  "type": "object",
+  "properties": {
+    "result": {
+      "type": "object",
+      "description": "Primary capability output fields.",
+      "properties": {
+        "evidence_id": {
+          "type": "string",
+          "description": "Unique identifier for the captured evidence record."
+        },
+        "status": {
+          "type": "string",
+          "description": "Status of the evidence capture process.",
+          "enum": ["captured", "failed", "partial"]
+        },
+        "metadata": {
+          "type": "object",
+          "description": "Structured metadata extracted from the listing.",
+          "additionalProperties": true
+        }
+      },
+      "required": [
+        "evidence_id",
+        "status"
+      ]
+    },
+    "profile": {
+      "$ref": "#/components/schemas/Profile"
+    },
+    "profilePatch": {
+      "$ref": "#/components/schemas/ProfilePatch"
+    },
+    "governanceLabels": {
+      "$ref": "#/components/schemas/governanceLabels"
+    }
+  },
+  "required": ["result"]
+}

@@ -1,0 +1,30 @@
+{
+  "$id": "https://yo-ai.ai/schemas/decision-outcome.analyze.output.schema.json",
+  "title": "Decision-Outcome.Analyze.Output",
+  "description": "Profile-aware output for the Decision-Outcome.Analyze capability.",
+  "type": "object",
+  "properties": {
+    "result": {
+      "type": "object",
+      "description": "Primary capability output fields.",
+      "properties": {
+        "analysis": { "type": "string" },
+        "supporting_evidence": {
+          "type": "array",
+          "items": { "type": "object" }
+        }
+      },
+      "required": ["analysis", "supporting_evidence"]
+    },
+    "profile": {
+      "$ref": "https://yo-ai.ai/schemas/profile.schema.json"
+    },
+    "profilePatch": {
+      "$ref": "https://yo-ai.ai/schemas/profile.patch.schema.json"
+    },
+    "governanceLabels": {
+      "$ref": "https://yo-ai.ai/schemas/governanceLabels.schema.json"
+    }
+  },
+  "required": ["result"]
+}

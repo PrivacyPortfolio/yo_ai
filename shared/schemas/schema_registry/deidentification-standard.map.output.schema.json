@@ -1,0 +1,49 @@
+{
+  "$id": "https://yo-ai.ai/schemas/deidentification-standard.map.output.schema.json",
+  "title": "Deidentification-Standard.Map.Output",
+  "description": "Profile-aware output for the Deidentification-Standard.Map capability.",
+  "type": "object",
+  "properties": {
+    "result": {
+      "type": "object",
+      "properties": {
+        "standard_mappings": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "standard": { "type": "string" },
+              "compliance_status": {
+                "type": "string",
+                "enum": ["compliant", "partially_compliant", "non_compliant"]
+              },
+              "gaps": {
+                "type": "array",
+                "items": { "type": "string" }
+              },
+              "required_mitigations": {
+                "type": "array",
+                "items": { "type": "string" }
+              }
+            }
+          }
+        },
+        "overall_posture": {
+          "type": "string",
+          "enum": ["strong", "moderate", "weak"]
+        }
+      },
+      "required": ["standard_mappings"]
+    },
+    "profile": {
+      "$ref": "https://yo-ai.ai/schemas/profile.schema.json"
+    },
+    "profilePatch": {
+      "$ref": "https://yo-ai.ai/schemas/profile.patch.schema.json"
+    },
+    "governanceLabels": {
+      "$ref": "https://yo-ai.ai/schemas/governanceLabels.schema.json"
+    }
+  },
+  "required": ["result"]
+}

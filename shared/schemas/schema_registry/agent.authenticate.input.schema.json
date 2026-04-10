@@ -1,0 +1,31 @@
+{
+  "$id": "https://yo-ai.ai/schemas/agent.authenticate.input.schema.json",
+  "title": "Agent.Authenticate.Input",
+  "description": "Profile-aware input for the Agent.Authenticate capability.",
+  "type": "object",
+  "properties": {
+    "profile": {
+      "$ref": "https://yo-ai.ai/schemas/profile.schema.json",
+      "description": "Optional reference to the subject/org profile to load."
+    },
+    "profilePatch": {
+      "$ref": "https://yo-ai.ai/schemas/profile.patch.schema.json",
+      "description": "Optional modifications to apply to the loaded profile."
+    },
+    "payload": {
+      "type": "object",
+      "description": "Capability-specific input fields for Agent.Authenticate.",
+      "properties": {
+        "registration_identifier_ref": {
+          "type": "string"
+        },
+        "log_refs": {
+          "type": "array",
+          "items": { "type": "string" }
+        }
+      },
+      "required": ["registration_identifier_ref", "log_refs"]
+    }
+  },
+  "required": ["payload"]
+}

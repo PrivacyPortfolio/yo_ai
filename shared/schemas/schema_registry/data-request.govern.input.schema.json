@@ -1,0 +1,34 @@
+{
+  "$id": "https://yo-ai.ai/schemas/data-steward/data-request.govern.input.schema.json",
+  "title": "Data-Request.Govern.Input",
+  "description": "Profile-aware input for evaluating an agent’s intended use of personal data before granting access to the personal data vault.",
+  "type": "object",
+  "properties": {
+    "profile": {
+      "$ref": "https://yo-ai.ai/schemas/profile.schema.json",
+      "description": "Optional reference to the subject/org profile to load."
+    },
+    "profilePatch": {
+      "$ref": "https://yo-ai.ai/schemas/profile.patch.schema.json",
+      "description": "Optional modifications to apply to the loaded profile."
+    },
+    "payload": {
+      "type": "object",
+      "description": "Capability-specific input fields for Data-Request.Govern.",
+      "properties": {
+        "requestingAgentId": { "type": "string" },
+        "intendedUse": { "type": "string" },
+        "requestedData": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "context": {
+          "type": "object",
+          "additionalProperties": true
+        }
+      },
+      "required": ["requestingAgentId", "intendedUse"]
+    }
+  },
+  "required": ["payload"]
+}

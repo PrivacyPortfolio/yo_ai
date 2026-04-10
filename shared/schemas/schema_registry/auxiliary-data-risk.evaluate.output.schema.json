@@ -1,0 +1,47 @@
+{
+  "$id": "https://yo-ai.ai/schemas/auxiliary-data-risk.evaluate.output.schema.json",
+  "title": "Auxiliary-Data-Risk.Evaluate.Output",
+  "description": "Profile-aware output for the Auxiliary-Data-Risk.Evaluate capability.",
+  "type": "object",
+  "properties": {
+    "result": {
+      "type": "object",
+      "properties": {
+        "risk_score": { "type": "number" },
+        "risk_level": {
+          "type": "string",
+          "enum": ["low", "medium", "high", "critical"]
+        },
+        "linkage_vectors": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "aux_source": { "type": "string" },
+              "matching_fields": {
+                "type": "array",
+                "items": { "type": "string" }
+              },
+              "estimated_match_rate": { "type": "number" }
+            }
+          }
+        },
+        "recommended_mitigations": {
+          "type": "array",
+          "items": { "type": "string" }
+        }
+      },
+      "required": ["risk_score", "risk_level"]
+    },
+    "profile": {
+      "$ref": "https://yo-ai.ai/schemas/profile.schema.json"
+    },
+    "profilePatch": {
+      "$ref": "https://yo-ai.ai/schemas/profile.patch.schema.json"
+    },
+    "governanceLabels": {
+      "$ref": "https://yo-ai.ai/schemas/governanceLabels.schema.json"
+    }
+  },
+  "required": ["result"]
+}

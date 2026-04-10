@@ -1,0 +1,53 @@
+{
+  "$id": "https://yo-ai.ai/schemas/deidentification-techniques.apply.input.schema.json",
+  "title": "Deidentification-Techniques.Apply.Input",
+  "description": "Profile-aware input for the Deidentification-Techniques.Apply capability.",
+  "type": "object",
+  "properties": {
+    "profile": {
+      "$ref": "https://yo-ai.ai/schemas/profile.schema.json",
+      "description": "Optional reference to the subject/org profile to load."
+    },
+    "profilePatch": {
+      "$ref": "https://yo-ai.ai/schemas/profile.patch.schema.json",
+      "description": "Optional modifications to apply to the loaded profile."
+    },
+    "payload": {
+      "type": "object",
+      "description": "Capability-specific input fields for applying de-identification techniques.",
+      "properties": {
+        "dataset": {
+          "type": "array",
+          "description": "Tabular dataset represented as an array of objects.",
+          "items": { "type": "object", "additionalProperties": true }
+        },
+        "techniques": {
+          "type": "array",
+          "description": "List of de-identification techniques to apply.",
+          "items": {
+            "type": "object",
+            "required": ["name"],
+            "properties": {
+              "name": {
+                "type": "string",
+                "description": "Name of the technique (e.g., 'mask', 'generalize', 'bucket', 'hash')."
+              },
+              "parameters": {
+                "type": "object",
+                "description": "Technique-specific configuration parameters.",
+                "additionalProperties": true
+              }
+            }
+          }
+        },
+        "context": {
+          "type": "object",
+          "description": "Optional context from the requesting agent.",
+          "additionalProperties": true
+        }
+      },
+      "required": ["dataset", "techniques"]
+    }
+  },
+  "required": ["payload"]
+}

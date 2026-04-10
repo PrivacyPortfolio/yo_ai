@@ -1,0 +1,41 @@
+{
+  "$id": "https://yo-ai.ai/schemas/agent.register.input.schema.json",
+  "title": "Agent.Register.Input",
+  "description": "Profile-aware input for the Agent.Register capability.",
+  "type": "object",
+  "properties": {
+    "profile": {
+      "$ref": "https://yo-ai.ai/schemas/profile.schema.json",
+      "description": "Optional reference to the subject/org profile to load."
+    },
+    "profilePatch": {
+      "$ref": "https://yo-ai.ai/schemas/profile.patch.schema.json",
+      "description": "Optional modifications to apply to the loaded profile."
+    },
+    "payload": {
+      "type": "object",
+      "description": "Capability-specific input fields for Agent.Register.",
+      "properties": {
+        "identifier_ref": {
+          "type": "string",
+          "description": "Opaque reference to the agent being registered."
+        },
+        "subscriber_ref": {
+          "type": "string",
+          "description": "Reference to the subscriber associated with the agent."
+        },
+        "org_ref": {
+          "type": "string",
+          "description": "Reference to the organization associated with the agent."
+        },
+        "log_refs": {
+          "type": "array",
+          "description": "Log references relevant to the registration decision.",
+          "items": { "type": "string" }
+        }
+      },
+      "required": ["identifier_ref", "subscriber_ref", "log_refs"]
+    }
+  },
+  "required": ["payload"]
+}

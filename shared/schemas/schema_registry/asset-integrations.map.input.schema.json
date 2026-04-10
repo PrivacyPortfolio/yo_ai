@@ -1,0 +1,31 @@
+{
+  "$id": "https://yo-ai.ai/schemas/asset-integrations.map.input.schema.json",
+  "title": "Asset-Integrations.Map.Input",
+  "description": "Profile-aware input for the Asset-Integrations.Map capability.",
+  "type": "object",
+  "properties": {
+    "profile": {
+      "$ref": "https://yo-ai.ai/schemas/profile.schema.json",
+      "description": "Optional reference to the org or system profile to load."
+    },
+    "profilePatch": {
+      "$ref": "https://yo-ai.ai/schemas/profile.patch.schema.json",
+      "description": "Optional modifications to apply to the loaded profile."
+    },
+    "payload": {
+      "type": "object",
+      "description": "Capability-specific input fields for Asset-Integrations.Map.",
+      "properties": {
+        "org_ref": {
+          "type": "string"
+        },
+        "asset_names": {
+          "type": "array",
+          "items": { "type": "string" }
+        }
+      },
+      "required": ["org_ref", "asset_names"]
+    }
+  },
+  "required": ["payload"]
+}

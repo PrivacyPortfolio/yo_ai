@@ -1,0 +1,42 @@
+{
+  "$id": "https://yo-ai.ai/schemas/consulting-services.pitch.output.schema.json",
+  "title": "Consulting-Services.Pitch.Output",
+  "description": "Profile-aware output for the Consulting-Services.Pitch capability.",
+  "type": "object",
+  "properties": {
+    "result": {
+      "type": "object",
+      "description": "Primary capability output fields.",
+      "properties": {
+        "pitch_id": {
+          "type": "string",
+          "description": "Unique identifier for the pitch."
+        },
+        "status": {
+          "type": "string",
+          "enum": ["sent", "queued", "failed"]
+        },
+        "delivery_metadata": {
+          "type": "object",
+          "description": "Metadata about pitch delivery (e.g., email, API submission).",
+          "additionalProperties": true
+        },
+        "client_response_ref": {
+          "type": "string",
+          "description": "Optional reference to client response or follow-up workflow."
+        }
+      },
+      "required": ["pitch_id", "status"]
+    },
+    "profile": {
+      "$ref": "https://yo-ai.ai/schemas/profile.schema.json"
+    },
+    "profilePatch": {
+      "$ref": "https://yo-ai.ai/schemas/profile.patch.schema.json"
+    },
+    "governanceLabels": {
+      "$ref": "https://yo-ai.ai/schemas/governanceLabels.schema.json"
+    }
+  },
+  "required": ["result"]
+}

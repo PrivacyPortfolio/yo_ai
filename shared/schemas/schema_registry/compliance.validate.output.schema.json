@@ -1,0 +1,62 @@
+{
+  "$id": "https://yo-ai.ai/schemas/compliance.validate.output.schema.json",
+  "title": "Compliance.Validate.Output",
+  "description": "Profile-aware output for the Compliance.Validate capability.",
+  "type": "object",
+  "properties": {
+    "result": {
+      "type": "object",
+      "description": "Primary capability output fields.",
+      "properties": {
+        "validation_id": { "type": "string" },
+        "org_ref": { "type": "string" },
+        "results": {
+          "type": "array",
+          "description": "Per-standard compliance rationale.",
+          "items": {
+            "type": "object",
+            "properties": {
+              "standard_ref": { "type": "string" },
+              "compliance_status": {
+                "type": "string",
+                "enum": ["unknown", "compliant", "non_compliant", "partial"]
+              },
+              "rationale": { "type": "string" },
+              "evidence_refs": {
+                "type": "array",
+                "items": { "type": "string" }
+              },
+              "assumptions": {
+                "type": "array",
+                "items": { "type": "string" }
+              },
+              "limitations": {
+                "type": "array",
+                "items": { "type": "string" }
+              }
+            },
+            "required": ["standard_ref", "compliance_status", "rationale"]
+          }
+        },
+        "summary": { "type": "string" },
+        "recommendations": {
+          "type": "array",
+          "items": { "type": "string" }
+        }
+      },
+      "required": ["validation_id", "org_ref", "results"],
+      "additionalProperties": false
+    },
+    "profile": {
+      "$ref": "https://yo-ai.ai/schemas/profile.schema.json",
+      "description": "Optional updated profile after applying profilePatch."
+    },
+    "profilePatch": {
+      "$ref": "https://yo-ai.ai/schemas/profile.patch.schema.json"
+    },
+    "governanceLabels": {
+      "$ref": "https://yo-ai.ai/schemas/governanceLabels.schema.json"
+    }
+  },
+  "required": ["result"]
+}

@@ -1,0 +1,45 @@
+{
+  "$id": "https://yo-ai.ai/schemas/data-for-purpose.minimize.input.schema.json",
+  "title": "Data-For-Purpose.Minimize.Input",
+  "description": "Profile-aware input for the Data-For-Purpose.Minimize capability.",
+  "type": "object",
+  "properties": {
+    "profile": {
+      "$ref": "https://yo-ai.ai/schemas/profile.schema.json"
+    },
+    "profilePatch": {
+      "$ref": "https://yo-ai.ai/schemas/profile.patch.schema.json"
+    },
+    "payload": {
+      "type": "object",
+      "properties": {
+        "dataset_schema": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["name"],
+            "properties": {
+              "name": { "type": "string" },
+              "type": { "type": "string" },
+              "sensitivity": {
+                "type": "string",
+                "enum": ["low", "medium", "high", "sensitive", "special_category"]
+              }
+            }
+          }
+        },
+        "intended_purpose": { "type": "string" },
+        "regulatory_frameworks": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "context": {
+          "type": "object",
+          "additionalProperties": true
+        }
+      },
+      "required": ["dataset_schema", "intended_purpose"]
+    }
+  },
+  "required": ["payload"]
+}

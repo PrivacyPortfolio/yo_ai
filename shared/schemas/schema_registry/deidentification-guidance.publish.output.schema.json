@@ -1,0 +1,38 @@
+{
+  "$id": "https://yo-ai.ai/schemas/deidentification-guidance.publish.output.schema.json",
+  "title": "Deidentification-Guidance.Publish.Output",
+  "description": "Profile-aware output for the Deidentification-Guidance.Publish capability.",
+  "type": "object",
+  "properties": {
+    "result": {
+      "type": "object",
+      "properties": {
+        "guidance_id": { "type": "string" },
+        "guidance_text": { "type": "string" },
+        "structured_recommendations": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "compliance_mapping": {
+          "type": "object",
+          "additionalProperties": true
+        },
+        "residual_risk": {
+          "type": "string",
+          "enum": ["low", "medium", "high"]
+        }
+      },
+      "required": ["guidance_id", "guidance_text"]
+    },
+    "profile": {
+      "$ref": "https://yo-ai.ai/schemas/profile.schema.json"
+    },
+    "profilePatch": {
+      "$ref": "https://yo-ai.ai/schemas/profile.patch.schema.json"
+    },
+    "governanceLabels": {
+      "$ref": "https://yo-ai.ai/schemas/governanceLabels.schema.json"
+    }
+  },
+  "required": ["result"]
+}

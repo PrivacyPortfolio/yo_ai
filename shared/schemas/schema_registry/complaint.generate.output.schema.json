@@ -1,0 +1,34 @@
+{
+  "$id": "https://yo-ai.ai/schemas/complaint.generate.output.schema.json",
+  "title": "Complaint.Generate.Output",
+  "description": "Profile-aware output for the Complaint.Generate capability.",
+  "type": "object",
+  "properties": {
+    "result": {
+      "type": "object",
+      "description": "Primary capability output fields.",
+      "properties": {
+        "complaint_id": {
+          "type": "string",
+          "description": "Unique identifier for the generated complaint."
+        },
+        "complaint_document": {
+          "type": "object",
+          "description": "Structured complaint document produced by the generator.",
+          "additionalProperties": true
+        }
+      },
+      "required": ["complaint_id"]
+    },
+    "profile": {
+      "$ref": "https://yo-ai.ai/schemas/profile.schema.json"
+    },
+    "profilePatch": {
+      "$ref": "https://yo-ai.ai/schemas/profile.patch.schema.json"
+    },
+    "governanceLabels": {
+      "$ref": "https://yo-ai.ai/schemas/governanceLabels.schema.json"
+    }
+  },
+  "required": ["result"]
+}

@@ -1,0 +1,54 @@
+{
+  "$id": "https://yo-ai.ai/schemas/auxiliary-data-risk.evaluate.input.schema.json",
+  "title": "Auxiliary-Data-Risk.Evaluate.Input",
+  "description": "Profile-aware input for the Auxiliary-Data-Risk.Evaluate capability.",
+  "type": "object",
+  "properties": {
+    "profile": {
+      "$ref": "https://yo-ai.ai/schemas/profile.schema.json"
+    },
+    "profilePatch": {
+      "$ref": "https://yo-ai.ai/schemas/profile.patch.schema.json"
+    },
+    "payload": {
+      "type": "object",
+      "description": "Capability-specific input fields for auxiliary-data risk evaluation.",
+      "properties": {
+        "dataset": {
+          "type": "array",
+          "description": "Primary dataset being evaluated.",
+          "items": { "type": "object", "additionalProperties": true }
+        },
+        "auxiliary_sources": {
+          "type": "array",
+          "description": "Auxiliary datasets or sources that could be used for linkage.",
+          "items": {
+            "type": "object",
+            "required": ["name"],
+            "properties": {
+              "name": { "type": "string" },
+              "schema": {
+                "type": "array",
+                "items": { "type": "string" }
+              },
+              "sample_records": {
+                "type": "array",
+                "items": { "type": "object", "additionalProperties": true }
+              }
+            }
+          }
+        },
+        "quasi_identifiers": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "context": {
+          "type": "object",
+          "additionalProperties": true
+        }
+      },
+      "required": ["dataset", "auxiliary_sources"]
+    }
+  },
+  "required": ["payload"]
+}

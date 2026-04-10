@@ -1,0 +1,27 @@
+{
+  "$id": "https://yo-ai.ai/schemas/budget-check.output.schema.json",
+  "title": "Budget.Check.Output",
+  "description": "Profile-aware output for the Budget.Check capability.",
+  "type": "object",
+  "properties": {
+    "result": {
+      "type": "object",
+      "description": "Primary capability output fields.",
+      "properties": {
+        "sufficient": { "type": "boolean" },
+        "remainingBudget": { "type": "number" }
+      },
+      "required": ["sufficient"]
+    },
+    "profile": {
+      "$ref": "https://yo-ai.ai/schemas/profile.schema.json"
+    },
+    "profilePatch": {
+      "$ref": "https://yo-ai.ai/schemas/profile.patch.schema.json"
+    },
+    "governanceLabels": {
+      "$ref": "https://yo-ai.ai/schemas/governanceLabels.schema.json"
+    }
+  },
+  "required": ["result"]
+}

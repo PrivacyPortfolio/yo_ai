@@ -1,0 +1,31 @@
+{
+  "$id": "https://yo-ai.ai/schemas/decision-diary.manage.output.schema.json",
+  "title": "Decision-Diary.Manage.Output",
+  "description": "Profile-aware output for the Decision-Diary.Manage capability.",
+  "type": "object",
+  "properties": {
+    "result": {
+      "type": "object",
+      "description": "Primary capability output fields.",
+      "properties": {
+        "decision_ref": { "type": "string" },
+        "log_ref": { "type": "string" },
+        "decision_factors": {
+          "type": "array",
+          "items": { "type": "string" }
+        }
+      },
+      "required": ["decision_ref", "log_ref", "decision_factors"]
+    },
+    "profile": {
+      "$ref": "https://yo-ai.ai/schemas/profile.schema.json"
+    },
+    "profilePatch": {
+      "$ref": "https://yo-ai.ai/schemas/profile.patch.schema.json"
+    },
+    "governanceLabels": {
+      "$ref": "https://yo-ai.ai/schemas/governanceLabels.schema.json"
+    }
+  },
+  "required": ["result"]
+}

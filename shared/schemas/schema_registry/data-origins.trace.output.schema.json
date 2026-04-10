@@ -1,0 +1,39 @@
+{
+  "$id": "https://yo-ai.ai/schemas/data-origins.trace.output.schema.json",
+  "title": "Data-Origins.Trace.Output",
+  "description": "Profile-aware output for the Data-Origins.Trace capability.",
+  "type": "object",
+  "properties": {
+    "result": {
+      "type": "object",
+      "description": "Primary capability output fields.",
+      "properties": {
+        "suspected_origin": {
+          "type": "string",
+          "description": "Organization most likely responsible for leaking or mishandling the data."
+        },
+        "confidence": {
+          "type": "string",
+          "description": "Confidence level in the origin inference.",
+          "enum": ["low", "medium", "high"]
+        },
+        "supporting_indicators": {
+          "type": "array",
+          "description": "Indicators used to infer the origin (e.g., schema match, field patterns, vendor signatures).",
+          "items": { "type": "string" }
+        }
+      },
+      "required": ["suspected_origin", "confidence"]
+    },
+    "profile": {
+      "$ref": "https://yo-ai.ai/schemas/profile.schema.json"
+    },
+    "profilePatch": {
+      "$ref": "https://yo-ai.ai/schemas/profile.patch.schema.json"
+    },
+    "governanceLabels": {
+      "$ref": "https://yo-ai.ai/schemas/governanceLabels.schema.json"
+    }
+  },
+  "required": ["result"]
+}

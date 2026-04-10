@@ -1,0 +1,38 @@
+{
+  "$id": "https://yo-ai.ai/schemas/data-steward/data-request.govern.output.schema.json",
+  "title": "Data-Request.Govern.Output",
+  "description": "Profile-aware output representing the governance decision and any required controls or policy references.",
+  "type": "object",
+  "properties": {
+    "result": {
+      "type": "object",
+      "description": "Primary capability output fields.",
+      "properties": {
+        "decision": {
+          "type": "string",
+          "enum": ["allow", "deny", "escalate"]
+        },
+        "reason": { "type": "string" },
+        "policyRefs": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "requiredControls": {
+          "type": "array",
+          "items": { "type": "string" }
+        }
+      },
+      "required": ["decision"]
+    },
+    "profile": {
+      "$ref": "https://yo-ai.ai/schemas/profile.schema.json"
+    },
+    "profilePatch": {
+      "$ref": "https://yo-ai.ai/schemas/profile.patch.schema.json"
+    },
+    "governanceLabels": {
+      "$ref": "https://yo-ai.ai/schemas/governanceLabels.schema.json"
+    }
+  },
+  "required": ["result"]
+}
