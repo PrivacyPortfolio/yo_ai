@@ -42,18 +42,18 @@ The platform is organized around four core principles:
 4.	Explainable — design intent, training materials, and reasoning traces
 
 The repository is structured into clear subsystems:
-project_repo/
+
+yo_ai/
 │
-├── agents/           # Agent implementations (runtime + capabilities)
-├── api/              # Public API contracts (OpenAPI)
-├── campaigns/        # Executable onboarding + scenario examples
-├── core/             # Platform runtime (routing, tasks, observability, messages)
-├── explainability/   # Training manuals, reasoning traces, design intent
-├── scripts/          # Build, deploy, validate
-├── shared/           # Governance artifacts (non-deployable)
-├── tests/            # Independently deployable tool bundles
-└── tools/            # Unit + integration tests
-Each subsystem is described below.
+├── agents/          # Agent implementations (runtime + capabilities)
+├── api/             # Public API contracts (OpenAPI)
+├── campaigns/       # Executable onboarding + scenario examples
+├── core/            # Platform runtime (routing, tasks, observability, messages)
+├── explainability/  # Training manuals, reasoning traces, design intent
+├── scripts/         # Build, deploy, validate
+├── shared/          # Governance artifacts (non-deployable)
+├── tests/           # Unit + integration tests
+└── tools/           # Independently deployable tool bundlesEach subsystem is described below.
 ________________________________________
 🤖 Agents (agents/)
 Agents are the core actors of the Yo ai ecosystem.
