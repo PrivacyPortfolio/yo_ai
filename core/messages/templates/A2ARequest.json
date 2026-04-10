@@ -1,0 +1,32 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.com/schemas/a2a-request.json",
+  "title": "A2ARequest",
+  "description": "Discriminated union of all A2A request types",
+  "type": "object",
+  "discriminator": {
+    "propertyName": "method",
+    "mapping": {
+      "send_message": "https://example.com/schemas/send-message-request.json",
+      "stream_message": "https://example.com/schemas/stream-message-request.json",
+      "get_task": "https://example.com/schemas/get-task-request.json",
+      "cancel_task": "https://example.com/schemas/cancel-task-request.json",
+      "set_task_push_notification": "https://example.com/schemas/set-task-push-notification-request.json",
+      "get_task_push_notification": "https://example.com/schemas/get-task-push-notification-request.json",
+      "resubscribe_task": "https://example.com/schemas/resubscribe-task-request.json",
+      "list_task_push_notification_config": "https://example.com/schemas/list-task-push-notification-config-request.json",
+      "delete_task_push_notification_config": "https://example.com/schemas/delete-task-push-notification-config-request.json"
+    }
+  },
+  "oneOf": [
+    { "$ref": "https://example.com/schemas/send-message-request.json" },
+    { "$ref": "https://example.com/schemas/stream-message-request.json" },
+    { "$ref": "https://example.com/schemas/get-task-request.json" },
+    { "$ref": "https://example.com/schemas/cancel-task-request.json" },
+    { "$ref": "https://example.com/schemas/set-task-push-notification-request.json" },
+    { "$ref": "https://example.com/schemas/get-task-push-notification-request.json" },
+    { "$ref": "https://example.com/schemas/resubscribe-task-request.json" },
+    { "$ref": "https://example.com/schemas/list-task-push-notification-config-request.json" },
+    { "$ref": "https://example.com/schemas/delete-task-push-notification-config-request.json" }
+  ]
+}

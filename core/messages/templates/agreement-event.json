@@ -1,0 +1,13 @@
+{
+  "event": "data_processing_agreement",
+  "timestamp": "2025-12-18T08:25:00Z",
+  "subscriberId": "sub-456",
+  "approvedSkills": ["Log-Event"],
+  "conditions": {
+    "scope": "audit-only",
+    "logging": "mandatory",
+    "expiry": "2026-01-01"
+  },
+  "issuedBy": "Data-Steward Agent",
+  "proxy": "Vendor-Manager Agent"
+}

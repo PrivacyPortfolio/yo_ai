@@ -1,0 +1,10 @@
+{
+  "a2a_version": "1.0",
+  "sender": "target_agent",
+  "correlationId": "request_id",
+  "messageType": "Capability.Output",
+  "timestamp": "2025-01-25T14:00:01Z",
+  "body": {
+    "capability.specific.output": "capability.schema.output.value" 
+    }
+}

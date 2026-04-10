@@ -1,0 +1,35 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.com/schemas/v1/a2a-request.json",
+  "title": "A2ARequest_v1",
+  "description": "Standardized A2A v1.0 request union with asynchronous task support",
+  "type": "object",
+  "required": ["method", "params"],
+  "properties": {
+    "method": { "type": "string" },
+    "params": { "type": "object" },
+    "metadata": {
+      "type": "object",
+      "properties": {
+        "taskID": { "type": "string", "format": "uuid" },
+        "correlationID": { "type": "string" }
+      },
+      "required": ["taskID"]
+    }
+  },
+  "discriminator": {
+    "propertyName": "method",
+    "mapping": {
+      "send_message": "https://example.com/schemas/v1/send-message-request.json",
+      "stream_message": "https://example.com/schemas/v1/stream-message-request.json",
+      "get_task": "https://example.com/schemas/v1/get-task-request.json",
+      "cancel_task": "https://example.com/schemas/v1/cancel-task-request.json"
+    }
+  },
+  "oneOf": [
+    { "$ref": "https://example.com/schemas/v1/send-message-request.json" },
+    { "$ref": "https://example.com/schemas/v1/stream-message-request.json" },
+    { "$ref": "https://example.com/schemas/v1/get-task-request.json" },
+    { "$ref": "https://example.com/schemas/v1/cancel-task-request.json" }
+  ]
+}
