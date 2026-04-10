@@ -1,0 +1,251 @@
+{
+    "name": "Compliance-Validator",
+    "description": "Evaluates facts, evidence, and assessments regarding laws, regulations, mandates, policies, and contracts. Produces factual compliance rationales suitable for audit, challenge, or testimony.",
+    "id": "com.privacyportfolio.compliance-validator",
+    "provider": {
+        "organization": "PrivacyPortfolio",
+        "url": "https://www.PrivacyPortfolio.com"
+        },
+    "iconUrl": "https://privacyportfolio.com/agent-directory/compliance-validator/compliance-validator-agent-icon",
+    "protocolVersion": "1.0.0",
+    "documentationUrl": "https://privacyportfolio.com/agent-directory/compliance-validator/auth/Compliance-Validator-ExtendedAgentCard.md",
+    "supportedInterfaces": [
+      {
+        "url": "https://privacyportfolio.com/agents/compliance_validator/a2a",
+        "protocolBinding": "JSONRPC",
+        "protocolVersion": "1.0"
+      }
+    ],
+    "supportedInterfaces": [
+      {      "url": "https://privacyportfolio.com/agents/compliance_validator/a2a",
+        "protocolBinding": "JSONRPC_HTTP",      "protocolVersion": "1.0"    },
+      {      "url": "https://privacyportfolio.com/agents/compliance_validator/mesh",
+        "protocolBinding": "RPC",      "protocolVersion": "1.0"    },
+      {      "url": "https://privacyportfolio.com/agents/compliance_validator/api",
+        "protocolBinding": "OPENAI_API",      "protocolVersion": "1.0"    },
+      {      "url": "https://privacyportfolio.com/agents/compliance_validator/app",
+        "protocolBinding": "MCP",      "protocolVersion": "1.0"    },
+      {      "url": "https://privacyportfolio.com/agents/compliance_validator/op",
+        "protocolBinding": "REST",      "protocolVersion": "1.0"    }
+    ], 
+    "capabilities": {
+        "streaming": true,
+        "pushNotifications": true,
+        "exposesTasks": true,
+        "exposesMessages": true,
+        "exposesArtifacts": true,
+        "exposesTools": true
+    },
+    "securitySchemes": {
+        "yo-ai": {
+            "type": "apiKey",
+            "name": "yo-api",
+            "in": "header"
+        }
+    },
+    "security": [{ "yo-ai": [] }],
+    "defaultInputModes": ["application/json", "text/plain"],
+    "defaultOutputModes": ["application/json", "text/plain"],
+    "skills": [
+        {"name": "Compliance-Standard.Get"},
+        {"name": "Compliance.Validate"}
+    ],
+    "x-ai": {
+      "providers": [
+        {
+          "provider": "google-gemini",
+          "model": "gemini-2.0-pro",
+          "api_key_env": "GEMINI_API_KEY",
+          "endpoint": "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-pro:generateContent"
+        },
+        {
+          "provider": "anthropic",
+          "model": "claude-3-sonnet-20240229",
+          "api_key_env": "ANTHROPIC_API_KEY"
+        },
+        {
+          "provider": "openai",
+          "model": "gpt-4-turbo",
+          "api_key_env": "OPENAI_API_KEY"
+        },
+        {
+          "provider": "azure-openai",
+          "deployment": "gpt-4o",
+          "endpoint": "https://my-azure.openai.azure.com",
+          "api_key_env": "AZURE_OPENAI_KEY"
+        }
+      ],
+      "strategy": "failover",
+      "health_ttl_seconds": 300
+    },  
+    "x-capabilities": [
+        {
+            "Compliance-Standard.Get": {
+                "artifacts": [
+                    {"artifact": {"type": "skill", "name": "Compliance-Standard.Get"}},
+                    {"artifact": {"type": "task", "name": "Compliance-Standard.Get"}},
+                    {"artifact": {"type": "tool", "name": "Compliance-Standard.Get"}},
+                    {"artifact": {"type": "handler", "name": "Compliance-Standard.Get"}},
+                    {"artifact": {"type": "messageType", "name": "Compliance-Standard.Get.Input"}},
+                    {"artifact": {"type": "messageType", "name": "Compliance-Standard.Get.Output"}}
+                ]
+            }
+        },
+        {
+            "Compliance.Validate": {
+                "artifacts": [
+                    {"artifact": {"type": "skill", "name": "Compliance.Validate"}},
+                    {"artifact": {"type": "task", "name": "Compliance.Validate"}},
+                    {"artifact": {"type": "tool", "name": "Compliance.Validate"}},
+                    {"artifact": {"type": "handler", "name": "Compliance.Validate"}},
+                    {"artifact": {"type": "messageType", "name": "Compliance.Validate.Input"}},
+                    {"artifact": {"type": "messageType", "name": "Compliance.Validate.Output"}}
+                ]
+            }
+        }
+    ],
+    "x-artifacts": [
+        {
+            "name": "Compliance-Standard.Get",
+            "version": "1.0.0",
+            "artifactType": "skill",
+            "description": "Retrieves a compliance standard, mandate, regulation, law, policy, or contract clause from the agent's knowledge repository.",
+            "tags": ["compliance", "standards", "regulations", "knowledge"],
+            "examples": [
+              "Get GDPR Article 5",
+              "Retrieve CCPA 1798.100",
+              "Fetch ISO27001 A.5.1"
+            ]
+        },
+        {
+            "name": "Compliance-Standard.Get",
+            "version": "1.0.0",
+            "artifactType": "task",
+            "description": "Retrieves a compliance standard, mandate, regulation, law, policy, or contract clause from the agent's knowledge repository.",
+            "tags": ["compliance", "standards", "regulations", "knowledge"],
+            "examples": [
+              "Get GDPR Article 5",
+              "Retrieve CCPA 1798.100",
+              "Fetch ISO27001 A.5.1"
+            ]
+        },
+        {
+            "name": "Compliance-Standard.Get",
+            "version": "1.0.0",
+            "artifactType": "tool",
+            "description": "Retrieves a compliance standard, mandate, regulation, law, policy, or contract clause from the agent's knowledge repository.",
+            "capabilities": ["get"],
+            "path": "/",
+            "provider": {
+                "name": "PrivacyPortfolio",
+                "brand": "Yo-ai",
+                "product": "",
+                "version": "1.0.0",
+                "license": "Yo-ai Internal",
+                "url": "https://yo-ai.ai/docs/Compliance-Standard.Get",
+                "config": {"backend": ""}
+            },
+            "inputSchema": { "$ref": "https://yo-ai.ai/schemas/compliance-standard.get.input.schema.json" },
+            "outputSchema": { "$ref": "https://yo-ai.ai/schemas/compliance-standard.get.output.schema.json" },
+            "auth": "apiKey"
+        },
+        {
+            "name": "Compliance-Standard.Get",
+            "version": "1.0.0",
+            "artifactType": "handler",
+            "description": "Interface for integrating with tool executable.",
+            "path": "/"
+        },
+        {
+            "name": "Compliance-Standard.Get.Input",
+            "version": "1.0.0",
+            "artifactType": "messageType",
+            "schema": { "$ref": "https://yo-ai.ai/schemas/compliance-standard.get.input.schema.json" },
+            "description": "Input schema for Compliance-Standard.Get capability."
+        },
+        {
+            "name": "Compliance-Standard.Get.Output",
+            "version": "1.0.0",
+            "artifactType": "messageType",
+            "schema": { "$ref": "https://yo-ai.ai/schemas/compliance-standard.get.output.schema.json" },
+            "description": "Output schema for Compliance-Standard.Get capability."
+        },
+        {
+            "name": "Compliance.Validate",
+            "version": "1.0.0",
+            "artifactType": "skill",
+            "description": "Evaluates facts and evidence against one or more compliance standards. Produces a factual compliance rationale suitable for audit or testimony.",
+            "tags": [
+                "complianceValidation",
+                "legalMapping",
+                "evidenceAnalysis",
+                "audit",
+                "testimony"
+            ],
+            "examples": [
+                "Validate whether ACME's data handling aligns with GDPR Article 5",
+                "Check if vendor:123 meets CCPA 1798.100 requirements",
+                "Evaluate compliance of risk assessment findings against ISO27001"
+            ]
+        },
+        {
+            "name": "Compliance.Validate",
+            "version": "1.0.0",
+            "artifactType": "task",
+            "description": "Evaluates facts and evidence against one or more compliance standards. Produces a factual compliance rationale suitable for audit or testimony.",
+            "tags": [
+                "complianceValidation",
+                "legalMapping",
+                "evidenceAnalysis",
+                "audit",
+                "testimony"
+            ],
+            "examples": [
+                "Validate whether ACME's data handling aligns with GDPR Article 5",
+                "Check if vendor:123 meets CCPA 1798.100 requirements",
+                "Evaluate compliance of risk assessment findings against ISO27001"
+            ]
+        },
+        {
+            "name": "Compliance.Validate",
+            "version": "1.0.0",
+            "artifactType": "tool",
+            "description": "Evaluates facts and evidence against one or more compliance standards. Produces a factual compliance rationale suitable for audit or testimony.",
+            "capabilities": ["validate"],
+            "path": "/",
+            "provider": {
+                "name": "PrivacyPortfolio",
+                "brand": "Yo-ai",
+                "product": "",
+                "version": "1.0.0",
+                "license": "Yo-ai Internal",
+                "url": "https://yo-ai.ai/docs/Compliance.Validate.html",
+                "config": {"backend": ""}
+            },
+            "inputSchema": { "$ref": "https://yo-ai.ai/schemas/compliance.validate.input.schema.json" },
+            "outputSchema": { "$ref": "https://yo-ai.ai/schemas/compliance.validate.output.schema.json" },
+            "auth": "apiKey"
+        },
+        {
+            "name": "Compliance.Validate",
+            "version": "1.0.0",
+            "artifactType": "handler",
+            "description": "Interface for integrating with tool executable.",
+            "path": "/"
+        },
+        {
+            "name": "Compliance.Validate.Input",
+            "version": "1.0.0",
+            "artifactType": "messageType",
+            "schema": { "$ref": "https://yo-ai.ai/schemas/compliance.validate.input.schema.json" },
+            "description": "Input schema for Compliance.Validate capability."
+        },
+        {
+            "name": "Compliance.Validate.Output",
+            "version": "1.0.0",
+            "artifactType": "messageType",
+            "schema": { "$ref": "https://yo-ai.ai/schemas/compliance.validate.output.schema.json" },
+            "description": "Output schema for Compliance.Validate capability."
+        }
+    ]
+}
