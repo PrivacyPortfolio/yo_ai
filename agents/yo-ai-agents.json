@@ -1,0 +1,108 @@
+{
+  "name": "PrivacyPortfolio's Agent Directory",
+  "description": "Directory of all agents hosted by PrivacyPortfolio on the Yo-ai.ai AI Assurance Platform for A2A discovery and compliance.",
+  "provider": "PrivacyPortfolio",
+  "url": "https://privacyportfolio.com/.well-known/a2a",
+  "protocolVersion": "1.0.0",
+  "documentationUrl": "https://privacyportfolio.com/agent-directory/yo-ai-agents-doc.md",
+  "agents": [
+    {
+      "name": "Decision-Master",
+      "url": "https://privacyportfolio.com/agent-directory/decision-master/agent.json",
+      "id": "com.privacyportfolio.decision-master",
+      "capability_tags": ["decision-events", "decision-factors", "decision-outcomes"],
+      "version": "1.0.0"
+    },
+    {
+      "name": "Door-Keeper",
+      "url": "https://privacyportfolio.com/agent-directory/door-keeper/agent.json"
+    },
+    {
+      "name": "Incident-Responder",
+      "url": "https://privacyportfolio.com/agent-directory/incident-responder/agent.json"
+    },
+    {
+      "name": "Solicitor-General",
+      "url": "https://privacyportfolio.com/agent-directory/solicitor-general/agent.json"
+    },
+    {
+      "name": "The-Advisor",
+      "url": "https://privacyportfolio.com/agent-directory/the-advisor/agent.json"
+    },
+    {
+      "name": "The-Custodian",
+      "url": "https://privacyportfolio.com/agent-directory/the-custodian/agent.json"
+    },
+    {
+      "name": "The-Oracle",
+      "url": "https://privacyportfolio.com/agent-directory/the-oracle/agent.json"
+    },
+    {
+      "name": "The-Sentinel",
+      "url": "https://privacyportfolio.com/agent-directory/the-sentinel/agent.json"
+    },
+    {
+      "name": "Workflow-Builder",
+      "url": "https://privacyportfolio.com/agent-directory/workflow-builder/agent.json"
+    },
+    {
+      "name": "Complaint-Manager",
+      "url": "https://privacyportfolio.com/agent-directory/complaint-manager/agent.json"
+    },
+    {
+      "name": "Compliance-Validator",
+      "url": "https://privacyportfolio.com/agent-directory/compliance-validator/agent.json"
+    },
+    {
+      "name": "DarkWeb-Checker",
+      "url": "https://privacyportfolio.com/agent-directory/darkweb-checker/agent.json"
+    },
+    {
+      "name": "Data-Anonymizer",
+      "url": "https://privacyportfolio.com/agent-directory/data-anonymizer/agent.json"
+    },
+    {
+      "name": "Data-Steward",
+      "url": "https://privacyportfolio.com/agent-directory/data-steward/agent.json"
+    },
+    {
+      "name": "IP-Inspector",
+      "url": "https://privacyportfolio.com/agent-directory/ip-inspector/agent.json"
+    },
+        {
+      "name": "Profile-Builder",
+      "url": "https://privacyportfolio.com/agent-directory/profile-builder/agent.json"
+    },
+    {
+      "name": "Purchasing-Agent",
+      "url": "https://privacyportfolio.com/agent-directory/purchasing-agent/agent.json"
+      "id": "com.privacyportfolio.purchasing-agent",
+      "capability_tags": ["AP2", "AP2.Client", "purchase-intent"],
+      "version": "1.0.0"
+    },
+    {
+      "name": "Rewards-Seeker",
+      "url": "https://privacyportfolio.com/agent-directory/rewards-seeker/agent.json"
+    },
+        {
+      "name": "Risk-Assessor",
+      "url": "https://privacyportfolio.com/agent-directory/risk-assessor/agent.json"
+    },
+    {
+      "name": "SocialMedia-Checker",
+      "url": "https://privacyportfolio.com/agent-directory/socialmedia-checker/agent.json"
+    },
+    {
+      "name": "Tech-Inspector",
+      "url": "https://privacyportfolio.com/agent-directory/tech-inspector/agent.json"
+    },
+    {
+      "name": "Talent-Agent",
+      "url": "https://privacyportfolio.com/agent-directory/talent-agent/agent.json"
+    },
+    {
+      "name": "Vendor-Manager",
+      "url": "https://privacyportfolio.com/agent-directory/vendor-manager/agent.json"
+    }
+  ]
+}
