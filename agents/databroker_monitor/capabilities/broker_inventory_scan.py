@@ -3,6 +3,10 @@
 from datetime import datetime, timezone
 from core.yoai_context import YoAiContext
 
+from core.observability.logging.platform_logger import get_platform_logger
+
+LOG = get_platform_logger("databroker_monitor")
+
 async def run(payload: dict, ctx: YoAiContext) -> dict:
     """
     Capability: Broker-Inventory.Scan
@@ -17,6 +21,15 @@ async def run(payload: dict, ctx: YoAiContext) -> dict:
     """
 
     query = payload.get("query")
+
+    LOG.write(
+        event_type="broker_inventory_scan.Request",
+        payload={
+            "query": query
+        },
+        context=ctx,
+        include=["profile", "actor", "caller"],
+    )
 
     return {
         "message": "Stub broker inventory scan.",

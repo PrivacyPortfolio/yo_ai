@@ -3,6 +3,10 @@
 from datetime import datetime, timezone
 from core.yoai_context import YoAiContext
 
+from core.observability.logging.platform_logger import get_platform_logger
+
+LOG = get_platform_logger("databroker_monitor")
+
 async def run(payload: dict, ctx: YoAiContext) -> dict:
     """
     Capability: Broker-Evidence.Collect
@@ -17,6 +21,15 @@ async def run(payload: dict, ctx: YoAiContext) -> dict:
     """
 
     match = payload.get("match")
+
+    LOG.write(
+        event_type="broker_evidence_collect.Request",
+        payload={
+            "match": match
+        },
+        context=ctx,
+        include=["profile", "actor", "caller"],
+    )
 
     return {
         "message": "Stub broker evidence collection.",

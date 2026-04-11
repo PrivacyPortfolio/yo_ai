@@ -3,6 +3,10 @@
 from datetime import datetime, timezone
 from core.yoai_context import YoAiContext
 
+from core.observability.logging.platform_logger import get_platform_logger
+
+LOG = get_platform_logger("databroker_monitor")
+
 async def run(payload: dict, ctx: YoAiContext) -> dict:
     """
     Capability: Downstream-Vendors.Identify
@@ -16,6 +20,15 @@ async def run(payload: dict, ctx: YoAiContext) -> dict:
     """
 
     broker_id = payload.get("brokerId")
+
+    LOG.write(
+        event_type="downstream_vendors_identify.Request",
+        payload={
+            "brokerId": broker_id
+        },
+        context=ctx,
+        include=["profile", "actor", "caller"],
+    )
 
     return {
         "message": "Stub downstream vendor identification.",
