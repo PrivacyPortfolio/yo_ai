@@ -3,6 +3,10 @@
 from datetime import datetime, timezone
 from core.yoai_context import YoAiContext
 
+from core.observability.logging.platform_logger import get_platform_logger
+
+LOG = get_platform_logger("darkweb_checker")
+
 async def run(payload: dict, ctx: YoAiContext) -> dict:
     """
     Capability: Dark-Web.Scan
@@ -19,6 +23,15 @@ async def run(payload: dict, ctx: YoAiContext) -> dict:
     """
 
     query = payload.get("query")
+
+    LOG.write(
+        event_type="dark-web-scan.Request",
+        payload={
+            "query": query
+        },
+        context=ctx,
+        include=["profile", "actor", "caller"],
+    )
 
     return {
         "message": "Stub dark web scan completed.",

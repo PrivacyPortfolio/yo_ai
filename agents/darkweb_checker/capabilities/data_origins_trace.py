@@ -3,6 +3,10 @@
 from datetime import datetime, timezone
 from core.yoai_context import YoAiContext
 
+from core.observability.logging.platform_logger import get_platform_logger
+
+LOG = get_platform_logger("darkweb_checker")
+
 async def run(payload: dict, ctx: YoAiContext) -> dict:
     """
     Capability: Data-Origins.Trace
@@ -18,6 +22,15 @@ async def run(payload: dict, ctx: YoAiContext) -> dict:
     """
 
     dataset = payload.get("dataset")
+
+    LOG.write(
+        event_type="data-origins-trace.Request",
+        payload={
+            "dataset": dataset
+        },
+        context=ctx,
+        include=["profile", "actor", "caller"],
+    )
 
     return {
         "message": "Stub data origin tracing.",
