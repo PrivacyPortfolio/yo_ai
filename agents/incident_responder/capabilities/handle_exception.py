@@ -4,6 +4,10 @@ from datetime import datetime, timezone
 import traceback
 from core.yoai_context import YoAiContext
 
+from core.observability.logging.platform_logger import get_platform_logger
+
+LOG = get_platform_logger("incident_responder")
+
 async def run(payload: dict, ctx: YoAiContext) -> dict:
     """
     Capability: Handle.Exception
@@ -25,6 +29,16 @@ async def run(payload: dict, ctx: YoAiContext) -> dict:
 
     # If the caller didn't provide a stack trace, we normalize it.
     normalized_stack = stack or traceback.format_exc()
+
+    LOG.write(
+        event_type="handle_exception.Request",
+        payload={
+          "exception": exception,
+          "stackTrace": stack
+        },
+        context=ctx,
+        include=["profile", "actor", "caller"],
+    )
 
     return {
         "message": "Stub incident response.",
