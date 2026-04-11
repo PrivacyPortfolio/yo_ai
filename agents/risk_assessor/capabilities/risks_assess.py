@@ -3,6 +3,10 @@
 from datetime import datetime, timezone
 from core.yoai_context import YoAiContext
 
+from core.observability.logging.platform_logger import get_platform_logger
+
+LOG = get_platform_logger("risk_assessor")
+
 async def run(payload: dict, ctx: YoAiContext) -> dict:
     """
     Capability: Risks.Assess
@@ -18,6 +22,23 @@ async def run(payload: dict, ctx: YoAiContext) -> dict:
       - compute weighted risk score
       - produce provenance chain
     """
+
+    subject = payload.get("subject"),
+    standards = payload.get("standards", []),
+    evidence = payload.get("evidence", []),
+    model = payload.get("model", "default"),
+
+    LOG.write(
+        event_type="risks_assess.Request",
+        payload={
+            "subject": subject,
+            "standards": standards,
+            "evidence": evidence,
+            "model": model
+        },
+        context=ctx,
+        include=["profile", "actor", "caller"],
+    )
 
     return {
         "message": "Stub risk assessment.",
