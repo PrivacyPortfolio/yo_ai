@@ -3,6 +3,10 @@
 from datetime import datetime, timezone
 from core.yoai_context import YoAiContext
 
+from core.observability.logging.platform_logger import get_platform_logger
+
+LOG = get_platform_logger("compliance_validator")
+
 async def run(payload: dict, ctx: YoAiContext) -> dict:
     """
     Capability: Compliance.Validate
@@ -19,6 +23,16 @@ async def run(payload: dict, ctx: YoAiContext) -> dict:
 
     facts = payload.get("facts", {})
     standards = payload.get("standards", [])
+
+    LOG.write(
+        event_type="compliance-validate.Request",
+        payload={
+            "facts": facts,
+            "standards": standards
+        },
+        context=ctx,
+        include=["profile", "actor", "caller"],
+    )
 
     return {
         "message": "Stub compliance validation.",
