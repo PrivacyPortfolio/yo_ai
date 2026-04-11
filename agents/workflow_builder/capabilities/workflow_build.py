@@ -3,6 +3,10 @@
 from datetime import datetime, timezone
 from core.yoai_context import YoAiContext
 
+from core.observability.logging.platform_logger import get_platform_logger
+
+LOG = get_platform_logger("workflow_builder")
+
 async def run(payload: dict, ctx: YoAiContext) -> dict:
     """
     Capability: Workflow.Build
@@ -22,6 +26,17 @@ async def run(payload: dict, ctx: YoAiContext) -> dict:
     request_ref = payload.get("request_ref")
     registration_identifier_ref = payload.get("registration_identifier_ref")
     nodes = payload.get("nodes", [])
+
+    LOG.write(
+        event_type="workflow_build.Request",
+        payload={
+            "requestRef": request_ref,
+            "registrationIdentifierRef": registration_identifier_ref,
+            "nodes": nodes
+        },
+        context=ctx,
+        include=["profile", "actor", "caller"],
+    )
 
     return {
         "message": "Stub workflow build completed.",
