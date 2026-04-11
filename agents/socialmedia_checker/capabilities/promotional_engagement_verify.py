@@ -3,6 +3,10 @@
 from datetime import datetime, timezone
 from core.yoai_context import YoAiContext
 
+from core.observability.logging.platform_logger import get_platform_logger
+
+LOG = get_platform_logger("socialmedia_checker")
+
 async def run(payload: dict, ctx: YoAiContext) -> dict:
     """
     Capability: Promotional-Engagement.Verify
@@ -17,6 +21,15 @@ async def run(payload: dict, ctx: YoAiContext) -> dict:
     """
 
     promotion = payload.get("promotion")
+
+    LOG.write(
+        event_type="promotional_engagement_verify.Request",
+        payload={
+            "promotion": promotion
+        },
+        context=ctx,
+        include=["profile", "actor", "caller"],
+    )
 
     return {
         "message": "Stub promotional engagement verification.",

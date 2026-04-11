@@ -3,6 +3,10 @@
 from datetime import datetime, timezone
 from core.yoai_context import YoAiContext
 
+from core.observability.logging.platform_logger import get_platform_logger
+
+LOG = get_platform_logger("socialmedia_checker")
+
 async def run(payload: dict, ctx: YoAiContext) -> dict:
     """
     Capability: Evidence.Collect
@@ -18,6 +22,15 @@ async def run(payload: dict, ctx: YoAiContext) -> dict:
     """
 
     item = payload.get("item")
+
+    LOG.write(
+        event_type="evidence_collect.Request",
+        payload={
+            "item": item
+        },
+        context=ctx,
+        include=["profile", "actor", "caller"],
+    )
 
     return {
         "message": "Stub evidence collection.",
