@@ -3,6 +3,10 @@
 from datetime import datetime, timezone
 from core.yoai_context import YoAiContext
 
+from core.observability.logging.platform_logger import get_platform_logger
+
+LOG = get_platform_logger("decision_master")
+
 async def run(payload: dict, ctx: YoAiContext) -> dict:
     """
     Capability: Decision-Outcome.Analyze
@@ -17,6 +21,15 @@ async def run(payload: dict, ctx: YoAiContext) -> dict:
     """
 
     decision_set = payload.get("decisionSet")
+
+    LOG.write(
+        event_type="decision_outcome_analyze.Request",
+        payload={
+          "decisionSet": decision_set
+        },
+        context=ctx,
+        include=["profile", "actor", "caller"],
+    )
 
     result={
         "message": "Stub decision-outcome analysis.",
