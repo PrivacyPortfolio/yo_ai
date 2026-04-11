@@ -8,15 +8,28 @@ Stub — always eligible. Next: evaluate budget, profile, and vendor rules.
 from datetime import datetime, timezone
 from core.yoai_context import YoAiContext
 
+from core.observability.logging.platform_logger import get_platform_logger
+
+LOG = get_platform_logger("purchasing_agent")
+
 async def run(payload: dict, ctx: YoAiContext) -> dict:
     """
     Args:
       payload       — capability-specific input fields
-      agent_ctx     — AgentContext | None  (governance, startup_mode, caller)
-      capability_ctx — CapabilityContext | None  (slim, dry_run, trace, workflow state)
+      ctx           — YoAiContext | None  (governance, startup_mode, caller)
     """
     item = payload.get("item")
     amount = payload.get("amount")
+
+    LOG.write(
+        event_type="purchase_eligibility_validate.Request",
+        payload={
+            "item": item,
+            "amount": amount
+        },
+        context=ctx,
+        include=["profile", "actor", "caller"],
+    )
 
     return {
         "capability": "Purchase-Eligibility.Validate",

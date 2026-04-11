@@ -8,6 +8,10 @@ Stub — acknowledges mandate action. Next: integrate with payment provider mand
 from datetime import datetime, timezone
 from core.yoai_context import YoAiContext
 
+from core.observability.logging.platform_logger import get_platform_logger
+
+LOG = get_platform_logger("purchasing_agent")
+
 async def run(payload: dict, ctx: YoAiContext) -> dict:
     """
     Args:
@@ -16,6 +20,16 @@ async def run(payload: dict, ctx: YoAiContext) -> dict:
     """
     mandate = payload.get("mandate")
     action = payload.get("action")
+
+    LOG.write(
+        event_type="mandate_manage.Request",
+        payload={
+            "mandate": mandate,
+            "action": action
+        },
+        context=ctx,
+        include=["profile", "actor", "caller"],
+    )
 
     return {
         "capability": "Mandate.Manage",

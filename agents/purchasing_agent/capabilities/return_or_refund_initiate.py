@@ -11,6 +11,10 @@ Stage: Stub — acknowledges initiation. Next: integrate with vendor return port
 from datetime import datetime, timezone
 from core.yoai_context import YoAiContext
 
+from core.observability.logging.platform_logger import get_platform_logger
+
+LOG = get_platform_logger("purchasing_agent")
+
 async def run(payload: dict, ctx: YoAiContext) -> dict:
     """
     Args:
@@ -20,6 +24,17 @@ async def run(payload: dict, ctx: YoAiContext) -> dict:
     item = payload.get("item")
     reason = payload.get("reason")
     order_id = payload.get("orderId")
+
+    LOG.write(
+        event_type="return_or_refund_initiate.Request",
+        payload={
+            "item": item,
+            "reason": reason,
+            "orderId": order_id
+        },
+        context=ctx,
+        include=["profile", "actor", "caller"],
+    )
 
     return {
         "capability": "Return-Or-Refund.Initiate",

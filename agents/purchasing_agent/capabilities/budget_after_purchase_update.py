@@ -8,6 +8,10 @@ Stub — deterministic budget subtraction. Next: integrate with budget store.
 from datetime import datetime, timezone
 from core.yoai_context import YoAiContext
 
+from core.observability.logging.platform_logger import get_platform_logger
+
+LOG = get_platform_logger("purchasing_agent")
+
 async def run(payload: dict, ctx: YoAiContext) -> dict:
     """
     Args:
@@ -16,6 +20,16 @@ async def run(payload: dict, ctx: YoAiContext) -> dict:
     """
     amount = payload.get("amount")
     currency = payload.get("currency")
+
+    LOG.write(
+        event_type="budget_after_purchase_update.Request",
+        payload={
+            "amount": amount,
+            "currency": currency
+        },
+        context=ctx,
+        include=["profile", "actor", "caller"],
+    )
 
     return {
         "capability": "Budget-After-Purchase.Update",

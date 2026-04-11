@@ -9,6 +9,10 @@ Stub — always returns 1000. Next: fetch real balance from vault/budget store.
 from datetime import datetime, timezone
 from core.yoai_context import YoAiContext
 
+from core.observability.logging.platform_logger import get_platform_logger
+
+LOG = get_platform_logger("purchasing_agent")
+
 async def run(payload: dict, ctx: YoAiContext) -> dict:
     """
     Args:
@@ -17,6 +21,16 @@ async def run(payload: dict, ctx: YoAiContext) -> dict:
     """
     amount = payload.get("amount")
     currency = payload.get("currency")
+
+    LOG.write(
+        event_type="budget_check.Request",
+        payload={
+            "amount": amount,
+            "currency": currency
+        },
+        context=ctx,
+        include=["profile", "actor", "caller"],
+    )
 
     return {
         "capability": "Budget.Check",

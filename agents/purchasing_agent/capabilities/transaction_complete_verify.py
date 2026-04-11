@@ -11,6 +11,10 @@ Stage: Stub — always verified. Next: check transaction status from payment
 from datetime import datetime, timezone
 from core.yoai_context import YoAiContext
 
+from core.observability.logging.platform_logger import get_platform_logger
+
+LOG = get_platform_logger("purchasing_agent")
+
 async def run(payload: dict, ctx: YoAiContext) -> dict:
     """
     Args:
@@ -18,6 +22,15 @@ async def run(payload: dict, ctx: YoAiContext) -> dict:
       ctx           — YoAiContext | None  (governance, startup_mode, caller)
     """
     transaction_id = payload.get("transactionId")
+
+    LOG.write(
+        event_type="transaction_complete_verify.Request",
+        payload={
+            "transactionId": transaction_id
+        },
+        context=ctx,
+        include=["profile", "actor", "caller"],
+    )
 
     return {
         "capability": "Transaction-Complete.Verify",

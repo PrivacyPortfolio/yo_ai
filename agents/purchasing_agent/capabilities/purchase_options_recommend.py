@@ -9,6 +9,10 @@ Stub — returns one hardcoded vendor. Next: vendor comparison, price analysis,
 from datetime import datetime, timezone
 from core.yoai_context import YoAiContext
 
+from core.observability.logging.platform_logger import get_platform_logger
+
+LOG = get_platform_logger("purchasing_agent")
+
 async def run(payload: dict, ctx: YoAiContext) -> dict:
     """
     Args:
@@ -18,6 +22,17 @@ async def run(payload: dict, ctx: YoAiContext) -> dict:
     item = payload.get("item")
     budget = payload.get("budget")
     preferences = payload.get("preferences", {})
+
+    LOG.write(
+        event_type="purchase_options_recommend.Request",
+        payload={
+            "item": item,
+            "budget": budget,
+            "preferences": preferences
+        },
+        context=ctx,
+        include=["profile", "actor", "caller"],
+    )
 
     return {
         "capability": "Purchase-Options.Recommend",
