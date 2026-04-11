@@ -3,6 +3,10 @@
 from datetime import datetime, timezone
 from core.yoai_context import YoAiContext
 
+from core.observability.logging.platform_logger import get_platform_logger
+
+LOG = get_platform_logger("talent_agent")
+
 async def run(payload: dict, ctx: YoAiContext) -> dict:
     """
     Capability: Job-Postings.Scan
@@ -18,6 +22,15 @@ async def run(payload: dict, ctx: YoAiContext) -> dict:
     """
 
     criteria = payload.get("criteria", {})
+
+    LOG.write(
+        event_type="job_postings_scan.Request",
+        payload={
+            "criteria": criteria
+        },
+        context=ctx,
+        include=["profile", "actor", "caller"],
+    )
 
     return {
         "message": "Stub job postings scan.",

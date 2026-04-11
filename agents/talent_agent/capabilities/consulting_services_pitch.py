@@ -3,6 +3,10 @@
 from datetime import datetime, timezone
 from core.yoai_context import YoAiContext
 
+from core.observability.logging.platform_logger import get_platform_logger
+
+LOG = get_platform_logger("talent_agent")
+
 async def run(payload: dict, ctx: YoAiContext) -> dict:
     """
     Capability: Consulting-Services.Pitch
@@ -17,6 +21,15 @@ async def run(payload: dict, ctx: YoAiContext) -> dict:
     """
 
     client = payload.get("client")
+
+    LOG.write(
+        event_type="consulting_services_pitch.Request",
+        payload={
+            "client": client
+        },
+        context=ctx,
+        include=["profile", "actor", "caller"],
+    )
 
     return {
         "message": "Stub consulting pitch generation.",

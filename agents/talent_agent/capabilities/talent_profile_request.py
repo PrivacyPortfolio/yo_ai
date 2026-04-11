@@ -3,6 +3,10 @@
 from datetime import datetime, timezone
 from core.yoai_context import YoAiContext
 
+from core.observability.logging.platform_logger import get_platform_logger
+
+LOG = get_platform_logger("talent_agent")
+
 async def run(payload: dict, ctx: YoAiContext) -> dict:
     """
     Capability: Talent-Profile.Request
@@ -17,6 +21,15 @@ async def run(payload: dict, ctx: YoAiContext) -> dict:
     """
 
     fields = payload.get("requested_fields", [])
+
+    LOG.write(
+        event_type="talent_profile_request.Request",
+        payload={
+            "requestedFields": fields
+        },
+        context=ctx,
+        include=["profile", "actor", "caller"],
+    )
 
     return {
         "message": "Stub talent profile request.",

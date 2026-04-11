@@ -3,6 +3,10 @@
 from datetime import datetime, timezone
 from core.yoai_context import YoAiContext
 
+from core.observability.logging.platform_logger import get_platform_logger
+
+LOG = get_platform_logger("talent_agent")
+
 async def run(payload: dict, ctx: YoAiContext) -> dict:
     """
     Capability: Application.Submit
@@ -17,6 +21,15 @@ async def run(payload: dict, ctx: YoAiContext) -> dict:
     """
 
     job = payload.get("job")
+
+    LOG.write(
+        event_type="application_submit.Request",
+        payload={
+            "job": job
+        },
+        context=ctx,
+        include=["profile", "actor", "caller"],
+    )
 
     return {
         "message": "Stub job application submission.",
