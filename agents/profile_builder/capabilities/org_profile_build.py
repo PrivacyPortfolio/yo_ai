@@ -3,6 +3,10 @@
 from datetime import datetime, timezone
 from core.yoai_context import YoAiContext
 
+from core.observability.logging.platform_logger import get_platform_logger
+
+LOG = get_platform_logger("profile_builder")
+
 async def run(payload: dict, ctx: YoAiContext) -> dict:
     """
     Capability: Org-Profile.Build
@@ -20,6 +24,16 @@ async def run(payload: dict, ctx: YoAiContext) -> dict:
 
     org_identifier = payload.get("org_identifier")
     discovery_inputs = payload.get("discovery_inputs", {})
+
+    LOG.write(
+        event_type="org_profile_build.Request",
+        payload={
+            "orgIdentifier": org_identifier,
+            "discoveryInputs": discovery_inputs
+        },
+        context=ctx,
+        include=["profile", "actor", "caller"],
+    )
 
     return {
         "message": "Stub organization profile build completed.",
