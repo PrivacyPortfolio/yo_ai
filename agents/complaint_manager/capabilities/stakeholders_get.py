@@ -1,7 +1,11 @@
 # agents/complaint_manager/capabilities/stakeholders_get.py
 
-import time
+from datetime import datetime, timezone
 from core.yoai_context import YoAiContext
+
+from core.observability.logging.platform_logger import get_platform_logger
+
+LOG = get_platform_logger("complaint_manager")
 
 async def run(payload: dict, ctx: YoAiContext) -> dict:
 
@@ -13,10 +17,19 @@ async def run(payload: dict, ctx: YoAiContext) -> dict:
 
     org = payload.get("organization")
 
+    LOG.write(
+        event_type="stakeholders-get.Request",
+        payload={
+            "organization": org
+        },
+        context=ctx,
+        include=["profile", "actor", "caller"],
+    )
+
     return {
         "message": "Stub stakeholder retrieval.",
         "organization": org,
         "stakeholders": ["StubStakeholderA", "StubStakeholderB"],
-        "timestamp": time.time(),
+        "timestamp": datetime.now(timezone.utc),
         "correlationId": ctx.correlation_id,
     }

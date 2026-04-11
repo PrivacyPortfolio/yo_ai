@@ -1,7 +1,11 @@
 # agents/complaint_manager/capabilities/complaint_submit.py
 
-import time
+from datetime import datetime, timezone
 from core.yoai_context import YoAiContext
+
+from core.observability.logging.platform_logger import get_platform_logger
+
+LOG = get_platform_logger("complaint_manager")
 
 async def run(payload: dict, ctx: YoAiContext) -> dict:
     """
@@ -13,11 +17,22 @@ async def run(payload: dict, ctx: YoAiContext) -> dict:
     complaint_id = payload.get("complaintId")
     agency = payload.get("agency")
 
+    LOG.write(
+        event_type="complaint-submit.Request",
+        payload={
+            "complaintId": complaint_id,
+            "agency": agency
+        },
+        context=ctx,
+        include=["profile", "actor", "caller"],
+    )
+
     return {
         "message": "Stub complaint submission.",
         "complaintId": complaint_id,
         "submittedTo": agency,
         "status": "submitted",
-        "timestamp": time.time(),
+        "timestamp": datetime.now(timezone.utc).isoformat(),
         "correlationId": ctx.correlation_id,
+        "taskId": ctx.task_id,
     }

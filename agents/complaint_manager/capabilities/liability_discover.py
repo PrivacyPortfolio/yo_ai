@@ -1,7 +1,11 @@
 # agents/complaint_manager/capabilities/liability_discover.py
 
-import time
+from datetime import datetime, timezone
 from core.yoai_context import YoAiContext
+
+from core.observability.logging.platform_logger import get_platform_logger
+
+LOG = get_platform_logger("complaint_manager")
 
 async def run(payload: dict, ctx: YoAiContext) -> dict:
 
@@ -13,11 +17,19 @@ async def run(payload: dict, ctx: YoAiContext) -> dict:
 
     facts = payload.get("facts", [])
 
-    
+    LOG.write(
+        event_type="liability-discover.Request",
+        payload={
+            "facts": facts
+        },
+        context=ctx,
+        include=["profile", "actor", "caller"],
+    )
+   
     return {
         "message": "Stub liability discovery.",
         "factsReviewed": facts,
         "potentialLiability": [],
-        "timestamp": time.time(),
+        "timestamp": datetime.now(timezone.utc),
         "correlationId": ctx.correlation_id,
     }
