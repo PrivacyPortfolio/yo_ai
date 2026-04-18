@@ -1,33 +1,57 @@
 # core/yoai_context.py
+#
+# YoAiContext — schema artifact.
+#
+# A TypedDict that defines the shape of the unified interchange context for the
+# YoAi platform. It is NEVER stored as an instance attribute on any agent.
+#
+# Usage contract:
+#   - Import the type for annotations:   ctx: YoAiContext
+#   - Build from an envelope:            ctx = ctx_from_envelope(envelope, agent)
+#   - Advance to a capability:           ctx = ctx_for_capability(ctx, "Trust.Assign")
+#   - Extract agent-init fields:         correlation_id=ctx["correlation_id"]
+#   - Serialize for logging/transport:   dict(ctx)  — it already is one
+#
+# Lifetime: local variable or call parameter only. Never self.ctx.
+
 from __future__ import annotations
-from typing import Literal, Any
 
-ActorKind = Literal["Agent", "Subscriber", "Service", "Tool", "WorkflowOwner", "Capability"]
+from typing import Any, Literal, TypedDict
+
+# ---------------------------------------------------------------------------
+# Literal types
+# ---------------------------------------------------------------------------
+
+ActorKind = Literal[
+    "Agent",
+    "Subscriber",
+    "Service",
+    "Tool",
+    "WorkflowOwner",
+    "Capability",
+]
+
+StartupMode = Literal["a2a", "direct", "api", "starlette"]
 
 
-class YoAiContext:
+# ---------------------------------------------------------------------------
+# YoAiContext
+# ---------------------------------------------------------------------------
+
+class YoAiContext(TypedDict, total=False):
     """
-    YoAiContext
-    ═══════════
     The single unified interchange context for the YoAi platform.
-    Defined on YoAiAgent. Constructed once per request-response interchange
-    and populated progressively as the interchange proceeds.
 
-    YoAiContext is the temporal thread that stitches together every logged
-    platform event so activity can be queried or replayed. Every actor in
-    the system — agent, subscriber, service, tool, workflow, or a capability
-    invoking another capability — leaves its mark here.
+    Constructed once per request-response interchange and passed as a call
+    parameter into every capability handler. Never stored on agent instances.
 
     Two temporal faces
     ──────────────────
     REQUEST face   Populated at construction from the incoming envelope.
                    Answers: who is asking, on whose behalf, for what, how.
 
-    RESPONSE face  Populated by the capability as it produces its result.
+    RESPONSE face  Written by the capability as it produces its result.
                    Answers: what changed, what should travel forward.
-
-    Fields
-    ──────
 
     ┌─ Correlation ──────────────────────────────────────────────────────┐
     │ correlation_id   JSON-RPC id. Primary request-response handle.     │
@@ -38,39 +62,26 @@ class YoAiContext:
 
     ┌─ Actor (REQUEST) ──────────────────────────────────────────────────┐
     │ actor_kind       What kind of entity invoked this operation.       │
-    │                  One of: Agent | Subscriber | Service | Tool |     │
-    │                          WorkflowOwner | Capability               │
     │ actor            Identity dict of the invoking entity.            │
-    │                  Shape varies by actor_kind:                      │
-    │                    Agent       → agent card stub                  │
-    │                    Subscriber  → subscriber record stub           │
-    │                    Capability  → {"capability_id": "Trust.Assign"}│
     └────────────────────────────────────────────────────────────────────┘
 
     ┌─ Invocation mechanics (REQUEST) ───────────────────────────────────┐
     │ startup_mode     How the request entered the platform.             │
-    │                  One of: "a2a" | "direct" | "api" | "starlette"  │
-    │ instance_id      Runtime identity of the agent instance handling  │
-    │                  this request. None for PlatformAgents.           │
-    │ caller           Registered caller identity for trust-gated       │
-    │                  access (e.g. showCard). None for anonymous.      │
+    │ instance_id      Runtime identity of the handling agent instance.  │
+    │                  None for PlatformAgents.                         │
+    │ caller           Registered caller identity for trust-gated access.│
     └────────────────────────────────────────────────────────────────────┘
 
     ┌─ Subject (REQUEST) ────────────────────────────────────────────────┐
     │ profile          ProfileWrapper — lightweight profile snippet.     │
-    │                  Schema: yo-ai.ai/schemas/profile.schema.json     │
     │                  Shape: {type, name?, payload}                    │
-    │                  Identifies whose context the agent operates in.  │
-    │                  No PI — payload contains only authorized attrs.  │
-    │ subject_ref      Lightweight pointer to the subject of the        │
-    │                  request. Informational only; does not drive       │
-    │                  routing decisions.                               │
+    │ subject_ref      Lightweight pointer to the request subject.      │
     └────────────────────────────────────────────────────────────────────┘
 
     ┌─ Capability identity (REQUEST) ────────────────────────────────────┐
     │ capability_id    The capability being invoked, e.g. "Trust.Assign"│
-    │                  None at pipeline level, bound at dispatch via     │
-    │                  for_capability().                                │
+    │                  None at pipeline level; bound via                │
+    │                  ctx_for_capability().                            │
     └────────────────────────────────────────────────────────────────────┘
 
     ┌─ Execution knobs (REQUEST) ────────────────────────────────────────┐
@@ -89,173 +100,170 @@ class YoAiContext:
     └────────────────────────────────────────────────────────────────────┘
 
     ┌─ RESPONSE face — written by the capability, travels forward ───────┐
-    │ profile_patch    ProfilePatch — fields discovered or collected     │
-    │                  during execution that weren't in the original     │
-    │                  profile. Forwarded to Data-Steward to enrich     │
-    │                  the DataVault.                                   │
-    │                  Schema: yo-ai.ai/schemas/profile.patch.schema.json│
+    │ profile_patch    Fields discovered during execution not present in │
+    │                  the original profile. Forwarded to Data-Steward. │
     │                  Shape: {type, payload}                           │
-    │                                                                   │
-    │ governance_labels  Sticky notes attached to the response by the   │
-    │                  capability. Travel forward to the next actor.    │
-    │                  NOT present in the request envelope — this       │
-    │                  prevents information spills and ensures labels    │
-    │                  aren't acted upon by the capability that         │
-    │                  receives the request.                            │
-    │                  Schema: yo-ai.ai/schemas/governancelabels.schema │
+    │ governance_labels  Sticky notes attached by the capability.       │
+    │                  NOT present in request envelopes — prevents      │
+    │                  information spills between capabilities.         │
     │                  Shape: list[str]                                 │
-    │                  Examples:                                        │
-    │                    "AccessTokenExpires:07:55:08TZ"               │
-    │                    "data-purpose:billingForAmazonPrimeAccount"    │
     └────────────────────────────────────────────────────────────────────┘
     """
 
-    STARTUP_MODES = frozenset({"a2a", "direct", "api", "starlette"})
-    ACTOR_KINDS   = frozenset({"Agent", "Subscriber", "Service", "Tool", "WorkflowOwner", "Capability"})
+    # ── Correlation ────────────────────────────────────────────────────
+    correlation_id:    str | None
+    task_id:           str | None
 
-    def __init__(
-        self,
-        *,
+    # ── Actor ──────────────────────────────────────────────────────────
+    actor_kind:        ActorKind | None
+    actor:             dict[str, Any] | None
+
+    # ── Invocation mechanics ───────────────────────────────────────────
+    startup_mode:      StartupMode | None
+    instance_id:       str | None
+    caller:            dict[str, Any] | None
+
+    # ── Subject ────────────────────────────────────────────────────────
+    profile:           dict[str, Any] | None   # ProfileWrapper
+    subject_ref:       dict[str, Any] | None
+
+    # ── Capability identity ────────────────────────────────────────────
+    capability_id:     str | None
+
+    # ── Execution knobs ────────────────────────────────────────────────
+    slim:              bool
+    tools:             list[str] | None
+    dry_run:           bool
+    trace:             bool
+
+    # ── Workflow state ─────────────────────────────────────────────────
+    step:              int | None
+    prior_outputs:     dict[str, Any]
+    state:             dict[str, Any]
+
+    # ── RESPONSE face ──────────────────────────────────────────────────
+    profile_patch:     dict[str, Any] | None   # ProfilePatch
+    governance_labels: list[str]
+
+
+# ---------------------------------------------------------------------------
+# Schema names — pure functions, no instance needed
+# ---------------------------------------------------------------------------
+
+def input_schema_name(ctx: YoAiContext) -> str:
+    """'Trust.Assign' → 'trust.assign.input.schema.json'"""
+    cap = ctx.get("capability_id")
+    return f"{cap.lower()}.input.schema.json" if cap else ""
+
+
+def output_schema_name(ctx: YoAiContext) -> str:
+    """'Trust.Assign' → 'trust.assign.output.schema.json'"""
+    cap = ctx.get("capability_id")
+    return f"{cap.lower()}.output.schema.json" if cap else ""
+
+
+# ---------------------------------------------------------------------------
+# Factory: build from a raw envelope
+# ---------------------------------------------------------------------------
+
+def ctx_from_envelope(
+    envelope: dict[str, Any],
+    *,
+    instance_id: str | None = None,
+    correlation_id: str | None = None,
+    task_id: str | None = None,
+    profile: dict[str, Any] | None = None,
+) -> YoAiContext:
+    """
+    Build a YoAiContext from an incoming request envelope.
+
+    The envelope is the authoritative source for request-scoped fields.
+    Agent identity fields (instance_id, correlation_id, task_id, profile)
+    are supplied explicitly by the caller — typically YoAiAgent._build_context()
+    — so the agent's own resolved values take precedence over anything
+    the envelope might carry for those fields.
+
+    Returns a plain dict conforming to YoAiContext. No class instantiated,
+    nothing stored on any agent.
+    """
+    raw_ctx: dict[str, Any] = envelope.get("ctx", {}) or {}
+    meta:    dict[str, Any] = envelope.get("meta", {}) or {}
+
+    resolved_correlation = (
+        correlation_id
+        or raw_ctx.get("correlation_id")
+        or meta.get("correlation_id")
+    )
+    resolved_task = (
+        task_id
+        or raw_ctx.get("task_id")
+        or meta.get("task_id")
+        or resolved_correlation
+    )
+
+    ctx: YoAiContext = {
         # ── Correlation ────────────────────────────────────────────────
-        correlation_id: str | None = None,
-        task_id: str | None = None,
+        "correlation_id":    resolved_correlation,
+        "task_id":           resolved_task,
+
         # ── Actor ──────────────────────────────────────────────────────
-        actor_kind: ActorKind | None = None,
-        actor: dict | None = None,
+        "actor_kind":        raw_ctx.get("actor_kind"),
+        "actor":             raw_ctx.get("actor"),
+
         # ── Invocation mechanics ───────────────────────────────────────
-        startup_mode: str | None = None,
-        instance_id: str | None = None,
-        caller: dict | None = None,
+        "startup_mode":      raw_ctx.get("startup_mode") or meta.get("startup_mode"),
+        "instance_id":       instance_id,
+        "caller":            raw_ctx.get("caller"),
+
         # ── Subject ────────────────────────────────────────────────────
-        profile: dict | None = None,          # ProfileWrapper
-        subject_ref: dict | None = None,
+        "profile":           profile if profile is not None else raw_ctx.get("profile"),
+        "subject_ref":       raw_ctx.get("subject_ref"),
+
         # ── Capability identity ────────────────────────────────────────
-        capability_id: str | None = None,
+        "capability_id":     raw_ctx.get("capability_id"),
+
         # ── Execution knobs ────────────────────────────────────────────
-        slim: bool = False,
-        tools: list[str] | None = None,
-        dry_run: bool = False,
-        trace: bool = False,
+        "slim":              bool(raw_ctx.get("slim", False)),
+        "tools":             raw_ctx.get("tools"),
+        "dry_run":           bool(raw_ctx.get("dry_run", False)),
+        "trace":             bool(raw_ctx.get("trace", False)),
+
         # ── Workflow state ─────────────────────────────────────────────
-        step: int | None = None,
-        prior_outputs: dict | None = None,
-        state: dict | None = None,
-        # ── RESPONSE face ──────────────────────────────────────────────
-        profile_patch: dict | None = None,    # ProfilePatch
-        governance_labels: list[str] | None = None,
-    ):
-        # Correlation
-        self.correlation_id    = correlation_id
-        self.task_id           = task_id if task_id is not None else correlation_id
-        # Actor
-        self.actor_kind        = actor_kind
-        self.actor             = actor
-        # Invocation mechanics
-        self.startup_mode      = startup_mode
-        self.instance_id       = instance_id
-        self.caller            = caller
-        # Subject
-        self.profile           = profile
-        self.subject_ref       = subject_ref
-        # Capability identity
-        self.capability_id     = capability_id
-        # Execution knobs
-        self.slim              = slim
-        self.tools             = tools
-        self.dry_run           = dry_run
-        self.trace             = trace
-        # Workflow state
-        self.step              = step
-        self.prior_outputs     = prior_outputs or {}
-        self.state             = state or {}
-        # RESPONSE face — written by the capability
-        self.profile_patch     = profile_patch
-        self.governance_labels = governance_labels or []
+        "step":              raw_ctx.get("step"),
+        "prior_outputs":     raw_ctx.get("prior_outputs") or {},
+        "state":             raw_ctx.get("state") or {},
 
-    # ── Schema name helpers ────────────────────────────────────────────────
-    @property
-    def input_schema_name(self) -> str:
-        """'Trust.Assign' → 'trust.assign.input.schema.json'"""
-        return f"{self.capability_id.lower()}.input.schema.json" if self.capability_id else ""
+        # ── RESPONSE face (clean for every new request) ────────────────
+        "profile_patch":     None,
+        "governance_labels": [],
+    }
 
-    @property
-    def output_schema_name(self) -> str:
-        """'Trust.Assign' → 'trust.assign.output.schema.json'"""
-        return f"{self.capability_id.lower()}.output.schema.json" if self.capability_id else ""
+    return ctx
 
-    # ── Lifecycle ──────────────────────────────────────────────────────────
-    def for_capability(self, capability_id: str, **overrides) -> "YoAiContext":
-        """
-        Return a new YoAiContext bound to a specific capability.
 
-        Called at dispatch time — the pipeline-level context (capability_id=None)
-        becomes a capability-level context. Everything is inherited except
-        capability_id and any supplied overrides.
+# ---------------------------------------------------------------------------
+# Factory: advance to a specific capability
+# ---------------------------------------------------------------------------
 
-        The response face (profile_patch, governance_labels) is NOT inherited —
-        each capability starts with a clean response face.
+def ctx_for_capability(
+    ctx: YoAiContext,
+    capability_id: str,
+    **overrides: Any,
+) -> YoAiContext:
+    """
+    Return a new YoAiContext bound to a specific capability.
 
-            ctx = pipeline_ctx.for_capability("Trust.Assign", slim=True)
-        """
-        data = self.to_dict()
-        data["capability_id"]     = capability_id
-        data["profile_patch"]     = None   # clean response face
-        data["governance_labels"] = []     # clean response face
-        data.update(overrides)
-        return self.__class__.from_dict(data)
+    Called at dispatch time — the pipeline-level context (capability_id=None)
+    becomes a capability-level context. All request-face fields are inherited.
+    The response face (profile_patch, governance_labels) is always reset so
+    each capability starts clean and cannot read labels placed by a prior one.
 
-    # ── Serialization ──────────────────────────────────────────────────────
-    @classmethod
-    def from_dict(cls, data: dict) -> "YoAiContext":
-        """
-        Construct from a plain dict.
-        Unknown keys are silently ignored — forward compatible.
-        """
-        return cls(
-            correlation_id    = data.get("correlation_id"),
-            task_id           = data.get("task_id"),
-            actor_kind        = data.get("actor_kind"),
-            actor             = data.get("actor"),
-            startup_mode      = data.get("startup_mode"),
-            instance_id       = data.get("instance_id"),
-            caller            = data.get("caller"),
-            profile           = data.get("profile"),
-            subject_ref       = data.get("subject_ref"),
-            capability_id     = data.get("capability_id"),
-            slim              = data.get("slim", False),
-            tools             = data.get("tools"),
-            dry_run           = data.get("dry_run", False),
-            trace             = data.get("trace", False),
-            step              = data.get("step"),
-            prior_outputs     = data.get("prior_outputs"),
-            state             = data.get("state"),
-            profile_patch     = data.get("profile_patch"),
-            governance_labels = data.get("governance_labels"),
-        )
-
-    def to_dict(self) -> dict:
-        """
-        Serialize to a plain dict.
-        Used for logging, diagnostics, envelope passthrough, and workflow persistence.
-        """
-        return {
-            "correlation_id":    self.correlation_id,
-            "task_id":           self.task_id,
-            "actor_kind":        self.actor_kind,
-            "actor":             self.actor,
-            "startup_mode":      self.startup_mode,
-            "instance_id":       self.instance_id,
-            "caller":            self.caller,
-            "profile":           self.profile,
-            "subject_ref":       self.subject_ref,
-            "capability_id":     self.capability_id,
-            "slim":              self.slim,
-            "tools":             self.tools,
-            "dry_run":           self.dry_run,
-            "trace":             self.trace,
-            "step":              self.step,
-            "prior_outputs":     self.prior_outputs,
-            "state":             self.state,
-            "profile_patch":     self.profile_patch,
-            "governance_labels": self.governance_labels,
-        }
+    Any keyword overrides are applied after the copy:
+        ctx = ctx_for_capability(pipeline_ctx, "Trust.Assign", slim=True)
+    """
+    advanced: YoAiContext = {**ctx}  # shallow copy — all values are scalars or immutable refs
+    advanced["capability_id"]     = capability_id
+    advanced["profile_patch"]     = None   # clean response face
+    advanced["governance_labels"] = []     # clean response face
+    advanced.update(overrides)             # type: ignore[typeddict-item]
+    return advanced

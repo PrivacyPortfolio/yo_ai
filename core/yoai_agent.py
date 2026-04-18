@@ -1,8 +1,10 @@
 # core/yoai_agent.py
 
-import uuid
+import types
+from typing import Any, Dict, List
+
 from core.base_agent import BaseAgent
-from core.yoai_context import YoAiContext
+from core.yoai_context import YoAiContext, ctx_from_envelope, ctx_for_capability
 
 from core.utils.ai.ai_client import AiClient
 from core.utils.validators.load_fingerprints import load_fingerprints
@@ -18,6 +20,20 @@ class YoAiAgent(BaseAgent):
     YoAiAgent:
     Identity-bearing, profile-aware, multi-instance agent.
 
+    Extends BaseAgent with AI machinery, governance artifacts, and the
+    capability dispatch contract.
+
+    Construction contract:
+      - No ctx parameter. Callers that have a ctx extract the individual
+        members they need and pass them explicitly.
+      - self.name / self.agent_id are the identity source of truth (BaseAgent).
+        self.actor_name is not duplicated here.
+      - self.extended is frozen (MappingProxyType) immediately after receipt,
+        matching the BaseAgent treatment of self.card.
+      - self.correlation_id / self.task_id are the single flat source of truth
+        for tracing. set_correlation() is the only writer after construction.
+      - No ctx is ever stored on self. _build_context() produces a fresh
+        YoAiContext per request and passes it into the handler as a local.
     """
 
     def __init__(
@@ -25,111 +41,72 @@ class YoAiAgent(BaseAgent):
         *,
         card: dict | None = None,
         extended_card: dict | None = None,
-        ctx: YoAiContext | None = None,
         profile: dict | None = None,
-        slim: bool | None = None,
-        context=None,
+        slim: bool = False,
+        correlation_id: str | None = None,
+        task_id: str | None = None,
     ):
-        super().__init__(card=card, extended_card=extended_card, context=context)
+        # ── Layer 1: BaseAgent identity ────────────────────────────────────
+        # Establishes self.name, self.agent_id, self.description,
+        # self.provider, self.card (frozen), self.skill_specs,
+        # self.skill_handlers, and all protocol/capability/security attrs.
+        super().__init__(agent_card=card or {})
 
-        # ------------------------------------------------------------------
-        # Resolve construction parameters
-        # Priority: explicit kwarg > CapabilityContext > default
-        # ------------------------------------------------------------------
-        _profile = profile if profile is not None else (
-            capability_ctx.profile if capability_ctx else None
+        # ── Extended card — frozen immediately ─────────────────────────────
+        # Mirrors the BaseAgent treatment of self.card.
+        # All runtime access via self.extended; never re-read raw dict above.
+        self.extended: types.MappingProxyType | None = (
+            types.MappingProxyType(extended_card) if extended_card else None
         )
-        _slim = slim if slim is not None else (
-            capability_ctx.slim if capability_ctx else False
-        )
 
-        # Preserve the capability_ctx for downstream use by capability handlers
-        self.capability_ctx = capability_ctx
-
-        # ------------------------------------------------------------------
-        # Warn if required cards are missing — do not crash
-        # ------------------------------------------------------------------
-        if not self.card:
-            print(f"[YoAiAgent WARNING] Basic card missing for "
-                  f"{self.__class__.__name__}. Expected at agent_card/agent.json")
-
-        if not self.extended:
-            print(f"[YoAiAgent WARNING] Extended card missing for "
-                  f"{self.__class__.__name__}. Expected at agent_card/extended/agent.json")
-
-        # ------------------------------------------------------------------
-        # Agent identity — card-driven
-        # ------------------------------------------------------------------
-        self.actor_name = (self.card or {}).get("name", "unknown-agent")
-
-        # ------------------------------------------------------------------
-        # AI client — constructed from x-ai block in extended card.
-        # Handles all missing/partial x-ai configurations gracefully.
-        # Used by call_ai() in ai_transform.py for model resolution and
-        # LLM dispatch. Per-capability resolution active for Door-Keeper;
-        # per-agent or platform fallback for all other agents.
-        # ------------------------------------------------------------------
+        # ── AI client ──────────────────────────────────────────────────────
+        # Constructed from the x-ai block in the extended card.
+        # Uses self.name (BaseAgent) — not a local alias.
         self.ai_client = AiClient(
-            agent_name=self.actor_name,
+            agent_name=self.name,
             xai_block=(self.extended or {}).get("x-ai"),
         )
 
-        # ------------------------------------------------------------------
-        # Profile — normalized, resolved, set once
+        # ── Profile — normalized, set once ────────────────────────────────
         # self.profile is the single source of truth for capability handlers.
-        # Never pull profile from the envelope inside run() — use self.profile.
-        # ------------------------------------------------------------------
-        if _profile is not None:
-            profile_name = _profile.get("name") or ""
-            self.profile = _profile if profile_name.strip() else None
+        # Empty-name profiles are treated as no profile.
+        if profile is not None:
+            profile_name = (profile.get("name") or "").strip()
+            self.profile: dict | None = profile if profile_name else None
         else:
             self.profile = None
 
-        # ------------------------------------------------------------------
-        # Instance identity
-        # base_instance_id: actor_name + "." + profile.name (if profile present)
-        # instance_id: base_instance_id — SG appends counter suffix if needed
-        # ------------------------------------------------------------------
+        # ── Instance identity ──────────────────────────────────────────────
+        # base_instance_id: self.name + "." + profile.name (if profile set)
+        # instance_id:      base_instance_id — SG appends counter suffix if needed
         profile_name = (self.profile or {}).get("name", "").strip()
-        if profile_name:
-            self.base_instance_id = f"{self.actor_name}.{profile_name}"
-        else:
-            self.base_instance_id = self.actor_name
-
-        self.instance_id = self.base_instance_id
-
-        # ------------------------------------------------------------------
-        # Correlation and task identity
-        # Seeded from CapabilityContext at construction.
-        # SG calls set_correlation() after construction to finalize.
-        # self.correlation_id and self.task_id are the single source of
-        # truth for handlers — never use agent_ctx for these.
-        # ------------------------------------------------------------------
-        self.correlation_id = (
-            capability_ctx.correlation_id if capability_ctx else None
+        self.base_instance_id: str = (
+            f"{self.name}.{profile_name}" if profile_name else self.name
         )
-        self.task_id = (
-            capability_ctx.task_id if capability_ctx else None
-        ) or self.correlation_id
+        self.instance_id: str = self.base_instance_id
 
-        # ------------------------------------------------------------------
-        # Declarative contract loading — always performed
-        # ------------------------------------------------------------------
-        self.skills = self._load_skills()
-        self.schemas = self._load_schemas()
+        # ── Correlation and task identity ──────────────────────────────────
+        # Flat attrs are the single source of truth for tracing.
+        # Callers that have a ctx extract these before constructing the agent.
+        # set_correlation() is the only writer after this point.
+        self.correlation_id: str | None = correlation_id
+        self.task_id: str | None = task_id or correlation_id
 
-        # ------------------------------------------------------------------
-        # Initialization depth — controlled by slim flag
+        # ── Declarative contract: skills and schemas ───────────────────────
+        # Loaded once at construction from frozen cards.
+        # Extended skills/schemas are appended to base card declarations.
+        self.skills: List[Dict[str, Any]] = self._load_skills()
+        self.schemas: List[Dict[str, Any]] = self._load_schemas()
+
+        # ── Initialization depth — controlled by slim ──────────────────────
         #
         # slim=False (default): full governance init
         #   tools, fingerprints, knowledge loaded
         #   Use for: Mode A, governed capabilities, vault/tool access
         #
         # slim=True: minimal init — identity + logger only
-        #   Use for: Mode B Direct API, workflow steps that don't need
-        #            governance artifacts, test harnesses
-        # ------------------------------------------------------------------
-        if not _slim:
+        #   Use for: Mode B Direct API, workflow steps, test harnesses
+        if not slim:
             registry = build_tool_registry(self.extended)
             self.tools = registry
             self.tool_manager = ToolInvocationManager(registry)
@@ -141,160 +118,74 @@ class YoAiAgent(BaseAgent):
             self.fingerprints = {}
             self.knowledge = {}
 
-        # ------------------------------------------------------------------
-        # Platform-wide structured logger — always initialized
-        # ------------------------------------------------------------------
+        # ── Logger — always last ───────────────────────────────────────────
+        # Initialized after all identity attrs are final so instance_id
+        # is stable before the first log line is ever written.
         self.logger = get_logger(self.instance_id)
-        self.logger.write({
-            "actor": self.instance_id,
-            "event_type": "agent_initialized",
-            "message": f"{self.instance_id} initialized",
-            "payload": {
-                "actor_name": self.actor_name,
-                "base_instance_id": self.base_instance_id,
-                "profile_name": profile_name or None,
-                "slim": _slim,
-                "card_loaded": bool(self.card),
-                "extended_card_loaded": bool(self.extended),
-                "correlation_id": self.correlation_id,
-                "task_id": self.task_id,
-            },
-        })
 
-    # ------------------------------------------------------------------
-    # showCard() — trust-gated extended card access
-    # ------------------------------------------------------------------
-    def showCard(self, context=None) -> dict:
+    # ── showCard — trust-gated extended card access ────────────────────────
+
+    def showCard(self, ctx: YoAiContext | None = None) -> dict:
         """
         Return the appropriate agent card based on caller context.
 
-        No card → fires NO_CARD alert (three bells), returns {}.
-        Identified caller (context.caller.agent_id present) → extended card.
+        No card          → fires NO_CARD alert, returns {}.
+        Identified caller (ctx["caller"]["agent_id"] present) → extended card.
         Anonymous caller → basic card only.
+
+        ctx is a YoAiContext dict — access via ctx.get(), never attribute access.
+        This method has no side effects on agent state.
         """
         if not self.card:
-            self._fire_no_card_event(context)
+            self._fire_no_card_event(ctx)
             return {}
 
-        caller = (context.caller if context else None) or {}
+        caller = (ctx.get("caller") if ctx else None) or {}
         caller_identified = bool(caller.get("agent_id"))
 
         if caller_identified:
             if self.extended:
-                return self.extended
-            self.log(
+                return dict(self.extended)
+            self.logger.write(
                 event_type="extended_card_missing",
-                message=(
-                    f"{self.actor_name} extended card requested by identified "
-                    f"caller but not available — returning basic card"
-                ),
-                payload={
-                    "caller_agent_id": caller.get("agent_id"),
-                    "correlation_id": self.correlation_id,
-                },
+                payload={"caller_agent_id": caller.get("agent_id")},
+                context=ctx,
                 level="WARNING",
+                include=["instance_id", "correlation_id"],
             )
-            return self.card
 
-        return self.card
+        return dict(self.card)
 
-    # ------------------------------------------------------------------
-    # Loader: Skills
-    # ------------------------------------------------------------------
-    def _load_skills(self):
-        skills = list((self.card or {}).get("skills", []))
-        if self.extended:
-            skills += self.extended.get("skills", [])
-        return skills
+    # ── Capability dispatch ────────────────────────────────────────────────
 
-    # ------------------------------------------------------------------
-    # Loader: Schemas
-    # ------------------------------------------------------------------
-    def _load_schemas(self):
-        schemas = list((self.card or {}).get("schemas", []))
-        if self.extended:
-            schemas += self.extended.get("schemas", [])
-        return schemas
-
-    # ------------------------------------------------------------------
-    # Correlation and task context management
-    # ------------------------------------------------------------------
-    def set_correlation(self, correlation_id: str = None):
-        """
-        Sets the active correlation ID and task_id for this agent instance.
-        Called by the SG immediately after construction.
-        Overrides any values seeded from CapabilityContext at construction.
-        task_id defaults to correlation_id if not already set.
-        """
-        self.correlation_id = correlation_id or str(uuid.uuid4())
-        if not self.task_id:
-            self.task_id = self.correlation_id
-
-    def clear_correlation(self):
-        """Clears correlation and task context after a message/task completes."""
-        self.correlation_id = None
-        self.task_id = None
-
-    # ------------------------------------------------------------------
-    # Structured logging with automatic context injection
-    # ------------------------------------------------------------------
-    def log(
-        self,
-        event_type: str,
-        message: str,
-        payload: dict = None,
-        level: str = "INFO",
-    ):
-        """
-        Write a structured log event with automatic context injection.
-
-        Automatically injects:
-          actor          — self.instance_id
-          correlation_id — self.correlation_id
-          task_id        — self.task_id
-
-        Use this instead of self.logger.write() directly so all
-        capability log records carry consistent identity fields.
-        """
-        self.logger.write({
-            "actor": self.instance_id,
-            "event_type": event_type,
-            "message": message,
-            "payload": payload or {},
-            "correlation_id": self.correlation_id,
-            "task_id": self.task_id,
-            "level": level,
-        })
-
-    # ------------------------------------------------------------------
-    # Safe capability entrypoint for direct invocation
-    # ------------------------------------------------------------------
     def handle_capability(
         self,
         capability_name: str,
-        payload: dict,
-        agent_context=None,
-        capability_ctx: CapabilityContext | None = None,
-        request_id=None,
+        envelope: dict,
+        request_id: str | None = None,
     ):
         """
-        Safe capability entrypoint.
+        Safe capability entrypoint for direct invocation.
 
-        In Mode A: SG provides both contexts via the UCR.
-        In Mode B: capability_ctx only, agent_context is None.
-        In tests:  both may be None — handlers tolerate this gracefully.
-
-        Passes both contexts to handler:
-          handler(payload, agent_context, capability_ctx)
-
-        Ensures ANY exception becomes an AnyException wrapped in a
-        JSON-RPC envelope — no raw exceptions ever escape an agent.
+        Builds a fresh YoAiContext from the envelope, logs invocation,
+        dispatches to the named capability method, and normalizes exceptions.
+        ctx is a local — it is never stored on self.
         """
         from core.error_handler import ErrorHandler
 
         handler = getattr(self, capability_name, None)
 
         if handler is None or not callable(handler):
+            self.logger.write(
+                event_type="capability_not_found",
+                payload={
+                    "capability": capability_name,
+                    "agent": self.instance_id,
+                },
+                context=None,
+                level="ERROR",
+                include=["instance_id"],
+            )
             return ErrorHandler.from_known_error(
                 code=-32601,
                 message="Capability not found",
@@ -306,10 +197,38 @@ class YoAiAgent(BaseAgent):
                 },
             )
 
+        ctx: YoAiContext | None = None
         try:
-            return handler(payload, agent_context, capability_ctx)
+            ctx = self._build_context(envelope)
+
+            self.logger.write(
+                event_type="capability_invocation",
+                payload={
+                    "capability": capability_name,
+                    "payload_keys": list(
+                        envelope.get("payload", envelope).keys()
+                    ),
+                },
+                context=ctx,
+                level="DEBUG",
+                include=["instance_id", "correlation_id", "task_id"],
+            )
+
+            payload = envelope.get("payload", envelope)
+            return handler(payload, ctx)
 
         except Exception as exc:
+            self.logger.write(
+                event_type="capability_exception",
+                payload={
+                    "capability": capability_name,
+                    "error_type": type(exc).__name__,
+                    "error_str": str(exc),
+                },
+                context=ctx,     # None if _build_context itself raised
+                level="ERROR",
+                include=["instance_id", "correlation_id", "task_id"],
+            )
             return ErrorHandler.normalize_exception(
                 exc,
                 request_id=request_id,
@@ -317,3 +236,69 @@ class YoAiAgent(BaseAgent):
                 capability=capability_name,
                 context={"source": "YoAiAgent.handle_capability"},
             )
+
+    # ── Context factory ────────────────────────────────────────────────────
+
+    def _build_context(self, envelope: dict) -> YoAiContext:
+        """
+        Build a fresh YoAiContext for one capability invocation.
+
+        Merges:
+          - Agent identity fields via as_actor_stub() (BaseAgent)
+          - Agent tracing fields: correlation_id, task_id, profile
+          - Request fields from the envelope (actor, startup_mode, knobs, etc.)
+
+        The returned ctx is a plain dict — it is passed into the handler
+        and discarded after the call completes. Never assigned to self.
+        """
+        return ctx_from_envelope(
+            envelope,
+            **self.as_actor_stub(),          # instance_id, actor_kind, actor
+            correlation_id=self.correlation_id,
+            task_id=self.task_id,
+            profile=self.profile,
+        )
+
+    # ── Correlation management ─────────────────────────────────────────────
+
+    def set_correlation(
+        self,
+        request_id: str | None = None,
+        task_id: str | None = None,
+    ) -> None:
+        # ── delegate to BaseAgent.generate_message_ids ─────────────────────
+        # Overrides any ids seeded at construction.
+        # task_id is preserved if already set and no new one is supplied.
+        self.correlation_id, self.task_id = self.generate_message_ids(
+            request_id=request_id,
+            task_id=task_id or self.task_id,
+        )
+
+    def clear_correlation(self) -> None:
+        """Clear tracing ids after a message or task completes."""
+        self.correlation_id = None
+        self.task_id = None
+
+    # ── Internal loaders ──────────────────────────────────────────────────
+
+    def _load_skills(self) -> List[Dict[str, Any]]:
+        """
+        Merge skills from basic and extended cards.
+        Called once during __init__ against the frozen cards.
+        Result is stored in self.skills — cards are not re-read after this.
+        """
+        skills = list(self.skill_specs.values())     # BaseAgent canonical index
+        if self.extended:
+            skills += list(self.extended.get("skills", []))
+        return skills
+
+    def _load_schemas(self) -> List[Dict[str, Any]]:
+        """
+        Merge schemas from basic and extended cards.
+        Called once during __init__ against the frozen cards.
+        Result is stored in self.schemas — cards are not re-read after this.
+        """
+        schemas = list((self.card or {}).get("schemas", []))
+        if self.extended:
+            schemas += list(self.extended.get("schemas", []))
+        return schemas
