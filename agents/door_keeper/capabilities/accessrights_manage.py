@@ -1,38 +1,47 @@
 # agents/door_keeper/capabilities/accessrights_manage.py
+#
+# Capability: AccessRights.Manage
+# Manages access rights for RegisteredAgents and RegisteredSubscribers.
+#
+# Backed by the AccessAdministrator tool in production:
+#   Provider: Apache Kafka 3.7.0
+#   Config:   bootstrapServers=kafka:9092, securityProtocol=SASL_SSL
+#   Actions:  grant | revoke | inspect
+#   Path:     /access_admin.py
+#
+# Subject types: RegisteredAgent | RegisteredSubscriber | Visitor
 
 from datetime import datetime, timezone
 from core.yoai_context import YoAiContext
+from core.observability.logging.platform_logger import get_platform_logger
+
+LOG = get_platform_logger("door_keeper")
+
 
 async def run(payload: dict, ctx: YoAiContext) -> dict:
-    """
-    Capability: AccessRights.Manage
-    Manages access rights for RegisteredAgents and RegisteredSubscribers.
+    # ── Capability: AccessRights.Manage ───────────────────────────────────
 
-    Backed by the AccessAdministrator tool in production:
-      - Provider: Apache Kafka 3.7.0
-      - Config: bootstrapServers=kafka:9092, securityProtocol=SASL_SSL
-      - Capabilities: grant, revoke, issue-credentials
-      - Path: /access_admin.py
-    (See Door-Keeper-ExtendedAgentCard.md — AccessAdministrator tool artifact)
+    subject_id  = payload.get("subjectId")
+    subject_type = payload.get("subjectType")    # "RegisteredAgent" | "RegisteredSubscriber" | "Visitor"
+    action      = payload.get("action")          # "grant" | "revoke" | "inspect"
+    resource    = payload.get("resource")
+    permissions = payload.get("permissions", [])
+    rationale   = payload.get("rationale")
 
-    Actions:
-      grant   — grants access to a resource or Kafka topic
-      revoke  — revokes existing access
-      inspect — returns current access rights for a subject
-
-    Subject types: RegisteredAgent | RegisteredSubscriber | Visitor
-
-    Args:
-        payload        (dict): Pre-extracted capability input.
-        ctx            (YoAiContext): Governance context.
-    """
-
-    subject_id    = payload.get("subjectId")
-    subject_type  = payload.get("subjectType")    # "RegisteredAgent" | "RegisteredSubscriber" | "Visitor"
-    action        = payload.get("action")         # "grant" | "revoke" | "inspect"
-    resource      = payload.get("resource")       # e.g. Kafka topic, capability name, endpoint
-    permissions   = payload.get("permissions", []) # e.g. ["read", "write", "post"]
-    rationale     = payload.get("rationale")
+    # ── Entry 1: capability received ──────────────────────────────────────
+    LOG.write(
+        event_type="accessrights_manage.Request",
+        payload={
+            "subjectId":   subject_id,
+            "subjectType": subject_type,
+            "action":      action,
+            "resource":    resource,
+            "permissions": permissions,
+            "rationale":   rationale,
+        },
+        context=ctx,
+        include=["profile", "actor", "caller"],
+    )
 
     result = {
         "subjectId":     subject_id,
@@ -42,10 +51,10 @@ async def run(payload: dict, ctx: YoAiContext) -> dict:
         "permissions":   permissions,
         "rationale":     rationale,
         "outcome":       "updated",   # "updated" | "denied" | "no-change"
-        "timestamp":    datetime.now(timezone.utc).isoformat(),
-        "correlationId": ctx.correlation_id,
-        "taskId":        ctx.task_id,
-        "dryRun":        ctx.dry_run,
+        "timestamp":     datetime.now(timezone.utc).isoformat(),
+        "correlationId": ctx.get("correlation_id"),
+        "taskId":        ctx.get("task_id"),
+        "dryRun":        ctx.get("dry_run"),
         "status":        "stub",
     }
 
