@@ -2,7 +2,6 @@
 
 from datetime import datetime, timezone
 from core.yoai_context import YoAiContext
-
 from core.observability.logging.platform_logger import get_platform_logger
 
 LOG = get_platform_logger("talent_agent")
@@ -37,7 +36,7 @@ async def run(payload: dict, ctx: YoAiContext) -> dict:
         "criteria": criteria,
         "matches": [],
         "timestamp": datetime.now(timezone.utc).isoformat(),
-        "correlationId":   ctx.correlation_id,
-        "taskId":          ctx.task_id,
-        "dryRun":          ctx.dry_run,
+        "correlationId":   ctx.get().correlation_id,
+        "taskId":          ctx.get().task_id,
+        "dryRun":          ctx.get().dry_run,
     }
