@@ -2,7 +2,6 @@
 
 from datetime import datetime, timezone
 from core.yoai_context import YoAiContext
-
 from core.observability.logging.platform_logger import get_platform_logger
 
 LOG = get_platform_logger("data_anonymizer")
@@ -26,5 +25,6 @@ async def run(payload: dict, ctx: YoAiContext) -> dict:
         "lDiversity": 2,
         "tCloseness": 0.13,
         "timestamp": datetime.now(timezone.utc).isoformat(),
-        "correlationId": ctx.correlation_id
+        "correlationId": ctx.get("correlation_id"),
+        "taskId": ctx.get("task_id"),
     }
