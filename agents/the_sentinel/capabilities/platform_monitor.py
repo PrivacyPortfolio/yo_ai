@@ -2,7 +2,6 @@
 
 from datetime import datetime, timezone
 from core.yoai_context import YoAiContext
-
 from core.observability.logging.platform_logger import get_platform_logger
 
 LOG = get_platform_logger("the_sentinel")
@@ -23,7 +22,7 @@ async def run(payload: dict, ctx: YoAiContext) -> dict:
     """
 
     signals = payload.get("signals", [])
-    perspective = ctx.profile if ctx.profile else "default"
+    perspective = ctx.get("profile") if ctx.get("profile") else "default"
 
     LOG.write(
         event_type="platform_monitor.Request",
@@ -42,8 +41,8 @@ async def run(payload: dict, ctx: YoAiContext) -> dict:
         "anomaliesDetected": [],
         "status": "healthy",
         "timestamp": datetime.now(timezone.utc).isoformat(),
-        "correlationId":   ctx.correlation_id,
-        "taskId":          ctx.task_id,
-        "dryRun":          ctx.dry_run,
-        "governanceLabels": ctx.governanceLabels,
+        "correlationId":   ctx.get("correlation_id"),
+        "taskId":          ctx.get("task_id"),
+        "dryRun":          ctx.get("dry_run"),
+        "governanceLabels": ctx.get("governanceLabels"),
     }
