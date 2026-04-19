@@ -171,7 +171,7 @@ class YoAiAgent(BaseAgent):
         dispatches to the named capability method, and normalizes exceptions.
         ctx is a local — it is never stored on self.
         """
-        from core.error_handler import ErrorHandler
+        from core.runtime.error_handler import ErrorHandler
 
         handler = getattr(self, capability_name, None)
 
