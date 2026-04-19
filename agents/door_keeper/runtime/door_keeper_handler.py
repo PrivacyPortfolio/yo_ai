@@ -1,265 +1,242 @@
 # agents/door_keeper/door_keeper_handler.py
+#
+# Lambda handler for the Door-Keeper agent.
+#
+# Dispatch model: run() first, call_ai() fallback only.
+#
+# Transport boundary responsibilities:
+#   - Extract aws_request_id → seeds correlation_id via generate_message_ids()
+#   - Extract ctx_data block from body → seeds all YoAiContext fields
+#   - Call ctx_for_capability() to bind capability_id before dispatch
+#   - Pass the fully-seeded YoAiContext into every downstream call
 
-"""
-Lambda handler for the Door-Keeper agent.
-
-Responsibilities:
-  - Keep transport concerns out of agent logic
-  - Instantiate agent once per Lambda execution environment (slim=True)
-  - Build AgentContext + CapabilityContext per request
-  - Dispatch to run() module first; call_ai() is fallback only
-  - Log all handler-level events via LogBootstrapper
-  - Return A2A-compliant envelope
-
-Dispatch model (Gap Registry v2 — all per-agent handlers):
-  1. Extract payload from request body
-  2. Build AgentContext (governance) + CapabilityContext (execution)
-  3. Dispatch to run(payload, agent_ctx, capability_ctx)
-  4. If run() returns None or raises NotImplementedError → call_ai() fallback
-  5. Shape output → log → return envelope
-
-Transport notes:
-  - "Lambda execution environment" replaces "Lambda container" (Gap Registry v2)
-  - card and extended_card auto-loaded by BaseAgent from agent_card/ bundle
-  - AGENT.name used (not AGENT.agent_id — removed in v2)
-"""
-
+import asyncio
+import inspect
 import json
 from datetime import datetime, timezone
 
-from door_keeper import DoorKeeperAgent
+from agents.door_keeper.runtime.door_keeper import DoorKeeperAgent
+from core.platform_event_bus import PlatformEventBus
+from core.yoai_context import YoAiContext, ctx_from_envelope, ctx_for_capability
+from core.yoai_context import input_schema_name, output_schema_name
 from core.utils.validators.schema_validator import schema_validator
 from core.utils.ai.ai_transform import call_ai
 from core.utils.ai.output_shaper import shape_output
-from core.observability.logging.log_bootstrapper import LogBootstrapper
-from core.platform_agent import PlatformEventBus
+from core.observability.logging.log_bootstrapper import get_logger
+
+_logger = get_logger("door-keeper-handler")
 
 
-logger = logging.getLogger()
-logger.setLevel(logging.INFO)
+# ── Module-level singletons ────────────────────────────────────────────────
 
-# ------------------------------------------------------------------
-# Lambda execution environment singleton
-# slim=True: skips fingerprints/knowledge/tools at init —
-# appropriate for a handler that processes one capability per invocation.
-# ------------------------------------------------------------------
-BUS   = PlatformEventBus()
-AGENT = DoorKeeperAgent(slim=True, event_bus=BUS)
-LOG   = LogBootstrapper(agent_name=AGENT.name)
+_event_bus = PlatformEventBus()
 
-# ------------------------------------------------------------------
-# Capability routing table
-# Maps URL path segment → canonical capability identifier
-# Identifiers must match capability_map.yaml and schema folder names.
-# ------------------------------------------------------------------
-CAPABILITY_ROUTER = {
-    "VisitorIdentify":       "Visitor.Identify",
-    "SubscriberRegister":    "Subscriber.Register",
-    "CredentialsGenerate":   "Credentials.Generate",
-    "SubscriberAuthenticate":"Subscriber.Authenticate",
-    "AgentRegister":         "Agent.Register",
-    "TrustAssign":           "Trust.Assign",
-    "AccessRightsManage":    "AccessRights.Manage",
-    "AgentAuthenticate":     "Agent.Authenticate",
+_AGENT = DoorKeeperAgent(
+    event_bus=_event_bus,
+    slim=True,
+)
+
+# ── Capability routing ─────────────────────────────────────────────────────
+
+_CAPABILITY_ROUTER = {
+    "VisitorIdentify":        "Visitor.Identify",
+    "SubscriberRegister":     "Subscriber.Register",
+    "CredentialsGenerate":    "Credentials.Generate",
+    "SubscriberAuthenticate": "Subscriber.Authenticate",
+    "AgentRegister":          "Agent.Register",
+    "TrustAssign":            "Trust.Assign",
+    "AccessRightsManage":     "AccessRights.Manage",
+    "AgentAuthenticate":      "Agent.Authenticate",
 }
 
-# Maps canonical capability id → DoorKeeperAgent method
-CAPABILITY_DISPATCH = {
-    "Visitor.Identify":        AGENT.visitor_identify,
-    "Subscriber.Register":     AGENT.subscriber_register,
-    "Credentials.Generate":    AGENT.credentials_generate,
-    "Subscriber.Authenticate": AGENT.subscriber_authenticate,
-    "Agent.Register":          AGENT.agent_register,
-    "Trust.Assign":            AGENT.trust_assign,
-    "AccessRights.Manage":     AGENT.accessrights_manage,
-    "Agent.Authenticate":      AGENT.agent_authenticate,
+_CAPABILITY_DISPATCH = {
+    "Visitor.Identify":        _AGENT.visitor_identify,
+    "Subscriber.Register":     _AGENT.subscriber_register,
+    "Credentials.Generate":    _AGENT.credentials_generate,
+    "Subscriber.Authenticate": _AGENT.subscriber_authenticate,
+    "Agent.Register":          _AGENT.agent_register,
+    "Trust.Assign":            _AGENT.trust_assign,
+    "AccessRights.Manage":     _AGENT.accessrights_manage,
+    "Agent.Authenticate":      _AGENT.agent_authenticate,
 }
 
 
-# ------------------------------------------------------------------
-# Lambda entrypoint
-# ------------------------------------------------------------------
+# ── Lambda entrypoint ──────────────────────────────────────────────────────
+#
+# Accepts two event shapes:
+#   Shape A — API Gateway HTTP API (v2 payload format):
+#     { "rawPath": "/agents/door-keeper/TrustAssign",
+#       "body": "{...}", "requestContext": { "requestId": "..." } }
+#   Shape B — Direct Lambda invocation:
+#     { "capability": "Trust.Assign", "payload": {...}, "ctx": {...} }
+
 def lambda_handler(event, context):
-    """
-    Accepts two event shapes (Mode 3 — API Gateway):
-
-    Shape A — API Gateway HTTP API (v2 payload format):
-        {
-            "rawPath": "/agents/door-keeper/TrustAssign",
-            "body":    "{...JSON...}",
-            "requestContext": { "requestId": "..." }
-        }
-
-    Shape B — Direct Lambda invocation:
-        {
-            "capability": "Trust.Assign",
-            "payload":    {...},
-            "correlationId": "..."
-        }
-    """
-
     raw_path       = event.get("rawPath", "")
-    aws_request_id = context.aws_request_id if context else None
+    aws_request_id = getattr(context, "aws_request_id", None) if context else None
 
     try:
-        # ----------------------------------------------------------
-        # 1. Resolve capability
-        # ----------------------------------------------------------
+        # ── Route resolution ───────────────────────────────────────────────
         if raw_path:
-            # Shape A — API Gateway
-            capability_name = raw_path.rstrip("/").split("/")[-1]
-            if capability_name not in CAPABILITY_ROUTER:
-                return _error(400, f"Unknown capability path segment: {capability_name}")
-            capability_id = CAPABILITY_ROUTER[capability_name]
-            body    = event.get("body") or "{}"
-            params  = json.loads(body)
-            payload = params.get("payload", params)   # accept both wrapped and flat
+            path_segment  = raw_path.rstrip("/").split("/")[-1]
+            capability_id = _CAPABILITY_ROUTER.get(path_segment)
+            if not capability_id:
+                return _error(400, f"Unknown capability path segment: {path_segment}")
+            body     = json.loads(event.get("body") or "{}")
+            payload  = body.get("payload", body)
+            ctx_data = body.get("ctx", {})
         else:
-            # Shape B — Direct invocation
             capability_id = event.get("capability", "")
-            if capability_id not in CAPABILITY_DISPATCH:
+            if capability_id not in _CAPABILITY_DISPATCH:
                 return _error(400, f"Unknown capability: {capability_id}")
-            params  = event
-            payload = event.get("payload", {})
+            payload  = event.get("payload", {})
+            ctx_data = event.get("ctx", {})
 
-        # ----------------------------------------------------------
-        # 2. Build AgentContext + CapabilityContext
-        #    Built first so capability_ctx.input_schema_name drives
-        #    both validation and output shaping — single source of truth.
-        # ----------------------------------------------------------
-        agent_ctx      = AGENT._build_agent_context(params)
-        capability_ctx = AGENT._build_capability_context(capability_id, params)
-
-        # ----------------------------------------------------------
-        # 3. Validate input schema
-        #    capability_ctx.input_schema_name → e.g. "trust.assign.input.schema.json"
-        #    Dot convention matches actual filenames in training/artifacts/messages/
-        # ----------------------------------------------------------
-        schema_url = f"https://yo-ai.ai/schemas/{capability_ctx.input_schema_name}"
-        validation_errors = schema_validator.validate_input(schema_url, payload)
-        if validation_errors:
-            LOG.write(
-                event_type="Handler.ValidationFailed",
-                message=f"Input validation failed for {capability_id}.",
-                data={
-                    "capability":    capability_id,
-                    "schemaName":    capability_ctx.input_schema_name,
-                    "errors":        validation_errors,
-                    "awsRequestId":  aws_request_id,
-                }
-            )
-            return _error(400, f"Input validation failed: {validation_errors}")
-
-        # ----------------------------------------------------------
-        # 4. Dispatch to run() module
-        #    call_ai() is fallback only — deterministic capabilities
-        #    never use AI (Gap Registry v2, Section 3)
-        # ----------------------------------------------------------
-        handler_fn = CAPABILITY_DISPATCH[capability_id]
-        result = None
-
-        try:
-            result = await_or_call(handler_fn, payload, agent_ctx, capability_ctx)
-        except NotImplementedError:
-            LOG.write(
-                event_type="Handler.CallAiFallback",
-                message=f"run() not implemented for {capability_id} — falling back to call_ai().",
-                data={"capability": capability_id, "awsRequestId": aws_request_id}
-            )
-            result = None
-
-        if result is None:
-            # call_ai() fallback
-            ai_prompt = {
-                "persona":      AGENT.name,
-                "capability":   capability_id,
-                "input":        payload,
-                "context": {
-                    "awsRequestId": aws_request_id,
-                    "rawPath":      raw_path,
-                },
-            }
-            result = call_ai(ai_prompt, AGENT)
-
-        # ----------------------------------------------------------
-        # 5. Shape output to match Output schema
-        # ----------------------------------------------------------
-        output_schema_url = f"https://yo-ai.ai/schemas/{capability_ctx.output_schema_name}"
-        shaped_output = shape_output(result, output_schema_url)
-
-        # ----------------------------------------------------------
-        # 6. Log handler completion
-        # ----------------------------------------------------------
-        LOG.write(
-            event_type="Handler.Complete",
-            message=f"{capability_id} completed.",
-            data={
-                "agentName":     AGENT.name,
-                "capability":    capability_id,
-                "correlationId": agent_ctx.correlation_id,
-                "taskId":        agent_ctx.task_id,
-                "dryRun":        capability_ctx.dry_run,
-                "awsRequestId":  aws_request_id,
-            }
+        # ── Seed YoAiContext at the transport boundary ──────────────────────
+        correlation_id, task_id = _AGENT.generate_message_ids(
+            request_id=aws_request_id,
+            task_id=ctx_data.get("task_id"),
         )
 
-        # ----------------------------------------------------------
-        # 7. Return A2A-compliant envelope
-        # ----------------------------------------------------------
-        response_body = {
-            "jsonrpc":  "2.0",
-            "method":   f"a2a.{capability_id}",
-            "result":   shaped_output,
-            "metadata": {
-                "agentName":     AGENT.name,
-                "capability":    capability_id,
-                "correlationId": agent_ctx.correlation_id,
-                "taskId":        agent_ctx.task_id,
-                "timestamp":     datetime.now(timezone.utc).isoformat(),
-            }
+        envelope = {
+            "payload": payload,
+            "ctx": {
+                "startup_mode":  ctx_data.get("startup_mode", "api"),
+                "caller":        ctx_data.get("caller"),
+                "profile":       ctx_data.get("profile"),
+                "subject_ref":   ctx_data.get("subject_ref"),
+                "slim":          ctx_data.get("slim", True),
+                "tools":         ctx_data.get("tools"),
+                "dry_run":       ctx_data.get("dry_run", False),
+                "trace":         ctx_data.get("trace", False),
+                "step":          ctx_data.get("step"),
+                "prior_outputs": ctx_data.get("prior_outputs"),
+                "state":         ctx_data.get("state"),
+            },
         }
+
+        pipeline_ctx: YoAiContext = ctx_from_envelope(
+            envelope,
+            **_AGENT.as_actor_stub(),
+            instance_id=_AGENT.instance_id,
+            correlation_id=correlation_id,
+            task_id=task_id,
+            profile=ctx_data.get("profile"),
+        )
+
+        ctx: YoAiContext = ctx_for_capability(pipeline_ctx, capability_id)
+
+        # ── Input validation ───────────────────────────────────────────────
+        i_schema_name = input_schema_name(ctx)
+        validation_errors = schema_validator.validate_input(i_schema_name, payload)
+        if validation_errors:
+            _logger.write({
+                "event_type": "Handler.ValidationFailed",
+                "level":      "WARNING",
+                "payload": {
+                    "capability":    capability_id,
+                    "schemaName":    i_schema_name,
+                    "errors":        validation_errors,
+                    "correlationId": ctx.get("correlation_id"),
+                },
+            })
+            return _error(400, f"Input validation failed: {validation_errors}")
+
+        # ── Dispatch: run() first, call_ai() fallback ──────────────────────
+        handler = _CAPABILITY_DISPATCH[capability_id]
+        result  = None
+
+        try:
+            result = _invoke(handler, payload, ctx)
+        except NotImplementedError:
+            _logger.write({
+                "event_type": "Handler.CallAiFallback",
+                "level":      "INFO",
+                "payload": {
+                    "capability":    capability_id,
+                    "correlationId": ctx.get("correlation_id"),
+                },
+            })
+
+        if result is None:
+            if ctx.get("dry_run"):
+                result = {"status": "dry_run", "capability": capability_id, "payload": payload}
+            else:
+                result = call_ai(
+                    {
+                        "persona":    _AGENT.name,
+                        "capability": capability_id,
+                        "input":      payload,
+                        "context": {
+                            "awsRequestId":  aws_request_id,
+                            "rawPath":       raw_path,
+                            "correlationId": ctx.get("correlation_id"),
+                            "taskId":        ctx.get("task_id"),
+                        },
+                    },
+                    _AGENT,
+                )
+
+        # ── Output shaping ─────────────────────────────────────────────────
+        o_schema_name = output_schema_name(ctx)
+        shaped_output = shape_output(result, o_schema_name) if o_schema_name else result
+
+        # ── Completion log ─────────────────────────────────────────────────
+        _logger.write({
+            "event_type": "Handler.Complete",
+            "level":      "INFO",
+            "payload": {
+                "agentName":     _AGENT.name,
+                "capability":    capability_id,
+                "correlationId": ctx.get("correlation_id"),
+                "taskId":        ctx.get("task_id"),
+                "dryRun":        ctx.get("dry_run"),
+                "awsRequestId":  aws_request_id,
+            },
+        })
 
         return {
             "statusCode": 200,
-            "headers":    {"Content-Type": "application/json"},
-            "body":       json.dumps(response_body),
+            "headers": {"Content-Type": "application/json"},
+            "body": json.dumps({
+                "jsonrpc": "2.0",
+                "method":  f"a2a.{capability_id}",
+                "result":  shaped_output,
+                "metadata": {
+                    "agentName":     _AGENT.name,
+                    "capability":    capability_id,
+                    "correlationId": ctx.get("correlation_id"),
+                    "taskId":        ctx.get("task_id"),
+                    "timestamp":     datetime.now(timezone.utc).isoformat(),
+                },
+            }),
         }
 
     except Exception as e:
-        logger.exception("Handler error")
-        LOG.write(
-            event_type="Handler.Error",
-            message=f"Unhandled exception in door_keeper_handler.",
-            data={
+        _logger.write({
+            "event_type": "Handler.Error",
+            "level":      "ERROR",
+            "payload": {
                 "error":        str(e),
                 "awsRequestId": aws_request_id,
                 "rawPath":      raw_path,
-            }
-        )
+            },
+        })
         return _error(500, str(e))
 
 
-# ------------------------------------------------------------------
-# Helpers
-# ------------------------------------------------------------------
-def await_or_call(fn, payload, agent_ctx, capability_ctx):
-    """
-    Transparently handles both async and sync run() modules.
-    All Door-Keeper run() modules are async, but this guard
-    keeps the handler safe if a stub is accidentally sync.
-    """
-    import asyncio
-    import inspect
-    if inspect.iscoroutinefunction(fn):
-        return asyncio.get_event_loop().run_until_complete(
-            fn(payload, agent_ctx, capability_ctx)
-        )
-    return fn(payload, agent_ctx, capability_ctx)
+# ── Async dispatcher ───────────────────────────────────────────────────────
 
+def _invoke(fn, payload: dict, ctx: YoAiContext):
+    if inspect.iscoroutinefunction(fn):
+        return asyncio.get_event_loop().run_until_complete(fn(payload, ctx))
+    return fn(payload, ctx)
+
+
+# ── Error helper ───────────────────────────────────────────────────────────
 
 def _error(status_code: int, message: str) -> dict:
     return {
         "statusCode": status_code,
-        "headers":    {"Content-Type": "application/json"},
-        "body":       json.dumps({"error": message}),
+        "headers": {"Content-Type": "application/json"},
+        "body": json.dumps({"error": message}),
     }

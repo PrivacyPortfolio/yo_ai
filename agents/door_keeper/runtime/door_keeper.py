@@ -1,44 +1,30 @@
-# agents/door_keeper/door_keeper.py
+# agents/door_keeper/runtime/door_keeper.py
 
 from core.platform_agent import PlatformAgent, PlatformEventBus
+from core.yoai_context import YoAiContext
+from core.observability.logging.platform_logger import get_platform_logger
+
+LOG = get_platform_logger("door_keeper")
 
 
 class DoorKeeperAgent(PlatformAgent):
-    """
-    Door-Keeper: profiles guests, registers subscribers/agents,
-    authenticates visitors, assigns trust, and manages access rights.
+    # ── Door-Keeper ────────────────────────────────────────────────────────
+    # Profiles guests, registers subscribers/agents, authenticates visitors,
+    # assigns trust, and manages access rights.
+    #
+    # Event Bus:
+    #   PlatformEventBus must be injected at construction (event_bus=).
+    #   Listens for:  Platform.ConfigurationChanged (inherited, auto-registered)
+    #   Emits:        VisitorTrustTierAssigned (via trust_assign run())
 
-    Inherits from PlatformAgent → YoAiAgent → BaseAgent.
-
-    Card is auto-loaded from agent_card/ bundle by BaseAgent.__init__().
-    Constructor is keyword-only (no positional args).
-
-    Event Bus:
-      A PlatformEventBus must be injected at construction (event_bus=).
-      Door-Keeper listens for trust-relevant platform events:
-        - Platform.ConfigurationChanged  (inherited, auto-registered)
-      Door-Keeper emits:
-        - VisitorTrustTierAssigned       (via trust_assign run() → agent_ctx.log())
-          NOTE: KafkaPublisher not yet built (Gap Registry 🔲) — currently
-          logged via LogBootstrapper as placeholder.
-
-    Two-context model (Gap Registry v2):
-        AgentContext      — governance: caller, subject_ref, correlation_id,
-                            governance_labels, task_id, startup_mode
-        CapabilityContext — execution: capability_id, dry_run, trace,
-                            startup_mode, task_id
-
-    Capability dispatch pattern:
-        1. Import and call run(payload, agent_ctx, capability_ctx)
-        2. run() module handles all logic and logging
-        3. call_ai() fallback applied by handler, not here
-
-    This agent is profile-aware: it may operate with a subject profile
-    or visitor profile depending on the request context.
-    """
-
-    def __init__(self, *, card=None, extended_card=None, slim=False,
-                 event_bus: PlatformEventBus):
+    def __init__(
+        self,
+        *,
+        card=None,
+        extended_card=None,
+        slim=False,
+        event_bus: PlatformEventBus,
+    ):
         super().__init__(
             card=card,
             extended_card=extended_card,
@@ -46,77 +32,62 @@ class DoorKeeperAgent(PlatformAgent):
             event_bus=event_bus,
         )
 
-    # ------------------------------------------------------------------
-    # Capability: Visitor.Identify
-    # ------------------------------------------------------------------
-    async def visitor_identify(self, payload, agent_ctx, capability_ctx):
-        from .visitor_identify import run
-        return await run(payload, agent_ctx, capability_ctx)
+    # ── Capability: Visitor.Identify ───────────────────────────────────────
 
-    # ------------------------------------------------------------------
-    # Capability: Subscriber.Register
-    # ------------------------------------------------------------------
-    async def subscriber_register(self, payload, agent_ctx, capability_ctx):
-        from .subscriber_register import run
-        return await run(payload, agent_ctx, capability_ctx)
+    async def visitor_identify(self, payload: dict, ctx: YoAiContext) -> dict:
+        from agents.door_keeper.capabilities.visitor_identify import run
+        return await run(payload, ctx)
 
-    # ------------------------------------------------------------------
-    # Capability: Credentials.Generate
-    # ------------------------------------------------------------------
-    async def credentials_generate(self, payload, agent_ctx, capability_ctx):
-        from .credentials_generate import run
-        return await run(payload, agent_ctx, capability_ctx)
+    # ── Capability: Subscriber.Register ───────────────────────────────────
 
-    # ------------------------------------------------------------------
-    # Capability: Subscriber.Authenticate
-    # ------------------------------------------------------------------
-    async def subscriber_authenticate(self, payload, agent_ctx, capability_ctx):
-        from .subscriber_authenticate import run
-        return await run(payload, agent_ctx, capability_ctx)
+    async def subscriber_register(self, payload: dict, ctx: YoAiContext) -> dict:
+        from agents.door_keeper.capabilities.subscriber_register import run
+        return await run(payload, ctx)
 
-    # ------------------------------------------------------------------
-    # Capability: Agent.Register
-    # ------------------------------------------------------------------
-    async def agent_register(self, payload, agent_ctx, capability_ctx):
-        from .agent_register import run
-        return await run(payload, agent_ctx, capability_ctx)
+    # ── Capability: Credentials.Generate ──────────────────────────────────
 
-    # ------------------------------------------------------------------
-    # Capability: Trust.Assign
-    # ------------------------------------------------------------------
-    async def trust_assign(self, payload, agent_ctx, capability_ctx):
-        from .trust_assign import run
-        return await run(payload, agent_ctx, capability_ctx)
+    async def credentials_generate(self, payload: dict, ctx: YoAiContext) -> dict:
+        from agents.door_keeper.capabilities.credentials_generate import run
+        return await run(payload, ctx)
 
-    # ------------------------------------------------------------------
-    # Capability: AccessRights.Manage
-    # ------------------------------------------------------------------
-    async def accessrights_manage(self, payload, agent_ctx, capability_ctx):
-        from .accessrights_manage import run
-        return await run(payload, agent_ctx, capability_ctx)
+    # ── Capability: Subscriber.Authenticate ───────────────────────────────
 
-    # ------------------------------------------------------------------
-    # Capability: Agent.Authenticate
-    # ------------------------------------------------------------------
-    async def agent_authenticate(self, payload, agent_ctx, capability_ctx):
-        from .agent_authenticate import run
-        return await run(payload, agent_ctx, capability_ctx)
+    async def subscriber_authenticate(self, payload: dict, ctx: YoAiContext) -> dict:
+        from agents.door_keeper.capabilities.subscriber_authenticate import run
+        return await run(payload, ctx)
 
-    # ------------------------------------------------------------------
-    # Mode 2: handle_a2a — local dispatch entry point
-    # ------------------------------------------------------------------
+    # ── Capability: Agent.Register ─────────────────────────────────────────
+
+    async def agent_register(self, payload: dict, ctx: YoAiContext) -> dict:
+        from agents.door_keeper.capabilities.agent_register import run
+        return await run(payload, ctx)
+
+    # ── Capability: Trust.Assign ───────────────────────────────────────────
+
+    async def trust_assign(self, payload: dict, ctx: YoAiContext) -> dict:
+        from agents.door_keeper.capabilities.trust_assign import run
+        return await run(payload, ctx)
+
+    # ── Capability: AccessRights.Manage ───────────────────────────────────
+
+    async def accessrights_manage(self, payload: dict, ctx: YoAiContext) -> dict:
+        from agents.door_keeper.capabilities.accessrights_manage import run
+        return await run(payload, ctx)
+
+    # ── Capability: Agent.Authenticate ────────────────────────────────────
+
+    async def agent_authenticate(self, payload: dict, ctx: YoAiContext) -> dict:
+        from agents.door_keeper.capabilities.agent_authenticate import run
+        return await run(payload, ctx)
+
+    # ── Mode 2: handle_a2a — A2A Direct dispatch ───────────────────────────
+
     async def handle_a2a(
         self,
         capability_id: str,
         payload: dict,
-        agent_ctx,
-        capability_ctx,
+        ctx: YoAiContext,
     ) -> dict:
-        """
-        Mode 2 (A2A Direct) dispatch for Door-Keeper.
-        Called by SolicitorGeneral._dispatch_local().
-        No run() modules modified — same args they always receive.
-        """
         dispatch = {
             "Visitor.Identify":        self.visitor_identify,
             "Subscriber.Register":     self.subscriber_register,
@@ -132,53 +103,4 @@ class DoorKeeperAgent(PlatformAgent):
             raise NotImplementedError(
                 f"Capability '{capability_id}' not found on DoorKeeperAgent."
             )
-        return await handler(payload, agent_ctx, capability_ctx)
-
-    # ------------------------------------------------------------------
-    # Context builders
-    # ------------------------------------------------------------------
-    def _build_agent_context(self, params: dict):
-        """
-        Build AgentContext (governance layer) from inbound request params.
-
-        Uses self.context_class() — no import needed (BaseAgent provides it).
-
-        Fields:
-            caller           — identity of the calling agent/subscriber
-            subject_ref      — lightweight pointer to the subject (not full data)
-            profile          — resolved at construction; never from request params
-            correlation_id   — request correlation chain
-            task_id          — task this request belongs to
-            governance_labels — platform-assigned only; caller labels ignored
-            startup_mode     — a2a | direct | api | starlette
-        """
-        return self.context_class()(
-            caller=params.get("caller"),
-            subject_ref=params.get("subjectRef"),
-            profile=self.profile,
-            correlation_id=params.get("correlationId"),
-            task_id=params.get("taskId"),
-            governance_labels=[],       # platform-assigned only — never from caller
-            startup_mode=params.get("startupMode", "api"),
-        )
-
-    def _build_capability_context(self, capability_id: str, params: dict):
-        """
-        Build CapabilityContext (execution layer) from inbound request params.
-
-        Uses self.capability_context_class() — no import needed (BaseAgent provides it).
-
-        Fields:
-            capability_id  — canonical capability identifier (e.g. "Trust.Assign")
-            dry_run        — if True, execute logic but do not persist side effects
-            trace          — if True, emit OpenTelemetry trace spans (Layer 4, deferred)
-            task_id        — propagated from AgentContext
-            startup_mode   — propagated from AgentContext
-        """
-        return self.capability_context_class()(
-            capability_id=capability_id,
-            dry_run=params.get("dryRun", False),
-            trace=params.get("trace", False),
-            task_id=params.get("taskId"),
-            startup_mode=params.get("startupMode", "api"),
-        )
+        return await handler(payload, ctx)
