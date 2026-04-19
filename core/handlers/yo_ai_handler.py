@@ -1,30 +1,25 @@
 # core/handlers/yo_ai_handler.py
-
-"""
-Universal Lambda / HTTP entrypoint for the Yo-ai Platform.
-
-This is the recommended front door for ALL agents on the platform.
-
-Module-level singletons are constructed once per Lambda execution environment
-and reused across warm invocations. Construction order matters:
-  1. PlatformEventBus       — in-process pub/sub for PlatformAgents
-  2. capability_map          — loaded from shared/artifacts/capability_map.yaml
-  3. SolicitorGeneralAgent   — requires event_bus + capability_map
-  4. A2AValidator            — independent, no dependencies
-  5. A2ATransport            — requires SG + validator + logger
-
-Capability Map:
-  The shared capability map at /shared/artifacts/capability_map.yaml is the
-  single source of truth for all platform capabilities and routes. It is
-  read/write accessible to all agents. Both this handler and api_handler.py
-  load from the same file — no capability paths are hard-coded in either.
-
-Logging:
-  A2ATransport uses LogBootstrapper.write(dict) — the platform standard.
-  It does NOT use stdlib logger.info() / logger.error().
-  The _TransportLoggerAdapter bridges the two interfaces without modifying
-  either A2ATransport or LogBootstrapper.
-"""
+#
+# Universal Lambda / HTTP entrypoint for the Yo-ai Platform.
+#
+# Module-level singletons constructed once per Lambda execution environment,
+# reused across warm invocations. Construction order matters:
+#   1. PlatformEventBus          — in-process pub/sub for PlatformAgents
+#   2. capability_map             — loaded from shared/artifacts/capability_map.yaml
+#   3. SolicitorGeneralAgent      — requires event_bus + capability_map
+#   4. YoAiRuntime                — requires capability_map
+#   5. A2AValidator               — independent, no dependencies
+#   6. A2ATransport               — requires SG + validator + logger
+#
+# Capability Map:
+#   /shared/artifacts/capability_map.yaml is the single source of truth for
+#   all platform capabilities and routes. Both this handler and api_handler.py
+#   load from the same file — no capability paths are hard-coded in either.
+#
+# Logging:
+#   A2ATransport calls self._logger.info() / self._logger.error() with extra=.
+#   LogBootstrapper exposes write(dict) only.
+#   _TransportLoggerAdapter bridges the two without modifying either class.
 
 import json
 from pathlib import Path
@@ -32,26 +27,19 @@ from pathlib import Path
 import yaml
 
 from core.routing.a2a_transport import A2ATransport
+from core.routing.yo_ai_runtime import YoAiRuntime       # was incorrectly self-importing
 from core.messages.a2a_validator import A2AValidator
-from core.routing import load_capability_map, load_tools
-from core.handlers.yo_ai_handler import YoAiRuntime
 from core.platform_agent import PlatformEventBus
 from core.observability.logging.log_bootstrapper import get_logger
+from agents.solicitor_general.runtime.solicitor_general import SolicitorGeneralAgent
 
 
-# ---------------------------------------------------------------------------
-# Transport logger adapter
-# ---------------------------------------------------------------------------
-# A2ATransport calls self._logger.info(...) and self._logger.error(...) with
-# extra= keyword arguments. LogBootstrapper exposes write(dict) only.
-# This adapter bridges the two interfaces without modifying either class.
+# ── Transport logger adapter ───────────────────────────────────────────────
+# A2ATransport expects .info() / .error() with extra= kwargs.
+# LogBootstrapper exposes write(dict) only.
+# This adapter bridges the two without modifying either class.
 
 class _TransportLoggerAdapter:
-    """
-    Adapts LogBootstrapper.write(dict) to the .info() / .error() interface
-    that A2ATransport expects. Translates stdlib-style calls into structured
-    platform log records.
-    """
 
     def __init__(self, bootstrapper):
         self._log = bootstrapper
@@ -59,36 +47,24 @@ class _TransportLoggerAdapter:
     def info(self, event_type: str, extra: dict = None):
         self._log.write({
             "event_type": event_type,
-            "level": "INFO",
-            "message": event_type,
-            "payload": extra or {},
+            "level":      "INFO",
+            "payload":    extra or {},
         })
 
     def error(self, event_type: str, extra: dict = None):
         self._log.write({
             "event_type": event_type,
-            "level": "ERROR",
-            "message": event_type,
-            "payload": extra or {},
+            "level":      "ERROR",
+            "payload":    extra or {},
         })
 
 
-# ---------------------------------------------------------------------------
-# Shared capability map loader
-# ---------------------------------------------------------------------------
+# ── Shared capability map loader ───────────────────────────────────────────
 
 def _load_capability_map() -> dict:
-    """
-    Load the platform capability map from the shared artifacts location:
-      /shared/artifacts/capability_map.yaml
-
-    This is the single source of truth for all platform capabilities,
-    routes, and constructors. Both yo_ai_handler.py and api_handler.py
-    load from this file.
-
-    Returns {} on any failure — the SG will surface Unknown capability
-    errors per request rather than crashing on cold start.
-    """
+    # ── Loads from shared/artifacts/capability_map.yaml ───────────────────
+    # Returns {} on any failure — the SG surfaces Unknown capability errors
+    # per request rather than crashing on cold start.
     try:
         map_path = (
             Path(__file__).resolve().parent.parent
@@ -97,143 +73,101 @@ def _load_capability_map() -> dict:
         if not map_path.exists():
             print(f"[yo_ai_handler] WARNING: capability_map.yaml not found at {map_path}")
             return {}
-
         with map_path.open("r", encoding="utf-8") as f:
             return yaml.safe_load(f) or {}
-
     except Exception as e:
         print(f"[yo_ai_handler] WARNING: capability_map.yaml failed to load: {e}")
         return {}
 
 
-# ---------------------------------------------------------------------------
-# Module-level singletons
-# One set per Lambda execution environment — reused across warm invocations.
-# ---------------------------------------------------------------------------
+# ── Module-level singletons ────────────────────────────────────────────────
 
-# 1. Platform event bus — in-process pub/sub for PlatformAgents
+# 1. Platform event bus
 _event_bus = PlatformEventBus()
 
-# 2. Capability map — single source of truth from shared/artifacts/
+# 2. Capability map
 _capability_map = _load_capability_map()
 
-# 3. Loggers
-_logger_transport_raw = get_logger("transport")
-_logger_transport = _TransportLoggerAdapter(_logger_transport_raw)
-
-# 4. YoAiRuntime
-#    tools required for bridging transport modes to agent capabilities
-#    capability_map drives all semantic routing decisions.
-_runtime = YoAiRuntime(
-    capability_map=load_capability_map(),
-    tools=load_tools(),
+# 3. SolicitorGeneralAgent — requires event_bus and capability_map.
+#    slim=False: full governance init (tools, fingerprints, knowledge).
+#    This is the platform routing path — full governance required.
+_sg = SolicitorGeneralAgent(
+    event_bus=_event_bus,
+    capability_map=_capability_map,
 )
 
-# 5. Validator
+# 4. YoAiRuntime — semantic routing spine.
+#    tools={}: RPC adapters injected at platform bootstrap (not at handler init).
+_runtime = YoAiRuntime(
+    capability_map=_capability_map,
+    tools={},
+)
+
+# 5. Transport logger
+_logger_transport_raw = get_logger("transport")
+_logger_transport     = _TransportLoggerAdapter(_logger_transport_raw)
+
+# 6. Validator
 _validator = A2AValidator()
 
-# 6. Transport
+# 7. Transport — requires SG, not runtime directly.
+#    A2ATransport.__init__ signature: (solicitor_general, logger, validator)
 _transport = A2ATransport(
-    runtime=_runtime,
+    solicitor_general=_sg,
     logger=_logger_transport,
     validator=_validator,
 )
 
-# ---------------------------------------------------------------------------
-# Agent directory
-# ---------------------------------------------------------------------------
-# The canonical agent card lives at the PrivacyPortfolio Agent Directory.
-# It is published on the website and maintained there — not in this codebase.
-# Any route that would serve agent card content redirects here instead.
-#
-# A2A callers that need the card fetch it directly from this URL.
-# No local copy is kept — updating the website is the only deployment needed.
+
+# ── Agent directory ────────────────────────────────────────────────────────
+# Canonical agent card lives at the PrivacyPortfolio Agent Directory.
+# Published on the website — not maintained in this codebase.
+# A2A callers fetch it directly from this URL.
 
 AGENT_DIRECTORY_URL = "https://privacyportfolio.com/.well-known/agent.json"
 
-# Routes served by this handler.
-# Entry Point (/a2a) and Entry Point (/app) are the primary paths.
-# The remaining routes are thin — they either redirect or stub identity
-# endpoints that will eventually route through other agent capabilities.
 _ROUTES = {
-    "/":                          "landing",
+    "/":                            "landing",
     "/.well-known/agent-card.json": "redirect → AGENT_DIRECTORY_URL",
-    "/a2a":                        "Mode 1 — A2A envelope → A2ATransport",
-    "/agent/extended":             "stub → showCard() for authenticated callers (future)",
+    "/a2a":                         "Mode 1 — A2A envelope → A2ATransport",
+    "/agent/extended":              "stub → showCard() for authenticated callers (future)",
 }
 
-# ---------------------------------------------------------------------------
-# Envelope extraction
-# ---------------------------------------------------------------------------
+
+# ── Envelope extraction ────────────────────────────────────────────────────
 
 def _extract_envelope(event) -> dict | None:
-    """
-    Extract a JSON-RPC envelope from the inbound event regardless of
-    how the Lambda was invoked.
-
-    Handles two shapes:
-      - API Gateway Lambda proxy event dict ("a2a" / "api"):
-        event is a plain dict with a "body" key containing a JSON string.
-
-      - Direct dict invocation (tests, scripts, "mesh"):
-        event is already a well-formed envelope dict (no "body" wrapper).
-
-      - Starlette / FastAPI Request object ("app"):
-        event has an async .json() method — returns None as sentinel
-        for async handling in yo_ai_handler().
-    """
+    # ── Handles three inbound shapes ──────────────────────────────────────
+    # API Gateway proxy ("a2a" / "api"): dict with "body" key (JSON string)
+    # Direct dict invocation (tests, "mesh"): already a well-formed envelope
+    # Starlette Request ("app"): has async .json() — returns None as sentinel
     if isinstance(event, dict):
         body = event.get("body")
         if body is not None:
-            # API Gateway proxy — body is a JSON string
             try:
                 return json.loads(body) if isinstance(body, str) else body
             except json.JSONDecodeError as e:
                 return {
                     "jsonrpc": "2.0",
-                    "id": None,
-                    "error": {"code": -32700, "message": f"Parse error: {e}"},
+                    "id":      None,
+                    "error":   {"code": -32700, "message": f"Parse error: {e}"},
                 }
-        # Direct dict — treat as envelope already
-        return event
-
-    # Starlette Request or unknown — signal for async handling
-    return None
+        return event   # direct dict — treat as envelope
+    return None        # Starlette Request or unknown — signal for async handling
 
 
-# ---------------------------------------------------------------------------
-# Lambda / HTTP entrypoint
-# ---------------------------------------------------------------------------
+# ── Lambda / HTTP entrypoint ───────────────────────────────────────────────
 
 async def yo_ai_handler(event, context=None):
-    """
-    Universal Lambda / HTTP entrypoint for the Yo-ai Platform.
+    # ── Handles startup modes "a2a" and "app" ─────────────────────────────
+    # For "api" (API Gateway OpenAPI paths) use api_handler.py, which wraps
+    # the request in an A2A-compliant envelope before calling A2ATransport.
 
-    Handles all startup modes that arrive at this handler:
-      "a2a" — API Gateway HTTP proxy event (dict with "body" key)
-      "app" — Starlette / FastAPI Request object (has async .json())
-
-    For "api" (API Gateway OpenAPI paths), use api_handler.py which wraps
-    the request in an A2A-compliant envelope before calling A2ATransport.
-
-    Args:
-        event:   API Gateway Lambda proxy event dict, or a Starlette Request.
-        context: Lambda context object (optional — not used directly).
-
-    Returns:
-        For Lambda proxy ("a2A"): API Gateway response dict with
-            statusCode, headers, and JSON body.
-        For Starlette ("app"): raw response dict from A2ATransport.
-    """
-
-    # --- Route non-A2A paths ---
-    # Handle well-known card redirect and stub identity routes before
-    # attempting envelope extraction. Only dict events with rawPath apply.
+    # ── Non-A2A path routing ───────────────────────────────────────────────
     if isinstance(event, dict):
         raw_path = event.get("rawPath", "") or event.get("path", "")
 
         if raw_path == "/.well-known/agent-card.json":
-            # Redirect to the canonical Agent Directory — no local copy maintained.
             return {
                 "statusCode": 301,
                 "headers": {
@@ -254,9 +188,7 @@ async def yo_ai_handler(event, context=None):
                 ),
             }
 
-        if raw_path in ("/agent/extended"):
-            # These will route through Door-Keeper capabilities when implemented.
-            # Returning 501 (not 404) signals: endpoint is known, not yet wired.
+        if raw_path == "/agent/extended":
             return {
                 "statusCode": 501,
                 "headers": {"Content-Type": "application/json"},
@@ -267,12 +199,12 @@ async def yo_ai_handler(event, context=None):
                 }),
             }
 
-    # --- Extract envelope ---
+    # ── Envelope extraction ────────────────────────────────────────────────
     envelope = _extract_envelope(event)
 
     if envelope is None:
-        # Starlette Request object — async .json() required
         if hasattr(event, "json"):
+            # Starlette Request — async body read required
             try:
                 envelope = await event.json()
             except Exception as e:
@@ -281,8 +213,8 @@ async def yo_ai_handler(event, context=None):
                     "headers": {"Content-Type": "application/json"},
                     "body": json.dumps({
                         "jsonrpc": "2.0",
-                        "id": None,
-                        "error": {"code": -32700, "message": f"Parse error: {e}"},
+                        "id":      None,
+                        "error":   {"code": -32700, "message": f"Parse error: {e}"},
                     }),
                 }
         else:
@@ -291,16 +223,16 @@ async def yo_ai_handler(event, context=None):
                 "headers": {"Content-Type": "application/json"},
                 "body": json.dumps({
                     "jsonrpc": "2.0",
-                    "id": None,
-                    "error": {"code": -32600, "message": "Unrecognised request format"},
+                    "id":      None,
+                    "error":   {"code": -32600, "message": "Unrecognised request format"},
                 }),
             }
 
-    # --- Delegate to transport ---
+    # ── Delegate to transport ──────────────────────────────────────────────
     response = await _transport.handle_a2a(envelope)
 
-    # --- Shape response for Lambda proxy integration ---
-    # API Gateway proxy integration expects statusCode + body.
+    # ── Shape response for Lambda proxy integration ────────────────────────
+    # API Gateway proxy expects statusCode + body.
     # Starlette / direct invocation receives the raw response dict.
     if isinstance(event, dict) and "requestContext" in event:
         status_code = 200 if "error" not in response else 400
@@ -310,5 +242,4 @@ async def yo_ai_handler(event, context=None):
             "body": json.dumps(response),
         }
 
-    # Starlette / direct — return response dict directly
     return response
