@@ -1,19 +1,7 @@
 # agents/data_steward/capabilities/email_read.py
 
-"""
-Capability: Email.Read
-Reads inbound email, detects spam/phishing, extracts workflow triggers.
-Reads on behalf of the represented subject (self.profile).
-
-Stage: Stub — returns deterministic response.
-Next:  Replace with email provider integration (Gmail, Outlook, etc.)
-       Add real spam/phishing detection.
-       Extract workflow triggers for downstream capabilities.
-"""
-
 from datetime import datetime, timezone
 from core.yoai_context import YoAiContext
-
 from core.observability.logging.platform_logger import get_platform_logger
 
 LOG = get_platform_logger("data_steward")
@@ -41,7 +29,7 @@ async def run(payload: dict, ctx: YoAiContext) -> dict:
         "folder": folder,
         "spam": False,
         "phishing": False,
-        "workflowTrigger": None if ctx.dry_run else "stubbed-trigger",
-        "correlationId": ctx.correlation_id,
-        "taskId": ctx.task_id,
+        "workflowTrigger": None if ctx.get("dry_run") else "stubbed-trigger",
+        "correlationId": ctx.get("correlation_id"),
+        "taskId": ctx.get("task_id"),
     }
