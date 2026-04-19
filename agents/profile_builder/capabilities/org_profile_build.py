@@ -2,7 +2,6 @@
 
 from datetime import datetime, timezone
 from core.yoai_context import YoAiContext
-
 from core.observability.logging.platform_logger import get_platform_logger
 
 LOG = get_platform_logger("profile_builder")
@@ -48,8 +47,8 @@ async def run(payload: dict, ctx: YoAiContext) -> dict:
             "builtAt": datetime.now(timezone.utc).isoformat()
 
         },
-        "correlationId":   ctx.correlation_id,
-        "taskId":          ctx.task_id,
-        "dryRun":          ctx.dry_run,
-        "governanceLabels": ctx.governanceLabels
+        "correlationId":   ctx.get("correlation_id"),
+        "taskId":          ctx.get("task_id"),
+        "dryRun":          ctx.get("dry_run"),
+        "governanceLabels": ctx.get("governance_labels")
     }
