@@ -2,7 +2,6 @@
 
 from datetime import datetime, timezone
 from core.yoai_context import YoAiContext
-
 from core.observability.logging.platform_logger import get_platform_logger
 
 LOG = get_platform_logger("compliance_validator")
@@ -41,5 +40,6 @@ async def run(payload: dict, ctx: YoAiContext) -> dict:
             "source": "internal",
         },
         "timestamp": datetime.now(timezone.utc).isoformat(),
-        "correlationId": ctx.correlation_id,
+        "correlationId": ctx.get("correlation_id"),
+        "taskId": ctx.get("task_id"),
     }
