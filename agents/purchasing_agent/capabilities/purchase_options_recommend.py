@@ -1,20 +1,16 @@
 # agents/purchasing_agent/capabilities/purchase_options_recommend.py
 
-"""
-Capability: Purchase-Options.Recommend
-Stub — returns one hardcoded vendor. Next: vendor comparison, price analysis,
-      AP2 compatibility checks, risk scoring, AI-native recommendation via call_ai().
-"""
-
 from datetime import datetime, timezone
 from core.yoai_context import YoAiContext
-
 from core.observability.logging.platform_logger import get_platform_logger
 
 LOG = get_platform_logger("purchasing_agent")
 
 async def run(payload: dict, ctx: YoAiContext) -> dict:
     """
+    Capability: Purchase-Options.Recommend
+    Stub — returns one hardcoded vendor. Next: vendor comparison, price analysis,
+      AP2 compatibility checks, risk scoring, AI-native recommendation via call_ai().
     Args:
       payload       — capability-specific input fields
       ctx           — YoAiContext | None  (governance, startup_mode, caller)
@@ -41,12 +37,12 @@ async def run(payload: dict, ctx: YoAiContext) -> dict:
         "item": item,
         "budget": budget,
         "preferences": preferences,
-        "recommendations": [] if ctx.dry_run else [
+        "recommendations": [] if ctx.get("dry_run") else [
             {"vendor": "ExampleVendor", "price": 42.00, "riskScore": 0.1, "ap2Compatible": True},
         ],
-        "subjectProfile": ctx.profile,
+        "subjectProfile": ctx.get("profile"),
         "timestamp":       datetime.now(timezone.utc).isoformat(),
-        "correlationId":   ctx.correlation_id,
-        "taskId":          ctx.task_id,
-        "dryRun":          ctx.dry_run,
+        "correlationId":   ctx.get("correlation_id"),
+        "taskId":          ctx.get("task_id"),
+        "dryRun":          ctx.get("dry_run"),
     }
