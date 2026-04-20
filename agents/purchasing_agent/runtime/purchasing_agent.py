@@ -1,7 +1,9 @@
 # agents/purchasing_agent/runtime/purchasing_agent.py
 
 from core.yoai_agent import YoAiAgent
+from core.yoai_context import YoAiContext
 from core.observability.logging.platform_logger import get_platform_logger
+
 LOG = get_platform_logger("purchasing_agent")
 
 
@@ -28,142 +30,110 @@ class PurchasingAgent(YoAiAgent):
         *,
         card: dict | None = None,
         extended_card: dict | None = None,
-        capability_ctx: CapabilityContext | None = None,
         profile=None,
         slim: bool | None = None,
-        context=None,
     ):
         super().__init__(
             card=card,
             extended_card=extended_card,
-            capability_ctx=capability_ctx,
             profile=profile,
             slim=slim,
-            context=context,
         )
 
     # ------------------------------------------------------------------
     # Capability: Purchase-Options.Recommend
     # ------------------------------------------------------------------
-    async def purchase_options_recommend(
-        self, payload: dict, agent_ctx, capability_ctx: CapabilityContext | None
-    ) -> dict:
+    async def purchase_options_recommend(self, payload: dict, ctx: YoAiContext) -> dict:
         from agents.purchasing_agent.capabilities.purchase_options_recommend import run
-        return await run(payload, agent_ctx, capability_ctx)
+        return await run(payload, ctx)
 
     # ------------------------------------------------------------------
     # Capability: Purchase-Risk.Evaluate
     # ------------------------------------------------------------------
-    async def purchase_risk_evaluate(
-        self, payload: dict, agent_ctx, capability_ctx: CapabilityContext | None
-    ) -> dict:
+    async def purchase_risk_evaluate(self, payload: dict, ctx: YoAiContext) -> dict:
         from agents.purchasing_agent.capabilities.purchase_risk_evaluate import run
-        return await run(payload, agent_ctx, capability_ctx)
+        return await run(payload, ctx)
 
     # ------------------------------------------------------------------
     # Capability: Purchase-History.Generate
     # ------------------------------------------------------------------
-    async def purchase_history_generate(
-        self, payload: dict, agent_ctx, capability_ctx: CapabilityContext | None
-    ) -> dict:
+    async def purchase_history_generate(self, payload: dict, ctx: YoAiContext) -> dict:
         from agents.purchasing_agent.capabilities.purchase_history_generate import run
-        return await run(payload, agent_ctx, capability_ctx)
+        return await run(payload, ctx)
 
     # ------------------------------------------------------------------
     # Capability: Purchase-Receipt.Generate
     # ------------------------------------------------------------------
-    async def purchase_receipt_generate(
-        self, payload: dict, agent_ctx, capability_ctx: CapabilityContext | None
-    ) -> dict:
+    async def purchase_receipt_generate(self, payload: dict, ctx: YoAiContext) -> dict:
         from agents.purchasing_agent.capabilities.purchase_receipt_generate import run
-        return await run(payload, agent_ctx, capability_ctx)
+        return await run(payload, ctx)
 
     # ------------------------------------------------------------------
     # Capability: Purchase-Issues.Resolve
     # ------------------------------------------------------------------
-    async def purchase_issues_resolve(
-        self, payload: dict, agent_ctx, capability_ctx: CapabilityContext | None
-    ) -> dict:
+    async def purchase_issues_resolve(self, payload: dict, ctx: YoAiContext) -> dict:
         from agents.purchasing_agent.capabilities.purchase_issues_resolve import run
-        return await run(payload, agent_ctx, capability_ctx)
+        return await run(payload, ctx)
 
     # ------------------------------------------------------------------
     # Capability: Return-Or-Refund.Initiate
     # ------------------------------------------------------------------
-    async def return_or_refund_initiate(
-        self, payload: dict, agent_ctx, capability_ctx: CapabilityContext | None
-    ) -> dict:
+    async def return_or_refund_initiate(self, payload: dict, ctx: YoAiContext) -> dict:
         from agents.purchasing_agent.capabilities.return_or_refund_initiate import run
-        return await run(payload, agent_ctx, capability_ctx)
+        return await run(payload, ctx)
 
     # ------------------------------------------------------------------
     # Capability: Order-Status.Track
     # ------------------------------------------------------------------
-    async def order_status_track(
-        self, payload: dict, agent_ctx, capability_ctx: CapabilityContext | None
-    ) -> dict:
+    async def order_status_track(self, payload: dict, ctx: YoAiContext) -> dict:
         from agents.purchasing_agent.capabilities.order_status_track import run
-        return await run(payload, agent_ctx, capability_ctx)
+        return await run(payload, ctx)
 
     # ------------------------------------------------------------------
     # Capability: Budget-After-Purchase.Update
     # ------------------------------------------------------------------
-    async def budget_after_purchase_update(
-        self, payload: dict, agent_ctx, capability_ctx: CapabilityContext | None
-    ) -> dict:
+    async def budget_after_purchase_update(self, payload: dict, ctx: YoAiContext) -> dict:
         from agents.purchasing_agent.capabilities.budget_after_purchase_update import run
-        return await run(payload, agent_ctx, capability_ctx)
+        return await run(payload, ctx)
 
     # ------------------------------------------------------------------
     # Capability: Transaction-Complete.Verify
     # ------------------------------------------------------------------
-    async def transaction_complete_verify(
-        self, payload: dict, agent_ctx, capability_ctx: CapabilityContext | None
-    ) -> dict:
+    async def transaction_complete_verify(self, payload: dict, ctx: YoAiContext) -> dict:
         from agents.purchasing_agent.capabilities.transaction_complete_verify import run
-        return await run(payload, agent_ctx, capability_ctx)
+        return await run(payload, ctx)
 
     # ------------------------------------------------------------------
     # Capability: Purchase.Initiate
     # ------------------------------------------------------------------
-    async def purchase_initiate(
-        self, payload: dict, agent_ctx, capability_ctx: CapabilityContext | None
-    ) -> dict:
+    async def purchase_initiate(self, payload: dict, ctx: YoAiContext) -> dict:
         from agents.purchasing_agent.capabilities.purchase_initiate import run
-        return await run(payload, agent_ctx, capability_ctx)
+        return await run(payload, ctx)
 
     # ------------------------------------------------------------------
     # Capability: Purchase-Eligibility.Validate
     # ------------------------------------------------------------------
-    async def purchase_eligibility_validate(
-        self, payload: dict, agent_ctx, capability_ctx: CapabilityContext | None
-    ) -> dict:
+    async def purchase_eligibility_validate(self, payload: dict, ctx: YoAiContext) -> dict:
         from agents.purchasing_agent.capabilities.purchase_eligibility_validate import run
-        return await run(payload, agent_ctx, capability_ctx)
+        return await run(payload, ctx)
 
     # ------------------------------------------------------------------
     # Capability: Budget.Check
     # ------------------------------------------------------------------
-    async def budget_check(
-        self, payload: dict, agent_ctx, capability_ctx: CapabilityContext | None
-    ) -> dict:
+    async def budget_check(self, payload: dict, ctx: YoAiContext) -> dict:
         from agents.purchasing_agent.capabilities.budget_check import run
-        return await run(payload, agent_ctx, capability_ctx)
+        return await run(payload, ctx)
 
     # ------------------------------------------------------------------
     # Capability: Payment.Cancel
     # ------------------------------------------------------------------
-    async def payment_cancel(
-        self, payload: dict, agent_ctx, capability_ctx: CapabilityContext | None
-    ) -> dict:
+    async def payment_cancel(self, payload: dict, ctx: YoAiContext) -> dict:
         from agents.purchasing_agent.capabilities.payment_cancel import run
-        return await run(payload, agent_ctx, capability_ctx)
+        return await run(payload, ctx)
 
     # ------------------------------------------------------------------
     # Capability: Mandate.Manage
     # ------------------------------------------------------------------
-    async def mandate_manage(
-        self, payload: dict, agent_ctx, capability_ctx: CapabilityContext | None
-    ) -> dict:
+    async def mandate_manage(self, payload: dict, ctx: YoAiContext) -> dict:
         from agents.purchasing_agent.capabilities.mandate_manage import run
-        return await run(payload, agent_ctx, capability_ctx)
+        return await run(payload, ctx)
