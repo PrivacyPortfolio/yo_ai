@@ -1,7 +1,9 @@
 # agents/ip_inspector/runtime/ip_inspector.py
 
 from core.yoai_agent import YoAiAgent
+from core.yoai_context import YoAiContext
 from core.observability.logging.platform_logger import get_platform_logger
+
 LOG = get_platform_logger("ip_inspector")
 
 class IPInspector(YoAiAgent):
@@ -19,79 +21,57 @@ class IPInspector(YoAiAgent):
         *,
         card: dict | None = None,
         extended_card: dict | None = None,
-        capability_ctx: CapabilityContext | None = None,
         profile=None,
         slim: bool | None = None,
-        context=None,
     ):
         super().__init__(
             card=card,
             extended_card=extended_card,
-            capability_ctx=capability_ctx,
             profile=profile,
             slim=slim,
-            context=context,
         )
 
     # ------------------------------------------------------------------
-    async def ip_assets_discover(
-        self, payload: dict, agent_ctx, capability_ctx: CapabilityContext | None
-    ) -> dict:            
+    async def ip_assets_discover(self, payload: dict, ctx: YoAiContext) -> dict:
         from agents.ip_inspector.capabilities.ip_assets_discover import run
-        return await run(payload, agent_ctx, capability_ctx)
+        return await run(payload, ctx)
 
 
-    async def ip_to_products_map(
-        self, payload: dict, agent_ctx, capability_ctx: CapabilityContext | None
-    ) -> dict:
+    async def ip_to_products_map(self, payload: dict, ctx: YoAiContext) -> dict:
         from agents.ip_inspector.capabilities.ip_to_products_map import run
-        return await run(payload, agent_ctx, capability_ctx)
+        return await run(payload, ctx)
 
 
-    async def implementation_instances_search(
-        self, payload: dict, agent_ctx, capability_ctx: CapabilityContext | None
-    ) -> dict:
+    async def implementation_instances_search(self, payload: dict, ctx: YoAiContext) -> dict:
         from agents.ip_inspector.capabilities.implementation_instances_search import run
-        return await run(payload, agent_ctx, capability_ctx)
+        return await run(payload, ctx)
 
 
-    async def use_cases_infer(
-        self, payload: dict, agent_ctx, capability_ctx: CapabilityContext | None
-    ) -> dict:
+    async def use_cases_infer(self, payload: dict, ctx: YoAiContext) -> dict:
         from agents.ip_inspector.capabilities.use_cases_infer import run
-        return await run(payload, agent_ctx, capability_ctx)
+        return await run(payload, ctx)
 
 
-    async def ip_portfolio_cluster(
-        self, payload: dict, agent_ctx, capability_ctx: CapabilityContext | None
-    ) -> dict:
+    async def ip_portfolio_cluster(self, payload: dict, ctx: YoAiContext) -> dict:
         from agents.ip_inspector.capabilities.ip_portfolio_cluster import run
-        return await run(payload, agent_ctx, capability_ctx)
+        return await run(payload, ctx)
 
 
-    async def ip_report_generate(
-        self, payload: dict, agent_ctx, capability_ctx: CapabilityContext | None
-    ) -> dict:
+    async def ip_report_generate(self, payload: dict, ctx: YoAiContext) -> dict:
         from agents.ip_inspector.capabilities.ip_report_generate import run
-        return await run(payload, agent_ctx, capability_ctx)
+        return await run(payload, ctx)
 
 
-    async def ip_risk_evaluate(
-        self, payload: dict, agent_ctx, capability_ctx: CapabilityContext | None
-    ) -> dict:
+    async def ip_risk_evaluate(self, payload: dict, ctx: YoAiContext) -> dict:
         from agents.ip_inspector.capabilities.ip_risk_evaluate import run
-        return await run(payload, agent_ctx, capability_ctx)
+        return await run(payload, ctx)
 
 
-    async def ip_provenance_trace(
-        self, payload: dict, agent_ctx, capability_ctx: CapabilityContext | None
-    ) -> dict:
+    async def ip_provenance_trace(self, payload: dict, ctx: YoAiContext) -> dict:
         from agents.ip_inspector.capabilities.ip_provenance_trace import run
-        return await run(payload, agent_ctx, capability_ctx)
+        return await run(payload, ctx)
 
 
-    async def related_ip_discover(
-        self, payload: dict, agent_ctx, capability_ctx: CapabilityContext | None
-    ) -> dict:
+    async def related_ip_discover(self, payload: dict, ctx: YoAiContext) -> dict:
         from agents.ip_inspector.capabilities.related_ip_discover import run
-        return await run(payload, agent_ctx, capability_ctx)
+        return await run(payload, ctx)
