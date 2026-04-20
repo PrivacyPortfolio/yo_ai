@@ -1,7 +1,9 @@
 # agents/data_steward/runtime/data_steward.py
 
 from core.yoai_agent import YoAiAgent
+from core.yoai_context import YoAiContext
 from core.observability.logging.platform_logger import get_platform_logger
+
 LOG = get_platform_logger("data_steward")
 
 
@@ -28,61 +30,47 @@ class DataSteward(YoAiAgent):
         *,
         card: dict | None = None,
         extended_card: dict | None = None,
-        capability_ctx: CapabilityContext | None = None,
         profile=None,
         slim: bool | None = None,
-        context=None,
     ):
         super().__init__(
             card=card,
             extended_card=extended_card,
-            capability_ctx=capability_ctx,
             profile=profile,
             slim=slim,
-            context=context,
         )
 
     # ------------------------------------------------------------------
     # Capability: Phone.Call
     # ------------------------------------------------------------------
-    async def phone_call(
-        self, payload: dict, agent_ctx, capability_ctx: CapabilityContext | None
-    ) -> dict:
+    async def phone_call(self, payload: dict, ctx: YoAiContext) -> dict:
         from agents.data_steward.capabilities.phone_call import run
-        return await run(payload, agent_ctx, capability_ctx)
+        return await run(payload, ctx)
 
     # ------------------------------------------------------------------
     # Capability: Phone.Answer
     # ------------------------------------------------------------------
-    async def phone_answer(
-        self, payload: dict, agent_ctx, capability_ctx: CapabilityContext | None
-    ) -> dict:
+    async def phone_answer(self, payload: dict, ctx: YoAiContext) -> dict:
         from agents.data_steward.capabilities.phone_answer import run
-        return await run(payload, agent_ctx, capability_ctx)
+        return await run(payload, ctx)
 
     # ------------------------------------------------------------------
     # Capability: Data-Request.Govern
     # ------------------------------------------------------------------
-    async def data_request_govern(
-        self, payload: dict, agent_ctx, capability_ctx: CapabilityContext | None
-    ) -> dict:
+    async def data_request_govern(self, payload: dict, ctx: YoAiContext) -> dict:
         from agents.data_steward.capabilities.data_request_govern import run
-        return await run(payload, agent_ctx, capability_ctx)
+        return await run(payload, ctx)
 
     # ------------------------------------------------------------------
     # Capability: Email.Read
     # ------------------------------------------------------------------
-    async def email_read(
-        self, payload: dict, agent_ctx, capability_ctx: CapabilityContext | None
-    ) -> dict:
+    async def email_read(self, payload: dict, ctx: YoAiContext) -> dict:
         from agents.data_steward.capabilities.email_read import run
-        return await run(payload, agent_ctx, capability_ctx)
+        return await run(payload, ctx)
 
     # ------------------------------------------------------------------
     # Capability: Email.Send
     # ------------------------------------------------------------------
-    async def email_send(
-        self, payload: dict, agent_ctx, capability_ctx: CapabilityContext | None
-    ) -> dict:
+    async def email_send(self, payload: dict, ctx: YoAiContext) -> dict:
         from agents.data_steward.capabilities.email_send import run
-        return await run(payload, agent_ctx, capability_ctx)
+        return await run(payload, ctx)
