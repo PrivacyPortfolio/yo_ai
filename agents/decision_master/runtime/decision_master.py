@@ -1,7 +1,7 @@
 # agents/decision_master/runtime/decision_master.py
 
 from core.platform_agent import PlatformAgent
-from core.platform_event_bus import PlatformEventBus
+from core.runtime.platform_event_bus import PlatformEventBus
 from core.yoai_context import YoAiContext
 from core.observability.logging.platform_logger import get_platform_logger
 
