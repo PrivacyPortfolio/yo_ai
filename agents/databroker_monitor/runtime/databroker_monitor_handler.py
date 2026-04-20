@@ -15,25 +15,23 @@ import json
 from datetime import datetime, timezone
 
 from databroker_monitor import DataBrokerMonitorAgent
+from core.yoai_context import YoAiContext, ctx_from_envelope, ctx_for_capability
+from core.yoai_context import input_schema_name, output_schema_name
 from core.utils.validators.schema_validator import schema_validator
 from core.utils.ai.ai_transform import call_ai
 from core.utils.ai.output_shaper import shape_output
-from core.observability.logging.log_bootstrapper import LogBootstrapper
+from core.observability.logging.log_bootstrapper import get_logger
+
+_logger = get_logger("databroker-monitor-handler")
 
 
-logger = logging.getLogger()
-logger.setLevel(logging.INFO)
+# ── Module-level singleton ─────────────────────────────────────────────────
 
-# Warm reuse: instantiate the agent once per Lambda container
-AGENT = DataBrokerMonitorAgent()
+_AGENT = DataBrokerMonitorAgent(slim=True)
 
+# ── Capability routing ─────────────────────────────────────────────────────
 
-# ------------------------------------------------------------
-# Capability routing table
-# ------------------------------------------------------------
-# Maps capability names (from OpenAPI paths) to capability identifiers.
-# These identifiers correspond to schema folders, not Python methods.
-CAPABILITY_ROUTER = {
+_CAPABILITY_ROUTER = {
     "BrokerInventoryScan": "Broker-Inventory.Scan",
     "DownstreamVendorsIdentify": "Downstream-Vendors.Identify",
     "BrokerEvidenceCollect": "Broker-Evidence.Collect"
@@ -44,101 +42,142 @@ CAPABILITY_ROUTER = {
 # Lambda entrypoint
 # ------------------------------------------------------------
 def lambda_handler(event, context):
-    """
-    Expected event format (API Gateway HTTP API):
-    {
-        "rawPath": "/agents/<agent-name>/<CapabilityName>",
-        "body": "{... JSON ...}"
-    }
-    """
+    raw_path = event.get("rawPath", "")
+    aws_request_id = getattr(context, "aws_request_id", None) if context else None
 
     try:
-        raw_path = event.get("rawPath", "")
-        capability_name = raw_path.split("/")[-1]
+        # ── Route resolution ───────────────────────────────────────────────
+        path_segment  = raw_path.rstrip("/").split("/")[-1]
+        capability_id = _CAPABILITY_ROUTER.get(path_segment)
+        if not capability_id:
+            return _error(400, f"Unknown capability: {path_segment}")
 
-        if capability_name not in CAPABILITY_ROUTER:
-            raise ValueError(f"Unknown capability: {capability_name}")
+        body     = json.loads(event.get("body") or "{}")
+        payload  = body.get("payload", body)
+        ctx_data = body.get("ctx", {})
 
-        capability_id = CAPABILITY_ROUTER[capability_name]
-
-        # Parse JSON body
-        body = event.get("body") or "{}"
-        payload = json.loads(body)
-
-        # ------------------------------------------------------------
-        # 1. Load capability schema (Input + Output messageTypes)
-        # ------------------------------------------------------------
-        capability_schema = load_capability_schema(
-            agent_id=AGENT.agent_id,
-            capability_id=capability_id
+        # ── Seed YoAiContext at the transport boundary ──────────────────────
+        correlation_id, task_id = _AGENT.generate_message_ids(
+            request_id=aws_request_id,
+            task_id=ctx_data.get("task_id"),
         )
 
-        # ------------------------------------------------------------
-        # 2. Validate input (non-blocking if configured)
-        # ------------------------------------------------------------
-        validated_input = validate_input(
-            payload,
-            capability_schema.input_schema
-        )
-
-        # ------------------------------------------------------------
-        # 3. Build AI prompt (persona + capability + input + context)
-        # ------------------------------------------------------------
-        ai_prompt = {
-            "persona": AGENT.persona,
-            "agentId": AGENT.agent_id,
-            "capability": capability_id,
-            "input": validated_input,
-            "context": {
-                "awsRequestId": context.aws_request_id if context else None,
-                "rawPath": raw_path,
+        envelope = {
+            "payload": payload,
+            "ctx": {
+                "startup_mode":  ctx_data.get("startup_mode", "api"),
+                "caller":        ctx_data.get("caller"),
+                "profile":       ctx_data.get("profile"),
+                "subject_ref":   ctx_data.get("subject_ref"),
+                "slim":          ctx_data.get("slim", True),
+                "dry_run":       ctx_data.get("dry_run", False),
+                "trace":         ctx_data.get("trace", False),
+                "step":          ctx_data.get("step"),
+                "prior_outputs": ctx_data.get("prior_outputs"),
+                "state":         ctx_data.get("state"),
             },
-            "instructions": capability_schema.instructions
         }
 
-        # ------------------------------------------------------------
-        # 4. AI Transformation Layer
-        # ------------------------------------------------------------
-        ai_result = call_ai(ai_prompt, AGENT)
-
-        # ------------------------------------------------------------
-        # 5. Shape output to match Output schema
-        # ------------------------------------------------------------
-        shaped_output = shape_output(
-            ai_result,
-            capability_schema.output_schema
+        pipeline_ctx: YoAiContext = ctx_from_envelope(
+            envelope,
+            **_AGENT.as_actor_stub(),
+            instance_id=_AGENT.instance_id,
+            correlation_id=correlation_id,
+            task_id=task_id,
+            profile=ctx_data.get("profile"),
         )
 
-        # ------------------------------------------------------------
-        # 6. Log event for A2A governance
-        # ------------------------------------------------------------
-        log_event({
-            "agentId": AGENT.agent_id,
-            "capability": capability_id,
-            "input": validated_input,
-            "output": shaped_output,
-            "context": ai_prompt["context"]
+        ctx: YoAiContext = ctx_for_capability(pipeline_ctx, capability_id)
+
+        # ── Input validation ───────────────────────────────────────────────
+        i_schema_name     = input_schema_name(ctx)
+        validation_errors = schema_validator.validate_input(i_schema_name, payload)
+        if validation_errors:
+            _logger.write({
+                "event_type": "Handler.ValidationFailed",
+                "level":      "WARNING",
+                "payload": {
+                    "capability":    capability_id,
+                    "schemaName":    i_schema_name,
+                    "errors":        validation_errors,
+                    "correlationId": ctx.get("correlation_id"),
+                },
+            })
+            return _error(400, f"Input validation failed: {validation_errors}")
+
+        # ── AI-first execution ─────────────────────────────────────────────
+        if ctx.get("dry_run"):
+            result = {"status": "dry_run", "capability": capability_id, "payload": payload}
+        else:
+            result = call_ai(
+                {
+                    "persona":    _AGENT.name,
+                    "agentId":    _AGENT.agent_id,
+                    "capability": capability_id,
+                    "input":      payload,
+                    "context": {
+                        "awsRequestId":  aws_request_id,
+                        "rawPath":       raw_path,
+                        "correlationId": ctx.get("correlation_id"),
+                        "taskId":        ctx.get("task_id"),
+                    },
+                },
+                _AGENT,
+            )
+
+        # ── Output shaping ─────────────────────────────────────────────────
+        o_schema_name = output_schema_name(ctx)
+        shaped_output = shape_output(result, o_schema_name) if o_schema_name else result
+
+        # ── Completion log ─────────────────────────────────────────────────
+        _logger.write({
+            "event_type": "Handler.Complete",
+            "level":      "INFO",
+            "payload": {
+                "agentName":     _AGENT.name,
+                "capability":    capability_id,
+                "correlationId": ctx.get("correlation_id"),
+                "taskId":        ctx.get("task_id"),
+                "dryRun":        ctx.get("dry_run"),
+                "awsRequestId":  aws_request_id,
+            },
         })
 
-        # ------------------------------------------------------------
-        # 7. Return envelope
-        # ------------------------------------------------------------
-        response = {
-            "agentId": AGENT.agent_id,
-            "capability": capability_id,
-            "output": shaped_output,
-            "timestamp": datetime.now(timezone.utc).isoformat()
-        }
-
+        # ── Return envelope ─────────────────────────────────────────────────
         return {
             "statusCode": 200,
             "headers": {"Content-Type": "application/json"},
-            "body": json.dumps(response)
+            "body": json.dumps({
+                "jsonrpc": "2.0",
+                "method":  f"a2a.{capability_id}",
+                "result":  shaped_output,
+                "metadata": {
+                    "agentName":     _AGENT.name,
+                    "capability":    capability_id,
+                    "correlationId": ctx.get("correlation_id"),
+                    "taskId":        ctx.get("task_id"),
+                    "timestamp":     datetime.now(timezone.utc).isoformat(),
+                },
+            }),
         }
 
     except Exception as e:
-        logger.exception("Handler error")
-        return {
-            "statusCode": 500,
-            "body": json.dumps({"error": str(e)})
-        }
+        _logger.write({
+            "event_type": "Handler.Error",
+            "level":      "ERROR",
+            "payload": {
+                "error":        str(e),
+                "awsRequestId": aws_request_id,
+                "rawPath":      raw_path,
+            },
+        })
+        return _error(500, str(e))
+
+# ── Error helper ───────────────────────────────────────────────────────────
+
+def _error(status_code: int, message: str) -> dict:
+    return {
+        "statusCode": status_code,
+        "headers": {"Content-Type": "application/json"},
+        "body": json.dumps({"error": message}),
+    }
