@@ -4,7 +4,7 @@ from __future__ import annotations
 from typing import Dict, List, Callable, Any
 
 from core.yoai_agent import YoAiAgent
-from core.platform_event_bus import PlatformEventBus
+from core.runtime.platform_event_bus import PlatformEventBus
 
 # ---------------------------------------------------------------------------
 # PlatformAgent
