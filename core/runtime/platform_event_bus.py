@@ -1,4 +1,4 @@
-# core/platform_event_bus.py
+# core/runtime/platform_event_bus.py
 #
 # Internal platform event bus for synchronous, in-process agent communication.
 #
@@ -7,7 +7,7 @@
 #   events that need to be communicated between agents or components within the same
 #   execution environment. It is distinct from:
 #
-#     Kafka (KafkaPublisher, Gap Registry 🔲)
+#     Kafka 
 #       — external, durable, async, cross-service event streaming
 #       — used for agent-auth, agent-registrations, subscriber topics
 #       — the observability and persistence layer
@@ -19,7 +19,7 @@
 #   PlatformEventBus is:
 #       — synchronous, in-process, ephemeral
 #       — used for agents/components to signal each other within a Lambda invocation
-#       — for example: SolicitorGeneral notifying Door-Keeper of a routing decision,
+#       — for example: Solicitor-General notifying Door-Keeper of a routing decision,
 #         or The-Sentinel reacting to a budget breach event mid-invocation
 #
 # Usage:
@@ -29,12 +29,12 @@
 #   BUS.publish_async("Trust.Assign", data)     # emit without waiting for listeners
 #
 # Injection:
-#   Passed as event_bus= to SolicitorGeneralAgent constructor (Gap Registry v2).
+#   Passed as event_bus= to SolicitorGeneralAgent constructor.
 #   Instantiated once per handler module alongside AGENT and LOG.
 #
 # Current state:
 #   Handlers instantiate BUS = PlatformEventBus() but do not yet call BUS.publish().
-#   This is intentional — the bus is ready for use when SG routing, Trust-Assessor,
+#   This is intentional — the bus is ready for use when Solicitor-General routing, Trust-Assessor,
 #   and Sentinel monitoring patterns require in-process signaling.
 #
 # Thread safety:
@@ -42,11 +42,12 @@
 #   The bus is not thread-safe by design — use Kafka for cross-invocation events.
 
 import asyncio
-import logging
 from collections import defaultdict
 from typing import Any, Callable, Dict, List, Optional
 
-logger = logging.getLogger(__name__)
+from core.observability.logging.platform_logger import get_platform_logger
+
+LOG = get_platform_logger("complaint_manager")
 
 
 class PlatformEventBus:
@@ -86,7 +87,7 @@ class PlatformEventBus:
             owner      : Name of the subscribing agent/component for audit
         """
         self._listeners[event_type].append((listener, owner))
-        logger.debug(
+        LOG.debug(
             "PlatformEventBus: %s subscribed to '%s'", owner, event_type
         )
 
@@ -150,13 +151,13 @@ class PlatformEventBus:
                 listener_fn(event_type, data)
                 notified += 1
             except Exception as exc:
-                logger.warning(
+                LOG.warning(
                     "PlatformEventBus: listener '%s' raised on '%s' — %s",
                     owner, event_type, exc
                 )
 
         if targets:
-            logger.debug(
+            LOG.debug(
                 "PlatformEventBus: published '%s' from '%s' → %d listener(s)",
                 event_type, source, notified
             )
@@ -202,7 +203,7 @@ class PlatformEventBus:
                     listener_fn(event_type, data)
                 notified += 1
             except Exception as exc:
-                logger.warning(
+                LOG.warning(
                     "PlatformEventBus: async listener '%s' raised on '%s' — %s",
                     owner, event_type, exc
                 )

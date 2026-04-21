@@ -1,15 +1,11 @@
-# core/envelope.py
+# core/runtime/envelope.py
 #
 # Shared A2A envelope builders and capability extractor.
 # Pure functions — no state, no agent imports, usable by any agent.
 #
 # Any agent that needs to build or parse A2A envelopes imports from here:
 #
-#   from core.envelope import success_envelope, error_envelope, extract
-#
-# The SG's _success_envelope() and _error_envelope() instance methods
-# are thin delegations to these functions and can be removed once all
-# callers are updated to import directly.
+#   from core.runtime.envelope import success_envelope, error_envelope, extract
 
 from __future__ import annotations
 
