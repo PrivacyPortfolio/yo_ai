@@ -1,6 +1,6 @@
 # core/routing/capability_map_builder.py
 #
-# Generates or updates shared/artifacts/capability_map.yaml from:
+# Generates or updates shared/registries/capability_map.yaml from:
 #   1. Agent extended cards  — skill names, schema URLs, handler paths
 #   2. Deployment config     — Lambda function names, API routes, defaults
 #
@@ -17,13 +17,13 @@
 #   python capability_map_builder.py \
 #       --cards agents/*/agent_card/extended/agent.json \
 #       --deploy-config deploy/capability_deploy_config.yaml \
-#       --output shared/artifacts/capability_map.yaml
+#       --output shared/registries/capability_map.yaml
 #
 # Usage (programmatic):
 #   from shared.tools.loaders.capability_map_builder import CapabilityMapBuilder
 #   builder = CapabilityMapBuilder(deploy_config)
 #   builder.add_card(extended_card_dict)
-#   builder.write("shared/artifacts/capability_map.yaml")
+#   builder.write("shared/registries/capability_map.yaml")
 #
 # Deployment config shape (capability_deploy_config.yaml) — OPTIONAL:
 #   agents:

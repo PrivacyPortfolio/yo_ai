@@ -22,9 +22,9 @@
 #                Always returned in the response as metadata.taskID.
 #
 # Neither request_id nor task_id is stored on this instance — they are
-# extracted per-request and passed as plain values to the SG, which calls
-# generate_message_ids() to produce the authoritative (correlation_id, task_id)
-# pair that seeds YoAiContext for the life of the request.
+# extracted per-request and passed as plain values to the Solicitor-General, 
+# which calls generate_message_ids() to produce the authoritative 
+# (correlation_id, task_id) pair that seeds YoAiContext for the life of the request.
 #
 # Response shape (valid JSON-RPC 2.0 AND valid A2A v1.0):
 #   {

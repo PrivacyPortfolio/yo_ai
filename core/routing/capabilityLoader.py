@@ -1,18 +1,6 @@
 # core/routing/capabilityLoader.py
 #
 # Universal Capability Loader (Skill Bundle Model)
-#
-# Fixes applied:
-#   - x-capabilities structure: the card has entries like
-#     [{"Visitor.Identify": {"artifacts": [...]}}, ...]
-#     The original indexed by c["name"] but x-capabilities entries
-#     have no "name" key — the skill name IS the key. Fixed.
-#   - Artifact ref shape: x-capabilities artifacts are
-#     {"artifact": {"type": "...", "name": "..."}}
-#     The original accessed ref["name"] and ref["artifactType"] directly.
-#     Fixed to unwrap the "artifact" wrapper.
-#   - No error handling: missing keys caused KeyError. Added .get() throughout.
-#   - Added list_skills(), list_artifacts() helpers for capability_map_builder.
 
 class CapabilityLoader:
     """

@@ -21,7 +21,7 @@
 #   - Construct context — the SG constructs it via _build_context()
 #   - Touch the envelope beyond confirming message shape
 
-from core.error_handler import ErrorHandler
+from core.runtime.error_handler import ErrorHandler
 from core.yoai_context import YoAiContext
 
 
