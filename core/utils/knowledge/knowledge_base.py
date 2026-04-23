@@ -25,12 +25,12 @@
 #   at those two methods without changing anything else.
 
 import json
-import logging
 import subprocess
 from pathlib import Path
 from typing import Any, Dict, List, Optional
+from core.observability.logging.platform_logger import get_platform_logger
 
-logger = logging.getLogger(__name__)
+LOG = get_platform_logger("knowledge_base")
 
 # Result limits — keep LLM context window manageable
 _MAX_FRAGMENTS      = 5
@@ -90,7 +90,7 @@ class KnowledgeBase:
         kb = cls()
         kb._root = root
         kb._manifest = _parse_tree_manifest(tree_file, root)
-        logger.info(
+        LOG.info(
             "KnowledgeBase: indexed %d file(s) from %s",
             len(kb._manifest), tree_file
         )
@@ -114,7 +114,7 @@ class KnowledgeBase:
             for f in root.rglob("*")
             if f.is_file() and not f.suffix.lower() == ".meta"
         }
-        logger.info(
+        LOG.info(
             "KnowledgeBase: indexed %d file(s) from filesystem scan of %s",
             len(kb._manifest), root
         )
@@ -160,7 +160,7 @@ class KnowledgeBase:
             return self._keyword_query(text, capability_id, max_fragments)
 
         except Exception as exc:
-            logger.warning("KnowledgeBase.query: failed — %s", exc)
+            LOG.warning("KnowledgeBase.query: failed — %s", exc)
             return []
 
     def get_playbook(self, name: str) -> Optional[str]:
@@ -186,7 +186,7 @@ class KnowledgeBase:
             if Path(rel_path).stem == name or Path(rel_path).name == name:
                 return _read_file(abs_path)
 
-        logger.debug("KnowledgeBase.get_playbook: '%s' not found in manifest", name)
+        LOG.debug("KnowledgeBase.get_playbook: '%s' not found in manifest", name)
         return None
 
     def list_documents(self) -> List[str]:
@@ -206,12 +206,12 @@ class KnowledgeBase:
                 for f in self._root.rglob("*")
                 if f.is_file() and not f.suffix.lower() == ".meta"
             }
-            logger.info(
+            LOG.info(
                 "KnowledgeBase.reload: re-indexed %d file(s) from %s",
                 len(self._manifest), self._root
             )
         else:
-            logger.warning("KnowledgeBase.reload: no root path set — cannot reload.")
+            LOG.warning("KnowledgeBase.reload: no root path set — cannot reload.")
 
     # ------------------------------------------------------------------
     # Embedding / search seam (stub — plug in real implementation here)
@@ -332,7 +332,7 @@ def _parse_tree_manifest(tree_file: Path, root: Path) -> Dict[str, Path]:
         text  = tree_file.read_text(encoding="utf-8", errors="replace")
         lines = text.splitlines()
     except Exception as exc:
-        logger.warning("KnowledgeBase: could not read tree-files.txt — %s", exc)
+        LOG.warning("KnowledgeBase: could not read tree-files.txt — %s", exc)
         return manifest
 
     folder_stack: List[str] = []   # current folder path components
@@ -376,7 +376,7 @@ def _parse_tree_manifest(tree_file: Path, root: Path) -> Dict[str, Path]:
                 else:
                     # File listed in tree but not on disk — record path anyway
                     # so get_playbook() can inform the caller it's missing
-                    logger.debug(
+                    LOG.debug(
                         "KnowledgeBase: tree entry not on disk: %s", rel_path
                     )
 
@@ -410,7 +410,7 @@ def _read_file(path: Path) -> Optional[str]:
         return path.read_text(encoding="utf-8", errors="replace")
 
     except Exception as exc:
-        logger.debug("KnowledgeBase._read_file: could not read %s — %s", path, exc)
+        LOG.debug("KnowledgeBase._read_file: could not read %s — %s", path, exc)
         return None
 
 

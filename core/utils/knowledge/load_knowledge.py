@@ -5,23 +5,8 @@
 # Design intent: R-style virtual corpus.
 #   At init, build an index of what knowledge exists without loading content.
 #   tree-files.txt is the preferred index source — a Windows `tree /f` output
-#   that maps the training folder structure. Content is materialized on demand
-#   by KnowledgeBase.query() and KnowledgeBase.get_playbook() at request time.
 #
 #   This keeps agent cold-start fast regardless of training corpus size.
-#   Large .docx training files are never loaded until a relevant capability
-#   invokes them.
-#
-# Original intent restored:
-#   The original load_knowledge.py correctly treated tree-files.txt as the
-#   primary index — if it existed, real file content was skipped. The
-#   intermediate version (generated during Gap Registry v2 work) removed this
-#   behavior and loaded all file content eagerly. This version restores the
-#   virtual corpus design while fixing the original bugs:
-#     - agent.card["name"] hard bracket -> agent.card.get("name", ...) (safe)
-#     - _load_directory() now returns a KnowledgeBase, not a raw dict
-#     - KnowledgeBase.from_tree_file() parses the manifest correctly
-#     - .meta sidecar files excluded from filesystem scan fallback
 #
 # Returns:
 #   A MergedKnowledgeBase instance (subclass of KnowledgeBase). Access via:
@@ -31,14 +16,15 @@
 #
 # Called by: YoAiAgent.__init__() when slim=False
 
-import logging
 import os
 from pathlib import Path
 from typing import Any, List
 
 from .knowledge_base import KnowledgeBase
+from core.observability.logging.platform_logger import get_platform_logger
 
-logger = logging.getLogger(__name__)
+LOG = get_platform_logger("load_knowledge")
+
 
 _SHARED_ROOT = Path(os.environ.get("YO_AI_SHARED_ROOT", "shared")) / "knowledge"
 _AGENTS_ROOT = Path(os.environ.get("YO_AI_AGENTS_ROOT", "agents"))
@@ -57,15 +43,15 @@ def load_knowledge(agent: Any) -> "MergedKnowledgeBase":
 
 def _load_directory(path: Path, label: str) -> KnowledgeBase:
     if not path.exists():
-        logger.debug("load_knowledge: %s path not found: %s", label, path)
+        LOG.debug("load_knowledge: %s path not found: %s", label, path)
         return KnowledgeBase()
 
     tree_file = path / _TREE_MANIFEST
     if tree_file.exists():
-        logger.info("load_knowledge: %s — using tree-files.txt at %s", label, tree_file)
+        LOG.info("load_knowledge: %s — using tree-files.txt at %s", label, tree_file)
         return KnowledgeBase.from_tree_file(tree_file, root=path)
 
-    logger.info("load_knowledge: %s — scanning filesystem at %s", label, path)
+    LOG.info("load_knowledge: %s — scanning filesystem at %s", label, path)
     return KnowledgeBase.from_filesystem(root=path)
 
 
@@ -114,4 +100,4 @@ class MergedKnowledgeBase(KnowledgeBase):
     def reload(self):
         self._agent_kb.reload()
         self._shared_kb.reload()
-        logger.info("load_knowledge: reloaded for agent %s", self._agent_name)
+        LOG.info("load_knowledge: reloaded for agent %s", self._agent_name)

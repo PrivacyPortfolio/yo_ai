@@ -2,16 +2,6 @@
 #
 # Write new knowledge to agent-specific or shared knowledge repositories.
 #
-# Changes from original:
-#   - datetime.utcnow() → datetime.now(timezone.utc)  (deprecated Python 3.12+)
-#   - Weak trust gate (hasattr duck-type) replaced with isinstance check
-#     against RegisteredAgent — Gap Registry MEDIUM flaw
-#   - Reload notification: agents initialized before a write won't see new
-#     files until restarted (Gap Registry ⚠️ open). A warning is now logged
-#     with guidance. Runtime reload is deferred — see Gap Registry item.
-#   - SHARED_ROOT and AGENTS_ROOT respect env overrides (consistent with
-#     knowledge_query.py and load_knowledge.py)
-#
 # Trust gate:
 #   add_shared_knowledge() — requires a RegisteredAgent instance
 #   add_agent_knowledge()  — requires the agent's own instance
@@ -19,13 +9,14 @@
 #
 # See: knowledge_query.py, load_knowledge.py
 
-import logging
 import os
 from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any
+from core.observability.logging.platform_logger import get_platform_logger
 
-logger = logging.getLogger(__name__)
+LOG = get_platform_logger("knowledge_write")
+
 
 # Root paths — override via environment for Lambda/container deployments
 _SHARED_ROOT = Path(os.environ.get("YO_AI_SHARED_ROOT", "shared")) / "knowledge"
@@ -124,7 +115,7 @@ def _assert_registered_agent(obj: Any, caller: str) -> None:
             )
     except ImportError:
         # Dev fallback — remove before production
-        logger.warning(
+        LOG.warning(
             "%s: RegisteredAgent class not importable — "
             "falling back to hasattr() trust gate (dev mode only).",
             caller
@@ -153,7 +144,7 @@ def _write_file(target: Path, content: str, overwrite: bool) -> None:
         )
 
     target.write_text(content, encoding="utf-8")
-    logger.info("knowledge_write: wrote %s", target)
+    LOG.info("knowledge_write: wrote %s", target)
 
 
 def _write_provenance(target: Path, actor_name: str) -> None:
@@ -176,16 +167,10 @@ def _warn_reload(target: Path) -> None:
     """
     Warn that agents initialized before this write won't see the new file
     until their knowledge is reloaded.
-
-    Gap Registry ⚠️ open: knowledge_write runtime reload mechanism missing.
-    Agents load knowledge once at init (slim=False). Runtime writes are
-    invisible to already-initialized agents until they restart.
-    Full reload mechanism deferred — tracked in Gap Registry.
     """
-    logger.warning(
+    LOG.warning(
         "knowledge_write: %s written. "
         "Agents initialized before this write will NOT see this file "
-        "until restarted or until a runtime reload mechanism is implemented. "
-        "Gap Registry: knowledge reload mechanism (⚠️ open).",
+        "until restarted or until a runtime reload mechanism is implemented. ",
         target
     )

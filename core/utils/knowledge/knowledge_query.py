@@ -12,10 +12,11 @@
 # Called by: core/runtime/ai_transform.py (call_ai)
 # See also:  shared/loaders/knowledge_base.py, core/runtime/load_knowledge.py
 
-import logging
 from typing import Any, Dict, List
+from core.observability.logging.platform_logger import get_platform_logger
 
-logger = logging.getLogger(__name__)
+LOG = get_platform_logger("knowledge_query")
+
 
 # Result limits — passed through to KnowledgeBase.query()
 import os
@@ -56,7 +57,7 @@ def knowledge_query(
         Returns [] on any failure — never raises.
     """
     if agent is None:
-        logger.debug(
+        LOG.debug(
             "knowledge_query: no agent provided for %s / %s — returning empty.",
             agent_name, capability_id
         )
@@ -64,7 +65,7 @@ def knowledge_query(
 
     knowledge = getattr(agent, "knowledge", None)
     if knowledge is None:
-        logger.debug(
+        LOG.debug(
             "knowledge_query: agent.knowledge not set for %s (slim=True?) — returning empty.",
             agent_name
         )
@@ -81,12 +82,12 @@ def knowledge_query(
         )
 
         if fragments:
-            logger.info(
+            LOG.info(
                 "knowledge_query: %d fragment(s) for %s / %s",
                 len(fragments), agent_name, capability_id
             )
         else:
-            logger.debug(
+            LOG.debug(
                 "knowledge_query: no relevant fragments for %s / %s",
                 agent_name, capability_id
             )
@@ -94,7 +95,7 @@ def knowledge_query(
         return fragments
 
     except Exception as exc:
-        logger.warning(
+        LOG.warning(
             "knowledge_query: failed for %s / %s — %s",
             agent_name, capability_id, exc
         )
