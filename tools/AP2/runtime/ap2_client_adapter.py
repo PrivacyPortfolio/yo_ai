@@ -6,6 +6,7 @@ import os
 from typing import Any
 
 from core.observability.logging.platform_logger import get_platform_logger
+
 LOG = get_platform_logger("ap2_client_adapter")
 
 _DEFAULT_TIMEOUT = 30
@@ -46,7 +47,7 @@ class AP2ClientAdapter:
         self.timeout = int(config.get("timeout_seconds", _DEFAULT_TIMEOUT))
 
         if not self.binary_path:
-            logger.warning(
+            LOG.warning(
                 "AP2ClientAdapter: no binary_path configured — "
                 "execute() will fail until binary_path is set."
             )
@@ -111,7 +112,7 @@ class AP2ClientAdapter:
                 "error": f"AP2ClientAdapter: failed to parse stdout as JSON — {exc}",
             }
         except Exception as exc:
-            logger.error("AP2ClientAdapter: unexpected error — %s", exc)
+            LOG.error("AP2ClientAdapter: unexpected error — %s", exc)
             return {
                 "success": False,
                 "error": f"AP2ClientAdapter: unexpected error — {exc}",
