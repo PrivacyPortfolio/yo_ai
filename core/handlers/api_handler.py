@@ -7,7 +7,7 @@
 # always built from a well-formed envelope regardless of how the request arrived.
 #
 # Responsibilities:
-#   - Load the platform capability map from /shared/artifacts/capability_map.yaml
+#   - Load the platform capability map from /shared/registries/capability_map.yaml
 #   - Extract capability name from the API Gateway path via the capability map
 #   - Extract caller identity from API Gateway authorizer context
 #   - Extract correlation ID from API Gateway request ID
@@ -20,7 +20,7 @@
 # standard pipeline unchanged.
 #
 # Capability Map:
-#   /shared/artifacts/capability_map.yaml is the single source of truth for
+#   /shared/registries/capability_map.yaml is the single source of truth for
 #   all platform capabilities and routes. Adding a new capability to the YAML
 #   automatically makes it available here and in yo_ai_handler.py with no
 #   code changes needed.
@@ -33,10 +33,11 @@
 import json
 import uuid
 from pathlib import Path
+from typing import Awaitable, Callable
 
 import yaml
 
-from core.routing.a2a_transport import A2ATransport
+RouteFn = Callable[[dict], Awaitable[dict]]
 
 
 # ── Shared capability map loader ───────────────────────────────────────────
@@ -48,7 +49,7 @@ def _load_capability_path_map() -> dict[str, str]:
     try:
         map_path = (
             Path(__file__).resolve().parent.parent
-            / "shared" / "artifacts" / "capability_map.yaml"
+            / "shared" / "registries" / "capability_map.yaml"
         )
         if not map_path.exists():
             print(f"[api_handler] WARNING: capability_map.yaml not found at {map_path}")
@@ -108,6 +109,9 @@ def build_a2a_envelope(
             "message": {
                 capability_name: payload,
             },
+        },
+        "ctx": {
+            "startup_mode": "api",
         },
     }
 
@@ -170,10 +174,9 @@ def parse_api_gateway_request(
 
 # ── Mode 3 entrypoint ─────────────────────────────────────────────────────
 
-async def api_handler(event: dict, transport: A2ATransport) -> dict:
-    # ── API Gateway / OpenAPI Lambda entrypoint (Mode 3) ──────────────────
+async def api_handler(event: dict, route_fn: RouteFn) -> dict:
     # Parses the API Gateway event, wraps it in an A2A-compliant JSON-RPC
-    # envelope, and delegates to A2ATransport.
+    # envelope, and delegates to route_fn.
 
     try:
         capability_name, payload, caller, subject, correlation_id = \
@@ -200,9 +203,7 @@ async def api_handler(event: dict, transport: A2ATransport) -> dict:
         correlation_id=correlation_id,
     )
 
-    # ── Full pipeline: A2ATransport → SG → UCR → capability handler ───────
-    result = await transport.handle_a2a(envelope)
-
+    result      = await route_fn(envelope)
     status_code = 400 if "error" in result else 200
 
     return {
