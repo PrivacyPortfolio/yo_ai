@@ -4,13 +4,6 @@
 # Builds the reasoning prompt, calls the agent's AI backend, and returns
 # a structured Python dict for shape_output() to normalize.
 #
-# Changes from original:
-#   - knowledge_query() wired into prompt assembly (step 1b)
-#     Every agent gets knowledge-aware reasoning automatically.
-#     No per-agent changes needed — wired once here.
-#   - _ai_meta provenance block attached to result for audit/observability
-#   - logger.info f-string replaced with % formatting (Lambda best practice)
-#
 # Architecture note:
 #   This module delegates to agent.ai_client.chat_completion() — the agent's
 #   own AI backend, configured at construction from the x-ai block.
@@ -21,13 +14,12 @@
 # See: knowledge_query.py, load_knowledge.py, knowledge_write.py
 
 import json
-import logging
 import re
 
 from core.utils.knowledge.knowledge_query import knowledge_query
+from core.observability.logging.platform_logger import get_platform_logger
 
-logger = logging.getLogger(__name__)
-logger.setLevel(logging.INFO)
+LOG = get_platform_logger("ai_transform")
 
 
 def call_ai(prompt: dict, agent) -> dict:
@@ -86,7 +78,7 @@ def call_ai(prompt: dict, agent) -> dict:
         # ----------------------------------------------------------
         user_prompt = _build_user_prompt(prompt, knowledge_fragments)
 
-        logger.info(
+        LOG.info(
             "[AI] Executing capability: %s  agent: %s  knowledge fragments: %d",
             capability_id, agent_name, len(knowledge_fragments)
         )
@@ -120,11 +112,11 @@ def call_ai(prompt: dict, agent) -> dict:
                if hasattr(agent, "ai_client") else {}),
         }
 
-        logger.info("[AI] Capability %s completed successfully.", capability_id)
+        LOG.info("[AI] Capability %s completed successfully.", capability_id)
         return result
 
     except Exception as exc:
-        logger.exception(
+        LOG.exception(
             "[AI] Unhandled error for capability %s agent %s",
             capability_id, agent_name
         )
@@ -204,11 +196,11 @@ def _parse_response(ai_response: str) -> dict:
 
     try:
         parsed = json.loads(cleaned)
-        logger.info("[AI] Parsed JSON response successfully.")
+        LOG.info("[AI] Parsed JSON response successfully.")
         if isinstance(parsed, dict):
             return parsed
         return {"result": parsed}
 
     except Exception:
-        logger.warning("[AI] Response was not valid JSON — returning rawText.")
+        LOG.warning("[AI] Response was not valid JSON — returning rawText.")
         return {"rawText": ai_response}

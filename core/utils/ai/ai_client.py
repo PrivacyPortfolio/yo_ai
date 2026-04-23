@@ -17,15 +17,15 @@
 #
 # api_key_env / endpoint silently ignored (banned from publishable cards).
 
-import logging
 import os
 import re
 from typing import Any, Dict, List, Optional, Tuple
 
 from core.utils.ai.ai_providers.provider_loader import load_ai_provider
 from core.utils.ai.ai_providers.provider_orchestrator import ProviderOrchestrator
+from core.observability.logging.platform_logger import get_platform_logger
 
-logger = logging.getLogger(__name__)
+LOG = get_platform_logger("ai_client")
 
 _FALLBACK_PROVIDER = "anthropic"
 _FALLBACK_MODEL    = "claude-sonnet-4-6"
@@ -69,17 +69,17 @@ class AiClient:
         self._max_tokens  = int(self._xai.get("max_tokens", 1024))
 
         if not self._xai:
-            logger.debug(
+            LOG.debug(
                 "AiClient(%s): no x-ai block — platform fallback %s/%s.",
                 agent_name, _FALLBACK_PROVIDER, _FALLBACK_MODEL
             )
         elif "skills" in self._xai:
-            logger.debug(
+            LOG.debug(
                 "AiClient(%s): per-capability x-ai (%d skill(s)) strategy=%s.",
                 agent_name, len(self._xai["skills"]), self._strategy
             )
         else:
-            logger.debug(
+            LOG.debug(
                 "AiClient(%s): per-agent x-ai strategy=%s.", agent_name, self._strategy
             )
 
@@ -108,7 +108,7 @@ class AiClient:
         # Single entry — direct dispatch (fast path, no orchestrator overhead)
         if len(defaults) <= 1:
             provider, model = self._resolve(capability_id, role="primary")
-            logger.info(
+            LOG.info(
                 "AiClient(%s): %s/%s  capability=%s",
                 self.agent_name, provider, model, capability_id or "none"
             )
@@ -118,7 +118,7 @@ class AiClient:
                     self._temperature, self._max_tokens,
                 )
             except Exception as exc:
-                logger.error(
+                LOG.error(
                     "AiClient(%s): %s/%s failed — %s",
                     self.agent_name, provider, model, exc
                 )

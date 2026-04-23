@@ -12,10 +12,9 @@ Responsibilities:
 - Ensure predictable, schema-aligned envelopes for A2A governance
 """
 
-import logging
+from core.observability.logging.platform_logger import get_platform_logger
 
-logger = logging.getLogger(__name__)
-logger.setLevel(logging.INFO)
+LOG = get_platform_logger("output_shaper")
 
 
 def shape_output(ai_result: dict, output_schema: dict) -> dict:
@@ -31,7 +30,7 @@ def shape_output(ai_result: dict, output_schema: dict) -> dict:
     """
 
     if not isinstance(ai_result, dict):
-        logger.warning("[OutputShaper] AI result was not a dict; wrapping")
+        LOG.warning("[OutputShaper] AI result was not a dict; wrapping")
         ai_result = {"value": ai_result}
 
     shaped = {}
@@ -57,5 +56,5 @@ def shape_output(ai_result: dict, output_schema: dict) -> dict:
         "note": "Unmapped fields preserved for debugging"
     }
 
-    logger.info("[OutputShaper] Output shaped successfully")
+    LOG.info("[OutputShaper] Output shaped successfully")
     return shaped
