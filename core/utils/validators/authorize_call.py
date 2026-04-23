@@ -4,16 +4,15 @@
 A2A Call Authorization Module
 
 Checks if a calling agent is authorized to invoke methods on this agent
-based on JSON policy files in /training/policies/
+based on JSON policy files in /policies/
 """
 
 from pathlib import Path
 from typing import Dict, Any, Optional
-import logging
 import json
+from core.observability.logging.platform_logger import get_platform_logger
 
-logger = logging.getLogger(__name__)
-
+LOG = get_platform_logger("authorize_call")
 
 class AuthorizationError(Exception):
     """Raised when an A2A call is not authorized"""
@@ -40,14 +39,14 @@ async def run(envelope: Dict[str, Any], context: Dict[str, Any]) -> bool:
         method_name = envelope.get("method_name")
         
         if not caller_name:
-            logger.warning("No caller_agent_name in envelope - denying call")
+            LOG.warning("No caller_agent_name in envelope - denying call")
             return False
         
         # Load the authorization policy
         policy = _load_policy(context)
         
         if not policy:
-            logger.warning("No authorization policy found - applying default deny")
+            LOG.warning("No authorization policy found - applying default deny")
             return False
         
         # Check authorization
@@ -58,14 +57,14 @@ async def run(envelope: Dict[str, Any], context: Dict[str, Any]) -> bool:
         )
         
         if is_authorized:
-            logger.info(f"Authorized: {caller_name} -> {method_name}")
+            LOG.info(f"Authorized: {caller_name} -> {method_name}")
         else:
-            logger.warning(f"Denied: {caller_name} -> {method_name}")
+            LOG.warning(f"Denied: {caller_name} -> {method_name}")
         
         return is_authorized
         
     except Exception as e:
-        logger.error(f"Authorization check failed: {e}")
+        LOG.error(f"Authorization check failed: {e}")
         # Fail closed - deny on error
         return False
 
@@ -87,7 +86,7 @@ def _load_policy(context: Dict[str, Any]) -> Optional[Dict[str, Any]]:
     policy_file = policy_dir / f"{agent_name}-authorization.json"
         
     if not policy_file.exists():
-        logger.warning(f"No policy file found: {policy_file}")
+        LOG.warning(f"No policy file found: {policy_file}")
         return None
         
     try:
@@ -107,10 +106,10 @@ def _load_policy(context: Dict[str, Any]) -> Optional[Dict[str, Any]]:
         return policy    
 
     except json.JSONDecodeError as e:
-        logger.error(f"Invalid JSON in policy file {policy_file}: {e}")
+        LOG.error(f"Invalid JSON in policy file {policy_file}: {e}")
         return None
     except Exception as e:
-        logger.error(f"Failed to load policy from {policy_file}: {e}")
+        LOG.error(f"Failed to load policy from {policy_file}: {e}")
         return None
 
 

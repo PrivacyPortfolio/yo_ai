@@ -1,15 +1,6 @@
 # # core/utils/validators/load_fingerprints.py
 #
 # Compute stable fingerprints for agents based on their card and extended card.
-#
-# Fixes applied (Gap Registry v2, Section 1 + Section 3):
-#   - _load_fingerprints() was indented as a class method with no class — moved
-#     to module level as load_fingerprints(card, extended)
-#   - sorted() called on lists of dicts → TypeError; fixed with key=lambda
-#   - Fingerprint verification against registered card was absent — stub added
-#   - PLACEHOLDER_COMPUTE_AT_REGISTRATION values bypass verification in dev mode
-#
-# Called by: BaseAgent.__init__() when slim=False
 # Consumed by: Door-Keeper Agent.Register, Agent.Authenticate (verification gap)
 
 import hashlib
