@@ -1,4 +1,4 @@
-# core/messages/validator.py
+# core/messages/a2a_validator.py
 
 """
 A2A v1.0 Validator
@@ -18,66 +18,22 @@ Usage:
 """
 
 from typing import Dict, Any, List
-from a2a_schemaLoader import A2ASchemaLoader
+from jsonschema import ValidationError
+from .a2a_schema import A2ASchemaLoader
 
 
 class A2AValidator:
-    """
-    Validates A2A v1.0 messages using Draft 2020-12 schemas.
-    Supports local $ref resolution for flattened schema bundles.
-    """
-    
     def __init__(self, version: str = "v1.0"):
-        # Point the loader to the specific version directory
-        self.loader = A2ASchemaLoader(schema_dir=f"schemas/{version}")
-        self._validators = {
-            "request": self.loader.get_validator("request"),
-            "response": self.loader.get_validator("response"),
-            "error": self.loader.get_validator("error")
-        }
-            
-    def validate_request(self, data: Dict[str, Any]) -> bool:
-        """Validate an A2A request (e.g., send_message, stream_message)."""
-        try:
-            self._validators["request"].validate(data)
-            return True
-        except Exception:
-            return False
-    
-    def validate_response(self, data: Dict[str, Any]) -> bool:
-        """Validate an A2A response with v1.0 metadata and status."""
-        try:
-            self._validators["response"].validate(data)
-            return True
-        except Exception:
-            return False
-    
-    def validate_error(self, data: Dict[str, Any]) -> bool:
-        """Validate standardized v1.0 error objects."""
-        try:
-            self._validators["error"].validate(data)
-            return True
-        except Exception:
-            return False
+        self.loader = A2ASchemaLoader(version=version)
 
-    def get_validation_errors(self, data: Dict[str, Any], schema_type: str) -> List[Dict[str, Any]]:
-        """
-        Retrieves detailed errors, essential for debugging mandatory v1.0 
-        fields like taskID and correlationID.
-        """
-        errors = []
-        validator = self._validators.get(schema_type)
-        
-        if not validator:
-            return [{"error": f"Unknown or uninitialized schema type: {schema_type}"}]
-        
-        # iter_errors handles the 2020-12 validation tree via the registry
-        for error in validator.iter_errors(data):
-            errors.append({
-                "path": list(error.path),
-                "message": error.message,
-                "context": [e.message for e in error.context] if error.context else [],
-                "validator": error.validator,
-            })
-        
-        return errors
+    def validate_request(self, data: Dict[str, Any]) -> None:
+        self.loader.validate("request", data)
+
+    def validate_response(self, data: Dict[str, Any]) -> None:
+        self.loader.validate("response", data)
+
+    def validate_error(self, data: Dict[str, Any]) -> None:
+        self.loader.validate("error", data)
+
+    def get_validation_errors(self, schema_type: str, data: Dict[str, Any]) -> List[Dict[str, Any]]:
+        return self.loader.iter_errors(schema_type, data)
