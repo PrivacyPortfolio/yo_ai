@@ -17,6 +17,7 @@
 
 from typing import Any
 from core.observability.logging.platform_logger import get_platform_logger
+
 LOG = get_platform_logger("vault_adapter_tool")
 
 
@@ -86,7 +87,7 @@ class VaultAdapterTool:
                 return result if isinstance(result, dict) else {"inventory": result}
 
         except Exception as exc:
-            logger.error(
+            LOG.error(
                 "VaultAdapterTool: action '%s' failed — %s", action, exc
             )
             return {
