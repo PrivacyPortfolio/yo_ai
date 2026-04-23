@@ -47,7 +47,7 @@ class HttpToolAdapter:
         self._session = None   # created lazily on first execute()
 
         if not self.url:
-            logger.warning(
+            LOG.warning(
                 "HttpToolAdapter: no url configured — "
                 "execute() will fail until url is set."
             )
@@ -98,7 +98,7 @@ class HttpToolAdapter:
                 "error": f"HttpToolAdapter: connection error — {exc}",
             }
         except Exception as exc:
-            logger.error("HttpToolAdapter: unexpected error — %s", exc)
+            LOG.error("HttpToolAdapter: unexpected error — %s", exc)
             return {
                 "success": False,
                 "error": f"HttpToolAdapter: unexpected error — {exc}",
