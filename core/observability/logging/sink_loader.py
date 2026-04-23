@@ -1,16 +1,5 @@
 # core/observability/logging/sink_loader.py
 #
-# Fixes applied:
-#   - All sink imports were at module level — importing sink_loader caused
-#     all five sink modules to load unconditionally, including win32evtlogutil
-#     (crashes Lambda) and kafka (crashes if confluent-kafka not installed).
-#     Each import is now lazy — inside its own if-branch.
-#   - KafkaSink removed from registry. Kafka is the Observability Layer,
-#     not a log sink. Use KafkaPublisher (Gap Registry 🔲) for Kafka events.
-#     Requesting LOG_SINK=kafka raises a clear ValueError explaining this.
-#   - load_log_sink() interface preserved — returns one LogSink instance,
-#     called by log_bootstrapper.get_logger() (not per-request, per name).
-#
 # Configuration (.venv / environment):
 #   LOG_SINK          — sink type: json | s3 | dynamodb | windows
 #                       (default: json)
