@@ -8,13 +8,13 @@
 #   - temperature and max_tokens passed through to SDK call
 #   - Never raises — error string returned on failure
 
-import logging
 import os
 from typing import Optional
 
 from .base_ai_client import BaseAIClient
+from core.observability.logging.platform_logger import get_platform_logger
 
-logger = logging.getLogger(__name__)
+LOG = get_platform_logger("azure_openai_client")
 
 _API_KEY_ENV  = "AZURE_OPENAI_KEY"
 _ENDPOINT_ENV = "AZURE_OPENAI_ENDPOINT"
@@ -79,9 +79,9 @@ class AzureOpenAIClient(BaseAIClient):
 
         except KeyError as exc:
             err = f"AzureOpenAIClient: required environment variable not set — {exc}"
-            logger.error(err)
+            LOG.error(err)
             return f'{{"error": "{err}"}}'
         except Exception as exc:
             err = f"AzureOpenAIClient: {self.model} failed — {exc}"
-            logger.error(err)
+            LOG.error(err)
             return f'{{"error": "{err}"}}'
