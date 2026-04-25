@@ -2,21 +2,14 @@
 #
 # OpenAIClient — OpenAI-compatible API via official SDK.
 #
-# Merge changes from original:
-#   - requests.post() replaced with openai SDK
-#   - api_key and endpoint constructor args removed — api_key read
-#     from OPENAI_API_KEY env var by convention
-#   - capability_id added to chat_completion() per BaseAIClient contract
-#   - temperature and max_tokens passed through to SDK call
-#   - Never raises — error string returned on failure
 
-import logging
 import os
 from typing import Optional
 
 from .base_ai_client import BaseAIClient
+from core.observability.logging.platform_logger import get_platform_logger
 
-logger = logging.getLogger(__name__)
+LOG = get_platform_logger("openai_client")
 
 _API_KEY_ENV = "OPENAI_API_KEY"
 
@@ -65,9 +58,9 @@ class OpenAIClient(BaseAIClient):
 
         except KeyError:
             err = f"OpenAIClient: {_API_KEY_ENV} environment variable not set."
-            logger.error(err)
+            LOG.error(err)
             return f'{{"error": "{err}"}}'
         except Exception as exc:
             err = f"OpenAIClient: {self.model} failed — {exc}"
-            logger.error(err)
+            LOG.error(err)
             return f'{{"error": "{err}"}}'

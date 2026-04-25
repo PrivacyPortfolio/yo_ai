@@ -2,30 +2,17 @@
 #
 # ProviderOrchestrator — multi-provider coordination for AiClient.
 #
-# Merge changes from original:
-#   - x-ai config shape updated from "providers" flat list to
-#     "declared_defaults" (per-agent) or "skills.<cap>.declared_defaults"
-#     (per-capability) — matching the current ExtendedAgentCard format
-#     and AiClient resolution chain
-#   - api_key_env removed from provider config shape — API keys are read
-#     from environment by convention, not from config (API_KEYS.docx)
-#   - capability_id threaded through chat_completion() so per-skill health
-#     tracking is possible in future
-#   - health TTL cache and round-robin strategy preserved exactly from original
-#   - load_ai_provider() from provider_loader.py replaces inline construction
-#   - f-string logging replaced with % formatting (Lambda best practice)
-#
 # Used by: AiClient (ai_client.py) when strategy != "failover-simple"
 # Not instantiated directly by agent code.
 
-import logging
 import time
 from typing import Any, Dict, List, Optional, Tuple
 
 from .provider_loader import load_ai_provider
 from .base_ai_client import BaseAIClient
+from core.observability.logging.platform_logger import get_platform_logger
 
-logger = logging.getLogger(__name__)
+LOG = get_platform_logger("provider_orchestrator")
 
 
 class ProviderOrchestrator:
@@ -89,7 +76,7 @@ class ProviderOrchestrator:
                 return self._round_robin(system, user, capability_id)
             return self._failover(system, user, capability_id)
         except RuntimeError as exc:
-            logger.error("ProviderOrchestrator: all providers exhausted — %s", exc)
+            LOG.error("ProviderOrchestrator: all providers exhausted — %s", exc)
             return f'{{"error": "ProviderOrchestrator: {exc}"}}'
 
     # ------------------------------------------------------------------
@@ -106,7 +93,7 @@ class ProviderOrchestrator:
 
         for idx, entry in enumerate(self._defaults):
             if not self._is_healthy(idx):
-                logger.info(
+                LOG.info(
                     "ProviderOrchestrator: skipping unhealthy provider idx=%d (%s/%s)",
                     idx, entry.get("provider"), entry.get("model")
                 )
@@ -114,12 +101,12 @@ class ProviderOrchestrator:
 
             provider, model = entry.get("provider", ""), entry.get("model", "")
             if not provider or not model:
-                logger.warning("ProviderOrchestrator: skipping entry idx=%d — missing provider or model", idx)
+                LOG.warning("ProviderOrchestrator: skipping entry idx=%d — missing provider or model", idx)
                 continue
 
             try:
                 client = self._build_client(provider, model)
-                logger.info(
+                LOG.info(
                     "ProviderOrchestrator: [failover] idx=%d %s/%s capability=%s",
                     idx, provider, model, capability_id or "none"
                 )
@@ -128,7 +115,7 @@ class ProviderOrchestrator:
                 return result
 
             except Exception as exc:
-                logger.warning(
+                LOG.warning(
                     "ProviderOrchestrator: idx=%d %s/%s failed — %s",
                     idx, provider, model, exc
                 )
@@ -157,7 +144,7 @@ class ProviderOrchestrator:
             attempts += 1
 
             if not self._is_healthy(idx):
-                logger.info(
+                LOG.info(
                     "ProviderOrchestrator: [rr] skipping unhealthy idx=%d", idx
                 )
                 continue
@@ -169,7 +156,7 @@ class ProviderOrchestrator:
 
             try:
                 client = self._build_client(provider, model)
-                logger.info(
+                LOG.info(
                     "ProviderOrchestrator: [rr] idx=%d %s/%s capability=%s",
                     idx, provider, model, capability_id or "none"
                 )
@@ -178,7 +165,7 @@ class ProviderOrchestrator:
                 return result
 
             except Exception as exc:
-                logger.warning(
+                LOG.warning(
                     "ProviderOrchestrator: [rr] idx=%d %s/%s failed — %s",
                     idx, provider, model, exc
                 )
@@ -199,7 +186,7 @@ class ProviderOrchestrator:
             return True
         # Unhealthy — check if TTL has expired
         if (time.time() - entry.get("timestamp", 0)) > self.health_ttl_seconds:
-            logger.info(
+            LOG.info(
                 "ProviderOrchestrator: health TTL expired for idx=%d — re-enabling", idx
             )
             return True

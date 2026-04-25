@@ -2,32 +2,18 @@
 #
 # Provider factory — turns (provider, model) → BaseAIClient instance.
 #
-# Merge changes from original:
-#   - api_key_env removed from config requirement. The original required
-#     api_key_env in the config dict and raised if absent. This is
-#     incompatible with the API_KEYS.docx ruling: api_key_env must NOT
-#     appear in publishable agent cards. API keys are read from environment
-#     variables by convention — the provider name determines which var.
-#   - endpoint removed from config for OpenAI and Claude — SDK clients
-#     don't need it; the SDK handles endpoint routing internally.
-#   - temperature and max_tokens accepted from config (preserved from original).
-#   - Azure deployment read from config (not sensitive — not a secret).
-#   - Gemini (Google) added to match ai_client.py provider coverage.
-#   - Provider name normalisation: "anthropic", "azure-openai", "azure",
-#     "openai", "gemini", "google_gemini" all handled.
-#
 # Called by: AiClient._get_client() in ai_client.py
 # Not called directly by agent code.
 
-import logging
 from typing import Optional
 
 from .base_ai_client import BaseAIClient
 from .claude_client import ClaudeClient
 from .openai_client import OpenAIClient
 from .azure_openai_client import AzureOpenAIClient
+from core.observability.logging.platform_logger import get_platform_logger
 
-logger = logging.getLogger(__name__)
+LOG = get_platform_logger("provider_loader")
 
 
 def load_ai_provider(
@@ -144,9 +130,9 @@ class _GeminiClient(BaseAIClient):
             return response.text
         except KeyError:
             err = "GeminiClient: GEMINI_API_KEY environment variable not set."
-            logger.error(err)
+            LOG.error(err)
             return f'{{"error": "{err}"}}'
         except Exception as exc:
             err = f"GeminiClient: {self.model} failed — {exc}"
-            logger.error(err)
+            LOG.error(err)
             return f'{{"error": "{err}"}}'

@@ -3,13 +3,13 @@
 # ClaudeClient — Anthropic Claude via official SDK.
 #
 
-import logging
 import os
 from typing import Optional
 
 from .base_ai_client import BaseAIClient
+from core.observability.logging.platform_logger import get_platform_logger
 
-logger = logging.getLogger(__name__)
+LOG = get_platform_logger("claude_client")
 
 _DEFAULT_MODEL = "claude-sonnet-4-6"
 _API_KEY_ENV   = "ANTHROPIC_API_KEY"
@@ -63,9 +63,9 @@ class ClaudeClient(BaseAIClient):
 
         except KeyError:
             err = f"ClaudeClient: {_API_KEY_ENV} environment variable not set."
-            logger.error(err)
+            LOG.error(err)
             return f'{{"error": "{err}"}}'
         except Exception as exc:
             err = f"ClaudeClient: {self.model} failed — {exc}"
-            logger.error(err)
+            LOG.error(err)
             return f'{{"error": "{err}"}}'
