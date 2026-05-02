@@ -32,10 +32,10 @@ from agents.solicitor_general.runtime.solicitor_general import SolicitorGeneralA
 from core.runtime.platform_event_bus import PlatformEventBus
 from core.yoai_context import YoAiContext, ctx_from_envelope, ctx_for_capability
 from core.yoai_context import input_schema_name, output_schema_name
-from core.observability.logging.platform_logger import get_platform_logger
 from core.utils.ai.ai_transform import call_ai
 from core.utils.ai.output_shaper import shape_output
 from core.utils.validators.schema_validator import validate_input, load_schema
+from core.observability.logging.platform_logger import get_platform_logger
 
 LOG = get_platform_logger("solicitor-general-handler")
 
