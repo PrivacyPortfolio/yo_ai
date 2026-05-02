@@ -12,20 +12,18 @@
 import asyncio
 import inspect
 import json
-import logging as _stdlib_logging   # stdlib — used only in last-resort error path
 from datetime import datetime, timezone
 
 from agents.incident_responder.runtime.incident_responder import IncidentResponderAgent
-from core.platform_event_bus import PlatformEventBus
+from core.runtime.platform_event_bus import PlatformEventBus
 from core.yoai_context import YoAiContext, ctx_from_envelope, ctx_for_capability
 from core.yoai_context import input_schema_name, output_schema_name
 from core.utils.validators.schema_validator import schema_validator
 from core.utils.ai.ai_transform import call_ai
 from core.utils.ai.output_shaper import shape_output
-from core.observability.logging.log_bootstrapper import get_logger
+from core.observability.logging.platform_logger import get_platform_logger
 
-_logger      = get_logger("incident-responder-handler")
-_last_resort = _stdlib_logging.getLogger()   # fallback if _logger itself fails
+LOG = get_platform_logger("incident-responder-handler")
 
 
 # ── Module-level singletons ────────────────────────────────────────────────
@@ -109,7 +107,7 @@ def lambda_handler(event, context):
         i_schema_name = input_schema_name(ctx)
         validation_errors = schema_validator.validate_input(i_schema_name, payload)
         if validation_errors:
-            _logger.write({
+            LOG.write({
                 "event_type": "Handler.ValidationFailed",
                 "level":      "WARNING",
                 "payload": {
@@ -127,7 +125,7 @@ def lambda_handler(event, context):
         try:
             result = _invoke(handler, payload, ctx)
         except NotImplementedError:
-            _logger.write({
+            LOG.write({
                 "event_type": "Handler.CallAiFallback",
                 "level":      "INFO",
                 "payload": {
@@ -159,7 +157,7 @@ def lambda_handler(event, context):
         o_schema_name = output_schema_name(ctx)
         shaped_output = shape_output(result, o_schema_name) if o_schema_name else result
 
-        _logger.write({
+        LOG.write({
             "event_type": "Handler.Complete",
             "level":      "INFO",
             "payload": {
@@ -192,7 +190,7 @@ def lambda_handler(event, context):
     except Exception as e:
         # ── Defensive double-try — this handler has nowhere to escalate ────
         try:
-            _logger.write({
+            LOG.write({
                 "event_type": "Handler.Error",
                 "level":      "ERROR",
                 "payload": {
@@ -203,7 +201,7 @@ def lambda_handler(event, context):
             })
         except Exception:
             # _logger itself failed — last resort
-            _last_resort.error(
+            LOG.error(
                 "incident_responder_handler: _logger.write also failed. error=%s", str(e)
             )
         return _error(500, str(e))
