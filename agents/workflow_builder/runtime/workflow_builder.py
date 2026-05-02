@@ -7,7 +7,8 @@
 # capability handler walkthrough (Gap Registry — extends basic A2A task
 # management).
 
-from core.platform_agent import PlatformAgent, PlatformEventBus
+from core.platform_agent import PlatformAgent
+from core.platform_event_bus import PlatformEventBus
 from core.yoai_context import YoAiContext
 
 
