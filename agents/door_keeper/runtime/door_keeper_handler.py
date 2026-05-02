@@ -16,7 +16,7 @@ import json
 from datetime import datetime, timezone
 
 from agents.door_keeper.runtime.door_keeper import DoorKeeperAgent
-from core.platform_event_bus import PlatformEventBus
+from core.runtime.platform_event_bus import PlatformEventBus
 from core.yoai_context import YoAiContext, ctx_from_envelope, ctx_for_capability
 from core.yoai_context import input_schema_name, output_schema_name
 from core.utils.validators.schema_validator import schema_validator
