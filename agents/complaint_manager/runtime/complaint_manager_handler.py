@@ -15,15 +15,15 @@ import asyncio
 import json
 from datetime import datetime, timezone
 
-from agents.complaint_manager.complaint_manager import ComplaintManagerAgent
+from agents.complaint_manager.runtime.complaint_manager import ComplaintManagerAgent
 from core.yoai_context import YoAiContext, ctx_from_envelope, ctx_for_capability
 from core.yoai_context import input_schema_name, output_schema_name
 from core.utils.validators.schema_validator import schema_validator
 from core.utils.ai.ai_transform import call_ai
 from core.utils.ai.output_shaper import shape_output
-from core.observability.logging.log_bootstrapper import get_logger
+from core.observability.logging.platform_logger import get_platform_logger
 
-_logger = get_logger("complaint-manager-handler")
+_logger = get_platform_logger("complaint-manager-handler")
 
 
 # ── Module-level singleton ─────────────────────────────────────────────────

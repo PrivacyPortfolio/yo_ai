@@ -20,9 +20,6 @@ class ComplaintManagerAgent(YoAiAgent):
         profile: dict | None = None,
         slim: bool = False,
     ):
-        # ── No ctx param — YoAiAgent no longer accepts one ─────────────────
-        # profile is passed explicitly; YoAiAgent normalizes it.
-        # agent_id and name come from the card via BaseAgent — not overridden.
         super().__init__(
             card=card,
             extended_card=extended_card,
