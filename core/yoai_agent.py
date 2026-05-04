@@ -123,6 +123,27 @@ class YoAiAgent(BaseAgent):
         # is stable before the first log line is ever written.
         self.logger = get_logger(self.instance_id)
 
+        # ── Instantiation record ───────────────────────────────────────────
+        # Written once per agent construction. Provides the opening entry
+        # for every agent's event replay sequence: who was created, what
+        # card they loaded, what profile they carry, and whether they are
+        # slim. Every subclass inherits this without any additional code.
+        self.logger.write(
+            event_type="agent.Initialized",
+            payload={
+                "instance_id":   self.instance_id,
+                "agent_id":      self.agent_id,
+                "name":          self.name,
+                "profile":       (self.profile or {}).get("name"),
+                "slim":          slim,
+                "skills":        [s.get("name") for s in self.skills],
+                "has_tools":     self.tools is not None,
+                "has_knowledge": bool(self.knowledge),
+                "correlation_id": self.correlation_id,
+            },
+            context=None,
+        )
+
     # ── showCard — trust-gated extended card access ────────────────────────
 
     def showCard(self, ctx: YoAiContext | None = None) -> dict:
