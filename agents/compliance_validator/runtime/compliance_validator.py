@@ -24,9 +24,6 @@ class ComplianceValidatorAgent(YoAiAgent):
         profile: dict | None = None,
         slim: bool = False,
     ):
-        # ── No ctx param — YoAiAgent no longer accepts one ─────────────────
-        # agent_id default was "complaint_manager" — copy-paste bug, now
-        # removed entirely. agent_id comes from the card via BaseAgent.
         super().__init__(
             card=card,
             extended_card=extended_card,
