@@ -4,17 +4,14 @@
 #
 # Dispatch model: run() first, call_ai() fallback only.
 #
-# Note: Workflow-Builder message/data flows are deferred (Gap Registry).
-# This handler is structurally complete and ready to receive additional
-# capability routes as Workflow.Build is expanded.
 
 import asyncio
 import inspect
 import json
 from datetime import datetime, timezone
 
-from agents.workflow_builder.workflow_builder import WorkflowBuilderAgent
-from core.platform_event_bus import PlatformEventBus
+from agents.workflow_builder.runtime.workflow_builder import WorkflowBuilderAgent
+from core.runtime.platform_event_bus import PlatformEventBus
 from core.yoai_context import YoAiContext, ctx_from_envelope, ctx_for_capability
 from core.yoai_context import input_schema_name, output_schema_name
 from core.utils.validators.schema_validator import schema_validator

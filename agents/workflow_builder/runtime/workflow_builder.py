@@ -3,12 +3,9 @@
 # Workflow-Builder: constructs and manages complex multi-step workflows
 # across platform agents.
 #
-# Note: Workflow-Builder message/data flows are deferred pending
-# capability handler walkthrough (Gap Registry — extends basic A2A task
-# management).
 
 from core.platform_agent import PlatformAgent
-from core.platform_event_bus import PlatformEventBus
+from core.runtime.platform_event_bus import PlatformEventBus
 from core.yoai_context import YoAiContext
 
 
@@ -32,5 +29,5 @@ class WorkflowBuilderAgent(PlatformAgent):
     # ── Capability: Workflow.Build ─────────────────────────────────────────
 
     async def workflow_build(self, payload: dict, ctx: YoAiContext) -> dict:
-        from .workflow_build import run
+        from agents.workflow_builder.capabilities.workflow_build import run
         return await run(payload, ctx)
