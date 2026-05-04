@@ -14,15 +14,15 @@ Responsibilities:
 import json
 from datetime import datetime, timezone
 
-from rewards_seeker import RewardsSeekerAgent
+from agents.rewards_seeker.runtime.rewards_seeker import RewardsSeekerAgent
 from core.yoai_context import YoAiContext, ctx_from_envelope, ctx_for_capability
 from core.yoai_context import input_schema_name, output_schema_name
 from core.utils.validators.schema_validator import schema_validator
 from core.utils.ai.ai_transform import call_ai
 from core.utils.ai.output_shaper import shape_output
-from core.observability.logging.log_bootstrapper import get_logger
+from core.observability.logging.platform_logger import get_platform_logger
 
-_logger = get_logger("rewards-seeker-handler")
+_logger = get_platform_logger("rewards-seeker-handler")
 
 
 # ── Module-level singleton ─────────────────────────────────────────────────
@@ -32,11 +32,11 @@ _AGENT = RewardsSeekerAgent(slim=True)
 # ── Capability routing ─────────────────────────────────────────────────────
 
 _CAPABILITY_ROUTER = {
-"Rewards.Discover": "Rewards.Discover",
-"PromoEligibilityVerify": "Promo-Eligibility.Verify",
-"RewardRedeem": "Reward.Redeem",
-"RewardsProfileRequest": "Rewards-Profile.Request",
-"RedemptionPlanGenerate": "Redemption-Plan.Generate"
+"rewardsDiscover":        "Rewards.Discover",
+    "promoEligibilityVerify": "Promo.EligibilityVerify",
+    "rewardRedeem":           "Reward.Redeem",
+    "rewardsProfileRequest":  "Rewards.ProfileRequest",
+    "redemptionPlanGenerate": "Redemption.PlanGenerate",
 }
 
 
@@ -95,16 +95,16 @@ def lambda_handler(event, context):
         i_schema_name     = input_schema_name(ctx)
         validation_errors = schema_validator.validate_input(i_schema_name, payload)
         if validation_errors:
-            _logger.write({
-                "event_type": "Handler.ValidationFailed",
-                "level":      "WARNING",
-                "payload": {
+            _logger.write(
+                event_type="Handler.ValidationFailed",
+                payload={
                     "capability":    capability_id,
                     "schemaName":    i_schema_name,
                     "errors":        validation_errors,
                     "correlationId": ctx.get("correlation_id"),
                 },
-            })
+                context=ctx,
+            )
             return _error(400, f"Input validation failed: {validation_errors}")
 
         # ── AI-first execution ─────────────────────────────────────────────
@@ -132,10 +132,9 @@ def lambda_handler(event, context):
         shaped_output = shape_output(result, o_schema_name) if o_schema_name else result
 
         # ── Completion log ─────────────────────────────────────────────────
-        _logger.write({
-            "event_type": "Handler.Complete",
-            "level":      "INFO",
-            "payload": {
+        _logger.write(
+            event_type="Handler.Complete",
+            payload={
                 "agentName":     _AGENT.name,
                 "capability":    capability_id,
                 "correlationId": ctx.get("correlation_id"),
@@ -143,7 +142,8 @@ def lambda_handler(event, context):
                 "dryRun":        ctx.get("dry_run"),
                 "awsRequestId":  aws_request_id,
             },
-        })
+            context=ctx,
+        )
 
         # ── Return envelope ─────────────────────────────────────────────────
         return {
@@ -164,15 +164,15 @@ def lambda_handler(event, context):
         }
 
     except Exception as e:
-        _logger.write({
-            "event_type": "Handler.Error",
-            "level":      "ERROR",
-            "payload": {
+        _logger.write(
+            event_type="Handler.Error",
+            payload={
                 "error":        str(e),
                 "awsRequestId": aws_request_id,
                 "rawPath":      raw_path,
             },
-        })
+            context=ctx,
+        )
         return _error(500, str(e))
 
 # ── Error helper ───────────────────────────────────────────────────────────
